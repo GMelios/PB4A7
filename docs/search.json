@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "PB4A7 - Quantitative Applications for Behavioural Science",
     "section": "",
-    "text": "📑 Course Brief\n📚 PB4A7: Quantitative Applications in Behavioural Science 📊\n📅 Fall Semeste Timetable\n🕘 Lectures: Tuesday 09:00-10:00 Room:\n🕘 Seminar Group 1: Tuesday 11:00-12:00 Room:\n🕘 Seminar Group 2: Tuesday 12:00-13:00 Room:\n🕘 Seminar Group 3: Tuesday 13:00-14:00 Room:\nDescription: Quantitative data collection is the cornerstone of behavioural science. This course, Quantitative Applications in Behavioural Science, aims to equip you with the statistical tools and methodologies commonly used in psychology and economics. Unlike another core course—Experimental Design and Methods for Behavioural Science—which focuses on the design of experiments, this course dives into the statistical background essential for behavioural research.\nFocus: Understand the fundamentals of data science and its application in social sciences. Master statistical tools used by psychologists and economists. Conduct and report your own data analysis for journal publication. Recognize and address contemporary issues in data science analysis in psychology and economics.\n🛠️ Requirements: For students who have no prior experience with statistics/econometrics and/or STATA, the completion of the following Digital Skills class is highly recommended:\nIntroduction to STATA: https://moodle.lse.ac.uk/course/view.php?id=7882\nHow: hands-on learning\n\n\n🎯 Learning Objectives\n\nYou will discover how to analyse secondary data\nDistinguish Causation from Correlation\nPractice different methodologies on Stata\n\n\nSelect Academic Year/Term:\n  2023-24"
+    "text": "📑 Course Brief\nDescription: In this course, students will immerse themselves in the world of causal inference methodologies, a cornerstone in behavioural science research. The curriculum guides learners through the essential processes of cleaning, analysing, and visualising secondary data, equipping them with the skills to conduct robust and insightful research. Through practical examples, students will learn to adeptly navigate various research designs, and develop the proficiency to communicate their findings effectively, fostering a deeper understanding and application of best practices in behavioural science.\nFocus: Understand the fundamentals of causal inference and its applications in Behavioural Science. Master statistical tools used by psychologists, political scientists, and economists. Recognize and address contemporary issues in behavioural science.\n🛠️ Requirements: For students who have no prior experience with statistics and/or STATA, the completion of the following Digital Skills class is highly recommended:\nIntroduction to STATA\n\n\n🎯 Learning Objectives\n\nHow to distinguish Causation from Correlation\nHow different research designs work\nHow to apply different research designs on Stata\nHow to effectively visualise your findings\n\n\n  Enter the class"
   },
   {
     "objectID": "2023/weeks/week01/slides.html",
@@ -17,22 +17,22 @@
     "objectID": "2023/weeks/week01/slides.html#your-lecturer",
     "href": "2023/weeks/week01/slides.html#your-lecturer",
     "title": "🗓️ Week 01 Introduction",
-    "section": "",
-    "text": "Prof. Octopian Professor of Octopus Issues Head of the Python vs R Debate Society\n\n\n\n\nPhD in Octopi Engineering\nBackground: Engineering of Deep Ocean constructions\nFormer Lead Data Scientist\n\ndeep ocean  engineering  octopus"
+    "section": "Your lecturer",
+    "text": "Your lecturer\n\n\n\n\n\nProf. Octopian Professor of Octopus Issues Head of the Python vs R Debate Society\n\n\n\n\nPhD in Octopi Engineering\nBackground: Engineering of Deep Ocean constructions\nFormer Lead Data Scientist\n\ndeep ocean  engineering  octopus"
   },
   {
     "objectID": "2023/weeks/week01/slides.html#teaching-assistants",
     "href": "2023/weeks/week01/slides.html#teaching-assistants",
     "title": "🗓️ Week 01 Introduction",
-    "section": "",
-    "text": "Octopnuian Arveda  PhD Candidate at OctopusLab, OUN  MSc in Octopus Transportation 📧 \n\n\n\n\n\n\nOctopnuian Arveda  PhD Candidate at OctopusLab, UOS  MSc in Octopus Transportation 📧"
+    "section": "Teaching Assistants",
+    "text": "Teaching Assistants\n\n\n\n\n\nOctopnuian Arveda  PhD Candidate at OctopusLab, OUN  MSc in Octopus Transportation 📧 \n\n\n\n\n\n\nOctopnuian Arveda  PhD Candidate at OctopusLab, UOS  MSc in Octopus Transportation 📧 \n\n\n\n\n\n\n\nMY_COURSE_CODE – MY_COURSE_NAME"
   },
   {
     "objectID": "2023/index.html",
     "href": "2023/index.html",
     "title": "PB4A7 - Quantitative Applications for Behavioural Science",
     "section": "",
-    "text": "📢 Important\n\n\n\n\n\n(18/09/2023)\n\n🗓️ Week 01 lecture material is now available!\n\n\n\n\n\n🧑🏻‍🏫 Our Team\n\nCourse ConvenorTeaching Staff\n\n\n\nDr George Melios  Reseaarch Fellow  London School of Economics and Political Science 📧 g.melios at lse dot ac dot uk\nOffice Hours:\n\nWhen: Wednesdays 10:00-12:00\nWhere: CON 5.19\nHow to book: Student Hub\n\n\n\n\nLazaros Chatzilazarou  PhD Candidate at City University  📧 EMAIL ( at )\n\n\n\n\n\n📍 Lecture\nTuesdays 09:00-10:00 at MAR.1.04\n\n\n💻 Seminars\n\nGroup 01\n\n📆 Tuesdays\n⌚ 11:00 - 12:00\n📍 FAW.4.02\n\n\n\n\nGroup 02\n\n📆 Tuesdays\n⌚ 12:00 - 13:00\n📍 FAW.4.02\n\n\n\nGroup 03\n\n📆 Tuesdays\n⌚ 13:00 - 14:00\n📍 FAW.4.02"
+    "text": "📢 Announcements\n\n\n\n\n\n\nJoin the Class on Discord (18/09/2023)\n\n\n\n\n\n🧑🏻‍🏫 Our Team\n\nCourse ConvenorTeaching Staff\n\n\n\nDr George Melios  Research Fellow  London School of Economics and Political Science 📧 g.melios at lse dot ac dot uk\nOffice Hours:\n\nWhen: Wednesdays 10:00-12:00\nWhere: CON 5.19\nHow to book: Student Hub\n\n\n\n\nLazaros Chatzilazarou  PhD Candidate at City University  📧 EMAIL ( at )\n\n\n\n\n\n📍 Lecture\nTuesdays 09:00-10:00 at MAR.1.04\n\n\n💻 Seminars\n\nGroup 01\n\n📆 Tuesdays\n⌚ 11:00 - 12:00\n📍 FAW.4.02\n\n\n\n\nGroup 02\n\n📆 Tuesdays\n⌚ 12:00 - 13:00\n📍 FAW.4.02\n\n\n\nGroup 03\n\n📆 Tuesdays\n⌚ 13:00 - 14:00\n📍 FAW.4.02"
   },
   {
     "objectID": "2023/weeks/week01/page.html",

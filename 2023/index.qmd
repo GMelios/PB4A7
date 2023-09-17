@@ -5,11 +5,11 @@ format: html
 ---
 
 ::: {.callout-important collapse=false}
-## 📢 Important
+## 📢 Announcements
 
-(18/09/2023)
 
-- [🗓️ Week 01 lecture material](/2023/weeks/week01/page.qmd) is now available!
+
+- [Join the Class on Discord](/2023/weeks/week01/page.qmd) (18/09/2023)
 
 :::
 
@@ -22,7 +22,7 @@ format: html
 
 ![](/figures/people/George.jpeg){fig-align="left" fig-alt="Photo of Dr. George Melios" style="object-fit: cover;width:5em;height:5em;border-radius: 50%;"}  
 **[Dr George Melios](www.georgemelios.com)** <br/>
-_Reseaarch Fellow_ <br/>
+_Research Fellow_ <br/>
 [London School of Economics and Political Science](#)</a><br/>
 📧 [g.melios@lse.ac.uk](mailto:g.melios@lse.ac.uk)
 
@@ -30,7 +30,7 @@ Office Hours:
 
 - When: Wednesdays 10:00-12:00
 - Where: CON 5.19
-- How to book: Student Hub
+- How to book: [Student Hub](https://studenthub.lse.ac.uk/welcome)
 
 ## Teaching Staff
 

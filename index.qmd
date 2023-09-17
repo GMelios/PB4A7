@@ -8,45 +8,28 @@ format:
 
 # 📑 Course Brief
 
-📚 PB4A7: Quantitative Applications in Behavioural Science 📊 
+**Description:** 
+In this course, students will immerse themselves in the world of causal inference methodologies, a cornerstone in behavioural science research. The curriculum guides learners through the essential processes of cleaning, analysing, and visualising secondary data, equipping them with the skills to conduct robust and insightful research. Through practical examples, students will learn to adeptly navigate various research designs, and develop the proficiency to communicate their findings effectively, fostering a deeper understanding and application of best practices in behavioural science.
 
-📅 Fall Semeste Timetable
 
-🕘 Lectures: Tuesday 09:00-10:00
-   Room: 
+**Focus:** Understand the fundamentals of causal inference and its applications in Behavioural Science. Master statistical tools used by psychologists, political scientists, and economists. Recognize and address contemporary issues in behavioural science.
 
-🕘 Seminar Group 1: Tuesday 11:00-12:00
-   Room:   
+🛠️ **Requirements:** For students who have no prior experience with statistics and/or STATA, the completion of the following Digital Skills class is highly recommended:
 
-🕘 Seminar Group 2: Tuesday 12:00-13:00
-   Room:   
-
-🕘 Seminar Group 3: Tuesday 13:00-14:00
-   Room:   
-
-**Description:** Quantitative data collection is the cornerstone of behavioural science. This course, Quantitative Applications in Behavioural Science, aims to equip you with the statistical tools and methodologies commonly used in psychology and economics. Unlike another core course—Experimental Design and Methods for Behavioural Science—which focuses on the design of experiments, this course dives into the statistical background essential for behavioural research.
-
-**Focus:** Understand the fundamentals of data science and its application in social sciences. Master statistical tools used by psychologists and economists. Conduct and report your own data analysis for journal publication. Recognize and address contemporary issues in data science analysis in psychology and economics.
-
-🛠️ **Requirements:** For students who have no prior experience with statistics/econometrics and/or STATA, the completion of the following Digital Skills class is highly recommended:
-
-Introduction to STATA: https://moodle.lse.ac.uk/course/view.php?id=7882
-
-**How:** hands-on learning
+[Introduction to STATA](https://moodle.lse.ac.uk/course/view.php?id=7882)
 
 # 🎯 Learning Objectives
 
-- You will discover how to analyse secondary data
-- Distinguish **Causation** from Correlation
-- Practice different methodologies on _Stata_
+- How to distinguish **Causation** from Correlation
+- How different research designs work
+- How to apply different research designs on _Stata_
+- How to effectively visualise your findings
 
 
 
 -----------------
 
-**Select Academic Year/Term:**
-
 <a href="2023/index.qmd">
-    <button class="button-61"> 2023-24</button>
+    <button class="button-61"> Enter the class</button>
 </a>
 

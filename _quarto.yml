@@ -53,7 +53,8 @@ website:
     background: primary
   page-footer:
     background: light
-    left: "Copyright 2023, MY INSTITUTION" 
+    left: "![](/figures/logos/MY_INSTITUTION.png)"
+    right: "Copyright 2023, London School of Economics & Political Science" 
 
 
 
@@ -81,6 +82,4 @@ format:
       - css/syllabus.css
     toc: true
 
-#margin-header: |
-# ![](/figures/logos/MY_INSTITUTION.png)
 
