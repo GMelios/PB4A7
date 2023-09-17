@@ -1,162 +1,73 @@
-# Quarto template for university courses
+# PB4A7
+📚 PB4A7: Quantitative Applications in Behavioural Science 📊
+📅 Fall Semester | 🕘 Time: Tuesday 09:00-10:00
 
-<figure>
-    <img src="./figures/icons/course_favicon.png" alt="Image Created with DALL·E. Prompt: 'octopus-like alien futuristic teacher, abstract award-winning material design favicon blue flat colours'"  role="presentation" style="object-fit: cover;width:5em;height:5em;border-radius: 50%;">
-    <figcaption>
-        <span style="display:inline-block;font-size:0.3em;width:30%;">
-        Image created with DALL·E. Prompt: 'octopus-like alien futuristic teacher, abstract award-winning material design favicon blue flat colours'
-        </span>
-    </figcaption>
+🎓 Instructor: Dr. George Melios
+📧 E-mail: G.Melios@lse.ac.uk
+🏢 Room: CON 5.19
+📚 Seminars: TBA
+🗂 Office Hours: TBA
 
-</figure>
+📚 Teaching Assistant: Lazaros Antonios Chatzilazarou
+📧 E-mail: l.a.chatzilazarou@lse.ac.uk
+🗂 Office Hours: TBA
+🤝 Help Sessions: TBA
+
+📝 Course Description
+Quantitative data collection is the cornerstone of behavioural science. This course, Quantitative Applications in Behavioural Science, aims to equip you with the statistical tools and methodologies commonly used in psychology and economics. Unlike another core course—Experimental Design and Methods for Behavioural Science—which focuses on the design of experiments, this course dives into the statistical background essential for behavioural research.
+
+🎯 Learning Objectives
+Understand the fundamentals of data science and its application in social sciences.
+Master statistical tools used by psychologists and economists.
+Conduct and report your own data analysis for journal publication.
+Recognize and address contemporary issues in data science analysis in psychology and economics.
+
+🛠️ Requirements
+For students who have no prior experience with statistics/econometrics and/or STATA, the completion of the following Digital Skills class is highly recommended: 
+
+Introduction to STATA: https://moodle.lse.ac.uk/course/view.php?id=7882 
+
+Software: Download and install STATA or R and R Studio.
+Student Hours: Book office hours for Dr. Melios & Mr. Chatzilazarou via Student Hub.
+Class Participation: Active participation and punctuality are highly recommended.
+
+📚 Recommended Materials
+Material Type	Examples
+Books	"The Effect Book" by Nick C. Huntington-Klein, "Introduction to Econometrics" by James H. Stock & Mark W. Watson
+Videos	Various online tutorials and podcasts
+Cheat Sheets	STATA and R coding cheat sheets
+
+📊 Assessment
+The course assessment is divided into two parts:
+Data Analysis Report replicating an existing paper (70%)
+Poster Presentation summarizing the report (30%)
+
+🗓️ Course Outline
+The course is structured into weekly sessions, each focusing on a specific topic such as Linear Regressions, Hypothesis Testing, and more. Required and optional readings are assigned to deepen your understanding.
+
+🌟 Final Thoughts
+By the end of this course, you'll have a comprehensive understanding of the quantitative methods used in behavioural science. You'll be well-equipped to integrate research findings from psychology and economics, thereby contributing to the multidisciplinary field of behavioural science. 🎉
+
+📅 Important Dates
+Deadline for Assessment: TBA
+So, are you ready to embark on this exciting journey into the world of Quantitative Applications in Behavioural Science? 🚀
 
 
-A template for developing university courses using Quarto.
 
-**Real Examples:**
 
-- <img src="https://lse-dsi.github.io/DS105/figures/icons/DS105L_favicon.png" style="object-fit: cover;width:1em;height:1em;border-radius: 50%;" /> [LSE DS105](https://lse-dsi.github.io/DS105/) - Data for Data Science
-- <img src="https://lse-dsi.github.io/DS101/figures/DS101_favicon.png" style="object-fit: cover;width:1em;height:1em;border-radius: 50%;" /> [LSE DS101](https://lse-dsi.github.io/DS101/) - Fundamentals of Data Science
+| Week | Topic                                        | Description                                                                 | Required Readings                                                                                     | Optional/Seminar Readings                                                                                     |
+|------|----------------------------------------------|-----------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| 0    | Preparation                                  | Introductory session on statistics for a uniform starting level.             | - Chapters 1 & 2 from Introduction to Econometrics<br>- Presessional lecture notes                    | N/A                                                                                                            |
+| 1    | Introduction                                 | Introduction to applied quantitative research, course outline, and organizational issues. | - Chapters 1 & 2 from The Effect book                                                                   | - The Credibility Revolution in Empirical Economics                                                            |
+| 2    | Linear Regressions / OLS                     | Focus on using data to describe relationships between variables.             | - Chapters 4 & 5 from Introduction to Econometrics<br>- Chapters 3 & 4 from The Effect book           | N/A                                                                                                            |
+| 3    | Hypothesis Testing                           | Exploration of formal procedures to examine opposing claims or hypotheses.   | - Chapter 3 from Introduction to Econometrics<br>- Chapter 5 from The Effect book                      | N/A                                                                                                            |
+| 4    | Linear Regressions with Multiple Regressors  | Expansion of linear regressions using multiple regressors.                   | - Chapters 6, 7 & 8 from Introduction to Econometrics                                                   | N/A                                                                                                            |
+| 5    | Non-Linear Functions                         | Focus on non-linear functions and OLS violations.                            | - Chapter 8 from Introduction to Econometrics                                                           | N/A                                                                                                            |
+| 6    | Reading Week                                 | No lectures and seminars this week.                                          | N/A                                                                                                    | N/A                                                                                                            |
+| 7    | Regressions with Binary Variables            | Analysis and interpretation of binary independent variables.                 | - Chapter 11 from Introduction to Econometrics<br>- Chapters 5, 10 & 11 from The Effect book           | - Chapters 1 & 4 from Causal Inference Mixtape Book                                                            |
+| 8    | Panel Regression Models                      | Approach and analysis of panel data, including Fixed Effects estimators.     | - Chapter 16 from The Effect book<br>- Chapter 10 from Introduction to Econometrics                    | - Ayres, I. and Donohue, J.J., 2002. Shooting down the more guns, less crime hypothesis.                      |
+| 9    | Regression Discontinuity Design              | Guest lecture on Regression Discontinuity Design.                            | - Chapter 20 from The Effect book<br>- Chapter 6 from Causal Inference Mixtape Book                     | - Hansen, B., 2015. Punishment and deterrence: Evidence from drunk driving.                                    |
+| 10   | Instrumental Variables                       | Estimating causal parameters through Instrumental Variables.                 | - Chapters 6-8 & 19 from The Effect book<br>- Chapter 7 from Causal Inference Mixtape Book             | - Card, D., 1993. Using geographic variation in college proximity to estimate the return to schooling.        |
+| 11   | Difference in Difference Estimators          | Focus on causal inference through Difference in Difference estimators.        | - Chapter 18 from The Effect book<br>- Chapter 9 from Causal Inference Mixtape Book                     | N/A                                                                                                            |
 
-**New to <img src="https://quarto.org/favicon.png" style="object-fit: cover;width:1em;height:1em;" /> Quarto?**
-
-You will need to understand the basics of the following features of Quarto to make the most of this template. It's worth it!
-
-- Check [their initial tutorial](https://quarto.org/docs/get-started/)
-- Then read about [Quarto websites](https://quarto.org/docs/websites/)
-- Check out also [Revealjs tutorial](https://quarto.org/docs/presentations/revealjs/) to learn how to create modern slides
-- Then move on to learn about [Quarto projects](https://quarto.org/docs/projects/quarto-projects.html)
-
-There you go. You might be wondering how to put all of this to work. That is precisely why this template exists!
-
-# 💡 How to use this template
-
-<details><summary><strong>On GitHub:</strong></summary>
-
-1. Click on the green button **Use this template** then **Create a new repository**.
-
-2. Wait for GitHub to copy the files and run the initial setup (you will see this on the **Actions** tab).
-</details>
-
-<details><summary><strong>Locally in your computer:</strong></summary>
-
-3. Clone your newly created repository to your computer.
-
-4. Follow the instructions written below in the 🧰 [Dev Setup](#dev-setup) section.
-
-5. Skip the R or Python setup if you do not plan on working in one of these languages.
-
-</details>
-
-<details><summary><strong>Start editing the files:</strong></summary>
-
-Here is a guide of the initial files you might want to modify to remove the sections that refer to the template, leaving only what is relevant to developing/updating the material of your course.
-
-6. Start by editing the `README.md` file carefully. 
-    - Change the title
-    - Remove some of the sections
-    - Edit the Dev Setup instructions to cater to your needs.
-7. Add your **course code** and **course name** to the web pages
-
-    - If you are using VSCode, you can Ctrl + Shift + F (or ⌘ + Shift + F if you are on Mac) and replace all occurrences of `MY_COURSE_CODE` and `MY_COURSE_NAME` to the code and name of your course, respectively.
-    - Or, you can manually edit those in the following files:
-        - `_quarto.yml`
-        - `2023/index.qmd`
-        - `helpers/remove-nav.html`
-
-8. Then move on to `_quarto.yml`. Scan through this file to spot what you want to change. What pages do you want to keep or remove from your website?
-
-9. Next, modify the content of `index.qmd` and start working properly on your content pages under `2023/*`
-
-10. Visualise your changes by running the Quarto website locally:
-
-    ```bash
-    quarto preview . --render all --no-browser
-    ```
-</details>
-
-# 🧰 Dev Setup
-
-On top of the setup below, I also recommend you use [VSCode](https://code.visualstudio.com/Download) as your primary IDE.
-
-<details><summary>🐍 The Python setup</summary>
-
-## 🐍 The Python setup
-
-1. Install [Python 3.8](python.org) or higher on your computer.
-2. Install [anaconda](https://www.anaconda.com/products/individual) or [miniconda](https://docs.conda.io/en/latest/miniconda.html) on your computer.
-3. Create a new `conda` environment:
-
-    ```bash
-    conda create -y -n=venv-my-course python=3.10.8
-    ```
-
-    Never worked with conda environments before? Take some time to read [their documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html). 
-
-    💡 **Pro-tip**: replace `my-course` with your course code. Say, for example, `venv-ds105`.
-
-4. Activate the environment and make sure you have `pip` installed inside that environment:
-
-    ```bash
-    # the exact `activate` command will vary depending on your OS
-    conda activate venv-my-course 
-    ```
-
-💡 Remember to activate this particular `conda` environment whenever you reopen VSCode/the terminal.
-
-10. Install required libraries
-
-  ```bash
-  pip install -r requirements.txt
-  ```
-
-Now, whenever you open a Jupyter Notebook, you should see the `venv-my-course` kernel available.
-</details>
-
-<details><summary>📊 The R setup</summary>
-
-## 📊 The R setup
-
-1. Open a terminal and navigate to the root of this repository.
-2. Ensure you have **R version 4.2.2** or higher
-3. Open the R console in this same directory and install `renv` package:
-    ```r
-    install.packages("renv")
-    ```
-4. Run `renv::restore()` to install all the packages needed for this project
-5. Whenever you install a new R package, run `renv::snapshot()` to save it on your renv.
-
-</details>
-
-<details><summary><img src="https://quarto.org/favicon.png" style="object-fit: cover;width:1em;height:1em;" /> The Quarto setup</summary>
-
-## <img src="https://quarto.org/favicon.png" style="object-fit: cover;width:1em;height:1em;" /> The Quarto setup
-
-1. Install [Quarto](https://quarto.org/docs/getting-started/installation.html) on your computer.
-2. Run the following command to start the website locally:
-
-    ```bash
-    quarto preview . --render all --no-browser
-    ```
-    This will read the instructions from `_quarto.yml` and render the website locally.
-5. Open your browser and navigate to `http://localhost:<port>/`. That's it!
-
-</details>
-
-<details><summary>🕸️ Publishing the website</summary>
-
-## 🕸️ Publishing the website
-
-I recommend you set up a **GitHub Action** for this. Just follow the instructions in the official [Quarto instructions](https://quarto.org/docs/publishing/github-pages.html#publish-action).
-
-💡 This template already comes with a GitHub workflow setup. You can find it in the [.github/workflows/publish.yml_](.github/workflows/publish.yml_) file. You just need to rename it to `.github/workflows/publish.yml` (remove the underscore at the end)
-
-</details>
-
-# 📟 Contact
-
-**✋ Questions? Suggestions?** If you are not sure how to do something with the template or have a suggestion for a new feature, start a [discussion](https://github.com/jonjoncardoso/quarto-template-for-university-courses/discussions).
-
-**🐞 Spotted any bugs?** Create a new [Issue](https://github.com/jonjoncardoso/quarto-template-for-university-courses/issues).
-
-**🖼️ Want to show us your courses?** Share a link to your public page on the [discussions page](https://github.com/jonjoncardoso/quarto-template-for-university-courses/discussions) or write me an e-mail.
+I hope this table makes the course outline clearer and more organized! 📚📊
