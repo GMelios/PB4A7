@@ -1,6 +1,70 @@
-/* css styles */
-
-
-.header {
-  background-color: #123456; /* Replace with your desired color */
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
+
+header, main, footer {
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* Main Content */
+main {
+    max-width: 800px;
+    margin: auto;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+#top-bar {
+    background-color: rgb(255, 0, 43);
+    color: white;
+    padding: 10px;
+    text-align: left;
+  }
+
+  #left-column {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+  }
+  
+/* Additional Styles for Interactive Weeks Button */
+.hidden {
+    display: none;
+  }
+  
+  .week-button.active ul {
+    display: block;
+  }
