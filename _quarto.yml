@@ -13,8 +13,8 @@ website:
   reader-mode: true
   open-graph: true
   twitter-card: 
-    creator: "@<twitter-handle>"
-    site: "\\@<twitter-handle>"
+    creator: "@georgemelios"
+    site: "\\www.georgemelios.com"
   favicon: "figures/icons/course_favicon.png"
   search:
     location: navbar
@@ -63,8 +63,8 @@ csl: references/chicago-author-date.csl
 
 format:
   html:
-    author: Dr. [MY NAME](#)
-    author-meta: Dr. MY NAME
+    author: Dr. [George Melios](#)
+    author-meta: Dr. George Melios
     date-format: "DD MMMM YYYY"
 
     email-obfuscation: javascript
