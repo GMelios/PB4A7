@@ -1,0 +1,52 @@
+---
+title: "PB4A7 - Quantitative Applications for Behavioural Science"
+format:
+  html:
+    include-before-body: helpers/remove-nav.html
+    include-after-body: helpers/remove-title.html
+---
+
+# 📑 Course Brief
+
+📚 PB4A7: Quantitative Applications in Behavioural Science 📊 
+
+📅 Fall Semeste Timetable
+
+🕘 Lectures: Tuesday 09:00-10:00
+   Room: 
+
+🕘 Seminar Group 1: Tuesday 11:00-12:00
+   Room:   
+
+🕘 Seminar Group 2: Tuesday 12:00-13:00
+   Room:   
+
+🕘 Seminar Group 3: Tuesday 13:00-14:00
+   Room:   
+
+**Description:** Quantitative data collection is the cornerstone of behavioural science. This course, Quantitative Applications in Behavioural Science, aims to equip you with the statistical tools and methodologies commonly used in psychology and economics. Unlike another core course—Experimental Design and Methods for Behavioural Science—which focuses on the design of experiments, this course dives into the statistical background essential for behavioural research.
+
+**Focus:** Understand the fundamentals of data science and its application in social sciences. Master statistical tools used by psychologists and economists. Conduct and report your own data analysis for journal publication. Recognize and address contemporary issues in data science analysis in psychology and economics.
+
+🛠️ **Requirements:** For students who have no prior experience with statistics/econometrics and/or STATA, the completion of the following Digital Skills class is highly recommended:
+
+Introduction to STATA: https://moodle.lse.ac.uk/course/view.php?id=7882
+
+**How:** hands-on learning
+
+# 🎯 Learning Objectives
+
+- You will discover how to analyse secondary data
+- Distinguish **Causation** from Correlation
+- Practice different methodologies on _Stata_
+
+
+
+-----------------
+
+**Select Academic Year/Term:**
+
+<a href="2023/index.qmd">
+    <button class="button-61"> 2023-24</button>
+</a>
+
