@@ -1,8 +1,14 @@
 ---
-title: "🗓️ Week 01 - Introduction, Context & Key Concepts"
+title: "🗓️ Week 01 - Introduction"
 ---
 
-In this first week, we will cover what you can expect to learn from this course and the course logistics: all you need to know about the structure of the lectures, classes, assessments, and how we will interact throughout this course. 
+This session will introduce you to the concept of applied quantitative research in general, give a brief outline of the course, and address organizational issues. We will then have a short followup to themes discussed during the presessional.
+
+## 📚 Recommended Reading
+
+- Chapters 1 & 2 from [The Effect book](https://theeffectbook.net/the-design-of-research.html)
+
+- Interesting reading: [The Credibility Revolution in Empirical Economics: How Better Research Design Is Taking the Con out of Econometrics](https://www.aeaweb.org/articles?id=10.1257/jep.24.2.3)
 
 ## 👨‍🏫 Lecture Slides 
 
@@ -15,10 +21,7 @@ Use your keypad to navigate the slides.
 
 🎥 Looking for lecture recordings? You can only find those on Moodle.
 
-## 📚 Recommended Reading
-
-- Check the end of slides for the list of references cited in the lecture.
 
 ## 📟 Communication
 
-- If you feel like it, introduce yourself in the `#introductions` channel on Discord
+- Have questions? Feel free to pop them up on `#Week 1` channel on Discord

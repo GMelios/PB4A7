@@ -49,14 +49,17 @@ website:
       - section: "🗓️ Weeks"
         contents:
           - href: 2023/weeks/week00/page.qmd
-            text: 💻 Presessionals
+            text: Presessionals
             contents:
               - href: 2023/weeks/week00/page.qmd
+              
           - href: 2023/weeks/week01/page.qmd
             text: Week 01
             contents:
               - href: 2023/weeks/week01/page.qmd
                 text: 👨‍🏫 Lecture Material
+              - href: 2023/weeks/week01/page1.qmd
+                text: 💻 Seminar Material
           - href: 2023/weeks/week02/page.qmd
             text: Week 02
             contents:
