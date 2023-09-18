@@ -249,7 +249,7 @@
     "href": "2023/weeks/week00/slides.html#your-lecturer",
     "title": "🗓️ Week 0 Presessionals",
     "section": "Your lecturer",
-    "text": "Your lecturer\n\n\n\n\n\nDr. Melios Research Fellow\n\n\n\n\nPhD in Economics\nBackground: Economics, Political Science, Behavioural Science\n\nPolitical Economy  Beliefs  Wellbeing"
+    "text": "Your lecturer\n::: columns\n\n\n\n\nDr. Melios Research Fellow\n\n\n\n\n\nPhD in Economics\nBackground: Economics, Political Science, Behavioural Science\n\nPolitical Economy  Beliefs  Wellbeing"
   },
   {
     "objectID": "2023/weeks/week00/slides.html#what-is-this-class",
@@ -261,28 +261,28 @@
   {
     "objectID": "2023/weeks/week00/page.html",
     "href": "2023/weeks/week00/page.html",
-    "title": "🗓️ Week 00 - Presessionals & Intro",
+    "title": "🗓️ Week 00 - Presessionals",
     "section": "",
     "text": "In this pre-sessional week, we will cover what you can expect to learn from this course and the course logistics: all you need to know about the structure of the lectures, classes, assessments, and how we will interact throughout this course.\nIn addition to that we will revise some key concepts in statistics and econometrics."
   },
   {
     "objectID": "2023/weeks/week00/page.html#lecture-slides",
     "href": "2023/weeks/week00/page.html#lecture-slides",
-    "title": "🗓️ Week 00 - Presessionals & Intro",
+    "title": "🗓️ Week 00 - Presessionals",
     "section": "👨‍🏫 Lecture Slides",
     "text": "👨‍🏫 Lecture Slides\nEither click on the slide area below or click here to view it in fullscreen. Use your keypad to navigate the slides.\n\n\n\n\n🎥 Looking for lecture recordings? You can only find those on Moodle."
   },
   {
     "objectID": "2023/weeks/week00/page.html#recommended-reading",
     "href": "2023/weeks/week00/page.html#recommended-reading",
-    "title": "🗓️ Week 00 - Presessionals & Intro",
+    "title": "🗓️ Week 00 - Presessionals",
     "section": "📚 Recommended Reading",
     "text": "📚 Recommended Reading\n\nCheck syllabus for reading suggestions!"
   },
   {
     "objectID": "2023/weeks/week00/page.html#communication",
     "href": "2023/weeks/week00/page.html#communication",
-    "title": "🗓️ Week 00 - Presessionals & Intro",
+    "title": "🗓️ Week 00 - Presessionals",
     "section": "📟 Communication",
     "text": "📟 Communication\n\nIf you feel like it, introduce yourself in the #introductions channel on Discord"
   },

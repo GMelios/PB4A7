@@ -23,10 +23,26 @@ format:
     footer: 'PB4A7- Quantitative Applications for Behavioural Science'
 ---
 
-```{r setup, include=FALSE}
-library(tidyverse)
+```{r setup, include=TRUE}
 library(directlabels)
+library(tidyverse)
 library(ggdag)
+library(grid)
+library(ggplot2)
+theme_metro <- function(x) {
+  theme_classic() + 
+  theme(panel.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
+        plot.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
+        text = element_text(size = 16),
+        axis.title.x = element_text(hjust = 1),
+        axis.title.y = element_text(hjust = 1, angle = 0))
+}
+theme_metro_regtitle <- function(x) {
+  theme_classic() + 
+  theme(panel.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
+        plot.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
+        text = element_text(size = 16))
+}
 ```
 
 # Who are we
@@ -204,15 +220,20 @@ library(ggdag)
 
 
 ```{r}
+library(ggplot2)
+library(ggrepel)
+
 ggplot(tibble(x = c(1:100,1:100), y = c(100:1, 1:100), linet = c(rep('Theoretical D',100),rep('Theoretical S',100))),
        aes(x=x, y=y, group = linet))+
   geom_line(size = 1.5, color = 'black') + 
-  geom_dl(aes(label = linet, x = x + 2), method = 'last.bumpup', size = 16/.pt) + 
+  geom_text_repel(aes(label = linet, x = x + 2), size = 16/.pt, direction = 'y', force = 10) + 
   scale_x_continuous(limits = c(1, 120)) +
   geom_point(data = tibble(x = 50.5, y = 50, linet = 'x'), color = 'red', size = 8) + 
   annotate(geom = 'text', x = 53, y = 50, color = 'red', label = 'Observation', hjust = 0, size = 16/.pt) + 
-  labs(x = "Q", y = "P") 
+  labs(x = "Q", y = "P") +
+  theme_minimal()
 ```
+
 
 ---
 
@@ -259,6 +280,9 @@ $$ Y = \beta_0 + \beta_1X + \varepsilon $$
 - We can also represent this set of relationships as a graph, with arrows telling you what variables cause each other
 
 ```{r, dev = 'CairoPNG', fig.width = 6, fig.height = 4}
+library(dagitty)
+library(ggdag)
+
 dag <- dagify(X ~ epsilon + nu,
               Y ~ X + epsilon,
               coords = list(x = c(X = 1, Y = 3, nu = 1, epsilon = 2),
@@ -312,7 +336,7 @@ knitr::include_graphics('Lecture_1_MinWage.jpg')
 # Eight Possible Relationships
 
 ```{r, out.height = '550px'}
-knitr::include_graphics('Lecture_1_Relationships.png')
+knitr::include_graphics('/Users/georgemelios/Documents/GitHub/PB4A7/2023/weeks/week00/Lecture_1_Relationships.png')
 ```
 
 ---
@@ -352,6 +376,8 @@ knitr::include_graphics('Lecture_1_Relationships.png')
 - If we can randomly assign $X$, then we know we're not in graph a, because our graph looks like this!
 
 ```{r, dev = 'CairoPNG', fig.width = 6, fig.height = 4}
+library(dagitty)
+library(ggdag)
 dag <- dagify(X ~ RandomAssignment,
               Y ~ X + epsilon,
               coords = list(x = c(X = 1, Y = 3, RandomAssignment = 1, epsilon = 2),
@@ -359,8 +385,7 @@ dag <- dagify(X ~ RandomAssignment,
 ggdag_classic(dag, size = 5) + 
   theme_dag_blank() + 
   expand_limits(x = c(.5,3))+
-  theme(panel.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
-        plot.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'))
+  theme()
 ```
 
 ---
