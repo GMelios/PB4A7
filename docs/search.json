@@ -32,7 +32,7 @@
     "href": "2023/index.html",
     "title": "PB4A7 - Quantitative Applications for Behavioural Science",
     "section": "",
-    "text": "📢 Announcements\n\n\n\n\n\n\nJoin the Class on Discord (18/09/2023)\n\n\n\n\n\n🧑🏻‍🏫 Our Team\n\nCourse ConvenorTeaching Staff\n\n\n\nDr George Melios  Research Fellow  London School of Economics and Political Science 📧 g.melios at lse dot ac dot uk\nOffice Hours:\n\nWhen: Wednesdays 10:00-12:00\nWhere: CON 5.19\nHow to book: Student Hub\n\n\n\n\nLazaros Chatzilazarou  PhD Candidate at City University  📧 EMAIL ( at )\n\n\n\n\n\n📍 Lecture\nTuesdays 09:00-10:00 at MAR.1.04\n\n\n💻 Seminars\n\nGroup 01\n\n📆 Tuesdays\n⌚ 11:00 - 12:00\n📍 FAW.4.02\n\n\n\n\nGroup 02\n\n📆 Tuesdays\n⌚ 12:00 - 13:00\n📍 FAW.4.02\n\n\n\nGroup 03\n\n📆 Tuesdays\n⌚ 13:00 - 14:00\n📍 FAW.4.02"
+    "text": "📢 Announcements\n\n\n\n\n\n\nJoin the Class on Discord (18/09/2023)\n\n\n\n\n\n🧑🏻‍🏫 Our Team\n\nCourse ConvenorTeaching Staff\n\n\n\nDr George Melios  Research Fellow  London School of Economics and Political Science 📧 g.melios at lse dot ac dot uk\nOffice Hours:\n\nWhen: Wednesdays 10:00-12:00\nWhere: CON 5.19\nHow to book: Student Hub\n\n\n\n\nLazaros Chatzilazarou  PhD Candidate at City University  📧 L.A.Chatzilazarou at lse dot ac dot uk\nHelp Sessions:\n\nWhen: Wednesdays 16:00-17:00\nWhere: CBG.G.01\n\n\n\n\n\n\n📍 Lecture\nTuesdays 09:00-10:00 at MAR.1.04\n\n\n💻 Seminars\n\nGroup 01\n\n📆 Tuesdays\n⌚ 11:00 - 12:00\n📍 FAW.4.02\n\n\n\n\nGroup 02\n\n📆 Tuesdays\n⌚ 12:00 - 13:00\n📍 FAW.4.02\n\n\n\nGroup 03\n\n📆 Tuesdays\n⌚ 13:00 - 14:00\n📍 FAW.4.02"
   },
   {
     "objectID": "2023/weeks/week01/page.html",
@@ -509,5 +509,19 @@
     "title": "🗓️ Week 01 - Introduction, Context & Key Concepts",
     "section": "📟 Communication",
     "text": "📟 Communication\n\nIf you feel like it, introduce yourself in the #introductions channel on Discord"
+  },
+  {
+    "objectID": "2023/syllabus.html",
+    "href": "2023/syllabus.html",
+    "title": "Untitled",
+    "section": "",
+    "text": "📢 Description\n\n\n\n\n\nQuantitative data collection is an integral component of behavioural science: Testing hypotheses requires designing experiments and analysing the data or performing statistical analyses on secondary data. Whereas another core course in this programme - Experimental Design and Methods for the Behavioural Science - covers best practices in designing and conducting experimental research, Quantitative Applications for Behavioural Science introduces the main statistical background of behavioural research from psychology and economics. The course will cover best practices and state of the art statistical tools that are used by psychologists and economists. All the analyses will be demonstrated on example behavioural science research, and students will learn how to identify, interpret, and evaluate appropriate analyses for different research designs, conduct their own data analysis for each of these designs as well as report the analysis for publication in a journal, and recognise and understand contemporary issues in data science analysis in psychology and economics that need to be considered for best research practices. Emphasis will be on teaching students how the same analyses are presented in psychology and economics journals so students can understand how to integrate research from these two fields that constitute behavioural science.\n\n\n\n\nRequirements\nDownload and install [STATA](https://moodle.lse.ac.uk/course/view.php?id=7882] or R. Throughout the class, we will rely on STATA for seminars but codes will be provided for R as well.\n::: {.panel-tabset} ## Course Convenor"
+  },
+  {
+    "objectID": "2023/communication.html",
+    "href": "2023/communication.html",
+    "title": "Untitled",
+    "section": "",
+    "text": "📢 Description\n\n\n\n\n\nQuantitative data collection is an integral component of behavioural science: Testing hypotheses requires designing experiments and analysing the data or performing statistical analyses on secondary data. Whereas another core course in this programme - Experimental Design and Methods for the Behavioural Science - covers best practices in designing and conducting experimental research, Quantitative Applications for Behavioural Science introduces the main statistical background of behavioural research from psychology and economics. The course will cover best practices and state of the art statistical tools that are used by psychologists and economists. All the analyses will be demonstrated on example behavioural science research, and students will learn how to identify, interpret, and evaluate appropriate analyses for different research designs, conduct their own data analysis for each of these designs as well as report the analysis for publication in a journal, and recognise and understand contemporary issues in data science analysis in psychology and economics that need to be considered for best research practices. Emphasis will be on teaching students how the same analyses are presented in psychology and economics journals so students can understand how to integrate research from these two fields that constitute behavioural science.\n\n\n\n\nRequirements\nDownload and install [STATA](https://moodle.lse.ac.uk/course/view.php?id=7882] or R. Throughout the class, we will rely on STATA for seminars but codes will be provided for R as well.\n::: {.panel-tabset} ## Course Convenor"
   }
 ]
