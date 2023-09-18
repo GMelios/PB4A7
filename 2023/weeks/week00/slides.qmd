@@ -49,27 +49,52 @@ theme_metro_regtitle <- function(x) {
 
 ## Your lecturer {.smaller}
 
-::: columns
 
 ::: {.column style="display:inline-block;width:40%;height:60%;border-radius:1em;margin:1%;padding:1.5%;background-color:#f5f5f5"}
 <figure>
-    <img src="/figures/people/George.jpeg" alt="Photo of George" role="presentation" style="object-fit: cover;width:5em;height:5em;border-radius: 50%;font-size:1em;" class="img-responsive atto_image_button_text-bottom">
+    <img src="/figures/people/George.jpeg" alt="Photo of George" role="presentation" style="object-fit: cover;width:5.5em;height:5.5em;border-radius: 50%;font-size:2em;" class="img-responsive atto_image_button_text-bottom">
     <figcaption>
-        <strong>Dr.&nbsp;<span><a href="#" target="_blank" class="external">Melios</a></span></strong> 
+        <strong>Dr.&nbsp;<span><a href="#" target="_blank" class="external"> George Melios</a></span></strong> 
         <br/>Research Fellow
+        <br/>[www.georgemelios.com](https://www.georgemelios.com)
     </figcaption>
 </figure>
+
 :::
 
 ::: {.column style="width:50%;font-size:0.85em;margin-left:3%;"}
 - PhD in Economics
 - **Background**: Economics, Political Science, Behavioural Science
 
-<span class="tag" style="background-color:var(--quarto-hl-st-color)">Political Economy</span>
+
+<span class="tag" style="background-color:var(--quarto-hl-fu-color)">Political Economy</span>
 <br/>
-<span class="tag" style="background-color:var(--quarto-hl-fu-color)">Beliefs</span>
+<span class="tag" style="background-color:var(--quarto-hl-st-color)">Beliefs</span>
 <br/>
 <span class="tag" style="background-color:var(--quarto-hl-dv-color)">Wellbeing</span>
+
+:::
+
+## Teaching Assistant {.smaller}
+
+
+::: {.column style="display:inline-block;width:40%;height:60%;border-radius:1em;margin:1%;padding:1.5%;background-color:#f5f5f5"}
+<figure>
+    <img src="/figures/people/Lazaros.jpeg" alt="Photo of Lazaros" role="presentation" style="object-fit: cover;width:5em;height:5em;border-radius: 50%;font-size:1em;" class="img-responsive atto_image_button_text-bottom">
+    <figcaption>
+        <strong>Dr.&nbsp;<span><a href="#" target="_blank" class="external">Lazaros Chatzilazarou</a></span></strong> 
+        <br/>PhD Candidate
+        <br/>[Website](https://sites.google.com/view/lazarosantonios/)
+    </figcaption>
+</figure>
+:::
+
+::: {.column style="width:50%;font-size:0.85em;margin-left:3%;"}
+- PhD in Economics (exp 2026)
+- **Background**: Economics
+
+<span class="tag" style="background-color:var(--quarto-hl-st-color)">Experimental Economics</span>
+
 
 :::
 
@@ -84,37 +109,27 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
-- So what is econometrics?
+## So what is econometrics?
+
 - Econometrics focuses on the study of *observational data*
 - Observational data are measurements of things that *the researcher does not control*
 - Given that we are working with observational data, we still want to understand the *causes of things*
-- The world is what it is, we are only here to study it
+- The world is what it is
+- From next week onwards though, we will explore ways to study it
 
 ---
 
-# Welcome to Econometrics
-
-- When is this useful?
-- We can't randomly assign or experiment with things like:
-    - how much education you get, 
-    - what our tax rates are,
-    - what our culture is, 
-    - or where we live
-- But we still want to learn about the *underlying patterns* related to those data - how does X cause Y? What is the correct model to use to understand X and Y?
-- That would be simple if we could control the situation, turn things on and off, randomize stuff
-- But we can't! So what now? Enter econometrics.
-
----
+## Welcome to Econometrics
 
 - This is a great course (tough one but great)
 - Why?
 - Gives you the ability to think about and answer questions you are interested in
 - And to better understand and judge existing body of literature
-    - The classic Tik-Tok, Instagram video that starts with "A new study says..."? You can now have an idea of how robust/serious their inferences are.
+    - The classic Tik-Tok, Instagram video that starts with _"A new study says..."?_ You can now have an idea of how robust/serious their inferences are.
 
 ---
 
-# Admin
+## Admin
 
 - Review the syllabus (and other materials on Moodle and the [PB4A7 website](https://gmelios.github.io/PB4A7)). Reading assignments there
 - Our textbook is [The Effect](https://theeffectbook.net), by Huntington-Klein, which is available online for free.
@@ -122,9 +137,13 @@ theme_metro_regtitle <- function(x) {
 - Programming in STATA (we will get to this on Thursday)
 - Assignment: End of term paper & poster
 
+- *[Join the Class on Discord](https://discord.gg/vGUmwDPx)*
+
 ---
 
 # Causality and Prediction
+
+## Causality and Prediction
 
 - Great! Still, why do we care about this class?
 - In econometrics, we are working with data
@@ -134,7 +153,7 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
-# Causality and Prediction
+## Causality and Prediction
 
 - Data scientists are generally concerned with *prediction*
 - They want to use the data at hand to *predict* what comes next
@@ -143,7 +162,7 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
-# Causality and Prediction
+## Causality and Prediction
 
 - Econometricians, on the other hand, care almost exclusively about *why*
 - Data scientists want to minimize *prediction error*
@@ -160,7 +179,7 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
-# Inference Error and Randomness
+## Inference Error and Randomness
 
 - So if we look in a data set and see that $X$ and $Y$ appear to be positively related to each other...
 - Are they actually positively related, or is that just random chance?
@@ -168,7 +187,7 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
-# Inference Error and Randomness
+## Inference Error and Randomness
 
 - If the true relationship is 0, then in the data we'll see a positive relationship half the time, and a negative relationship half the time
 - Even though the truth is 0!
@@ -187,7 +206,7 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
-# Identification Error
+## Identification Error
 
 - But if there's another reason why we might see that result, i.e. if the same result could give us a different conclusion, like *kids who are aggressive play more video games* or *people notice aggression more when kids play video games*, then we have made an *identification error* - our result was not identified!
 - Identification error is when your result in the data doesn't actually have a clear theoretical ("why" or "because") interpretation
@@ -207,7 +226,7 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
-# Data Generating Process
+## Data Generating Process
 
 - Another example is a model of supply and demand
 - We observe prices and quantities in a competitive market
@@ -216,7 +235,7 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
-# Data Generating Process
+## Data Generating Process
 
 
 ```{r}
@@ -237,7 +256,7 @@ ggplot(tibble(x = c(1:100,1:100), y = c(100:1, 1:100), linet = c(rep('Theoretica
 
 ---
 
-# Data Generating Process
+## Data Generating Process
 
 - The prices that we observe come from that theoretical construct
 - When we see the prices and quantities moving, according to our theory, it's because the S and D lines are moving
@@ -246,7 +265,7 @@ ggplot(tibble(x = c(1:100,1:100), y = c(100:1, 1:100), linet = c(rep('Theoretica
 
 ---
 
-# Data Generating Process
+## Data Generating Process
 
 - Harder than it sounds. What inference about S and D can we draw from these observations?
 
@@ -275,7 +294,7 @@ $$ Y = \beta_0 + \beta_1X + \varepsilon $$
 
 ---
 
-# Causality
+## Causality
 
 - We can also represent this set of relationships as a graph, with arrows telling you what variables cause each other
 
@@ -295,7 +314,7 @@ ggdag_classic(dag, size = 5) +
 
 ---
 
-# Causality
+## Causality
 
 - We do this because most of the relationships we're interested in are causal - we want to know, if we could reach in and *manipulate* $X$, would $Y$ change as a result, and how much?
 - Does the minimum wage reduce employment?
@@ -305,7 +324,7 @@ ggdag_classic(dag, size = 5) +
 
 ---
 
-# Causality
+## Causality
 
 - Imagine this is the graph we see for minimum wage and employment
 
@@ -315,7 +334,7 @@ knitr::include_graphics('Lecture_1_MinWage.jpg')
 
 ---
 
-# Causality
+## Causality
 
 - Does that mean that the minimum wage harms employment? 
 - Maybe! But also maybe not
@@ -324,7 +343,7 @@ knitr::include_graphics('Lecture_1_MinWage.jpg')
 
 ---
 
-# Causality
+## Causality
 
 - A given correlation, like the negative relationship between minimum wage changes and employment changes, can be consistent with a *number* of different causal relationships
 - As econometricians, we need to figure out which one it is!
@@ -333,7 +352,7 @@ knitr::include_graphics('Lecture_1_MinWage.jpg')
 
 ---
 
-# Eight Possible Relationships
+## Eight Possible Relationships
 
 ```{r, out.height = '550px'}
 knitr::include_graphics('/Users/georgemelios/Documents/GitHub/PB4A7/2023/weeks/week00/Lecture_1_Relationships.png')
@@ -341,7 +360,7 @@ knitr::include_graphics('/Users/georgemelios/Documents/GitHub/PB4A7/2023/weeks/w
 
 ---
 
-# Causality
+## Causality
 
 - The only ones we can eliminate are d, g, and h
 - All the rest are possible!
@@ -350,7 +369,7 @@ knitr::include_graphics('/Users/georgemelios/Documents/GitHub/PB4A7/2023/weeks/w
 
 ---
 
-# Causality
+## Causality
 
 - So which of them is likely to be correct?
 - That depends on what we think $\varepsilon$ is

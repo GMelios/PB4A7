@@ -249,7 +249,7 @@
     "href": "2023/weeks/week00/slides.html#your-lecturer",
     "title": "🗓️ Week 0 Presessionals",
     "section": "Your lecturer",
-    "text": "Your lecturer\n::: columns\n\n\n\n\nDr. Melios Research Fellow\n\n\n\n\n\nPhD in Economics\nBackground: Economics, Political Science, Behavioural Science\n\nPolitical Economy  Beliefs  Wellbeing"
+    "text": "Your lecturer\n\n\n\n\nDr.  George Melios Research Fellow www.georgemelios.com\n\n\n\n\n\nPhD in Economics\nBackground: Economics, Political Science, Behavioural Science\n\nPolitical Economy  Beliefs  Wellbeing"
   },
   {
     "objectID": "2023/weeks/week00/slides.html#what-is-this-class",
@@ -523,5 +523,166 @@
     "title": "Untitled",
     "section": "",
     "text": "📢 Description\n\n\n\n\n\nQuantitative data collection is an integral component of behavioural science: Testing hypotheses requires designing experiments and analysing the data or performing statistical analyses on secondary data. Whereas another core course in this programme - Experimental Design and Methods for the Behavioural Science - covers best practices in designing and conducting experimental research, Quantitative Applications for Behavioural Science introduces the main statistical background of behavioural research from psychology and economics. The course will cover best practices and state of the art statistical tools that are used by psychologists and economists. All the analyses will be demonstrated on example behavioural science research, and students will learn how to identify, interpret, and evaluate appropriate analyses for different research designs, conduct their own data analysis for each of these designs as well as report the analysis for publication in a journal, and recognise and understand contemporary issues in data science analysis in psychology and economics that need to be considered for best research practices. Emphasis will be on teaching students how the same analyses are presented in psychology and economics journals so students can understand how to integrate research from these two fields that constitute behavioural science.\n\n\n\n\nRequirements\nDownload and install [STATA](https://moodle.lse.ac.uk/course/view.php?id=7882] or R. Throughout the class, we will rely on STATA for seminars but codes will be provided for R as well.\n::: {.panel-tabset} ## Course Convenor"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#welcome-to-econometrics",
+    "href": "2023/weeks/week00/slides.html#welcome-to-econometrics",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Welcome to Econometrics",
+    "text": "Welcome to Econometrics\n\nThis is a great course (tough one but great)\nWhy?\nGives you the ability to think about and answer questions you are interested in\nAnd to better understand and judge existing body of literature\n\nThe classic Tik-Tok, Instagram video that starts with “A new study says…”? You can now have an idea of how robust/serious their inferences are."
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#welcome-to-econometrics-1",
+    "href": "2023/weeks/week00/slides.html#welcome-to-econometrics-1",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Welcome to Econometrics",
+    "text": "Welcome to Econometrics\n\nThis is a great course (tough one but great)\nWhy?\nGives you the ability to think about and answer questions you are interested in\nAnd to better understand and judge existing body of literature\n\nThe classic Tik-Tok, Instagram video that starts with “A new study says…”? You can now have an idea of how robust/serious their inferences are."
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#teaching-assistant",
+    "href": "2023/weeks/week00/slides.html#teaching-assistant",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Teaching Assistant",
+    "text": "Teaching Assistant\n\n\n\n\nDr. Lazaros Chatzilazarou PhD Candidate Website\n\n\n\n\n\nPhD in Economics (exp 2026)\nBackground: Economics\n\nExperimental Economics"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#so-what-is-econometrics",
+    "href": "2023/weeks/week00/slides.html#so-what-is-econometrics",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "So what is econometrics?",
+    "text": "So what is econometrics?\n\nEconometrics focuses on the study of observational data\nObservational data are measurements of things that the researcher does not control\nGiven that we are working with observational data, we still want to understand the causes of things\nThe world is what it is\nFrom next week onwards though, we will explore ways to study it"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#admin",
+    "href": "2023/weeks/week00/slides.html#admin",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Admin",
+    "text": "Admin\n\nReview the syllabus (and other materials on Moodle and the PB4A7 website). Reading assignments there\nOur textbook is The Effect, by Huntington-Klein, which is available online for free.\nAlso these slides\nProgramming in STATA (we will get to this on Thursday)\nAssignment: End of term paper & poster\nJoin the Class on Discord"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#causality-and-prediction-1",
+    "href": "2023/weeks/week00/slides.html#causality-and-prediction-1",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Causality and Prediction",
+    "text": "Causality and Prediction\n\nGreat! Still, why do we care about this class?\nIn econometrics, we are working with data\nStatisticians also work with data\nSo do data scientists\nThe goals for these groups differ"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#causality-and-prediction-2",
+    "href": "2023/weeks/week00/slides.html#causality-and-prediction-2",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Causality and Prediction",
+    "text": "Causality and Prediction\n\nData scientists are generally concerned with prediction\nThey want to use the data at hand to predict what comes next\nThey generally don’t care why they’re making the prediction they are\nThis can be really handy for certain tasks - “is this picture a cat or a dog?” “what’s the probability that a customer with qualities X, Y, and Z will end up purchasing our good?” “do you have lymphoma?”"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#inference-error-and-randomness-1",
+    "href": "2023/weeks/week00/slides.html#inference-error-and-randomness-1",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Inference Error and Randomness",
+    "text": "Inference Error and Randomness\n\nSo if we look in a data set and see that \\(X\\) and \\(Y\\) appear to be positively related to each other…\nAre they actually positively related, or is that just random chance?\nIf they are positively related, maybe we’re understating or overstating how positively related"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#inference-error-and-randomness-2",
+    "href": "2023/weeks/week00/slides.html#inference-error-and-randomness-2",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Inference Error and Randomness",
+    "text": "Inference Error and Randomness\n\nIf the true relationship is 0, then in the data we’ll see a positive relationship half the time, and a negative relationship half the time\nEven though the truth is 0!\nHow can we properly make an inference about whether the relationship is 0 or not (or positive, or negative, or how positive or negative), taking into account this randomness?\nThat’s being careful about inference. The statisticians teach us all about this!"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#identification-error-1",
+    "href": "2023/weeks/week00/slides.html#identification-error-1",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Identification Error",
+    "text": "Identification Error\n\nBut if there’s another reason why we might see that result, i.e. if the same result could give us a different conclusion, like kids who are aggressive play more video games or people notice aggression more when kids play video games, then we have made an identification error - our result was not identified!\nIdentification error is when your result in the data doesn’t actually have a clear theoretical (“why” or “because”) interpretation\nFor example, if you observe that people tend to wear more shorts on days they eat more ice cream, and you conclude that eating ice cream makes you put on shorts, you have committed an identification error\nOne day in and all we can do is complain, eesh"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#data-generating-process-1",
+    "href": "2023/weeks/week00/slides.html#data-generating-process-1",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Data Generating Process",
+    "text": "Data Generating Process\n\nAnother example is a model of supply and demand\nWe observe prices and quantities in a competitive market\nWhat led to those being the prices and quantities we see?\nThe supply and demand model and its equilibrium, we theorize!"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#data-generating-process-2",
+    "href": "2023/weeks/week00/slides.html#data-generating-process-2",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Data Generating Process",
+    "text": "Data Generating Process"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#data-generating-process-3",
+    "href": "2023/weeks/week00/slides.html#data-generating-process-3",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Data Generating Process",
+    "text": "Data Generating Process\n\nThe prices that we observe come from that theoretical construct\nWhen we see the prices and quantities moving, according to our theory, it’s because the S and D lines are moving\nBut we can’t see the S and D lines\nOur goal: use the observations we do see to infer what the theoretical model (data generating process) is"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#data-generating-process-4",
+    "href": "2023/weeks/week00/slides.html#data-generating-process-4",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Data Generating Process",
+    "text": "Data Generating Process\n\nHarder than it sounds. What inference about S and D can we draw from these observations?"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#causality-1",
+    "href": "2023/weeks/week00/slides.html#causality-1",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Causality",
+    "text": "Causality\n\nWe can also represent this set of relationships as a graph, with arrows telling you what variables cause each other"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#causality-2",
+    "href": "2023/weeks/week00/slides.html#causality-2",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Causality",
+    "text": "Causality\n\nWe do this because most of the relationships we’re interested in are causal - we want to know, if we could reach in and manipulate \\(X\\), would \\(Y\\) change as a result, and how much?\nDoes the minimum wage reduce employment?\nDoes quantitative easing avert recessions?\nDoes six-sigma improve business performance?\nDoes getting an MBA make you a better manager?"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#causality-3",
+    "href": "2023/weeks/week00/slides.html#causality-3",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Causality",
+    "text": "Causality\n\nImagine this is the graph we see for minimum wage and employment"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#causality-4",
+    "href": "2023/weeks/week00/slides.html#causality-4",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Causality",
+    "text": "Causality\n\nDoes that mean that the minimum wage harms employment?\nMaybe! But also maybe not\nWhat the graph shows us is a correlation\nAnd correlation is not the same thing as causation"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#causality-5",
+    "href": "2023/weeks/week00/slides.html#causality-5",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Causality",
+    "text": "Causality\n\nA given correlation, like the negative relationship between minimum wage changes and employment changes, can be consistent with a number of different causal relationships\nAs econometricians, we need to figure out which one it is!\nHow can we narrow it down?\nHow many of the diagrams on the next page can be consistent with that negative relationship?"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#eight-possible-relationships",
+    "href": "2023/weeks/week00/slides.html#eight-possible-relationships",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Eight Possible Relationships",
+    "text": "Eight Possible Relationships"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#causality-6",
+    "href": "2023/weeks/week00/slides.html#causality-6",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Causality",
+    "text": "Causality\n\nThe only ones we can eliminate are d, g, and h\nAll the rest are possible!\nIf f is correct, we see the negative relationship even though minimum wage has nothing to do with causing employment (like the ice cream and shorts example)\nIf a is correct, then even though we know minimum wage causes employment to change, the size or even direction of the relationship will be wrong (why?)"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#causality-7",
+    "href": "2023/weeks/week00/slides.html#causality-7",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Causality",
+    "text": "Causality\n\nSo which of them is likely to be correct?\nThat depends on what we think \\(\\varepsilon\\) is\n\\(\\varepsilon\\) is everything that determines \\(Y\\) other than \\(X\\)\nPerhaps the health of the economy, or the policies that area has chosen\nSo we almost certainly have a graph with \\(\\varepsilon \\rightarrow Y\\)\nDo those things also affect the choice to raise the minimum wage? If so we’re in graph a. That downward relationship could be due to a null relationship, or even a positive one (or perhaps a more negative one?)"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#causality-and-prediction-3",
+    "href": "2023/weeks/week00/slides.html#causality-and-prediction-3",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Causality and Prediction",
+    "text": "Causality and Prediction\n\nEconometricians, on the other hand, care almost exclusively about why\nData scientists want to minimize prediction error\nEconometricians want to minimize inference and identification error\nWe want to correctly understand the underlying data generating process"
   }
 ]
