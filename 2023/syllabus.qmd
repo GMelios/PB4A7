@@ -2,17 +2,28 @@
 title: "Untitled"
 format: html
 editor: visual
+quarto:
+    plugins:
+        - jmgirard/embedpdf
 ---
 
-::: {.callout-important collapse=false}
+<style>
+.pdf {
+  max-width: 100%;
+	width: 600px;
+	height: 600px;
+	border: 10px solid rgba(0,0,0,.2);
+	margin: 0;
+}
+</style>
+
 ## 📢 Description
 Quantitative data collection is an integral component of behavioural science: Testing hypotheses requires designing experiments and analysing the data or performing statistical analyses on secondary data. Whereas another core course in this programme - Experimental Design and Methods for the Behavioural Science - covers best practices in designing and conducting experimental research, Quantitative Applications for Behavioural Science introduces the main statistical background of behavioural research from psychology and economics. The course will cover best practices and state of the art statistical tools that are used by psychologists and economists. All the analyses will be demonstrated on example behavioural science research, and students will learn how to identify, interpret, and evaluate appropriate analyses for different research designs, conduct their own data analysis for each of these designs as well as report the analysis for publication in a journal, and recognise and understand contemporary issues in data science analysis in psychology and economics that need to be considered for best research practices. Emphasis will be on teaching students how the same analyses are presented in psychology and economics journals so students can understand how to integrate research from these two fields that constitute behavioural science.
 
-:::
-
-
 # Requirements
-Download and install [STATA](https://moodle.lse.ac.uk/course/view.php?id=7882] or [R](https://www.r-project.org). Throughout the class, we will rely on STATA for seminars but codes will be provided for R as well.
+Download and install [STATA](https://moodle.lse.ac.uk/course/view.php?id=7882) or [R](https://www.r-project.org). Throughout the class, we will rely on STATA for seminars but codes will be provided for R as well.
 
-::: {.panel-tabset}
-## Course Convenor
+# Syllabus
+
+
+Download the class syllabus here {{< pdf /Users/georgemelios/Documents/GitHub/PB4A7/2023/weeks/PB4A7_Syllabus_2023_24.pdf width=100% >}}

@@ -1,13 +1,17 @@
 ---
-title: "Untitled"
+title: "Announcements"
 format: html
 editor: visual
 ---
 
 ::: {.callout-important collapse=false}
 ## 📢 Description
-Quantitative data collection is an integral component of behavioural science: Testing hypotheses requires designing experiments and analysing the data or performing statistical analyses on secondary data. Whereas another core course in this programme - Experimental Design and Methods for the Behavioural Science - covers best practices in designing and conducting experimental research, Quantitative Applications for Behavioural Science introduces the main statistical background of behavioural research from psychology and economics. The course will cover best practices and state of the art statistical tools that are used by psychologists and economists. All the analyses will be demonstrated on example behavioural science research, and students will learn how to identify, interpret, and evaluate appropriate analyses for different research designs, conduct their own data analysis for each of these designs as well as report the analysis for publication in a journal, and recognise and understand contemporary issues in data science analysis in psychology and economics that need to be considered for best research practices. Emphasis will be on teaching students how the same analyses are presented in psychology and economics journals so students can understand how to integrate research from these two fields that constitute behavioural science.
+We will use this space to make class announcements throughout the semester!
+:::
 
+::: {.callout-important collapse=false}
+## 📢 Discord
+First and important announcement, [Join the Class on Discord](https://discord.gg/vGUmwDPx).
 :::
 
 
@@ -15,4 +19,4 @@ Quantitative data collection is an integral component of behavioural science: Te
 Download and install [STATA](https://moodle.lse.ac.uk/course/view.php?id=7882] or [R](https://www.r-project.org). Throughout the class, we will rely on STATA for seminars but codes will be provided for R as well.
 
 ::: {.panel-tabset}
-## Course Convenor
+
