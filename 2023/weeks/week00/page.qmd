@@ -1,8 +1,10 @@
 ---
-title: "🗓️ Week 01 - Introduction, Context & Key Concepts"
+title: "🗓️ Week 00 - Presessionals & Intro"
 ---
 
-In this first week, we will cover what you can expect to learn from this course and the course logistics: all you need to know about the structure of the lectures, classes, assessments, and how we will interact throughout this course. 
+In this pre-sessional week, we will cover what you can expect to learn from this course and the course logistics: all you need to know about the structure of the lectures, classes, assessments, and how we will interact throughout this course. 
+
+In addition to that we will revise some key concepts in statistics and econometrics.
 
 ## 👨‍🏫 Lecture Slides 
 
@@ -17,7 +19,7 @@ Use your keypad to navigate the slides.
 
 ## 📚 Recommended Reading
 
-- Check the end of slides for the list of references cited in the lecture.
+- Check syllabus for reading suggestions!
 
 ## 📟 Communication
 

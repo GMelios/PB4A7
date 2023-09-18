@@ -53,13 +53,14 @@ format:
 
 :::
 
-# Welcome to Econometrics
+# Welcome to PB4A7
 
 ## What is this class
 
 - This is econometrics
 - Econometrics is a field that covers how economists think about statistical analysis
-- Many other social science fields (and fields like epidemiology) have picked up econometric tools as well becuase of how useful they tend to be
+- Why do we care about econometrics?
+    - Many other social science fields (even epidemiology) pick up econometric tools as well becuase of how useful they tend to be
 
 ---
 
@@ -74,7 +75,11 @@ format:
 # Welcome to Econometrics
 
 - When is this useful?
-- We can't randomly assign or experiment with things like how much education you get, or what our tax rates are, or what a stock's recent returns have been, or where you live - that would generally be impossible or cruel
+- We can't randomly assign or experiment with things like:
+    - how much education you get, 
+    - what our tax rates are,
+    - what our culture is, 
+    - or where we live
 - But we still want to learn about the *underlying patterns* related to those data - how does X cause Y? What is the correct model to use to understand X and Y?
 - That would be simple if we could control the situation, turn things on and off, randomize stuff
 - But we can't! So what now? Enter econometrics.
@@ -83,11 +88,11 @@ format:
 
 # Welcome to Econometrics
 
-- This is a great course (if I do say so)
-- When I took it, what it left me feeling was *powerful*
-- It gave me the ability to answer questions I was interested in on my own
-- And to understand the degree of confidence I could have in my own results and in others
-- "A new study says..." you don't need to take the paper's word for that any more!
+- This is a great course (tough one but great)
+- Why?
+- Gives you the ability to think about and answer questions you are interested in
+- And to better understand and judge existing body of literature
+    - The classic Tik-Tok, Instagram video that starts with "A new study says..."? You can now have an idea of how robust/serious their inferences are.
 
 ---
 
