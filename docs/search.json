@@ -256,7 +256,7 @@
     "href": "2023/weeks/week00/slides.html#what-is-this-class",
     "title": "🗓️ Week 0 Presessionals",
     "section": "What is this class",
-    "text": "What is this class\n\nThis is econometrics\nEconometrics is a field that covers how economists think about statistical analysis\nWhy do we care about econometrics?\n\nMany other social science fields (even epidemiology) pick up econometric tools as well becuase of how useful they tend to be"
+    "text": "What is this class\n\nThis is an applied econometrics class for behavioural science\nEconometrics is a field that covers how economists think about statistical analysis\nWhy do we care about econometrics?\n\nMany other social science fields (even epidemiology) pick up econometric tools as well becuase of how useful they tend to be"
   },
   {
     "objectID": "2023/weeks/week00/page.html",
@@ -698,5 +698,75 @@
     "title": "🗓️ Week 01 - Introduction, Context & Key Concepts",
     "section": "📚 Recommended Reading",
     "text": "📚 Recommended Reading\n\nCheck the end of slides for the list of references cited in the lecture."
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#what-is-pb4a7",
+    "href": "2023/weeks/week00/slides.html#what-is-pb4a7",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "What is PB4A7",
+    "text": "What is PB4A7\n\nNot a maths course!\nNot a pure stats course!\nNot a theoretical econometrics course!\nNot a data science course!"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#what-is-pb4a7-1",
+    "href": "2023/weeks/week00/slides.html#what-is-pb4a7-1",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "What is PB4A7",
+    "text": "What is PB4A7"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#textbook",
+    "href": "2023/weeks/week00/slides.html#textbook",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Textbook",
+    "text": "Textbook"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#why-applications-and-not-econometrics",
+    "href": "2023/weeks/week00/slides.html#why-applications-and-not-econometrics",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Why applications and not econometrics?",
+    "text": "Why applications and not econometrics?\n\nPB4A7 and PB413 are applied courses. You need to know how to use statistics, and why you’re using them – you will not master the nuts of bolts of statistical theory!\nFor those who want more information\n\nWill provide material on the website of the class\nVisit me during the office hours\nWe will discuss additional courses to audit"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#data",
+    "href": "2023/weeks/week00/slides.html#data",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Data",
+    "text": "Data"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#data-1",
+    "href": "2023/weeks/week00/slides.html#data-1",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Data",
+    "text": "Data"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#data-2",
+    "href": "2023/weeks/week00/slides.html#data-2",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Data",
+    "text": "Data"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#an-example",
+    "href": "2023/weeks/week00/slides.html#an-example",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "An example",
+    "text": "An example"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#housekeeping",
+    "href": "2023/weeks/week00/slides.html#housekeeping",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Housekeeping",
+    "text": "Housekeeping\n\nMoodle (lecture videos and assignments)\nWebsite\nDiscord Channel\nOffice Hours (Book Upfront!!!)"
+  },
+  {
+    "objectID": "2023/Stata.html",
+    "href": "2023/Stata.html",
+    "title": "Stata",
+    "section": "",
+    "text": "📢 Description\n\n\n\n\n\nDear All,\nFor anyone that wants extra Intro (from scratch) material for STATA, I can propose the following. These should help you become STATA “experts” in little time. I know this sounds like these ads for “Build a six-pack in 10 steps” but STATA is actually much easier than that. Our seminars and a few of those videos should help you pick it up in no time.\nLSE - DATA SKILLS LAB COURSE\nYou can enrol here and follow at your own pace. It’s supposed to take 10-14 hours to complete in total and should give anyone and superbly good background in stata. You can follow it at your own pace.\nYouTube Channels\nStata Intro - STATA Company itself has a 2hour introduction to STATA that is superb\nEconometrics Academy - Econometrics Academy has a playlist on Introduction to STATA\nData for Development - Data for Development has a nice set of videos as well\nSee you all soon, George"
   }
 ]

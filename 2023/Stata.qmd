@@ -1,0 +1,29 @@
+---
+title: "Stata"
+format: html
+editor: visual
+---
+
+
+::: {.callout-important collapse=false}
+## 📢 Description
+Dear All, 
+
+For anyone that wants extra Intro (from scratch) material for STATA, I can propose the following. These should help you become STATA "experts" in little time. I know this sounds like these ads for "Build a six-pack in 10 steps" but STATA is actually much easier than that. Our seminars and a few of those videos should help you pick it up in no time. 
+
+[LSE - DATA SKILLS LAB COURSE](https://moodle.lse.ac.uk/course/view.php?id=7882)
+
+You can enrol here and follow at your own pace. It's supposed to take 10-14 hours to complete in total and should give anyone and superbly good background in stata. You can follow it at your own pace. 
+
+
+YouTube Channels
+
+[Stata Intro](https://www.youtube.com/watch?v=gdnDkjoPJTM&ab_channel=DataforDevelopment) - STATA Company itself has a 2hour introduction to STATA that is superb
+
+[Econometrics Academy](https://www.youtube.com/c/econometricsacademy) - Econometrics Academy has a playlist on Introduction to STATA
+
+[Data for Development](https://www.youtube.com/watch?v=rdFw-fBfygQ&ab_channel=DataforDevelopment) - Data for Development has a nice set of videos as well 
+
+See you all soon, 
+George
+:::

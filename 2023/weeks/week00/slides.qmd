@@ -80,7 +80,8 @@ theme_metro_regtitle <- function(x) {
 
 ::: {.column style="display:inline-block;width:40%;height:60%;border-radius:1em;margin:1%;padding:1.5%;background-color:#f5f5f5"}
 <figure>
-    <img src="/figures/people/Lazaros.jpeg" alt="Photo of Lazaros" role="presentation" style="object-fit: cover;width:5em;height:5em;border-radius: 50%;font-size:1em;" class="img-responsive atto_image_button_text-bottom">
+    <img src="/figures/people/Lazaros.jpeg" alt="Photo of Lazaros" role="presentation" style="object-fit: cover;width:5.5em;height:5.5em;border-radius: 50%;font-size:2em;"
+    class="img-responsive atto_image_button_text-bottom">
     <figcaption>
         <strong>Dr.&nbsp;<span><a href="#" target="_blank" class="external">Lazaros Chatzilazarou</a></span></strong> 
         <br/>PhD Candidate
@@ -98,11 +99,36 @@ theme_metro_regtitle <- function(x) {
 
 :::
 
+## Housekeeping 
+
+- Moodle (lecture videos and assignments)
+- [Website](gmelios.github.io/PB4A7)
+- [Discord Channel](https://discord.gg/vGUmwDPx)
+- Office Hours (Book Upfront!!!)
+
 # Welcome to PB4A7
+
+## What is PB4A7
+- Not a maths course!
+- Not a pure stats course!
+- Not a theoretical econometrics course!
+- Not a data science course! 
+
+---
+
+## What is PB4A7
+<figure>
+    <img src="/2023/weeks/week00/superman.jpg" alt="Superman"
+    style="width:15em;height:15em;font-size:1em;" 
+    class="img-responsive atto_image_button_text-bottom">
+</figure>
+
+---
+
 
 ## What is this class
 
-- This is econometrics
+- This is an applied econometrics class for behavioural science
 - Econometrics is a field that covers how economists think about statistical analysis
 - Why do we care about econometrics?
     - Many other social science fields (even epidemiology) pick up econometric tools as well becuase of how useful they tend to be
@@ -129,6 +155,16 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
+## Why applications and not econometrics? 
+
+- PB4A7 and PB413 are applied courses. You need to know how to use statistics, and why you’re using them – *you will not master the nuts of bolts of statistical theory!*
+
+- For those who want more information
+  - Will provide material on the website of the class
+  - Visit me during the office hours
+  - We will discuss additional courses to audit
+
+
 ## Admin
 
 - Review the syllabus (and other materials on Moodle and the [PB4A7 website](https://gmelios.github.io/PB4A7)). Reading assignments there
@@ -138,6 +174,15 @@ theme_metro_regtitle <- function(x) {
 - Assignment: End of term paper & poster
 
 - *[Join the Class on Discord](https://discord.gg/vGUmwDPx)*
+
+---
+
+## Textbook
+<figure>
+    <img src="/2023/weeks/week00/effect.png" alt="Effect"
+    style="width:30em;height:15em;font-size:1em;" 
+    class="img-responsive atto_image_button_text-bottom">
+</figure> 
 
 ---
 
@@ -168,6 +213,37 @@ theme_metro_regtitle <- function(x) {
 - Data scientists want to minimize *prediction error*
 - Econometricians want to minimize *inference* and *identification error*
 - We want to correctly understand *the underlying data generating process*
+
+---
+
+## Data
+
+<figure>
+    <img src="/2023/weeks/week00/data1.jpg" alt="data"
+    style="width:30em;height:15em;font-size:1em;" 
+    class="img-responsive atto_image_button_text-bottom">
+</figure>
+
+---
+
+
+## Data
+
+<figure>
+    <img src="/2023/weeks/week00/data2.png" alt="data"
+    style="width:30em;height:15em;font-size:1em;" 
+    class="img-responsive atto_image_button_text-bottom">
+</figure>
+
+---
+
+## Data
+
+<figure>
+    <img src="/2023/weeks/week00/data3.png" alt="data"
+    style="width:30em;height:15em;font-size:1em;" 
+    class="img-responsive atto_image_button_text-bottom">
+</figure>
 
 ---
 
