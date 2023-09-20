@@ -25,5 +25,4 @@ Download and install [STATA](https://moodle.lse.ac.uk/course/view.php?id=7882) o
 
 # Syllabus
 
-
-Download the class syllabus [here](https://github.com/GMelios/PB4A7/blob/main/2023/weeks/PB4A7_Syllabus_2023_24.pdf)
+**Download the full syllabus [here](https://lse-main-mdl-euwest1.s3.eu-west-1.amazonaws.com/1f/c6/1fc6b1a781e052d5c85277c9563638823caa896e?response-content-disposition=inline%3B%20filename%3D%22PB4A7_Syllabus_2023_24.pdf%22&response-content-type=application%2Fpdf&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARJMQYW4LM5PB3ZM2%2F20230920%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20230920T104544Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21556&X-Amz-Signature=ccd2b1ae4e93b803b35d9b7bb20e93854f3e5c730d7f4fc4dc2c6d026b3aac82)**
