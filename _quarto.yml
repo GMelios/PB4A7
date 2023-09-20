@@ -36,7 +36,9 @@ website:
       - href: 2023/syllabus.qmd
         text: "📓 Syllabus"
       - href: 2023/Stata.qmd
-        text: "Resources"
+        text: "STATA resources"
+      - href: 2023/R.qmd
+        text: "R & Python resources"
       - href: 2023/communication.qmd
         text: "📟 Communication"
     # - href: 2023/assignments.qmd

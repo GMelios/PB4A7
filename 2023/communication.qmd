@@ -16,7 +16,6 @@ First and important announcement, [Join the Class on Discord](https://discord.gg
 
 
 # Requirements
-Download and install [STATA](https://moodle.lse.ac.uk/course/view.php?id=7882] or [R](https://www.r-project.org). Throughout the class, we will rely on STATA for seminars but codes will be provided for R as well.
+Download and install [STATA](https://moodle.lse.ac.uk/course/view.php?id=7882) or [R](https://www.r-project.org). Throughout the class, we will rely on STATA for seminars but codes will be provided for R as well.
 
-::: {.panel-tabset}
 

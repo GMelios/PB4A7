@@ -522,7 +522,7 @@
     "href": "2023/communication.html",
     "title": "Announcements",
     "section": "",
-    "text": "📢 Description\n\n\n\n\n\nWe will use this space to make class announcements throughout the semester!\n\n\n\n\n\n\n\n\n\n📢 Discord\n\n\n\n\n\nFirst and important announcement, Join the Class on Discord.\n\n\n\n\nRequirements\nDownload and install [STATA](https://moodle.lse.ac.uk/course/view.php?id=7882] or R. Throughout the class, we will rely on STATA for seminars but codes will be provided for R as well.\n::: {.panel-tabset}"
+    "text": "📢 Description\n\n\n\n\n\nWe will use this space to make class announcements throughout the semester!\n\n\n\n\n\n\n\n\n\n📢 Discord\n\n\n\n\n\nFirst and important announcement, Join the Class on Discord.\n\n\n\n\nRequirements\nDownload and install STATA or R. Throughout the class, we will rely on STATA for seminars but codes will be provided for R as well."
   },
   {
     "objectID": "2023/weeks/week00/slides.html#welcome-to-econometrics",
@@ -768,5 +768,12 @@
     "title": "Stata",
     "section": "",
     "text": "📢 Description\n\n\n\n\n\nDear All,\nFor anyone that wants extra Intro (from scratch) material for STATA, I can propose the following. These should help you become STATA “experts” in little time. I know this sounds like these ads for “Build a six-pack in 10 steps” but STATA is actually much easier than that. Our seminars and a few of those videos should help you pick it up in no time.\nLSE - DATA SKILLS LAB COURSE\nYou can enrol here and follow at your own pace. It’s supposed to take 10-14 hours to complete in total and should give anyone and superbly good background in stata. You can follow it at your own pace.\nYouTube Channels\nStata Intro - STATA Company itself has a 2hour introduction to STATA that is superb\nEconometrics Academy - Econometrics Academy has a playlist on Introduction to STATA\nData for Development - Data for Development has a nice set of videos as well\nSee you all soon, George"
+  },
+  {
+    "objectID": "2023/R.html",
+    "href": "2023/R.html",
+    "title": "Stata",
+    "section": "",
+    "text": "📢 Description\n\n\n\n\n\nDear All,\nHope this finds you well. This channel on the server is for those of you that already have some stata knowledge and want to spend the time you might have the first week(s) to expand more on programming and stats. It’s a mix of LSE courses you can attend and online material that are fantastic to help you progress.\nLSE Modules Courses on dept of methodology - here you can find courses on causal inference, advanced statistics and data science summary of courses here\nCourses from Digital Skills Lab intro to a lot of programming languages (R, STATA, Python)\nCourses from Data Science Institute Courses from B.Sc. in Data Science on Politics\nOnline Resources\n\nHertie Summer School Probably the best and most variable resource for everyone that wants to expand their knowledge on Data Science and statistics is the Hertie Summer School that is free online. Here is a course catalog and they offer courses from intro to Data science to Advanced Machine Learning, NLPs, Scraping data from the web and anything you can imagine. (the one from 2021 has more courses than the 2022 version)\nIsmail Khalil has a fantastic channel with Advanced R programming and Machine Learning on YouTube\n\nWill keep updating this on the relevant Discord Channel and here as much as possible throughout the semester.\nBest wishes, George"
   }
 ]

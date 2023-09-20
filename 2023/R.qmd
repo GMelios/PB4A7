@@ -1,0 +1,35 @@
+---
+title: "Stata"
+format: html
+editor: visual
+---
+
+
+::: {.callout-important collapse=false}
+## 📢 Description
+Dear All, 
+
+Hope this finds you well. This channel on the server is for those of you that already have some stata knowledge and want to spend the time you might have the first week(s) to expand more on programming and stats. It's a mix of LSE courses you can attend and online material that are fantastic to help you progress. 
+
+LSE Modules
+Courses on dept of methodology - here you can find courses on causal inference, advanced statistics and data science [summary of courses here](https://www.dropbox.com/s/7nnotogt1d6e12k/Methodology%20Slides%202022.pptx?dl=0)
+
+[Courses from Digital Skills Lab](https://info.lse.ac.uk/current-students/digital-skills-lab) intro to a lot of programming languages (R, STATA, Python)
+
+[Courses from Data Science Institute](https://www.lse.ac.uk/dsi/study)
+[Courses from B.Sc. in Data Science on Politics](https://www.lse.ac.uk/study-at-lse/Undergraduate/Offer-Holder/degree-programmes-2022/BSc-Politics-and-Data-Science)
+
+Online Resources
+
+1) [Hertie Summer School](https://ds3.ai/summerschool.html)
+Probably the best and most variable resource for everyone that wants to expand their knowledge on Data Science and statistics is the Hertie Summer School that is free online. Here is a course catalog and they offer courses from intro to Data science to Advanced Machine Learning, NLPs, Scraping data from the web and anything you can imagine. (the one from 2021 has more courses than the 2022 version)
+
+
+
+2) [Ismail Khalil](https://www.youtube.com/user/115liamsi/playlists) has a fantastic channel with Advanced R programming and Machine Learning on YouTube
+
+Will keep updating this on the relevant Discord Channel and here as much as possible throughout the semester. 
+
+Best wishes,
+George
+:::
