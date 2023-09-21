@@ -817,5 +817,222 @@
     "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
     "section": "Regression Discontinuity in STATA",
     "text": "Regression Discontinuity in STATA\n\nWe can specify an RDD model by just telling it the dependent variable \\(Y\\), the running variable \\(X\\), and the cutoff \\(c\\).\nWe can also specify how many polynomials to us with p\n(it applies the polynomials more locally than our linear OLS models do - a bit more flexible without weird corner preditions)\nIt will also pick a window for us with h\nPlenty of other options\nIncluding a fuzzy option to specify actual treatment outside of the running variable/cutoff combo"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#regression-discontinuity-in-r",
+    "href": "2023/weeks/week08/slides.html#regression-discontinuity-in-r",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Regression Discontinuity in R",
+    "text": "Regression Discontinuity in R\n\nWe can specify an RDD model by just telling it the dependent variable \\(Y\\), the running variable \\(X\\), and the cutoff \\(c\\).\nWe can also specify how many polynomials to us with p\n(it applies the polynomials more locally than our linear OLS models do - a bit more flexible without weird corner preditions)\nIt will also pick a window for us with h\nPlenty of other options\nIncluding a fuzzy option to specify actual treatment outside of the running variable/cutoff combo"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#check-in",
+    "href": "2023/weeks/week08/slides.html#check-in",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Check-in",
+    "text": "Check-in\n\nWe’re thinking through ways that we can identify the effect of interest without having to control for everything\nOne way is by focusing on within variation - if all the endogeneity can be controlled for or only varies between-individuals, we can just focus on within variation to identify it\nPro: control for a bunch of stuff\nCon: washes out a lot of variation! Result can be noisier if there’s not much within-variation to work with\nAlso, this requires no endogenous variation over time\nThat might be a tricky assumption! Often there are plenty of back doors that shift over time"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#regression-discontinuity-1",
+    "href": "2023/weeks/week08/slides.html#regression-discontinuity-1",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Regression Discontinuity",
+    "text": "Regression Discontinuity\nThe basic idea is this:\n\nWe look for a treatment that is assigned on the basis of being above/below a cutoff value of a continuous variable\nFor example, if you get above a certain test score they let you into a “gifted and talented” program\nOr if you are just on one side of a time zone line, your day starts one hour earlier/later\nOr if a candidate gets 50.1% of the vote they’re in, 40.9% and they’re out\nOr if you’re 65 years old you get Medicaid, if you’re 64.99 years old you don’t\n\nWe call these continuous variables “Running variables” because we run along them until we hit the cutoff"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#regression-discontinuity-2",
+    "href": "2023/weeks/week08/slides.html#regression-discontinuity-2",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Regression Discontinuity",
+    "text": "Regression Discontinuity\n\nBut wait, hold on, if treatment is driven by running variables, won’t we have a back door going through those very same running variables?? Yes!\nAnd we can’t just control for RunningVar because that’s where all the variation in treatment comes from. Uh oh!"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#regression-discontinuity-3",
+    "href": "2023/weeks/week08/slides.html#regression-discontinuity-3",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Regression Discontinuity",
+    "text": "Regression Discontinuity\n\nThe key here is realizing that the running variable affects treatment only when you go across the cutoff\nSo really the diagram looks like this!"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#regression-discontinuity-4",
+    "href": "2023/weeks/week08/slides.html#regression-discontinuity-4",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Regression Discontinuity",
+    "text": "Regression Discontinuity\n\nSo what does this mean?\nIf we can control for the running variable everywhere except the cutoff, then…\nWe will be controlling for the running variable, closing that back door\nBut leaving variation at the cutoff open, allowing for variation in treatment\nWe focus on just the variation around the treatment, narrowing the range of the running variable we use so sharply that it’s basically controlled for. Then the effect of cutoff on treatment is like an experiment!"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#regression-discontinuity-5",
+    "href": "2023/weeks/week08/slides.html#regression-discontinuity-5",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Regression Discontinuity",
+    "text": "Regression Discontinuity\n\nBasically, the idea is that right around the cutoff, treatment is randomly assigned\nIf you have a test score of 89.9 (not high enough for gifted-and-talented), you’re basically the same as someone who has a test score of 90.0 (just barely high enough)\nSo if we just focus around the cutoff, we close any back doors because it’s basically random which side of the line you’re on\nBut we get variation in treatment!\nThis specifically gives us the effect of treatment for people who are right around the cutoff a.k.a. a “local average treatment effect” (we still won’t know the effect of being put in gifted-and-talented for someone who gets a 30)"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#regression-discontinuity-6",
+    "href": "2023/weeks/week08/slides.html#regression-discontinuity-6",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Regression Discontinuity",
+    "text": "Regression Discontinuity\n\nA very basic idea of this, before we even get to regression, is to create a binned chart\nAnd see how the bin values jump at the cutoff\nA binned chart chops the Y-axis up into bins\nThen takes the average Y value within that bin. That’s it!\nThen, we look at how those X bins relate to the Y binned values.\nIf it looks like a pretty normal, continuous relationship… then JUMPS UP at the cutoff X-axis value, that tells us that the treatment itself must be doing something!"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#regression-discontinuity-7",
+    "href": "2023/weeks/week08/slides.html#regression-discontinuity-7",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Regression Discontinuity",
+    "text": "Regression Discontinuity"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#concept-checks",
+    "href": "2023/weeks/week08/slides.html#concept-checks",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nWhy is it important that we look as norrowly as possible around the cutoff? What does this get us over comparing the entire treated and untreated groups?\nCan you think of an example of a treatment that is assigned at least partially on a cutoff?\nWhy can’t we just control for the running variable as we normally would to solve the endogeneity problem?"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#fitting-lines-in-rdd",
+    "href": "2023/weeks/week08/slides.html#fitting-lines-in-rdd",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Fitting Lines in RDD",
+    "text": "Fitting Lines in RDD\n\nLooking purely just at the cutoff and making no use of the space away from the cutoff throws out a lot of useful information\nWe know that the running variable is related to outcome, so we can probably improve our prediction of what the value on either side of the cutoff should be if we use data away from the cutoff to help with prediction than if we just use data near the cutoff, which is what that animation does\nWe can do this with good ol’ OLS.\nThe bin plot we did can help us pick a functional form for the slope"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#fitting-lines-in-rdd-1",
+    "href": "2023/weeks/week08/slides.html#fitting-lines-in-rdd-1",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Fitting Lines in RDD",
+    "text": "Fitting Lines in RDD\n\nTo be clear, producing the line(s) below is our goal. How can we do it?\nThe true model I’ve made is an RDD effect of .7, with a slope of 1 to the left of the cutoff and a slope of 1.5 to the right"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#regression-in-rdd",
+    "href": "2023/weeks/week08/slides.html#regression-in-rdd",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Regression in RDD",
+    "text": "Regression in RDD\n\nFirst, we need to transform our data\nWe need a “Treated” variable that’s TRUE when treatment is applied - above or below the cutoff\nThen, we are going to want a bunch of things to change at the cutoff. This will be easier if the running variable is centered around the cutoff. So we’ll turn our running variable \\(X\\) into \\(X - cutoff\\) and call that \\(XCentered\\)"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#varying-slope",
+    "href": "2023/weeks/week08/slides.html#varying-slope",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Varying Slope",
+    "text": "Varying Slope\n\nTypically, you will want to let the slope vary to either side\nIn effect, we are fitting an entirely different regression line on each side of the cutoff\nWe can do this by interacting both slope and intercept with \\(treated\\)!\nCoefficient on Treated is how the intercept jumps - that’s our RDD effect. Coefficient on the interaction is how the slope changes\n\n\\[Y = \\beta_0 + \\beta_1Treated + \\beta_2XCentered + \\beta_3Treated\\times XCentered + \\varepsilon\\]\n\n\nOLS estimation, Dep. Var.: Y\nObservations: 1,000 \nStandard-errors: IID \n                        Estimate Std. Error   t value   Pr(&gt;|t|)    \n(Intercept)            -0.011133   0.025999 -0.428225 0.66857986    \ntreatedTRUE             0.746688   0.037577 19.870777  &lt; 2.2e-16 ***\nX_centered              0.982500   0.090666 10.836522  &lt; 2.2e-16 ***\ntreatedTRUE:X_centered  0.446961   0.129613  3.448417 0.00058748 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\nRMSE: 0.296605   Adj. R2: 0.847229"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#varying-slope-1",
+    "href": "2023/weeks/week08/slides.html#varying-slope-1",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Varying Slope",
+    "text": "Varying Slope\n(as an aside, sometimes the effect of interest is the interaction term - the change in slope! This answers the question “does the effect of \\(X\\) on \\(Y\\) change at the cutoff? This is called a”regression kink” design. We won’t go more into it here, but it is out there!)"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#polynomial-terms",
+    "href": "2023/weeks/week08/slides.html#polynomial-terms",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Polynomial Terms",
+    "text": "Polynomial Terms\n\nWe don’t need to stop at linear slopes!\nJust like we brought in our knowledge of binary and interaction terms to understand the linear slope change, we can bring in polynomials too. Add a square maybe!\nDon’t get too wild with cubes, quartics, etc. - polynomials tend to be at their “weirdest” near the edges, and we don’t want super-weird predictions right at the cutoff. It could give us a mistaken result!\nA square term should be enough"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#polynomial-terms-1",
+    "href": "2023/weeks/week08/slides.html#polynomial-terms-1",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Polynomial Terms",
+    "text": "Polynomial Terms\n\nHow do we do this? Interactions again. Take any regression equation…\n\n\\[Y = \\beta_0 + \\beta_1X + \\beta_2X^2 + \\varepsilon\\]\n\nAnd just center the \\(X\\) (let’s call it \\(XC\\), add on a set of the same terms multiplied by \\(Treated\\) (don’t forget \\(Treated\\) by itself - that’s \\(Treated\\) times the interaction!)\n\n\\[Y = \\beta_0 + \\beta_1XC + \\beta_2XC^2 + \\beta_3Treated + \\beta_4Treated\\times XC + \\beta_5Treated\\times XC^2 + \\varepsilon\\]\n\nThe coefficient on \\(Treated\\) remains our “jump at the cutoff” - our RDD estimate!\n\n\n\n                              feols(Y ~ X_cent..\nDependent Var.:                                Y\n                                                \nConstant                        -0.0340 (0.0385)\nX_centered                      0.6990. (0.3641)\ntreatedTRUE                   0.7677*** (0.0577)\nX_centered square               -0.5722 (0.7117)\nX_centered x treatedTRUE         0.7509 (0.5359)\ntreatedTRUE x I(X_centered^2)     0.5319 (1.034)\n_____________________________ __________________\nS.E. type                                    IID\nObservations                               1,000\nR2                                       0.84779\nAdj. R2                                  0.84702\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#concept-checks-1",
+    "href": "2023/weeks/week08/slides.html#concept-checks-1",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nWould the coefficient on \\(Treated\\) still be the regression discontinuity effect estimate if we hadn’t centered \\(X\\)? Why or why not?\nWhy might we want to use a polynomial term in our RDD model?\nWhat relationship are we assuming between the outcome variable and the running variable if we choose not to include \\(XCentered\\) in our model at all (i.e. a “zero-order polynomial”)"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#assumptions",
+    "href": "2023/weeks/week08/slides.html#assumptions",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Assumptions",
+    "text": "Assumptions\n\nWe knew there must be some assumptions lurking around here\nSome are more obvious (we should be using the correct functional form)\nOthers are trickier. What are we assuming about the error term and endogeneity here?\nSpecifically, we are assuming that the only thing jumping at the cutoff is treatment\nSort of like parallel trends, but maybe more believable since we’ve narrowed in so far\nFor example, if having an income below 150% of the poverty line gets you access to food stamps AND to job training, then we can’t really use that cutoff to get the effect of just food stamps\nOr if the proportion of people who are self-employed jumps up just below 150% (based on reported income), that’s a back door too!\nThe only thing different about just above/just below should be treatment"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#graphically",
+    "href": "2023/weeks/week08/slides.html#graphically",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Graphically",
+    "text": "Graphically"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#windows-1",
+    "href": "2023/weeks/week08/slides.html#windows-1",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Windows",
+    "text": "Windows\n\nPay attention to the sample sizes, accuracy (true value .7) and standard errors!\n\n\nm1 &lt;- feols(Y~treated*X_centered, data = df)\nm2 &lt;- feols(Y~treated*X_centered, data = df %&gt;% filter(abs(X_centered) &lt; .25))\nm3 &lt;- feols(Y~treated*X_centered, data = df %&gt;% filter(abs(X_centered) &lt; .1))\nm4 &lt;- feols(Y~treated*X_centered, data = df %&gt;% filter(abs(X_centered) &lt; .05))\nm5 &lt;- feols(Y~treated*X_centered, data = df %&gt;% filter(abs(X_centered) &lt; .01))\netable(m1,m2,m3,m4,m5, keep = 'treatedTRUE')\n\n                                         m1                 m2\nDependent Var.:                           Y                  Y\n                                                              \ntreatedTRUE              0.7467*** (0.0376) 0.7723*** (0.0566)\ntreatedTRUE x X_centered 0.4470*** (0.1296)   0.6671. (0.4022)\n________________________ __________________ __________________\nS.E. type                               IID                IID\nObservations                          1,000                492\nR2                                  0.84769            0.74687\nAdj. R2                             0.84723            0.74531\n\n                                         m3                 m4              m5\nDependent Var.:                           Y                  Y               Y\n                                                                              \ntreatedTRUE              0.7086*** (0.0900) 0.6104*** (0.1467) 0.5585 (0.4269)\ntreatedTRUE x X_centered     -1.307 (1.482)      6.280 (4.789)   41.21 (72.21)\n________________________ __________________ __________________ _______________\nS.E. type                               IID                IID             IID\nObservations                            206                 93              15\nR2                                  0.69322            0.59825         0.48853\nAdj. R2                             0.68867            0.58470         0.34904\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#granular-running-variable-1",
+    "href": "2023/weeks/week08/slides.html#granular-running-variable-1",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Granular Running Variable",
+    "text": "Granular Running Variable\n\nNot a whole lot we can do about this\nThere are some fancy RDD estimators that allow for granular running variables\nBut in general, if this is what you’re facing, you might be in trouble\nBefore doing an RDD, think “is it plausible that someone with the highest value just below the cutoff, and someone with the lowest value just above the cutoff are only at different values because of random chance?”"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#looking-for-lumping-1",
+    "href": "2023/weeks/week08/slides.html#looking-for-lumping-1",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Looking for Lumping",
+    "text": "Looking for Lumping\n\nIf there’s manipulation of the running variable around the cutoff, we can often see it in the presence of lumping\nI.e. if there’s a big cluster of observations to one side of the cutoff and a seeming gap missing on the other side"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#looking-for-lumping-2",
+    "href": "2023/weeks/week08/slides.html#looking-for-lumping-2",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Looking for Lumping",
+    "text": "Looking for Lumping\n\nHere’s an example from the real world in medical research - statistically, p-values should be uniformly distributed\nBut it’s hard to get insignificant results published in some journals. So people might “p-hack” until they find some form of analysis that’s significant, and also we have heavy selection into publication based on \\(p &lt; .05\\). Can’t use that cutoff for an RDD!\n\n\np-value graph from Perneger & Combescure, 2017"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#looking-for-lumping-3",
+    "href": "2023/weeks/week08/slides.html#looking-for-lumping-3",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Looking for Lumping",
+    "text": "Looking for Lumping\n\nHow can we look for this stuff?\nWe can look graphically by just checking for a jump at the cutoff in number of observations after binning\n\n\ndf_bin_count &lt;- df %&gt;%\n  # Select breaks so that one of hte breakpoints is the cutoff\n  mutate(X_bins = cut(X, breaks = 0:10/10)) %&gt;%\n  group_by(X_bins) %&gt;%\n  count()"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#looking-for-lumping-4",
+    "href": "2023/weeks/week08/slides.html#looking-for-lumping-4",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Looking for Lumping",
+    "text": "Looking for Lumping\n\nThe first one looks pretty good. We have one that looks not-so-good on the right"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#looking-for-lumping-5",
+    "href": "2023/weeks/week08/slides.html#looking-for-lumping-5",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "Looking for Lumping",
+    "text": "Looking for Lumping\n\nAnother thing we can do is do a “placebo test”\nCheck if variables other than treatment or outcome vary at the cutoff\nWe can do this by re-running our RDD but just swapping out some other variable for our outcome\nIf we get a significant jump, that’s bad! That tells us that other things are changing at the cutoff which implies some sort of manipulation (or just super lousy luck)"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#rdrobust-1",
+    "href": "2023/weeks/week08/slides.html#rdrobust-1",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "rdrobust",
+    "text": "rdrobust\n\nsummary(rdrobust(df$Y, df$X, c = .5))\n\nSharp RD estimates using local polynomial regression.\n\nNumber of Obs.                 1000\nBW type                       mserd\nKernel                   Triangular\nVCE method                       NN\n\nNumber of Obs.                  501          499\nEff. Number of Obs.             185          170\nOrder est. (p)                    1            1\nOrder bias  (q)                   2            2\nBW est. (h)                   0.174        0.174\nBW bias (b)                   0.293        0.293\nrho (h/b)                     0.594        0.594\nUnique Obs.                     501          499\n\n=============================================================================\n        Method     Coef. Std. Err.         z     P&gt;|z|      [ 95% C.I. ]       \n=============================================================================\n  Conventional     0.707     0.085     8.311     0.000     [0.540 , 0.874]     \n        Robust         -         -     6.762     0.000     [0.484 , 0.878]     \n============================================================================="
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#rdrobust-2",
+    "href": "2023/weeks/week08/slides.html#rdrobust-2",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "rdrobust",
+    "text": "rdrobust\n\nsummary(rdrobust(df$Y, df$X, c = .5, fuzzy = df$treatment))\n\nSharp RD estimates using local polynomial regression.\n\nNumber of Obs.                 1000\nBW type                       mserd\nKernel                   Triangular\nVCE method                       NN\n\nNumber of Obs.                  501          499\nEff. Number of Obs.             185          170\nOrder est. (p)                    1            1\nOrder bias  (q)                   2            2\nBW est. (h)                   0.174        0.174\nBW bias (b)                   0.293        0.293\nrho (h/b)                     0.594        0.594\nUnique Obs.                     501          499\n\n=============================================================================\n        Method     Coef. Std. Err.         z     P&gt;|z|      [ 95% C.I. ]       \n=============================================================================\n  Conventional     0.707     0.085     8.311     0.000     [0.540 , 0.874]     \n        Robust         -         -     6.762     0.000     [0.484 , 0.878]     \n============================================================================="
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#rdrobust-3",
+    "href": "2023/weeks/week08/slides.html#rdrobust-3",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "rdrobust",
+    "text": "rdrobust\n\nWe can even have it automatically make plots of our RDD! Same syntax\n\n\nrdplot(df$Y, df$X, c = .5)"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#thats-it",
+    "href": "2023/weeks/week08/slides.html#thats-it",
+    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "section": "That’s it!",
+    "text": "That’s it!\n\nThat’s what we have for RDD\nGo explore the regression discontinuity Seminar\nAnd the paper to read!\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
   }
 ]
