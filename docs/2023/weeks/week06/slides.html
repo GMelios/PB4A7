@@ -31,6 +31,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="../../../css/styles_slides.css">
@@ -336,8 +401,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block">
-  <h1 class="title"><font style="font-size:1em;">🗓️ Week 0<br> Presessionals</font></h1>
-  <p class="subtitle">PB4A7- Quantitative Applications for Behavioural Science</p>
+  <h1 class="title">Within Variation and Fixed Effects</h1>
+  <p class="subtitle">i.e.&nbsp;one thing to do when measurement eludes you</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -350,7 +415,7 @@ Dr.&nbsp;<a href="#/">George Melios</a>
     </div>
 </div>
 
-  <p class="date">18 Sep 2023</p>
+  <p class="date">Updated 2023-09-21</p>
 </section><section id="TOC">
 <nav role="doc-toc"> 
 <h2 id="toc-title">What we will cover today:</h2>
@@ -370,6 +435,44 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <li><a href="#/identification-error-1" id="/toc-identification-error-1">Identification Error</a></li>
 <li><a href="#/data-generating-process" id="/toc-data-generating-process">Data Generating Process</a></li>
 <li><a href="#/data-generating-process-1" id="/toc-data-generating-process-1">Data Generating Process</a></li>
+<li><a href="#/check-in" id="/toc-check-in">Check-in</a></li>
+<li><a href="#/the-measurement-problem" id="/toc-the-measurement-problem">The Measurement Problem…</a></li>
+<li><a href="#/a-pickle" id="/toc-a-pickle">A Pickle</a></li>
+<li><a href="#/the-rest-of-the-term" id="/toc-the-rest-of-the-term">The Rest of the Term</a></li>
+<li><a href="#/panel-data" id="/toc-panel-data">Panel Data</a></li>
+<li><a href="#/panel-data-1" id="/toc-panel-data-1">Panel Data</a></li>
+<li><a href="#/between-and-within" id="/toc-between-and-within">Between and Within</a></li>
+<li><a href="#/between-and-within-1" id="/toc-between-and-within-1">Between and Within</a></li>
+<li><a href="#/between-and-within-2" id="/toc-between-and-within-2">Between and Within</a></li>
+<li><a href="#/between-and-within-3" id="/toc-between-and-within-3">Between and Within</a></li>
+<li><a href="#/between-and-within-4" id="/toc-between-and-within-4">Between and Within</a></li>
+<li><a href="#/between-and-within-5" id="/toc-between-and-within-5">Between and Within</a></li>
+<li><a href="#/the-crime-rate" id="/toc-the-crime-rate">The Crime Rate</a></li>
+<li><a href="#/between-and-within-6" id="/toc-between-and-within-6">Between and Within</a></li>
+<li><a href="#/between-and-within-7" id="/toc-between-and-within-7">Between and Within</a></li>
+<li><a href="#/the-crime-rate-1" id="/toc-the-crime-rate-1">The Crime Rate</a></li>
+<li><a href="#/between-and-within-8" id="/toc-between-and-within-8">Between and Within</a></li>
+<li><a href="#/concept-checks" id="/toc-concept-checks">Concept Checks</a></li>
+<li><a href="#/removing-between-variation" id="/toc-removing-between-variation">Removing Between Variation</a></li>
+<li><a href="#/estimation-vs.-design" id="/toc-estimation-vs.-design">Estimation vs.&nbsp;Design</a></li>
+<li><a href="#/the-model" id="/toc-the-model">The Model</a></li>
+<li><a href="#/de-meaning" id="/toc-de-meaning">De-meaning</a></li>
+<li><a href="#/how-does-this-work" id="/toc-how-does-this-work">How does this work?</a></li>
+<li><a href="#/lets-do-it" id="/toc-lets-do-it">Let’s do it!</a></li>
+<li><a href="#/and-regress" id="/toc-and-regress">And Regress!</a></li>
+<li><a href="#/interpreting-a-within-relationship" id="/toc-interpreting-a-within-relationship">Interpreting a Within Relationship</a></li>
+<li><a href="#/concept-checks-1" id="/toc-concept-checks-1">Concept Checks</a></li>
+<li><a href="#/the-least-squares-dummy-variable-approach" id="/toc-the-least-squares-dummy-variable-approach">The Least Squares Dummy Variable Approach</a></li>
+<li><a href="#/lets-do-it-1" id="/toc-lets-do-it-1">Let’s do it!</a></li>
+<li><a href="#/the-same" id="/toc-the-same">The same!</a></li>
+<li><a href="#/why-lsdv" id="/toc-why-lsdv">Why LSDV?</a></li>
+<li><a href="#/why-lsdv-1" id="/toc-why-lsdv-1">Why LSDV?</a></li>
+<li><a href="#/why-not-lsdv" id="/toc-why-not-lsdv">Why Not LSDV?</a></li>
+<li><a href="#/going-professional" id="/toc-going-professional">Going Professional</a></li>
+<li><a href="#/going-professional-1" id="/toc-going-professional-1">Going Professional</a></li>
+<li><a href="#/limits-to-fixed-effects" id="/toc-limits-to-fixed-effects">Limits to Fixed Effects</a></li>
+<li><a href="#/concept-checks-2" id="/toc-concept-checks-2">Concept Checks</a></li>
+<li><a href="#/swirl" id="/toc-swirl">Swirl</a></li>
 </ul>
 </nav>
 </section>
@@ -599,12 +702,656 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 </section>
 <section class="slide level2">
 
+</section></section>
+<section>
+<section id="check-in" class="title-slide slide level1">
+<h1>Check-in</h1>
+<ul>
+<li>So far we’ve been learning about how to set up, run, and interpret an ordinary least squares regression</li>
+<li>This is a key skill for anyone doing anything with data - even if you never run a regular ol’ linear regression again, pretty much everything else in applied stats builds off of it in some way</li>
+<li>Another thing we’ve been doing is thinking about how to design and add controls to that regression to <em>identify</em> our effect of interest by closing back doors</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="the-measurement-problem" class="title-slide slide level1">
+<h1>The Measurement Problem…</h1>
+<ul>
+<li>And this has led us to some issues that have already popped up!</li>
+<li>For this approach to work, we need to not only <em>figure out</em> what we need to control for, using our diagram, but we need to <em>actually control for it</em></li>
+<li>A lot of the time we don’t have that data!</li>
+<li>And thus all the skeptical comments we had about the designs we came up with</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="a-pickle" class="title-slide slide level1">
+<h1>A Pickle</h1>
+<ul>
+<li>So obviously this is a problem, and it’s not one we can reason or trick our way out of</li>
+<li>If we don’t have the variable we need to control for, we don’t have it</li>
+<li>… or do we?</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="the-rest-of-the-term" class="title-slide slide level1">
+<h1>The Rest of the Term</h1>
+<ul>
+<li>Much of the rest of the term is going to be focused on <em>finding ways to control for stuff that we can’t measure</em></li>
+<li>Seems impossible! But it is possible, at least in some circumstances</li>
+<li>Today, we will be talking about <em>within variation</em> and <em>between variation</em>, and the ability to control for all <em>between variation</em> using <em>fixed effects</em></li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="panel-data" class="title-slide slide level1">
+<h1>Panel Data</h1>
+<ul>
+<li>We are working now in the domain of <em>panel data</em></li>
+<li>Panel data is when you observe the same individual over multiple time periods</li>
+<li>“Individual” could be a person, or a company, or a state, or a country, etc. There are <span class="math inline">\(N\)</span> individuals in the panel data</li>
+<li>“Time period” could be a year, a month, a day, etc.. There are <span class="math inline">\(T\)</span> time periods in the data</li>
+<li>For now we’ll assume we observe each individual the same number of times, i.e.&nbsp;a <em>balanced</em> panel (so we have <span class="math inline">\(N\times T\)</span> observations)</li>
+<li>You can use this stuff with unbalanced panels too, it just gets a little more complex</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="panel-data-1" class="title-slide slide level1">
+<h1>Panel Data</h1>
+<ul>
+<li>Here’s what (a few rows from) a panel data set looks like - a variable for individual (county), a variable for time (year), and then the data</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<table data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">County</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Year</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">CrimeRate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ProbofArrest</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">0.0398849</td>
+<td style="text-align: right;">0.289696</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">0.0383449</td>
+<td style="text-align: right;">0.338111</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">0.0303048</td>
+<td style="text-align: right;">0.330449</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">0.0347259</td>
+<td style="text-align: right;">0.362525</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">0.0365730</td>
+<td style="text-align: right;">0.325395</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">0.0347524</td>
+<td style="text-align: right;">0.326062</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">87</td>
+<td style="text-align: right;">0.0356036</td>
+<td style="text-align: right;">0.298270</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">0.0163921</td>
+<td style="text-align: right;">0.202899</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">0.0190651</td>
+<td style="text-align: right;">0.162218</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: right; padding: 0; border: 0;"><sup></sup> 9 rows out of 630. "Prob. of Arrest" is estimated probability of being arrested when you commit a crime</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="between-and-within" class="title-slide slide level1">
+<h1>Between and Within</h1>
+<ul>
+<li>Let’s pick a few counties and graph this out</li>
+</ul>
+
+<img data-src="slides_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid r-stretch" width="768"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="between-and-within-1" class="title-slide slide level1">
+<h1>Between and Within</h1>
+<ul>
+<li>If we look at the overall variation, just pretending this is all together, we get this</li>
+</ul>
+
+<img data-src="slides_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid r-stretch" width="768"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="between-and-within-2" class="title-slide slide level1">
+<h1>Between and Within</h1>
+<ul>
+<li>BETWEEN variation is what we get if we look at the relationship between the <em>means of each county</em></li>
+</ul>
+
+<img data-src="slides_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid r-stretch" width="768"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="between-and-within-3" class="title-slide slide level1">
+<h1>Between and Within</h1>
+<ul>
+<li>And I mean it! Only look at those means! The individual year-to-year variation within county doesn’t matter.</li>
+</ul>
+
+<img data-src="slides_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid r-stretch" width="768"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="between-and-within-4" class="title-slide slide level1">
+<h1>Between and Within</h1>
+<ul>
+<li>Within variation goes the other way - it treats those orange crosses as their own individualized sets of axes and looks at variation <em>within</em> county from year-to-year only!</li>
+<li>We basically slide the crosses over on top of each other and then analyze <em>that</em> data</li>
+</ul>
+
+<img data-src="slides_files/figure-html/unnamed-chunk-6-1.gif" class="img-fluid r-stretch"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="between-and-within-5" class="title-slide slide level1">
+<h1>Between and Within</h1>
+<ul>
+<li>We can clearly see that <em>between counties</em> there’s a strong positive relationship</li>
+<li>But if you look <em>within</em> a given county, the relationship isn’t that strong, and actually seems to be negative</li>
+<li>Which would make sense - if you think your chances of getting arrested are high, that should be a deterrent to crime</li>
+<li>But what are we actually doing here? Let’s think about the causal diagram / data-generating process!</li>
+<li>What goes into the probability of arrest and the crime rate? Lots of stuff!</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="the-crime-rate" class="title-slide slide level1">
+<h1>The Crime Rate</h1>
+<ul>
+<li>“LocalStuff” is just all the things unique to that area</li>
+<li>“LawAndOrder” is how committed local politicians are to “Law and Order Politics”</li>
+</ul>
+
+<img data-src="slides_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid r-stretch" width="768"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="between-and-within-6" class="title-slide slide level1">
+<h1>Between and Within</h1>
+<ul>
+<li>For each of these variables we can ask if they vary <em>between groups</em> and/or <em>within groups</em></li>
+<li>LocalStuff is all the stuff unique to that county - geography, landmarks, the quality of the schools, almost by definition this only varies <em>between groups</em>. It’s not like the things that make your county unique are different each year (or at least not very different)</li>
+<li>Whether the county has LawAndOrder and how many CivilRights you’re allowed might change a bit year to year, but in general, political climates like that change pretty slowly. At a bit of a stretch we can call that something that only varies between groups too</li>
+<li>Police budgets (and thus number of police on the streets) and Poverty (which varies with the economy) vary both between counties, but also <em>within</em> counties from year to year</li>
+<li>Variables with between variation only (by our assumption): LocalStuff, LawAndOrder, CivilRights</li>
+<li>Variables with both between and within variation: Police, Poverty</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="between-and-within-7" class="title-slide slide level1">
+<h1>Between and Within</h1>
+<ul>
+<li>Let’s simplify our graph!</li>
+<li>Some of the variables only vary <em>between counties</em></li>
+<li>So, we can replace those variables on the graph with the variable County</li>
+<li>Right? That’s where all the variation is anyway</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="the-crime-rate-1" class="title-slide slide level1">
+<h1>The Crime Rate</h1>
+<ul>
+<li>“LocalStuff” is just all the things unique to that area</li>
+<li>“LawAndOrder” is how committed local politicians are to “Law and Order Politics”</li>
+</ul>
+
+<img data-src="slides_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid r-stretch" width="768"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="between-and-within-8" class="title-slide slide level1">
+<h1>Between and Within</h1>
+<ul>
+<li>Now the task of identifying ProbArrest <span class="math inline">\(\rightarrow\)</span> CrimeRate becomes much simpler!</li>
+<li>If we control for County, that will close a lot of back doors for us</li>
+<li>(based on the diagram, all we need to control for is County and Poverty!)</li>
+<li>Conveniently, we can control for County just like it was any other variable!</li>
+<li>And when we do, we automatically <em>control for all variables that only have between variation</em>, whatever they are, even if we can’t measure them directly or didn’t think about them</li>
+<li><em>All that’s left is the within variation</em></li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="concept-checks" class="title-slide slide level1">
+<h1>Concept Checks</h1>
+<ul>
+<li>For each of these variables, would we expect them to have within variation, between variation, or both?</li>
+<li>(Individual = person) How a child’s height changes as they age.</li>
+<li>(Individual = person) In a data set tracking many people over many years, the variation in the number of children a person has in a given year.</li>
+<li>(Individual = city) Overall, Paris, France has more restaurants than Paris, Texas.</li>
+<li>(Individual = genre) The average pop music album sells more copies than the average jazz album</li>
+<li>(Individual = genre) Miles Davis’ <em>Kind of Blue</em> sold very well <em>for a jazz album</em>.</li>
+<li>(Individual = genre) Michael Jackson’s <em>Thriller</em>, a pop album, sold many more copies than <em>Kind of Blue</em>, a jazz album.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="removing-between-variation" class="title-slide slide level1">
+<h1>Removing Between Variation</h1>
+<ul>
+<li>Okay so that’s the concept</li>
+<li>Remove all the between variation so that all that’s left is within variation</li>
+<li>And in the process control for any variables that are made up only of between variation</li>
+<li>How can we actually do this? And what’s really going on?</li>
+<li>Let’s first talk about the regression model itself that this implies</li>
+<li>Then let’s actually do the thing. There are two main ways: <em>de-meaning</em> and <em>binary variables</em> (they give the same result, for balanced panels anyway)</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="estimation-vs.-design" class="title-slide slide level1">
+<h1>Estimation vs.&nbsp;Design</h1>
+<ul>
+<li>To be clear, this is <em>exactly 0% different</em> from what we’ve done before in terms of controlling for stuff</li>
+<li>And in fact we’re about to do the <em>exact same thing we did before</em> by just adding a categorical control variable for <code>county</code> or whatever</li>
+<li>(and in fact the “within” thing holds with other categorical controls - a categorical control for education isolates variation “within education levels”)</li>
+<li>The difference is the <em>reason we’re doing it</em>. It’s fixed effects because <em>a categorical control for individual controls for a lot of stuff</em>, and we think closes a <em>lot</em> of back doors for us, not just one, and not just ones we can measure</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="the-model" class="title-slide slide level1">
+<h1>The Model</h1>
+<p>The <span class="math inline">\(it\)</span> subscript says this variable varies over individual <span class="math inline">\(i\)</span> and time <span class="math inline">\(t\)</span></p>
+<p><span class="math display">\[Y_{it} = \beta_0 + \beta_1 X_{it} + \varepsilon_{it}\]</span></p>
+<ul>
+<li>What if there are individual-level components in the error term causing omitted variable bias?</li>
+<li><span class="math inline">\(X_{it}\)</span> is related to LocalStuff which is not in the model and thus in the error term!</li>
+<li>Regular ol’ omitted variable bias. If we don’t adjust for the individual effect, we get a biased <span class="math inline">\(\hat{\beta}_1\)</span></li>
+<li>(this bias is called “pooling bias” although it’s really just a form of omitted variable bias)</li>
+<li>We really have this then:</li>
+</ul>
+<p><span class="math display">\[Y_{it} = \beta_0 + \beta_1 X_{it} + (\alpha_i + \varepsilon_{it})\]</span></p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="de-meaning" class="title-slide slide level1">
+<h1>De-meaning</h1>
+<ul>
+<li>Let’s do de-meaning first, since it’s most closely and obviously related to the “removing between variation” explanation we’ve been going for</li>
+<li>The process here is simple!</li>
+</ul>
+<ol type="1">
+<li>For each variable <span class="math inline">\(X_{it}\)</span>, <span class="math inline">\(Y_{it}\)</span>, etc., get the mean value of that variable for each individual <span class="math inline">\(\bar{X}_i, \bar{Y}_i\)</span></li>
+<li>Subtract out that mean to get residuals <span class="math inline">\((X_{it} - \bar{X}_i), (Y_{it} - \bar{Y}_i)\)</span></li>
+<li>Work with those residuals</li>
+</ol>
+<ul>
+<li>That’s it!</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="how-does-this-work" class="title-slide slide level1">
+<h1>How does this work?</h1>
+<ul>
+<li>That <span class="math inline">\(\alpha_i\)</span> term gets absorbed</li>
+<li>The residuals are, by construction, no longer related to the <span class="math inline">\(\alpha_i\)</span>, so it no longer goes in the residuals!</li>
+</ul>
+<p><span class="math display">\[(Y_{it} - \bar{Y}_i) = \beta_0 + \beta_1(X_{it} - \bar{X}_i) + \varepsilon_{it}\]</span></p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="lets-do-it" class="title-slide slide level1">
+<h1>Let’s do it!</h1>
+<ul>
+<li>We can use <code>group_by</code> to get means-within-groups and subtract them out</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">data</span>(crime4, <span class="at">package =</span> <span class="st">'wooldridge'</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>crime4 <span class="ot">&lt;-</span> crime4 <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="co"># Filter to the data points from our graph</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">filter</span>(county <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">7</span>, <span class="dv">23</span>),</span>
+<span id="cb1-5"><a href="#cb1-5"></a>         prbarr <span class="sc">&lt;</span> .<span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">group_by</span>(county) <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">mutate</span>(<span class="at">mean_crime =</span> <span class="fu">mean</span>(crmrte),</span>
+<span id="cb1-8"><a href="#cb1-8"></a>         <span class="at">mean_prob =</span> <span class="fu">mean</span>(prbarr)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>  <span class="fu">mutate</span>(<span class="at">demeaned_crime =</span> crmrte <span class="sc">-</span> mean_crime,</span>
+<span id="cb1-10"><a href="#cb1-10"></a>         <span class="at">demeaned_prob =</span> prbarr <span class="sc">-</span> mean_prob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="and-regress" class="title-slide slide level1">
+<h1>And Regress!</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>orig_data <span class="ot">&lt;-</span> <span class="fu">feols</span>(crmrte <span class="sc">~</span> prbarr, <span class="at">data =</span> crime4)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>de_mean <span class="ot">&lt;-</span> <span class="fu">feols</span>(demeaned_crime <span class="sc">~</span> demeaned_prob, <span class="at">data =</span> crime4)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">etable</span>(orig_data, de_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                        orig_data           de_mean
+Dependent Var.:            crmrte    demeaned_crime
+                                                   
+Constant         0.0118* (0.0050) 1.41e-18 (0.0004)
+prbarr          0.0486** (0.0167)                  
+demeaned_prob                     -0.0305* (0.0117)
+_______________ _________________ _________________
+S.E. type                     IID               IID
+Observations                   27                27
+R2                        0.25308           0.21445
+Adj. R2                   0.22321           0.18303
+---
+Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="interpreting-a-within-relationship" class="title-slide slide level1">
+<h1>Interpreting a Within Relationship</h1>
+<ul>
+<li>How can we interpret that slope of <code>-0.03</code>?</li>
+<li>This is all <em>within variation</em> so our interpretation must be <em>within-county</em></li>
+<li>So, “comparing a county in year A where its arrest probability is 1 (100 percentage points) higher than it is in year B, we expect the number of crimes per person to drop by .03”</li>
+<li>Or if we think we’ve causally identified it (and want to work on a more realistic scale), “raising the arrest probability by 1 percentage point in a county reduces the number of crimes per person in that county by .0003”.</li>
+<li>We’re basically “controlling for county” (and will do that explicitly in a moment)</li>
+<li>So your interpretation should think of it in that way - <em>holding county constant</em> i.e.&nbsp;<em>comparing two observations with the same value of county</em> i.e.&nbsp;<em>comparing a county to itself at a different point in time</em></li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="concept-checks-1" class="title-slide slide level1">
+<h1>Concept Checks</h1>
+<ul>
+<li>Why does subtracting the within-individual mean of each variable “control for individual”?</li>
+<li>In a sentence, interpret the slope coefficient in the estimated model <span class="math inline">\((Y_{it} - \bar{Y}_i) = 2 + 3(X_{it} - \bar{X}_i)\)</span> where <span class="math inline">\(Y\)</span> is “blood pressure”, <span class="math inline">\(X\)</span> is “stress at work”, and <span class="math inline">\(i\)</span> is an individual person</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="the-least-squares-dummy-variable-approach" class="title-slide slide level1">
+<h1>The Least Squares Dummy Variable Approach</h1>
+<ul>
+<li>De-meaning the data isn’t the only way to do it!</li>
+<li>You can also use the least squares dummy variable (another word for “binary variable”) method</li>
+<li>We just treat “individual” like the categorical variable it is and add it as a control! Again, the regression approach is exactly the same as with any categorical control, but the <em>research design</em> reason for doing it is different</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="lets-do-it-1" class="title-slide slide level1">
+<h1>Let’s do it!</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>lsdv <span class="ot">&lt;-</span> <span class="fu">feols</span>(crmrte <span class="sc">~</span> prbarr <span class="sc">+</span> <span class="fu">factor</span>(county), <span class="at">data =</span> crime4)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">etable</span>(orig_data, de_mean, lsdv, <span class="at">keep =</span> <span class="fu">c</span>(<span class="st">'prbarr'</span>, <span class="st">'demeaned_prob'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                        orig_data           de_mean              lsdv
+Dependent Var.:            crmrte    demeaned_crime            crmrte
+                                                                     
+prbarr          0.0486** (0.0167)                   -0.0305* (0.0124)
+demeaned_prob                     -0.0305* (0.0117)                  
+_______________ _________________ _________________ _________________
+S.E. type                     IID               IID               IID
+Observations                   27                27                27
+R2                        0.25308           0.21445           0.94114
+Adj. R2                   0.22321           0.18303           0.93044
+---
+Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="the-same" class="title-slide slide level1">
+<h1>The same!</h1>
+<ul>
+<li>The result is the same, as it should be</li>
+<li>Except for that <span class="math inline">\(R^2\)</span> - What is that “within R2”?</li>
+<li>Because de-meaning takes out the part explained by the fixed effects ( <span class="math inline">\(\alpha_i\)</span> ) <em>before</em> running the regression, while LSDV does it <em>in</em> the regression</li>
+<li>So the .94 is the portion of <code>crmrte</code> explained by <code>prbarr</code> <em>and</em> <code>county</code>, whereas the .21 is the “within - <span class="math inline">\(R^2\)</span>” - the portion of <em>the within variation</em> that’s explained by <code>prbarr</code></li>
+<li>Neither is wrong (and the .94 isn’t “better”), they’re just measuring different things</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="why-lsdv" class="title-slide slide level1">
+<h1>Why LSDV?</h1>
+<ul>
+<li>A benefit of the LSDV approach is that it calculates the fixed effects <span class="math inline">\(\alpha_i\)</span> for you</li>
+<li>We left those out of the table with the <code>coefs</code> argument of <code>export_summs</code> (we rarely want them) but here they are:</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>OLS estimation, Dep. Var.: crmrte
+Observations: 27 
+Standard-errors: IID 
+                  Estimate Std. Error   t value   Pr(&gt;|t|)    
+(Intercept)       0.045631   0.004116  11.08640 1.7906e-10 ***
+prbarr           -0.030491   0.012442  -2.45068 2.2674e-02 *  
+factor(county)3  -0.025308   0.002165 -11.68996 6.5614e-11 ***
+factor(county)7  -0.009870   0.001418  -6.96313 5.4542e-07 ***
+factor(county)23 -0.008587   0.001258  -6.82651 7.3887e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+RMSE: 0.001933   Adj. R2: 0.930441</code></pre>
+</div>
+</div>
+<ul>
+<li>Interpretation is exactly the same as with a categorical variable - we have an omitted county, and these show the difference relative to that omitted county</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="why-lsdv-1" class="title-slide slide level1">
+<h1>Why LSDV?</h1>
+<ul>
+<li>This also makes clear another element of what’s happening! Just like with a categorical var, the line is moving <em>up and down</em> to meet the counties</li>
+<li>Graphically, de-meaning moves all the points together in the middle to draw a line, while LSDV moves the line up and down to meet the points</li>
+</ul>
+
+<img data-src="slides_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid r-stretch" width="768"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="why-not-lsdv" class="title-slide slide level1">
+<h1>Why Not LSDV?</h1>
+<ul>
+<li>LSDV is computationally expensive</li>
+<li>If there are a lot of individuals, or big data, or if you have many sets of fixed effects (yes you can do more than just individual - we’ll get to that next time!), it can be very slow</li>
+<li>Most professionally made fixed-effects commands use de-meaning, but then adjust the standard errors properly</li>
+<li>(They also leave the fixed effects coefficients off the regression table by default)</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="going-professional" class="title-slide slide level1">
+<h1>Going Professional</h1>
+<ul>
+<li>Applied researchers rarely do either of these, and rather will use a command specifically designed for fixed effects</li>
+<li>Like good ol’ <code>feols()</code>! (what did you think the “fe” part stood for?)</li>
+<li>Note there are also functions in <strong>fixest</strong> that do fixed effects in non-linear models like logit, probit, or poisson regression (<code>feglm()</code> and <code>fepois()</code>)</li>
+<li>Plus, it clusters the standard errors by the first fixed effect by default, which we usually want!</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="going-professional-1" class="title-slide slide level1">
+<h1>Going Professional</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(fixest)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>pro <span class="ot">&lt;-</span> <span class="fu">feols</span>(crmrte <span class="sc">~</span> prbarr <span class="sc">|</span> county, <span class="at">data =</span> crime4)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">etable</span>(de_mean, pro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                          de_mean               pro
+Dependent Var.:    demeaned_crime            crmrte
+                                                   
+Constant        1.41e-18 (0.0004)                  
+demeaned_prob   -0.0305* (0.0117)                  
+prbarr                            -0.0305* (0.0064)
+Fixed-Effects:  ----------------- -----------------
+county                         No               Yes
+_______________ _________________ _________________
+S.E. type                     IID        by: county
+Observations                   27                27
+R2                        0.21445           0.94114
+Within R2                      --           0.21445
+---
+Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="limits-to-fixed-effects" class="title-slide slide level1">
+<h1>Limits to Fixed Effects</h1>
+<ul>
+<li>Okay! At this point we have the concept behind fixed effects, can execute them, and know what they’re good for</li>
+<li>What aren’t they good for?</li>
+</ul>
+<ol type="1">
+<li>They don’t control for anything that has within variation</li>
+<li>They control away <em>everything</em> that’s between-only, so we can’t see the effect of anything that’s between-only (“effect of geography on crime rate?” Nope!)</li>
+<li>Anything with only a <em>little</em> within variation will have most of its variation washed out too (“effect of population density on crime rate?” probably not)</li>
+<li>The estimate pays the most attention to individuals with <em>lots of variation in treatment</em></li>
+</ol>
+<ul>
+<li>2 and 3 can be addressed by using “random effects” instead but we aren’t covering that in this class (see the The Effect chapter on Fixed Effects for more)</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="concept-checks-2" class="title-slide slide level1">
+<h1>Concept Checks</h1>
+<ul>
+<li>Why can’t we use individual-person fixed effects to study the impact of race on traffic stops?</li>
+<li>The within <span class="math inline">\(R^2\)</span> from is .3, and the overall <span class="math inline">\(R^2\)</span> is .5. Interpret these two numbers in sentences</li>
+<li>In a sentence, interpret the slope coefficient in the estimated model <span class="math inline">\((Y_{it} - \bar{Y}_i) = 1 + .5(X_{it} - \bar{X}_i)\)</span> where <span class="math inline">\(Y\)</span> is “school funding per child” and <span class="math inline">\(X\)</span> is “population growth”, and <span class="math inline">\(i\)</span> is city</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section id="swirl" class="title-slide slide level1">
+<h1>Swirl</h1>
+<ul>
+<li>Open up the Fixed Effects Swirl and let’s do it!</li>
+</ul>
 
 
 <img src="../../../figures/logos/MY_INSTITUTION.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>PB4A7- Quantitative Applications for Behavioural Science</p>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 

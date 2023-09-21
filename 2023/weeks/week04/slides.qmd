@@ -52,7 +52,7 @@ library(fixest)
 library(scales)
 library(Cairo)
 library(magick)
-# remotes::install_github('hadley/emo')
+remotes::install_github('hadley/emo')
 library(emo)
 theme_metro <- function(x) {
   theme_classic() + 
@@ -266,9 +266,11 @@ animate(p,nframes=200)
 
 # A Continuous Control
 
-```{r, out.width="800px"}
-knitr::include_graphics("linear_control.gif")
-```
+<figure>
+    <img src="/2023/weeks/week04/linear_control.gif" alt="Linear controls"
+    style="width:15em;height:15em;font-size:1em;" 
+    class="img-responsive atto_image_button_text-bottom">
+</figure>
 
 ---
 

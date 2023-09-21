@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -106,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><font style="font-size:1em;">🗓️ Week 0<br> Presessionals</font></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Instrumental Variables</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -124,6 +158,30 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">🏠 Home</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2023/syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📓 Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2023/Stata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">STATA resources</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2023/R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R &amp; Python resources</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2023/communication.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📟 Communication</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
@@ -133,6 +191,23 @@ ul.task-list li input[type="checkbox"] {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2023/weeks/week00/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presessionals</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2023/weeks/week00/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../2023/weeks/week01/page.html" class="sidebar-item-text sidebar-link">
@@ -145,6 +220,148 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../2023/weeks/week01/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2023/weeks/week01/page1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💻 Seminar Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2023/weeks/week02/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 02</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2023/weeks/week02/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2023/weeks/week03/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 03</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2023/weeks/week03/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2023/weeks/week04/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 04</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2023/weeks/week04/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2023/weeks/week05/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 05</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2023/weeks/week05/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2023/weeks/week06/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 06</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2023/weeks/week06/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2023/weeks/week07/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 07</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2023/weeks/week07/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2023/weeks/week08/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 08</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2023/weeks/week08/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2023/weeks/week09/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 09</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2023/weeks/week09/page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">👨‍🏫 Lecture Material</span></a>
   </div>
 </li>
@@ -177,6 +394,41 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#identification-error-1" id="toc-identification-error-1" class="nav-link" data-scroll-target="#identification-error-1">Identification Error</a></li>
   <li><a href="#data-generating-process" id="toc-data-generating-process" class="nav-link" data-scroll-target="#data-generating-process">Data Generating Process</a></li>
   <li><a href="#data-generating-process-1" id="toc-data-generating-process-1" class="nav-link" data-scroll-target="#data-generating-process-1">Data Generating Process</a></li>
+  <li><a href="#check-in" id="toc-check-in" class="nav-link" data-scroll-target="#check-in">Check-in</a></li>
+  <li><a href="#isolating-front-doors" id="toc-isolating-front-doors" class="nav-link" data-scroll-target="#isolating-front-doors">Isolating Front Doors</a></li>
+  <li><a href="#experiments" id="toc-experiments" class="nav-link" data-scroll-target="#experiments">Experiments</a></li>
+  <li><a href="#experiments-1" id="toc-experiments-1" class="nav-link" data-scroll-target="#experiments-1">Experiments</a></li>
+  <li><a href="#natural-experiments" id="toc-natural-experiments" class="nav-link" data-scroll-target="#natural-experiments">Natural Experiments</a></li>
+  <li><a href="#intuitively" id="toc-intuitively" class="nav-link" data-scroll-target="#intuitively">Intuitively</a></li>
+  <li><a href="#graphically" id="toc-graphically" class="nav-link" data-scroll-target="#graphically">Graphically</a></li>
+  <li><a href="#concept-checks" id="toc-concept-checks" class="nav-link" data-scroll-target="#concept-checks">Concept Checks</a></li>
+  <li><a href="#relevance-and-validity" id="toc-relevance-and-validity" class="nav-link" data-scroll-target="#relevance-and-validity">Relevance and Validity</a></li>
+  <li><a href="#two-stage-least-squares" id="toc-two-stage-least-squares" class="nav-link" data-scroll-target="#two-stage-least-squares">Two Stage Least Squares</a></li>
+  <li><a href="#two-stage-least-squares-1" id="toc-two-stage-least-squares-1" class="nav-link" data-scroll-target="#two-stage-least-squares-1">Two Stage Least Squares</a></li>
+  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
+  <li><a href="#r-1" id="toc-r-1" class="nav-link" data-scroll-target="#r-1">R</a></li>
+  <li><a href="#r-2" id="toc-r-2" class="nav-link" data-scroll-target="#r-2">R</a></li>
+  <li><a href="#concept-checks-1" id="toc-concept-checks-1" class="nav-link" data-scroll-target="#concept-checks-1">Concept Checks</a></li>
+  <li><a href="#the-good-and-the-bad" id="toc-the-good-and-the-bad" class="nav-link" data-scroll-target="#the-good-and-the-bad">The Good and the Bad</a></li>
+  <li><a href="#the-local-average-treatment-effect" id="toc-the-local-average-treatment-effect" class="nav-link" data-scroll-target="#the-local-average-treatment-effect">The Local Average Treatment Effect</a></li>
+  <li><a href="#the-local-average-treatment-effect-1" id="toc-the-local-average-treatment-effect-1" class="nav-link" data-scroll-target="#the-local-average-treatment-effect-1">The Local Average Treatment Effect</a></li>
+  <li><a href="#monotonicity" id="toc-monotonicity" class="nav-link" data-scroll-target="#monotonicity">Monotonicity</a></li>
+  <li><a href="#small-sample-bias" id="toc-small-sample-bias" class="nav-link" data-scroll-target="#small-sample-bias">Small-sample Bias</a></li>
+  <li><a href="#weak-instruments" id="toc-weak-instruments" class="nav-link" data-scroll-target="#weak-instruments">Weak Instruments</a></li>
+  <li><a href="#weak-instruments-1" id="toc-weak-instruments-1" class="nav-link" data-scroll-target="#weak-instruments-1">Weak Instruments</a></li>
+  <li><a href="#weak-instruments-2" id="toc-weak-instruments-2" class="nav-link" data-scroll-target="#weak-instruments-2">Weak Instruments</a></li>
+  <li><a href="#instruments-and-caution" id="toc-instruments-and-caution" class="nav-link" data-scroll-target="#instruments-and-caution">Instruments and Caution</a></li>
+  <li><a href="#instruments-and-caution-1" id="toc-instruments-and-caution-1" class="nav-link" data-scroll-target="#instruments-and-caution-1">Instruments and Caution</a></li>
+  <li><a href="#instruments-and-caution-2" id="toc-instruments-and-caution-2" class="nav-link" data-scroll-target="#instruments-and-caution-2">Instruments and Caution</a></li>
+  <li><a href="#instruments-and-caution-3" id="toc-instruments-and-caution-3" class="nav-link" data-scroll-target="#instruments-and-caution-3">Instruments and Caution</a></li>
+  <li><a href="#concept-checks-2" id="toc-concept-checks-2" class="nav-link" data-scroll-target="#concept-checks-2">Concept Checks</a></li>
+  <li><a href="#other-things-about-iv" id="toc-other-things-about-iv" class="nav-link" data-scroll-target="#other-things-about-iv">Other Things about IV</a></li>
+  <li><a href="#multiple-instruments" id="toc-multiple-instruments" class="nav-link" data-scroll-target="#multiple-instruments">Multiple Instruments</a></li>
+  <li><a href="#multiple-instruments-1" id="toc-multiple-instruments-1" class="nav-link" data-scroll-target="#multiple-instruments-1">Multiple Instruments</a></li>
+  <li><a href="#overidentification-tests" id="toc-overidentification-tests" class="nav-link" data-scroll-target="#overidentification-tests">Overidentification Tests</a></li>
+  <li><a href="#overidentification-tests-1" id="toc-overidentification-tests-1" class="nav-link" data-scroll-target="#overidentification-tests-1">Overidentification Tests</a></li>
+  <li><a href="#overidentification-tests-2" id="toc-overidentification-tests-2" class="nav-link" data-scroll-target="#overidentification-tests-2">Overidentification Tests</a></li>
+  <li><a href="#thats-it" id="toc-thats-it" class="nav-link" data-scroll-target="#thats-it">That’s it!</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
@@ -185,8 +437,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><font style="font-size:1em;">🗓️ Week 0<br> Presessionals</font></h1>
-<p class="subtitle lead">PB4A7- Quantitative Applications for Behavioural Science</p>
+<h1 class="title">Instrumental Variables</h1>
+<p class="subtitle lead">The (random) ripple effect</p>
 </div>
 
 
@@ -210,7 +462,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">18 Sep 2023</p>
+      <p class="date">Updated 2023-09-21</p>
     </div>
   </div>
   
@@ -399,6 +651,476 @@ ul.task-list li input[type="checkbox"] {
 <li>The supply and demand model and its equilibrium, we theorize!</li>
 </ul>
 <hr>
+</section>
+<section id="check-in" class="level1">
+<h1>Check-in</h1>
+<ul>
+<li>We’ve been talking about within variation and RDD, which are ways of controlling for stuff (and so solving endogeneity problems) without having to control for <em>everything</em> on all the back door paths</li>
+<li>They do this by finding a point in time at which only the treatment changes (DID) or finding a situation where nothing important changes over time (fixed effects)</li>
+<li>What if, instead of closing back doors by controlling for stuff (between variation), we instead <em>isolated just the exogenous part of the treatment</em>?</li>
+</ul>
+<hr>
+</section>
+<section id="isolating-front-doors" class="level1">
+<h1>Isolating Front Doors</h1>
+<p>The idea is this:</p>
+<ul>
+<li>The treatment varies for all sorts of reasons</li>
+<li>Many of those reasons are endogenous. If you get treatment because you’re really rich, that wealth is likely going to be related to whatever outcome</li>
+<li><em>Some reasons are exogenous</em>. If you get treatment because it was accidentally given to you at random, that’s unrelated to outcome</li>
+<li>Those <em>exogenous reasons for treatment</em> we can call <em>instruments</em> and we can perform <em>instrumental variables</em> analysis (IV)</li>
+<li>If we use <em>just the part of treatment driven by the instruments</em>, then <em>that part of treatment is exogenous</em> and we can ignore all the back doors! We’re identified</li>
+</ul>
+<hr>
+</section>
+<section id="experiments" class="level1">
+<h1>Experiments</h1>
+<ul>
+<li>If this sounds strange or implausible to you, we have an existing example ready to go</li>
+<li>Randomized experiments are conceptually <em>very</em> similar to the use of instruments</li>
+<li>Many endogenous reasons why people might get treatment. But the experiment’s randomization is an exogenous reason</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="slides_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="experiments-1" class="level1">
+<h1>Experiments</h1>
+<ul>
+<li>The <em>only</em> difference between a randomized experiment and an instrument is that in randomized experiments, we control and impose the randomization</li>
+<li>In the case of instruments we must find that exogenous variation in treatment in the world</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="slides_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="natural-experiments" class="level1">
+<h1>Natural Experiments</h1>
+<ul>
+<li>That’s why these are often referred to as “natural experiments” (although this is a broader term - DID and regression discontinuity are types of natural experiments too)</li>
+<li>That’s our goal though!</li>
+</ul>
+<ol type="1">
+<li>Find a source of exogenous variation in treatment</li>
+<li>Isolate just the part of treatment driven by <em>that exogenous variation</em></li>
+<li>Look at the relationship between <em>that part of treatment</em> and the outcome</li>
+<li>You’ve identified the effect!</li>
+</ol>
+<hr>
+</section>
+<section id="intuitively" class="level1">
+<h1>Intuitively</h1>
+<ul>
+<li>This is sort of like the <em>opposite of controlling for <span class="math inline">\(Z\)</span> </em></li>
+<li>We look for what part of <span class="math inline">\(X1\)</span> is explained by <span class="math inline">\(Z\)</span></li>
+<li>But instead of <em>removing</em> that variation by controlling for <span class="math inline">\(Z\)</span>…</li>
+<li>We <em>keep</em> that variation, and <em>remove all other variation in <span class="math inline">\(X1\)</span> </em></li>
+</ul>
+<hr>
+</section>
+<section id="graphically" class="level1">
+<h1>Graphically</h1>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="slides_files/figure-html/unnamed-chunk-3-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="concept-checks" class="level1">
+<h1>Concept Checks</h1>
+<ul>
+<li>Why is it important to partition the sources of variation in treatment into exogenous and endogenous? Why not do that with the outcome instead?</li>
+<li>What does it mean to say that we treat an instrument like the opposite of a control variable, and how do we do that?</li>
+<li>In the animation on the previous slide, why does it draw a straight line between the two points and measure its slope? What does that give us?</li>
+</ul>
+<hr>
+</section>
+<section id="relevance-and-validity" class="level1">
+<h1>Relevance and Validity</h1>
+<p>For this to work, we need two things to hold:</p>
+<ul>
+<li><strong>Relevance</strong>: the instrument must be a <em>strong predictor</em> of the treatment. It can’t be trivial or unimportant (or else what variation are you really isolating? You’ve got nothing to go on!)</li>
+<li><strong>Validity</strong>: the instrument must actually be <em>exogenous</em>! (Or at least exogenous after adding controls). The endogeniety problem doesn’t <em>go away</em> with IV, it’s just shifted from the treatment variable to the instrument</li>
+</ul>
+<p>Now, let’s keep these assumptions in mind as we move, and think about how we can actually carry this out</p>
+<hr>
+</section>
+<section id="two-stage-least-squares" class="level1">
+<h1>Two Stage Least Squares</h1>
+<p>So our goal is to: (1) use the instrument to predict treatment, and then (2) use that predicted treatment to predict the outcome!</p>
+<p>We need a separate equation for each of those steps</p>
+<p>“First stage”: predict treatment <span class="math inline">\(X_1\)</span> with the instrument <span class="math inline">\(Z\)</span>, perhaps also a control <span class="math inline">\(X_2\)</span>.</p>
+<p><span class="math display">\[X_1 = \gamma_0 + \gamma_1Z + \gamma_2X_2 + \nu\]</span></p>
+<p>Then, use that equation to predict <span class="math inline">\(X_1\)</span>, getting <span class="math inline">\(\hat{X_1}\)</span>. Then, use those predictions to predict <span class="math inline">\(Y\)</span> in the “second stage”</p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1\hat{X_1} + \beta_2X_2 + \varepsilon\]</span></p>
+<hr>
+</section>
+<section id="two-stage-least-squares-1" class="level1">
+<h1>Two Stage Least Squares</h1>
+<ul>
+<li>In general we don’t actually carry out this process ourselves because it will get the standard errors wrong (they need to be adjusted for the fact that <span class="math inline">\(\hat{X}_1\)</span> is estimated)</li>
+<li>But this shows what we’re doing - we’re isolating just the variation in treatment that is explained by the instrument</li>
+<li><span class="math inline">\(\hat{X}_1\)</span> contains <em>only</em> variation driven by <span class="math inline">\(Z\)</span></li>
+<li>So if <span class="math inline">\(Z\)</span> is exogenous after controlling for <span class="math inline">\(X_2\)</span>, then so is <span class="math inline">\(\hat{X}_1\)</span></li>
+<li>And <span class="math inline">\(\hat{\beta}_1\)</span> will be identified</li>
+</ul>
+<hr>
+</section>
+<section id="r" class="level1">
+<h1>R</h1>
+<p>We can do this in R by hand (although as mentioned, the SEs will be wrong)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>first_stage <span class="ot">&lt;-</span> <span class="fu">feols</span>(X1 <span class="sc">~</span> Z <span class="sc">+</span> X2, <span class="at">data =</span> df)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">predict_X1 =</span> <span class="fu">predict</span>(first_stage))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>second_stage <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y <span class="sc">~</span> predict_X1 <span class="sc">+</span> X2, <span class="at">data =</span> df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+</section>
+<section id="r-1" class="level1">
+<h1>R</h1>
+<p>There are a bunch of ways to do it properly in R. The classic is <code>ivreg</code> in the <strong>AER</strong> package, but other functions are more fully-featured, including robust SEs, clustering, and fixed effects if you want them. <code>felm</code> in <strong>lfe</strong>, <code>tsls</code> in <strong>sem</strong>, a number of things in <strong>ivpack</strong></p>
+<p>We’ll be using good ol’ <code>feols</code> from <strong>fixest</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>iv_regression <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y <span class="sc">~</span> X2 <span class="sc">|</span> X1 <span class="sc">~</span> Z, <span class="at">data =</span> df, <span class="at">se =</span> <span class="st">'hetero'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+</section>
+<section id="r-2" class="level1">
+<h1>R</h1>
+<p>If we actually want to <em>look at</em> that first stage, we can extract that</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>iv_regression<span class="sc">$</span>iv_first_stage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+</section>
+<section id="concept-checks-1" class="level1">
+<h1>Concept Checks</h1>
+<ul>
+<li>Why do you think that doing 2SLS by hand would make the standard errors be wrong?</li>
+<li>Intuitively, why would using Z-predicted values of X in predicting Y give us the causal effect if Z is a valid instrument?</li>
+<li>Why do we include the control variables in both the first and second stages?</li>
+</ul>
+<hr>
+</section>
+<section id="the-good-and-the-bad" class="level1">
+<h1>The Good and the Bad</h1>
+<p>What is good and bad about this whole process?</p>
+<p>The Good:</p>
+<ul>
+<li>Causal identification!</li>
+<li>Fairly easy to do</li>
+<li>Intuitive - just like a randomized experiment, but in the wild</li>
+</ul>
+<p>The Bad (we’ll go into these in detail)</p>
+<ul>
+<li>We get a local average treatment effect (LATE)</li>
+<li>Monotonicity</li>
+<li>Small-sample bias</li>
+<li>Instruments can’t be weak</li>
+<li>Good and believable instruments are <em>really hard to find</em></li>
+</ul>
+<hr>
+</section>
+<section id="the-local-average-treatment-effect" class="level1">
+<h1>The Local Average Treatment Effect</h1>
+<ul>
+<li>IV only allows variation in the treatment <em>that is driven by the instrument</em> - that’s the whole point</li>
+<li>This also means that we can only see the effect <em>among people for whom the instrument drives their treatment</em></li>
+<li>If a treatment improves <em>your</em> outcome by 2, but <em>my</em> outcome by only 1, and the instrument has a <em>big effect</em> on whether you get treatment, but only a <em>little effect</em> on me, then our IV estimate will be a lot closer to 2 than to 1</li>
+<li>This is a “local average treatment effect” - our estimate is <em>local</em> to people who are affected by the instrument (and even <em>more</em> local to those affected more heavily than others)</li>
+</ul>
+<hr>
+</section>
+<section id="the-local-average-treatment-effect-1" class="level1">
+<h1>The Local Average Treatment Effect</h1>
+<ul>
+<li>So?</li>
+<li>This does mean that the IV estimate won’t be representative of <em>everyone’s</em> effect</li>
+<li>Or even of <em>the people who actually were treated</em></li>
+<li>It might be less informative about <em>what would happen if we treated more people</em> than if we did an actual experiment</li>
+<li>But we might have to live with that to be able to use the cleaner identification</li>
+</ul>
+<hr>
+</section>
+<section id="monotonicity" class="level1">
+<h1>Monotonicity</h1>
+<ul>
+<li>Also, think about that - we weight people by how strongly they’re affected by the instrument</li>
+<li>What if someone is affected by the instrument <em>in an opposite direction</em> to everyone else? This would be a violation of <em>monotonicity</em></li>
+<li>Then, they would get a <em>negative weight</em> and our estimate doesn’t make much sense any more!</li>
+<li>So we need to assume that everyone is either <em>unaffected</em> by the instrument, or <em>affected in the exact same direction as everyone else</em></li>
+<li>When might this not be true? For example, say we’re using rainfall as an instrument for agricultural productivity</li>
+<li>Rain might help in dry areas, but make things worse in already-too-wet areas. The instrument would help productivity some places and hurt it in others</li>
+</ul>
+<hr>
+</section>
+<section id="small-sample-bias" class="level1">
+<h1>Small-sample Bias</h1>
+<ul>
+<li>IV is actually a <em>biased</em> estimator!</li>
+<li>The mean of its sampling distribution is <em>not</em> the population parameter!</li>
+<li>Or rather, it <em>would be</em> the population parameter at infinite sample size, but we don’t have that</li>
+<li>In small samples, the bias of IV is</li>
+</ul>
+<p><span class="math display">\[\frac{corr(Z,\varepsilon)}{corr(Z,X_1)}\frac{\sigma_\varepsilon}{\sigma_{X_1}}\]</span></p>
+<ul>
+<li>If <span class="math inline">\(Z\)</span> is valid, then in infinite samples <span class="math inline">\(corr(Z,\varepsilon)=0\)</span> and this goes away. But in a non-infinite sample, it will be nonzero by chance, inducing some bias. The smaller the sample, the more likely we are to get a large value by random chance</li>
+<li>The bias is smaller the stronger the relationship between <span class="math inline">\(Z\)</span> and <span class="math inline">\(X_1\)</span>, the smaller the sum of squared errors, and the bigger the variation in <span class="math inline">\(X_1\)</span></li>
+</ul>
+<hr>
+</section>
+<section id="weak-instruments" class="level1">
+<h1>Weak Instruments</h1>
+<ul>
+<li>This means we probably shouldn’t be using IV in small samples</li>
+<li>This also means that it’s really important that <span class="math inline">\(corr(Z,X_1)\)</span> isn’t small!</li>
+<li>If <span class="math inline">\(Z\)</span> has only a trivial effect on <span class="math inline">\(X_1\)</span>, then it’s not <em>relevant</em> - even if it’s truly exogenous, it doesn’t matter because there’s no variation in <span class="math inline">\(X_1\)</span> we can isolate with it</li>
+<li>And our small-sample bias will be big! (imagine the term in the previous slide if <span class="math inline">\(corr(Z,X_1) = .00001\)</span> !)</li>
+</ul>
+<hr>
+</section>
+<section id="weak-instruments-1" class="level1">
+<h1>Weak Instruments</h1>
+<ul>
+<li>There are some rules of thumb for how strong an instrument must be to be counted as “not weak”</li>
+<li>A t-statistic above 3, or an F statistic from a joint test of the instruments that is 10 or above</li>
+<li>These rules of thumb aren’t great - selecting a model on the basis of significance naturally biases your results. But people do use them a lot so you should be aware</li>
+<li>What you really want is to know the <em>population</em> effect of <span class="math inline">\(Z\)</span> on <span class="math inline">\(X1\)</span> - you want the F-statistic from <em>that</em> to be 10+. Of course we don’t actually know that.</li>
+</ul>
+<hr>
+</section>
+<section id="weak-instruments-2" class="level1">
+<h1>Weak Instruments</h1>
+<ul>
+<li>Whatever we feel about the rules-of-thumb, they’re quite common</li>
+<li>So much so that you get it by default when looking at <code>feols()</code> IV output</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>iv <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y <span class="sc">~</span> X2 <span class="sc">|</span> X1 <span class="sc">~</span> Z, <span class="at">data =</span> df, <span class="at">se =</span> <span class="st">'hetero'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>iv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>TSLS estimation, Dep. Var.: Y, Endo.: X1, Instr.: Z
+Second stage: Dep. Var.: Y
+Observations: 200 
+Standard-errors: Heteroskedasticity-robust 
+             Estimate Std. Error   t value  Pr(&gt;|t|)    
+(Intercept)  3.697702   0.166064 22.266665 &lt; 2.2e-16 ***
+fit_X1       0.553733   0.392039  1.412446   0.15940    
+X2          -0.022595   0.152040 -0.148612   0.88201    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+RMSE: 1.94425   Adj. R2: -0.019456
+F-test (1st stage), X1: stat = 346.4    , p &lt; 2.2e-16 , on 1 and 197 DoF.
+            Wu-Hausman: stat =   3.61357, p = 0.058777, on 1 and 196 DoF.</code></pre>
+</div>
+</div>
+<ul>
+<li>346.43 is way above 10! We’re probably fine in this particular regression</li>
+</ul>
+<hr>
+</section>
+<section id="instruments-and-caution" class="level1">
+<h1>Instruments and Caution</h1>
+<ul>
+<li>Good IVs are <em>really hard to find</em></li>
+<li>Claiming the IV is exogenous (even after adding controls) is the <em>same difficult problem</em> when we’re doing it for the IV as when we’re doing it for the treatment</li>
+<li>We’ve just shifted the claim to a variable it’s more likely to be true for</li>
+<li>And this is social science, where <em>everything is related to everything else</em>. So why isn’t your instrument part of that?</li>
+</ul>
+<hr>
+</section>
+<section id="instruments-and-caution-1" class="level1">
+<h1>Instruments and Caution</h1>
+<ul>
+<li>Let’s take rainfall as an example</li>
+<li>For a long time, developmental economists would use rainfall as an instrument for agricultural productivity</li>
+<li>Controlling for location, variation the exact amount of rainfall from year to year is basically random, right?</li>
+<li>Making it a good instrument so we can see the effect of agricultural productivity on other stuff</li>
+<li>Except that rainfall also affects all other sorts of stuff (like what kind of transportation people take)</li>
+<li>Also the monotonicity thing we talked about</li>
+<li>And <em>my</em> rainfall is correlated with my <em>neighbor’s</em> rainfall</li>
+<li>Also, wait a minute… other people use rainfall as an instrument for warfare! If it’s relevant for warfare, doesn’t that make it invalid for agriculture (and vice versa)?</li>
+<li>And other things</li>
+</ul>
+<hr>
+</section>
+<section id="instruments-and-caution-2" class="level1">
+<h1>Instruments and Caution</h1>
+<ul>
+<li>So rainfall isn’t seen as a great instrument any more</li>
+<li>In fact, lots of clever instruments that used to be thought of as good aren’t acceptable now due to similar problems - parental education as an instrument for your own, distance-you-live-from-a-college as an instrument on going-to-college, quarter of birth on education…</li>
+<li>No wonder we’re so skeptical of cool-looking instruments now!</li>
+</ul>
+<hr>
+</section>
+<section id="instruments-and-caution-3" class="level1">
+<h1>Instruments and Caution</h1>
+<ul>
+<li>Acceptable instruments these days fall into one of a few categories:</li>
+</ul>
+<ol type="1">
+<li>Actual literal randomization (like in a randomized experiment with imperfect compliance - see the Experiments module. Or similarly, fuzzy regression discontinuity - see the Regression Discontinuity module)</li>
+<li>Variables that are truly from outside the system and unrelated to anything social-sciency, like mistakes or computer glitches (for example, job interview scores for teachers were added incorrectly, as an instrument for progressing through the interview - Goldhaber, Grout, &amp; Huntington-Klein 2017)</li>
+<li>Variables you’d be really surprised to find out are relevant but just happen to be - and when you look into it there’s a good reason it’s relevant</li>
+</ol>
+<ul>
+<li>If you want to do IV, <strong>learn a lot a lot a lot of context</strong> so you can know <strong>really well</strong> how the IV fits into the data-generating process. You should be an expert on the topic you’re using IV in. Otherwise, how can you know it’s valid?</li>
+</ul>
+<hr>
+</section>
+<section id="concept-checks-2" class="level1">
+<h1>Concept Checks</h1>
+<ul>
+<li>Give an example where a local average treatment effect might give a very different answer from the average treatment effect</li>
+<li>Why will a violation of monotonicity make our estimate meaningless? Hint: think about the local average treatment effect</li>
+<li>Why would it be a problem for validity if the same instrument can be used for multiple different treatments?</li>
+<li>Why would we be suspicious of any instrument that “makes sense” as a determinant of treatment?</li>
+</ul>
+<hr>
+</section>
+<section id="other-things-about-iv" class="level1">
+<h1>Other Things about IV</h1>
+<ul>
+<li>Ok, enough of the scare tactics! Just be very aware of these problems</li>
+<li>What other neat things can we do with IV?</li>
+</ul>
+<p>Well,</p>
+<ul>
+<li>We can use <em>multiple</em> instruments, not just one</li>
+<li>(We could have multiple endogenous variables too, but we won’t cover that right now)</li>
+<li>We can use IV to solve <em>measurement issues</em> rather than endogeneity issues</li>
+<li>We can use IV to break <em>simultaneous causality</em></li>
+</ul>
+<hr>
+</section>
+<section id="multiple-instruments" class="level1">
+<h1>Multiple Instruments</h1>
+<ul>
+<li>How do we use more than one instrument for a single endogenous variable?</li>
+<li>Easy! Just add it to our prediction equation</li>
+</ul>
+<p><span class="math display">\[X_1 = \gamma_0 + \gamma_1Z_1 + \gamma_2Z_2 + \gamma_3X_2 + \nu\]</span></p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1\hat{X_1} + \beta_2X_2 + \varepsilon\]</span></p>
+<p>or in R, <code>feols(Y ~ X2 | X1 ~ Z1 + Z2 + X2, data = df)</code></p>
+<p>(we can add as many instruments as we want as long as we have valid ones! Some modern methods use <em>hundreds</em> of instruments and use machine learning to pick between them)</p>
+<hr>
+</section>
+<section id="multiple-instruments-1" class="level1">
+<h1>Multiple Instruments</h1>
+<p>Why would we do this?</p>
+<ul>
+<li>It can improve the fit and prediction of <span class="math inline">\(\hat{X}_1\)</span> which can reduce our weak-instrument problems</li>
+<li>It changes what is estimated slightly - we still get a local average treatment effect, but now we get a weighted average of the local average treatment effects for each instrument, perhaps bringing in the effects for more people or weighting people more evenly; maybe that’s a thing we want</li>
+<li>We can perform an overidentification test to get a better sense of validity</li>
+</ul>
+<hr>
+</section>
+<section id="overidentification-tests" class="level1">
+<h1>Overidentification Tests</h1>
+<ul>
+<li>“Overidentification” just means we have more identifying conditions (validity assumptions) than we actually need. We only need one instrument, but we have two! (or more)</li>
+<li>So we can compare what we get using each instrument individually</li>
+<li>If we assume that <em>at least one of them is valid</em>, and they both produce similar results, then that’s evidence that <em>both</em> are valid</li>
+<li>Like using one clock to set the time on another clock</li>
+<li>If they’re dissimilar, then <em>one</em> of them is likely invalid, but we don’t know which one - we just know they’re different</li>
+<li>(also maybe they’re just producing different local average treatment effects, but let’s not use that copout!)</li>
+</ul>
+<hr>
+</section>
+<section id="overidentification-tests-1" class="level1">
+<h1>Overidentification Tests</h1>
+<ul>
+<li>We can do this using <code>fitstat()</code> in <strong>fixest</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data where Z1 is valid and Z2 is invalid</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">Z1 =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>), <span class="at">Z2 =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">X =</span> Z1 <span class="sc">+</span> Z2 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># True effect is 1</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Y =</span> X <span class="sc">+</span> Z2 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>iv <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> X <span class="sc">~</span> Z1 <span class="sc">+</span> Z2, <span class="at">data =</span> df, <span class="at">se =</span> <span class="st">'hetero'</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">fitstat</span>(iv, <span class="st">'sargan'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sargan: stat = 267.8, p &lt; 2.2e-16, on 1 DoF.</code></pre>
+</div>
+</div>
+<ul>
+<li>That’s a small p-value! We can reject that the results are similar for each IV, telling us that one is endogenous (although without seeing the actual data generating process we couldn’t guess if it were <span class="math inline">\(Z1\)</span> or <span class="math inline">\(Z2\)</span> )</li>
+</ul>
+<hr>
+</section>
+<section id="overidentification-tests-2" class="level1">
+<h1>Overidentification Tests</h1>
+<ul>
+<li>And how different are they? What did the test see that it was comparing? (Notice the first model gives an accurate coefficient of 1)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>iv1 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> X <span class="sc">~</span> Z1, <span class="at">data =</span> df)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>iv2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> X <span class="sc">~</span> Z2, <span class="at">data =</span> df)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">export_summs</span>(iv1, iv2, <span class="at">statistics =</span> <span class="fu">c</span>(<span class="at">N =</span> <span class="st">'nobs'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table id="tab:unnamed-chunk-11" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Model 1</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Model 2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(Intercept)</td>
+<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-0.01&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.00&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td>
+<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.04)&nbsp;&nbsp;&nbsp;</td>
+<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.05)&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">fit_X</td>
+<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1.08 ***</td>
+<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1.92 ***</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td>
+<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.04)&nbsp;&nbsp;&nbsp;</td>
+<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.05)&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">N</td>
+<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.8pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.8pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="odd">
+<td colspan="3" data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">*** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05.</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<hr>
+</section>
+<section id="thats-it" class="level1">
+<h1>That’s it!</h1>
+<p>Be sure to cover</p>
+<ul>
+<li>The Swirl</li>
+<li>The homework</li>
+<li>The assigned paper</li>
+</ul>
 
 
 </section>

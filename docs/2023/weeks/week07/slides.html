@@ -31,6 +31,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="../../../css/styles_slides.css">
@@ -355,256 +420,554 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <nav role="doc-toc"> 
 <h2 id="toc-title">What we will cover today:</h2>
 <ul>
-<li><a href="#/who-are-we" id="/toc-who-are-we">Who are we</a></li>
-<li><a href="#/welcome-to-econometrics" id="/toc-welcome-to-econometrics">Welcome to Econometrics</a></li>
-<li><a href="#/welcome-to-econometrics-1" id="/toc-welcome-to-econometrics-1">Welcome to Econometrics</a></li>
-<li><a href="#/welcome-to-econometrics-2" id="/toc-welcome-to-econometrics-2">Welcome to Econometrics</a></li>
-<li><a href="#/admin" id="/toc-admin">Admin</a></li>
-<li><a href="#/causality-and-prediction" id="/toc-causality-and-prediction">Causality and Prediction</a></li>
-<li><a href="#/causality-and-prediction-1" id="/toc-causality-and-prediction-1">Causality and Prediction</a></li>
-<li><a href="#/causality-and-prediction-2" id="/toc-causality-and-prediction-2">Causality and Prediction</a></li>
-<li><a href="#/inference-error-and-randomness" id="/toc-inference-error-and-randomness">Inference Error and Randomness</a></li>
-<li><a href="#/inference-error-and-randomness-1" id="/toc-inference-error-and-randomness-1">Inference Error and Randomness</a></li>
-<li><a href="#/inference-error-and-randomness-2" id="/toc-inference-error-and-randomness-2">Inference Error and Randomness</a></li>
-<li><a href="#/identification-error" id="/toc-identification-error">Identification Error</a></li>
-<li><a href="#/identification-error-1" id="/toc-identification-error-1">Identification Error</a></li>
-<li><a href="#/data-generating-process" id="/toc-data-generating-process">Data Generating Process</a></li>
-<li><a href="#/data-generating-process-1" id="/toc-data-generating-process-1">Data Generating Process</a></li>
+<li><a href="#/check-in" id="/toc-check-in">Check-in</a></li>
+<li><a href="#/difference-in-differences" id="/toc-difference-in-differences">Difference-in-Differences</a></li>
+<li><a href="#/difference-in-differences-1" id="/toc-difference-in-differences-1">Difference-in-Differences</a></li>
+<li><a href="#/difference-in-differences-2" id="/toc-difference-in-differences-2">Difference-in-Differences</a></li>
+<li><a href="#/difference-in-differences-3" id="/toc-difference-in-differences-3">Difference-in-Differences</a></li>
+<li><a href="#/difference-in-differences-4" id="/toc-difference-in-differences-4">Difference-in-Differences</a></li>
+<li><a href="#/difference-in-difference" id="/toc-difference-in-difference">Difference-in-Difference</a></li>
+<li><a href="#/example" id="/toc-example">Example</a></li>
+<li><a href="#/example-1" id="/toc-example-1">Example</a></li>
+<li><a href="#/example-2" id="/toc-example-2">Example</a></li>
+<li><a href="#/difference-in-differences-5" id="/toc-difference-in-differences-5">Difference-in-Differences</a></li>
+<li><a href="#/concept-checks" id="/toc-concept-checks">Concept Checks</a></li>
+<li><a href="#/difference-in-difference-1" id="/toc-difference-in-difference-1">Difference-in-Difference</a></li>
+<li><a href="#/difference-in-differences-6" id="/toc-difference-in-differences-6">Difference-in-Differences</a></li>
+<li><a href="#/difference-in-differences-7" id="/toc-difference-in-differences-7">Difference-in-Differences</a></li>
+<li><a href="#/graphically" id="/toc-graphically">Graphically</a></li>
+<li><a href="#/design-vs.-regression" id="/toc-design-vs.-regression">Design vs.&nbsp;Regression</a></li>
+<li><a href="#/example-3" id="/toc-example-3">Example</a></li>
+<li><a href="#/example-4" id="/toc-example-4">Example</a></li>
+<li><a href="#/lets-try-ols" id="/toc-lets-try-ols">Let’s try OLS!</a></li>
+<li><a href="#/concept-checks-1" id="/toc-concept-checks-1">Concept Checks</a></li>
+<li><a href="#/more" id="/toc-more">More!!</a></li>
+<li><a href="#/more-1" id="/toc-more-1">More!!</a></li>
+<li><a href="#/more-2" id="/toc-more-2">More!!</a></li>
+<li><a href="#/more-3" id="/toc-more-3">More!!</a></li>
+<li><a href="#/downers-and-assumptions" id="/toc-downers-and-assumptions">Downers and Assumptions</a></li>
+<li><a href="#/does-it-work" id="/toc-does-it-work">Does it Work?</a></li>
+<li><a href="#/parallel-trends" id="/toc-parallel-trends">Parallel Trends</a></li>
+<li><a href="#/prior-trends" id="/toc-prior-trends">Prior Trends</a></li>
+<li><a href="#/prior-trends-1" id="/toc-prior-trends-1">Prior Trends</a></li>
+<li><a href="#/parallel-trends-1" id="/toc-parallel-trends-1">Parallel Trends</a></li>
+<li><a href="#/concept-checks-2" id="/toc-concept-checks-2">Concept Checks</a></li>
+<li><a href="#/and-a-warning" id="/toc-and-a-warning">And a Warning!</a></li>
 </ul>
 </nav>
 </section>
 <section>
-<section id="who-are-we" class="title-slide slide level1">
-<h1>Who are we</h1>
-
-</section>
-<section id="your-lecturer" class="slide level2 smaller">
-<h2>Your lecturer</h2>
-<div class="columns">
-<div class="column" style="display:inline-block;width:40%;height:60%;border-radius:1em;margin:1%;padding:1.5%;background-color:#f5f5f5">
-<figure>
-<img src="../../../figures/people/George.jpeg" alt="Photo of George" role="presentation" style="object-fit: cover;width:5em;height:5em;border-radius: 50%;font-size:1em;" class="img-responsive atto_image_button_text-bottom">
-<figcaption>
-<strong>Dr.&nbsp;<span><a href="#" target="_blank" class="external">Melios</a></span></strong> <br>Research Fellow
-</figcaption>
-</figure>
-</div><div class="column" style="width:50%;font-size:0.85em;margin-left:3%;">
+<section id="check-in" class="title-slide slide level1">
+<h1>Check-in</h1>
 <ul>
-<li>PhD in Economics</li>
-<li><strong>Background</strong>: Economics, Political Science, Behavioural Science</li>
+<li>We’re thinking through ways that we can identify the effect of interest without having to control for everything</li>
+<li>One way is by focusing on <em>within variation</em> - if all the endogeneity can be controlled for or only varies between-individuals, we can just focus on within variation to identify it</li>
+<li>Pro: control for a bunch of stuff</li>
+<li>Con: washes out a lot of variation! Result can be noisier if there’s not much within-variation to work with</li>
+<li>Also, this requires no endogenous variation over time</li>
+<li>That might be a tricky assumption! Often there are plenty of back doors that shift over time</li>
 </ul>
-<p><span class="tag" style="background-color:var(--quarto-hl-st-color)">Political Economy</span> <br> <span class="tag" style="background-color:var(--quarto-hl-fu-color)">Beliefs</span> <br> <span class="tag" style="background-color:var(--quarto-hl-dv-color)">Wellbeing</span></p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="difference-in-differences" class="title-slide slide level1">
+<h1>Difference-in-Differences</h1>
+<ul>
+<li>Today we will talk about difference-in-differences (DID), which is a way of using within variation in a more deliberate way in order to identify the effect we want</li>
+<li>All we need is a treatment that <em>goes into effect</em> at a particular time, and we need a group that is <em>treated</em> and a group that is <em>not</em></li>
+<li>Then, we compare the within-variation for the treated group vs.&nbsp;the within-variation for the untreated group</li>
+<li>Voila, we have an effect!</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="difference-in-differences-1" class="title-slide slide level1">
+<h1>Difference-in-Differences</h1>
+<ul>
+<li>Because the requirements to use it are so low, DID is used a <em>lot</em></li>
+<li>Any time a policy is enacted but isn’t enacted everywhere at once? DID!</li>
+<li>Plus, the logic is pretty straightforward</li>
+<li>Notice it doesn’t even get a full chapter in the textbook? That’s not because it’s unimportant - it’s because it’s easy!</li>
+<li>Here we’ll cover the concept, next time some example studies</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="difference-in-differences-2" class="title-slide slide level1">
+<h1>Difference-in-Differences</h1>
+<ul>
+<li>The question DID tries to answer is “what was the effect of (some policy) on the people who were affected by it?”</li>
+<li>We have some data on the people who were affected both before the policy went into effect and after</li>
+<li>However, we can’t just compare before and after, because we have a back door path - Time! Things change over Time for reasons unrelated to Treatment</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-1-1.png" class="img-fluid r-stretch" width="768"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="difference-in-differences-3" class="title-slide slide level1">
+<h1>Difference-in-Differences</h1>
+<ul>
+<li>Why not just control for Time? We can certainly measure that and we’ve controlled for it before!</li>
+<li>But we can’t! It would wash out all the variation!</li>
+<li>You’re either Before and Untreated, or After and Treated. So if you control for Time, you’re comparing people with the same values of Time - who must also have the same values of Treatment! So you can’t compare Treated and Untreated to get the effect</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="difference-in-differences-4" class="title-slide slide level1">
+<h1>Difference-in-Differences</h1>
+<ul>
+<li>The solution is to bring in a <em>control group</em> who is Untreated in both Before and After periods</li>
+<li>Now the diagram looks like this</li>
+<li>There’s more to control for (we have to control for Group differences too - isolate within variation), but this ALLOWS us to control for Time</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="img-fluid r-stretch" width="768"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="difference-in-difference" class="title-slide slide level1">
+<h1>Difference-in-Difference</h1>
+<ul>
+<li>We control for Group by isolating within variation (comparing After to Before)</li>
+<li>Then we control for Time by comparing those two sources of Within variation</li>
+<li>We ask <em>how much more increase</em> was there in Treatment than control?</li>
+<li>The Control change is probably the increase you could have expected regardless of Treatment</li>
+<li>So anything on <em>top of that</em> is the effect of Treatment</li>
+<li>Now we’ve controlled for Group and Time, identifying the effect!</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="example" class="title-slide slide level1">
+<h1>Example</h1>
+<ul>
+<li>Let’s say we have a pill that’s supposed to make you taller</li>
+<li>Give it to a kid Adelaide who is 48 inches tall</li>
+<li>Next year they’re 54 inches tall - a six inch increase! But they probably would have grown some anyway without the pill. Surely the pill doesn’t make you six inches taller.</li>
+<li>SO we compare them to their twin Bella, who started at 47 inches but we DON’T give a pill to</li>
+<li>Next year that twin is 51 inches tall - a four inch increase. So Adelaide probably would have grown about 4 inches without the pill. So the pill boosted her by <span class="math inline">\((54 - 48) - (51 - 47) = 6 - 4 = 2\)</span> additional inches</li>
+<li>“Adelaide, who was Treated, grew by two <em>more inches</em> than Bella, who was Untreated, did over the same period of time, so the pill made Adelaide grow by two inches”</li>
+<li>That’s DID!</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="example-1" class="title-slide slide level1">
+<h1>Example</h1>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="img-fluid r-stretch" width="768"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="example-2" class="title-slide slide level1">
+<h1>Example</h1>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="img-fluid r-stretch" width="768"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="difference-in-differences-5" class="title-slide slide level1">
+<h1>Difference-in-Differences</h1>
+<p>What <em>changes</em> are included in each value?</p>
+<ul>
+<li>Untreated Before: Untreated Group Mean</li>
+<li>Untreated After: Untreated Group Mean + Time Effect</li>
+<li>Treated Before: Treated Group Mean</li>
+<li>Treated After: Treated Group Mean + Time Effect + Treatment Effect</li>
+<li>Untreated After - Before = Time Effect</li>
+<li>Treated After - Before = Time Effect + Treatment Effect</li>
+<li>DID = (Treated After - Before) - (Untreated After - Before) = Treatment EFfect</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="concept-checks" class="title-slide slide level1">
+<h1>Concept Checks</h1>
+<ul>
+<li>Why do we need a control group? What does this let us do?</li>
+<li>What do we need to assume is true about our control group?</li>
+<li>In 2015, a new, higher minimum wage went into effect in Seattle, but this increase did not occur in some of the areas surrounding Seattle. How might you use DID to estimate the effect of this minimum wage change on employment levels?</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="difference-in-difference-1" class="title-slide slide level1">
+<h1>Difference-in-Difference</h1>
+<ul>
+<li>Of course, this only uses four data points</li>
+<li>Usually these four points would be four means from lots of observations, not just two people in two time periods</li>
+<li>How can we do this and get things like standard errors, and perhaps include controls?</li>
+<li>Why, use OLS of course!</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="difference-in-differences-6" class="title-slide slide level1">
+<h1>Difference-in-Differences</h1>
+<ul>
+<li>We can use what we know about binary variables and interaction terms to get our DID</li>
+</ul>
+<p><span class="math display">\[Y_{it} = \beta_0 + \beta_1After_t + \beta_2Treated_i + \beta_3After_tTreated_i + \varepsilon_{it}\]</span> where <span class="math inline">\(After_t\)</span> is a binary variable for being in the post-treatment period, and <span class="math inline">\(Treated_t\)</span> is a binary variable for being in the treated group</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    Person   Time Height After Treated
+1 Adelaide Before     48 FALSE    TRUE
+2 Adelaide  After     54  TRUE    TRUE
+3    Bella Before     47 FALSE   FALSE
+4    Bella  After     51  TRUE   FALSE</code></pre>
 </div>
 </div>
-</section></section>
-<section>
-<section id="welcome-to-econometrics" class="title-slide slide level1">
-<h1>Welcome to Econometrics</h1>
-
-</section>
-<section id="what-is-this-class" class="slide level2">
-<h2>What is this class</h2>
-<ul>
-<li>This is econometrics</li>
-<li>Econometrics is a field that covers how economists think about statistical analysis</li>
-<li>Many other social science fields (and fields like epidemiology) have picked up econometric tools as well becuase of how useful they tend to be</li>
-</ul>
 </section>
 <section class="slide level2">
 
+</section></section>
+<section>
+<section id="difference-in-differences-7" class="title-slide slide level1">
+<h1>Difference-in-Differences</h1>
 <ul>
-<li>So what is econometrics?</li>
-<li>Econometrics focuses on the study of <em>observational data</em></li>
-<li>Observational data are measurements of things that <em>the researcher does not control</em></li>
-<li>Given that we are working with observational data, we still want to understand the <em>causes of things</em></li>
-<li>The world is what it is, we are only here to study it</li>
+<li>How can we interpret this using what we know?</li>
+</ul>
+<p><span class="math display">\[Y_{it} = \beta_0 + \beta_1After_t + \beta_2Treated_i + \beta_3After_tTreated_i + \varepsilon_{it}\]</span></p>
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> is the prediction when <span class="math inline">\(Treated_i = 0\)</span> and <span class="math inline">\(After_t = 0\)</span> <span class="math inline">\(\rightarrow\)</span> the Untreated Before mean!</li>
+<li><span class="math inline">\(\beta_1\)</span> is the <em>difference between</em> Before and After for <span class="math inline">\(Treated_i = 0\)</span> <span class="math inline">\(\rightarrow\)</span> Untreated (After - Before)</li>
+<li><span class="math inline">\(\beta_2\)</span> is the <em>difference between</em> Treated and Untreated for <span class="math inline">\(After_t = 0\)</span> <span class="math inline">\(\rightarrow\)</span> Before (Treated - Untreated)</li>
+<li><span class="math inline">\(\beta_3\)</span> is <em>how much bigger the Before-After difference</em> is for <span class="math inline">\(Treated_i = 1\)</span> than for <span class="math inline">\(Treated_i = 0\)</span> <span class="math inline">\(\rightarrow\)</span> (Treated After - Before) - (Untreated After - Before) = DID!</li>
 </ul>
 </section>
 <section class="slide level2">
 
 </section></section>
 <section>
-<section id="welcome-to-econometrics-1" class="title-slide slide level1">
-<h1>Welcome to Econometrics</h1>
+<section id="graphically" class="title-slide slide level1">
+<h1>Graphically</h1>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.gif" class="img-fluid r-stretch"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="design-vs.-regression" class="title-slide slide level1">
+<h1>Design vs.&nbsp;Regression</h1>
 <ul>
-<li>When is this useful?</li>
-<li>We can’t randomly assign or experiment with things like how much education you get, or what our tax rates are, or what a stock’s recent returns have been, or where you live - that would generally be impossible or cruel</li>
-<li>But we still want to learn about the <em>underlying patterns</em> related to those data - how does X cause Y? What is the correct model to use to understand X and Y?</li>
-<li>That would be simple if we could control the situation, turn things on and off, randomize stuff</li>
-<li>But we can’t! So what now? Enter econometrics.</li>
+<li>Like with fixed effects, there is a distinction between <em>regression model</em> and <em>research design</em></li>
+<li>We have a model with an interaction term</li>
+<li>Not all models with interaction terms are DID!</li>
+<li>It’s DID because it’s an interaction between treated/control and before/after</li>
+<li>If you don’t have a before/after, or you don’t have a control group, that same setup may tell you something interesting but it won’t be DID!</li>
 </ul>
 </section>
 <section class="slide level2">
 
 </section></section>
 <section>
-<section id="welcome-to-econometrics-2" class="title-slide slide level1">
-<h1>Welcome to Econometrics</h1>
+<section id="example-3" class="title-slide slide level1">
+<h1>Example</h1>
 <ul>
-<li>This is a great course (if I do say so)</li>
-<li>When I took it, what it left me feeling was <em>powerful</em></li>
-<li>It gave me the ability to answer questions I was interested in on my own</li>
-<li>And to understand the degree of confidence I could have in my own results and in others</li>
-<li>“A new study says…” you don’t need to take the paper’s word for that any more!</li>
+<li>The Earned Income Tax Credit was increased in 1993. This may increase chances single mothers (treated) return to work, but likely not affect single non-moms (control)</li>
+<li>Does this program help moms get back to work?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'http://nickchk.com/eitc.csv'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">mutate</span>(<span class="at">after =</span> year <span class="sc">&gt;=</span> <span class="dv">1994</span>,</span>
+<span id="cb2-3"><a href="#cb2-3"></a>         <span class="at">treated =</span> children <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">group_by</span>(after, treated) <span class="sc">%&gt;%</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">summarize</span>(<span class="at">proportion_working =</span> <span class="fu">mean</span>(work))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+# Groups:   after [2]
+  after treated proportion_working
+  &lt;lgl&gt; &lt;lgl&gt;                &lt;dbl&gt;
+1 FALSE FALSE                0.575
+2 FALSE TRUE                 0.446
+3 TRUE  FALSE                0.573
+4 TRUE  TRUE                 0.491</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="example-4" class="title-slide slide level1">
+<h1>Example</h1>
+<ul>
+<li>We can do it by just comparing the points, like we did with Adelaide and Bella</li>
+<li>This will give us the DID estimate: The EITC increase increases the probability of working by 4.7 percentage points</li>
+<li>But not standard errors, or the ability to include controls easily</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>means <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">group_by</span>(after, treated) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">summarize</span>(<span class="at">proportion_working =</span> <span class="fu">mean</span>(work)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">pull</span>(proportion_working)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>(means[<span class="dv">4</span>] <span class="sc">-</span> means[<span class="dv">2</span>]) <span class="sc">-</span> (means[<span class="dv">3</span>] <span class="sc">-</span> means[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.04687313</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="lets-try-ols" class="title-slide slide level1">
+<h1>Let’s try OLS!</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>did_reg <span class="ot">&lt;-</span> <span class="fu">feols</span>(work <span class="sc">~</span> after<span class="sc">*</span>treated, <span class="at">data =</span> df)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">etable</span>(did_reg, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                  did_reg
+Dependent Var.:                      work
+                                         
+Constant                 0.575*** (0.009)
+afterTRUE                  -0.002 (0.013)
+treatedTRUE             -0.129*** (0.012)
+afterTRUE x treatedTRUE   0.047** (0.017)
+_______________________ _________________
+S.E. type                             IID
+Observations                       13,746
+R2                                0.01260
+Adj. R2                           0.01238
+---
+Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="concept-checks-1" class="title-slide slide level1">
+<h1>Concept Checks</h1>
+<ul>
+<li>There are four coefficients on the previous slide. Interpret them carefully in a sentence each.</li>
+<li>Why can the <span class="math inline">\(After \times TreatedGroup\)</span> interaction stand in for <span class="math inline">\(Treated\)</span> ?</li>
 </ul>
 </section>
 <section class="slide level2">
 
 </section></section>
 <section>
-<section id="admin" class="title-slide slide level1">
-<h1>Admin</h1>
+<section id="more" class="title-slide slide level1">
+<h1>More!!</h1>
 <ul>
-<li>Review the syllabus (and other materials on Canvas). Reading assignments there</li>
-<li>Our textbook is <a href="https://theeffectbook.net">The Effect</a>, by me, which can be read for free.</li>
-<li>Also these slides</li>
-<li>Programming in R: free, you will want to have access to it. We will get to this next time</li>
-<li>Assignments: Weekly homework combining econometrics and R tasks</li>
-<li>There is a midterm and a final</li>
-<li>A data exploration project</li>
-<li>A group data analysis project</li>
-<li>And completion of Swirl modules and online discussion</li>
+<li>You can recognize <span class="math inline">\(After_t\)</span> and <span class="math inline">\(Treated_i\)</span> as <em>fixed effects</em></li>
+<li><span class="math inline">\(Treated_i\)</span> is a fixed effect for group - we only need one coefficient for it since there are only two groups</li>
+<li>And <span class="math inline">\(After_t\)</span> is a fixed effect for <em>time</em> - one coefficient for two time periods</li>
+<li>You can have more than one set of fixed effects like this! Our interpretation is now within-group <em>and</em> within-time</li>
+<li>(i.e.&nbsp;comparing the within-group variation across groups)</li>
 </ul>
 </section>
 <section class="slide level2">
 
 </section></section>
 <section>
-<section id="causality-and-prediction" class="title-slide slide level1">
-<h1>Causality and Prediction</h1>
+<section id="more-1" class="title-slide slide level1">
+<h1>More!!</h1>
 <ul>
-<li>Okay so what are we doing here exactly?</li>
-<li>In econometrics, we are working with data</li>
-<li>Statisticians also work with data</li>
-<li>So do data scientists</li>
-<li>The <em>goals</em> for these groups differ considerably</li>
+<li>We can extend this to having more than two groups, some of which get treated and some of which don’t</li>
+<li>And more than two time periods! Multiple before and/or multiple after</li>
+<li>We don’t have a full set of interaction terms, we still only need the one, which we can now call <span class="math inline">\(CurrentlyTreated_{it}\)</span></li>
+<li><strong>If you have more than two groups and/or more than two time periods, then this is what you should be doing</strong></li>
 </ul>
 </section>
 <section class="slide level2">
 
 </section></section>
 <section>
-<section id="causality-and-prediction-1" class="title-slide slide level1">
-<h1>Causality and Prediction</h1>
+<section id="more-2" class="title-slide slide level1">
+<h1>More!!</h1>
 <ul>
-<li>Data scientists are generally concerned with <em>prediction</em></li>
-<li>They want to use the data at hand to <em>predict</em> what comes next</li>
-<li>They generally don’t care <em>why</em> they’re making the prediction they are</li>
-<li>This can be really handy for certain tasks - “is this picture a cat or a dog?” “what’s the probability that a customer with qualities X, Y, and Z will end up purchasing our good?” “do you have lymphoma?”</li>
+<li>Let’s make some quick example data to show this off, with the first treated period being period 7 and the treated groups being 1 and 9, and a true effect of 3</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>did_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">sort</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">10</span>)),</span>
+<span id="cb8-2"><a href="#cb8-2"></a>                   <span class="at">time =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">10</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">mutate</span>(<span class="at">CurrentlyTreated  =</span> group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">9</span>) <span class="sc">&amp;</span> time <span class="sc">&gt;=</span> <span class="dv">7</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">mutate</span>(<span class="at">Outcome =</span> group <span class="sc">+</span> time <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>CurrentlyTreated <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>))</span>
+<span id="cb8-5"><a href="#cb8-5"></a>did_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 100 × 4
+   group  time CurrentlyTreated Outcome
+   &lt;int&gt; &lt;int&gt; &lt;lgl&gt;              &lt;dbl&gt;
+ 1     1     1 FALSE               1.50
+ 2     1     2 FALSE               2.43
+ 3     1     3 FALSE               3.70
+ 4     1     4 FALSE               5.75
+ 5     1     5 FALSE               4.57
+ 6     1     6 FALSE               6.47
+ 7     1     7 TRUE               11.1 
+ 8     1     8 TRUE               12.6 
+ 9     1     9 TRUE               12.6 
+10     1    10 TRUE               13.6 
+# ℹ 90 more rows</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="more-3" class="title-slide slide level1">
+<h1>More!!</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Put group first so the clustering is on group</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>many_periods_did <span class="ot">&lt;-</span> <span class="fu">feols</span>(Outcome <span class="sc">~</span> CurrentlyTreated <span class="sc">|</span> group <span class="sc">+</span> time, <span class="at">data =</span> did_data)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">etable</span>(many_periods_did)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      many_periods_did
+Dependent Var.:                Outcome
+                                      
+CurrentlyTreatedTRUE 3.095*** (0.4991)
+Fixed-Effects:       -----------------
+group                              Yes
+time                               Yes
+____________________ _________________
+S.E.: Clustered              by: group
+Observations                       100
+R2                             0.96131
+Within R2                      0.34238
+---
+Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="downers-and-assumptions" class="title-slide slide level1">
+<h1>Downers and Assumptions</h1>
+<ul>
+<li>So… does this all work?</li>
+<li>That example got pretty close to the truth of 3 but who knows in other cases!</li>
+<li>What needs to be true for this to work?</li>
 </ul>
 </section>
 <section class="slide level2">
 
 </section></section>
 <section>
-<section id="causality-and-prediction-2" class="title-slide slide level1">
-<h1>Causality and Prediction</h1>
+<section id="does-it-work" class="title-slide slide level1">
+<h1>Does it Work?</h1>
 <ul>
-<li>Econometricians, on the other hand, care almost exclusively about <em>why</em></li>
-<li>Data scientists want to minimize <em>prediction error</em></li>
-<li>Econometricians want to minimize <em>inference</em> and <em>identification error</em></li>
-<li>We want to correctly understand <em>the underlying data generating process</em></li>
+<li>This gives us a causal effect as long as <em>the only reason the gap changed</em> was the treatment</li>
+<li>If Adelaide would have grown six inches <em>anyway</em>, then the gap would have grown by 2, pill or not. The pill did nothing in that case! But we don’t know that and mistakenly say it helped her grow by 2</li>
+<li>In fixed effects, we need to assume that there’s no uncontrolled endogenous variation across time</li>
+<li>In DID, we need to assume that there’s no uncontrolled endogenous variation <em>across this particular before/after time change</em></li>
+<li>An easier assumption to justify but still an assumption!</li>
 </ul>
 </section>
 <section class="slide level2">
 
 </section></section>
 <section>
-<section id="inference-error-and-randomness" class="title-slide slide level1">
-<h1>Inference Error and Randomness</h1>
+<section id="parallel-trends" class="title-slide slide level1">
+<h1>Parallel Trends</h1>
 <ul>
-<li>One big problem we face when trying to figure out how variables relate to each other is <em>randomness</em></li>
-<li>This is simply the fact that, when we gather data, we can only possibly get a subsample of <em>all</em> the data</li>
-<li>So, just by random chance, the relationship we get in our data might not be quite the same as the true relationship</li>
+<li>This assumption - that nothing else changes at the same time, is the poorly-named “parallel trends”</li>
+<li>Again, this assumes that, <em>if the Treatment hadn’t happened to anyone</em>, the gap between the two would have stayed the same</li>
+<li>Sometimes people check whether this assumption is plausible by seeing if <em>prior trends</em> are the same for Treated and Untreated - if we have multiple pre-treatment periods, was the gap changing a lot during that period?</li>
+<li>Sometimes people also “adjust for prior trends” to fix parallel trends violations, or use related methods like Synthetic Control (these are outside the scope of this class)</li>
 </ul>
 </section>
 <section class="slide level2">
 
 </section></section>
 <section>
-<section id="inference-error-and-randomness-1" class="title-slide slide level1">
-<h1>Inference Error and Randomness</h1>
+<section id="prior-trends" class="title-slide slide level1">
+<h1>Prior Trends</h1>
 <ul>
-<li>So if we look in a data set and see that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> appear to be positively related to each other…</li>
-<li>Are they actually positively related, or is that just random chance?</li>
-<li>If they are positively related, maybe we’re understating or overstating <em>how</em> positively related</li>
+<li>Let’s see how that EITC example looks in the leadup to 1994</li>
+<li>They look like the gap between them is pretty constant before 1994! They move up and down but the <em>gap</em> stays the same. That’s good.</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="img-fluid r-stretch" width="768"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="prior-trends-1" class="title-slide slide level1">
+<h1>Prior Trends</h1>
+<ul>
+<li>Formally, prior trends being the same tells us nothing about parallel trends</li>
+<li>But it can be suggestive. Going back to the height pill example, what if instead of comparing Adelaide and Bella, child twins, we compared Adelaide to <em>me</em>?</li>
+<li>Seeing the gap closing <em>anyway</em> in previous years would be a pretty good clue that it’s not just the pill</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-14-1.png" class="img-fluid r-stretch" width="768"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="parallel-trends-1" class="title-slide slide level1">
+<h1>Parallel Trends</h1>
+<ul>
+<li>Just because <em>prior trends</em> are equal doesn’t mean that <em>parallel trends</em> holds.</li>
+<li><em>Parallel trends</em> is about what the before-after change <em>would have been</em> - we can’t see that!</li>
+<li>For example, let’s say we want to see the effect of online teaching on student test scores, using COVID school shutdowns to get a Before/After</li>
+<li>As of March/April 2020, some schools had gone online (Treated) and others hadn’t (Untreated)</li>
+<li>Test score trends were probably pretty similar in the Before periods (Jan/Feb 2020), so prior trends are likely the same</li>
+<li>But LOTS of stuff changed between Jan/Feb and Mar/Apr, like, uh, Coronavirus, lockdowns, etc. not just online teaching! SO <em>parallel trends</em> likely wouldn’t hold</li>
 </ul>
 </section>
 <section class="slide level2">
 
 </section></section>
 <section>
-<section id="inference-error-and-randomness-2" class="title-slide slide level1">
-<h1>Inference Error and Randomness</h1>
+<section id="concept-checks-2" class="title-slide slide level1">
+<h1>Concept Checks</h1>
 <ul>
-<li>If the true relationship is 0, then in the data we’ll see a positive relationship half the time, and a negative relationship half the time</li>
-<li>Even though the truth is 0!</li>
-<li>How can we properly make an <em>inference</em> about whether the relationship is 0 or not (or positive, or negative, or <em>how</em> positive or negative), taking into account this randomness?</li>
-<li>That’s being careful about inference. The statisticians teach us all about this!</li>
+<li>Go back to the Seattle minimum wage effect example from the first Concept Check slide. Clearly state what the parallel trends assumption means in this context.</li>
+<li>It’s possible (although perhaps unlikely) that parallel trends can hold even if it looks like the treatment and control groups were trending apart before treatment went into effect. How is this possible?</li>
 </ul>
 </section>
 <section class="slide level2">
 
 </section></section>
-<section>
-<section id="identification-error" class="title-slide slide level1">
-<h1>Identification Error</h1>
+<section id="and-a-warning" class="title-slide slide level1">
+<h1>And a Warning!</h1>
 <ul>
-<li>What is identification error?</li>
-<li><em>Identification</em> is how you link the <em>result you see</em> with the <em>conclusion you draw from it</em></li>
-<li>For example, say you observe that kids who play video games are more aggressive in everyday life (result), and you conclude from that result that video games make kids more aggressive (conclusion)</li>
-<li>If <em>seeing that result is actually evidence for that conclusion</em>, then we are properly <em>identified</em></li>
+<li>One other note about DID is that its popularity is relatively recent, as things go, so we’re still learning a lot about it!</li>
+<li>Most relevant has to do with <em>staggered rollout DID</em></li>
+<li>You may have noticed that the OLS version of DID doesn’t <em>necessarily</em> need to have treatment applied at <em>one</em> particular time</li>
+<li>Say Washington gets treated in 2017, then California in 2018 - we can use these both as Treated groups and just use the same two-way fixed effects, right?</li>
+<li>Well… that’s what we thought for a long time. And you’ll see a LOT of published studies doing this. But it turns out to actually bias results by quite a lot</li>
+<li>There are more complex modern estimators for staggered rollout DID (say, in the <strong>did</strong> package), but they’re a bit much to go into for this class</li>
+<li>For now, stick to DID designs where all the Treated groups are treated in the same period</li>
 </ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="identification-error-1" class="title-slide slide level1">
-<h1>Identification Error</h1>
-<ul>
-<li>But if there’s another reason why we might see that result, i.e.&nbsp;if the same result could give us a different conclusion, like <em>kids who are aggressive play more video games</em> or <em>people notice aggression more when kids play video games</em>, then we have made an <em>identification error</em> - our result was not identified!</li>
-<li>Identification error is when your result in the data doesn’t actually have a clear theoretical (“why” or “because”) interpretation</li>
-<li>For example, if you observe that people tend to wear more shorts on days they eat more ice cream, and you conclude that eating ice cream makes you put on shorts, you have committed an identification error</li>
-<li>One day in and all we can do is complain, eesh</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="data-generating-process" class="title-slide slide level1">
-<h1>Data Generating Process</h1>
-<ul>
-<li>To avoid identification error, economists think closely about the <em>data generating process</em></li>
-<li>What is a data generating process?</li>
-<li>The data generating process is the <em>true set of laws</em> that determine where our data comes from</li>
-<li>For example, if you hold a rock and drop it, it falls to the floor</li>
-<li>What is the data we observe? (Hold the rock &amp; Rock is up) and (Let go &amp; Rock is down)</li>
-<li>What is the data generating process? Gravity makes the rock fall down when you drop it</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="data-generating-process-1" class="title-slide slide level1">
-<h1>Data Generating Process</h1>
-<ul>
-<li>Another example is a model of supply and demand</li>
-<li>We observe prices and quantities in a competitive market</li>
-<li>What led to those being the prices and quantities we see?</li>
-<li>The supply and demand model and its equilibrium, we theorize!</li>
-</ul>
-</section>
-<section class="slide level2">
-
 
 
 <img src="../../../figures/logos/MY_INSTITUTION.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>PB4A7- Quantitative Applications for Behavioural Science</p>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
@@ -816,6 +1179,44 @@ Dr.&nbsp;<a href="#/">George Melios</a>
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
