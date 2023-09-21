@@ -1,0 +1,24 @@
+---
+title: "<font style='font-size:1em;'>💻 Seminar 1 <br/> Hidden Curriculum</font>"
+author: Dr. [George Melios](#)
+institute: '[London School of Economics and Political Science](#)'
+date: 26 September 2023
+date-meta: 26 September 2023
+date-format: "DD MMM YYYY"
+toc: true
+toc-depth: 1
+toc-title: "What we will cover today:"
+center-title-slide: false
+from: markdown+emoji
+format:
+  revealjs: 
+    fig-responsive: true
+    theme: simple
+    slide-number: true
+    mouse-wheel: false
+    preview-links: auto
+    logo: /figures/logos/MY_INSTITUTION.png
+    css: /css/styles_slides.css
+    footer: 'PB4A7- Quantitative Applications for Behavioural Science'
+---
+

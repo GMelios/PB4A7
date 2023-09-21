@@ -1,0 +1,22 @@
+---
+title: "💻 Seminar 1 - Hidden Curriculum"
+---
+
+This session will introduce you to the hidden curriculum of quantitative applications. What is a workflow, Basic principles of coding and a dive in STATA. 
+
+
+## Seminar Slides
+
+Either click on the slide area below or click [here](slides_sem.qmd) to view it in fullscreen.
+Use your keypad to navigate the slides.
+
+<div class="container" style="position: relative;overflow: hidden;width: 100%;min-height:600px;">
+<iframe src="slides.html" style="position=absolute;top: 0;left: 0;bottom: 0;right: 0;width: 100%;min-height:600px;"></iframe>
+</div>
+
+🎥 Looking for lecture recordings? You can only find those on Moodle.
+
+
+## 📟 Communication
+
+- Have questions? Feel free to pop them up on `#Week 1` channel on Discord

@@ -33,14 +33,24 @@ website:
     contents:
       - href: 2023/index.qmd
         text: "🏠 Home"
+        style:
+          margin-bottom: "10px"
       - href: 2023/syllabus.qmd
         text: "📓 Syllabus"
+        style:
+          margin-bottom: "10px"
       - href: 2023/Stata.qmd
         text: "STATA resources"
+        style:
+          margin-bottom: "10px"
       - href: 2023/R.qmd
         text: "R & Python resources"
+        style:
+          margin-bottom: "10px"
       - href: 2023/communication.qmd
         text: "📟 Communication"
+        style:
+          margin-bottom: "30px !important"
     # - href: 2023/assignments.qmd
       #   text: "✍️ Assignments"
       #   contents:
@@ -69,41 +79,57 @@ website:
             contents:
               - href: 2023/weeks/week02/page.qmd
                 text: 👨‍🏫 Lecture Material
+              - href: 2023/weeks/week01/page1.qmd
+                text: 💻 Seminar Material
           - href: 2023/weeks/week03/page.qmd
             text: Week 03
             contents:
               - href: 2023/weeks/week03/page.qmd
                 text: 👨‍🏫 Lecture Material
+              - href: 2023/weeks/week01/page1.qmd
+                text: 💻 Seminar Material
           - href: 2023/weeks/week04/page.qmd
             text: Week 04
             contents:
               - href: 2023/weeks/week04/page.qmd
                 text: 👨‍🏫 Lecture Material
+              - href: 2023/weeks/week01/page1.qmd
+                text: 💻 Seminar Material
           - href: 2023/weeks/week05/page.qmd
             text: Week 05
             contents:
               - href: 2023/weeks/week05/page.qmd
                 text: 👨‍🏫 Lecture Material
+              - href: 2023/weeks/week01/page1.qmd
+                text: 💻 Seminar Material
           - href: 2023/weeks/week06/page.qmd
             text: Week 06
             contents:
               - href: 2023/weeks/week06/page.qmd
                 text: 👨‍🏫 Lecture Material
+              - href: 2023/weeks/week01/page1.qmd
+                text: 💻 Seminar Material
           - href: 2023/weeks/week07/page.qmd
             text: Week 07
             contents:
               - href: 2023/weeks/week07/page.qmd
                 text: 👨‍🏫 Lecture Material
+              - href: 2023/weeks/week01/page1.qmd
+                text: 💻 Seminar Material
           - href: 2023/weeks/week08/page.qmd
             text: Week 08
             contents:
               - href: 2023/weeks/week08/page.qmd
                 text: 👨‍🏫 Lecture Material
+              - href: 2023/weeks/week01/page1.qmd
+                text: 💻 Seminar Material
           - href: 2023/weeks/week09/page.qmd
             text: Week 09
             contents:
               - href: 2023/weeks/week09/page.qmd
                 text: 👨‍🏫 Lecture Material
+              - href: 2023/weeks/week01/page1.qmd
+                text: 💻 Seminar Material
 
   navbar:
     background: primary

@@ -16,6 +16,17 @@ div.csl-entry a {
   color: var(--bs-indigo);
 }
 
+/* This will add more space between each item in the sidebar */
+.sidebar .nav-item {
+  margin-bottom: 200px; /* Adjust the value as per your needs */
+}
+
+/* If you want to add more space around the nested items as well, use */
+.sidebar .nav-item .nav-item {
+  margin-bottom: 10px; /* Adjust the value as per your needs */
+}
+
+
 /* CSS */
 .button-61 {
     align-items: center;
