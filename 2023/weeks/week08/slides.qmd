@@ -606,25 +606,37 @@ etable(predict_treatment, without_fuzzy, fuzzy_rdd)
 ```
 ---
 
-# Concept Checks
+# Regression Discontinuity in R
 
-- Why does using a narrow window make the effect estimate noisier?
-- How do we know that, if our treatment variable is fuzzily assigned, we will *underestimate* the effect if we just run a regular RDD, rather than overestimate it?
-- Inuitively, why would we be skeptical that a regression discontinuity run on a very granular running variable is valid?
+---
+title: "Fuzzy Regression Discontinuity"
+author: "George Melios"
+date: "2022-11-01"
+output:
+  quarto::pdf_document:
+    latex_engine: xelatex
+---
+
+## Regression Discontinuity in R
+
+- We can specify an RDD model by just telling it the dependent variable $Y$, the running variable $X$, and the cutoff $c$.
+- We can also specify how many polynomials to us with `p`
+- (it applies the polynomials more locally than our linear OLS models do - a bit more flexible without weird corner preditions)
+- It will also pick a window for us with `h`
+- Plenty of other options
+- Including a `fuzzy` option to specify actual treatment outside of the running variable/cutoff combo
 
 ---
 
-# Regression Discontinuity in R
+## rdrobust
 
 - We've gone through all kinds of procedures for doing RDD in R already using regression
 - But often, professional researchers won't do it that way!
 - We'll use packages and formulas that do things like "picking a bandwidth (window)" for us in a smart way, or not relying so strongly on linearity
 - The **rdrobust** package does just that!
-- Let's look at `help(rdrobust, packge = 'rdrobust')`
-
 ---
 
-# Regression Discontinuity in R
+## Regression Discontinuity in STATA
 
 - We can specify an RDD model by just telling it the dependent variable $Y$, the running variable $X$, and the cutoff $c$.
 - We can also specify how many polynomials to us with `p`

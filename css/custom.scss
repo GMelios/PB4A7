@@ -6,6 +6,9 @@ $blue:    #8B0000 !default;
 
 /* This will add more space between each item in the sidebar */
 .sidebar .nav-item {
-    margin-bottom: 2cm !important;
+    margin-bottom: 5cm !important;
 }
 
+.sidebar .nav-item .nav-item {
+    margin-bottom: 5cm !important; /* You can adjust the value as per your needs */
+}

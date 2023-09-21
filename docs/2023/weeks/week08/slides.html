@@ -13,7 +13,7 @@
 
   <meta name="author" content="Dr.&nbsp;George Melios">
   <meta name="dcterms.date" content="18 September 2023">
-  <title>PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 8 Regresssion Discontinuity Designs</title>
+  <title>PB4A7 - Quantitative Applications for Behavioural Science - Fuzzy Regression Discontinuity</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -387,10 +387,10 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 8 Regresssion Discontinuity Designs">
+<meta property="og:title" content="PB4A7 - Quantitative Applications for Behavioural Science - Fuzzy Regression Discontinuity">
 <meta property="og:description" content="PB4A7- Quantitative Applications for Behavioural Science">
 <meta property="og:site-name" content="PB4A7 - Quantitative Applications for Behavioural Science">
-<meta name="twitter:title" content="PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 8 Regresssion Discontinuity Designs">
+<meta name="twitter:title" content="PB4A7 - Quantitative Applications for Behavioural Science - Fuzzy Regression Discontinuity">
 <meta name="twitter:description" content="PB4A7- Quantitative Applications for Behavioural Science">
 <meta name="twitter:creator" content="@georgemelios">
 <meta name="twitter:site" content="\www.georgemelios.com">
@@ -456,12 +456,10 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <li><a href="#/fuzzy-regression-discontinuity-2" id="/toc-fuzzy-regression-discontinuity-2">Fuzzy Regression Discontinuity</a></li>
 <li><a href="#/fuzzy-regression-discontinuity-3" id="/toc-fuzzy-regression-discontinuity-3">Fuzzy Regression Discontinuity</a></li>
 <li><a href="#/fuzzy-regression-discontinuity-4" id="/toc-fuzzy-regression-discontinuity-4">Fuzzy Regression Discontinuity</a></li>
-<li><a href="#/concept-checks-2" id="/toc-concept-checks-2">Concept Checks</a></li>
 <li><a href="#/regression-discontinuity-in-r" id="/toc-regression-discontinuity-in-r">Regression Discontinuity in R</a></li>
-<li><a href="#/regression-discontinuity-in-r-1" id="/toc-regression-discontinuity-in-r-1">Regression Discontinuity in R</a></li>
-<li><a href="#/rdrobust" id="/toc-rdrobust">rdrobust</a></li>
 <li><a href="#/rdrobust-1" id="/toc-rdrobust-1">rdrobust</a></li>
 <li><a href="#/rdrobust-2" id="/toc-rdrobust-2">rdrobust</a></li>
+<li><a href="#/rdrobust-3" id="/toc-rdrobust-3">rdrobust</a></li>
 <li><a href="#/thats-it" id="/toc-thats-it">That’s it!</a></li>
 </ul>
 </nav>
@@ -1056,34 +1054,36 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 
 </section></section>
 <section>
-<section id="concept-checks-2" class="title-slide slide level1">
-<h1>Concept Checks</h1>
-<ul>
-<li>Why does using a narrow window make the effect estimate noisier?</li>
-<li>How do we know that, if our treatment variable is fuzzily assigned, we will <em>underestimate</em> the effect if we just run a regular RDD, rather than overestimate it?</li>
-<li>Inuitively, why would we be skeptical that a regression discontinuity run on a very granular running variable is valid?</li>
-</ul>
+<section id="regression-discontinuity-in-r" class="title-slide slide level1">
+<h1>Regression Discontinuity in R</h1>
+
 </section>
 <section class="slide level2">
 
-</section></section>
-<section>
-<section id="regression-discontinuity-in-r" class="title-slide slide level1">
-<h1>Regression Discontinuity in R</h1>
+<p>title: “Fuzzy Regression Discontinuity” author: “George Melios” date: “2022-11-01” output: quarto::pdf_document: latex_engine: xelatex</p>
+</section>
+<section id="regression-discontinuity-in-r-1" class="slide level2">
+<h2>Regression Discontinuity in R</h2>
+<ul>
+<li>We can specify an RDD model by just telling it the dependent variable <span class="math inline">\(Y\)</span>, the running variable <span class="math inline">\(X\)</span>, and the cutoff <span class="math inline">\(c\)</span>.</li>
+<li>We can also specify how many polynomials to us with <code>p</code></li>
+<li>(it applies the polynomials more locally than our linear OLS models do - a bit more flexible without weird corner preditions)</li>
+<li>It will also pick a window for us with <code>h</code></li>
+<li>Plenty of other options</li>
+<li>Including a <code>fuzzy</code> option to specify actual treatment outside of the running variable/cutoff combo</li>
+</ul>
+</section>
+<section id="rdrobust" class="slide level2">
+<h2>rdrobust</h2>
 <ul>
 <li>We’ve gone through all kinds of procedures for doing RDD in R already using regression</li>
 <li>But often, professional researchers won’t do it that way!</li>
 <li>We’ll use packages and formulas that do things like “picking a bandwidth (window)” for us in a smart way, or not relying so strongly on linearity</li>
 <li>The <strong>rdrobust</strong> package does just that!</li>
-<li>Let’s look at <code>help(rdrobust, packge = 'rdrobust')</code></li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="regression-discontinuity-in-r-1" class="title-slide slide level1">
-<h1>Regression Discontinuity in R</h1>
+<section id="regression-discontinuity-in-stata" class="slide level2">
+<h2>Regression Discontinuity in STATA</h2>
 <ul>
 <li>We can specify an RDD model by just telling it the dependent variable <span class="math inline">\(Y\)</span>, the running variable <span class="math inline">\(X\)</span>, and the cutoff <span class="math inline">\(c\)</span>.</li>
 <li>We can also specify how many polynomials to us with <code>p</code></li>
@@ -1097,7 +1097,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 
 </section></section>
 <section>
-<section id="rdrobust" class="title-slide slide level1">
+<section id="rdrobust-1" class="title-slide slide level1">
 <h1>rdrobust</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">summary</span>(<span class="fu">rdrobust</span>(df<span class="sc">$</span>Y, df<span class="sc">$</span>X, <span class="at">c =</span> .<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1131,7 +1131,7 @@ Unique Obs.                     488          512
 
 </section></section>
 <section>
-<section id="rdrobust-1" class="title-slide slide level1">
+<section id="rdrobust-2" class="title-slide slide level1">
 <h1>rdrobust</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">summary</span>(<span class="fu">rdrobust</span>(df<span class="sc">$</span>Y, df<span class="sc">$</span>X, <span class="at">c =</span> .<span class="dv">5</span>, <span class="at">fuzzy =</span> df<span class="sc">$</span>treatment))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1176,7 +1176,7 @@ Treatment effect estimates.
 
 </section></section>
 <section>
-<section id="rdrobust-2" class="title-slide slide level1">
+<section id="rdrobust-3" class="title-slide slide level1">
 <h1>rdrobust</h1>
 <ul>
 <li>We can even have it automatically make plots of our RDD! Same syntax</li>
