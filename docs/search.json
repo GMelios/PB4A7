@@ -984,7 +984,7 @@
     "href": "2023/weeks/week08/slides.html#looking-for-lumping-2",
     "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
     "section": "Looking for Lumping",
-    "text": "Looking for Lumping\n\nHere’s an example from the real world in medical research - statistically, p-values should be uniformly distributed\nBut it’s hard to get insignificant results published in some journals. So people might “p-hack” until they find some form of analysis that’s significant, and also we have heavy selection into publication based on \\(p &lt; .05\\). Can’t use that cutoff for an RDD!\n\n\np-value graph from Perneger & Combescure, 2017"
+    "text": "Looking for Lumping\n\nHere’s an example from the real world in medical research - statistically, p-values should be uniformly distributed\nBut it’s hard to get insignificant results published in some journals. So people might “p-hack” until they find some form of analysis that’s significant, and also we have heavy selection into publication based on \\(p &lt; .05\\). Can’t use that cutoff for an RDD!\n\n\n\n\np-value graph from Perneger & Combescure, 2017"
   },
   {
     "objectID": "2023/weeks/week08/slides.html#looking-for-lumping-3",
@@ -1033,6 +1033,6 @@
     "href": "2023/weeks/week08/slides.html#thats-it",
     "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
     "section": "That’s it!",
-    "text": "That’s it!\n\nThat’s what we have for RDD\nGo explore the regression discontinuity Seminar\nAnd the paper to read!\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
+    "text": "That’s it!\n\nThat’s what we have for RDD\nGo explore the regression discontinuity Seminar\nAnd the paper to read!"
   }
 ]
