@@ -247,6 +247,10 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
+{{< video Trump.mp4 >}}
+
+---
+
 # Inference Error and Randomness
 
 - One big problem we face when trying to figure out how variables relate to each other is *randomness*
@@ -431,7 +435,7 @@ knitr::include_graphics('Lecture_1_MinWage.jpg')
 ## Eight Possible Relationships
 
 ```{r, out.height = '550px'}
-knitr::include_graphics('/Users/georgemelios/Documents/GitHub/PB4A7/2023/weeks/week00/Lecture_1_Relationships.png')
+knitr::include_graphics('Lecture_1_Relationships.png')
 ```
 
 ---
