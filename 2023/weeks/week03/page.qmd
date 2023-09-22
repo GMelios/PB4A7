@@ -1,8 +1,8 @@
 ---
-title: "🗓️ Week 01 - Introduction, Context & Key Concepts"
+title: "🗓️ Week 03 - Hypothesis Testing"
 ---
 
-In this first week, we will cover what you can expect to learn from this course and the course logistics: all you need to know about the structure of the lectures, classes, assessments, and how we will interact throughout this course. 
+In this week, we will explore how we can use formal procedures to examine if two opposing claims or hypothesis are true or not. 
 
 ## 👨‍🏫 Lecture Slides 
 
