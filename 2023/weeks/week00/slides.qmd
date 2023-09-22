@@ -245,9 +245,10 @@ theme_metro_regtitle <- function(x) {
     class="img-responsive atto_image_button_text-bottom">
 </figure>
 
+
 ---
 
-{{< video Trump.mp4 >}}
+## {background-video="Trump better quality.mp4"}
 
 ---
 
