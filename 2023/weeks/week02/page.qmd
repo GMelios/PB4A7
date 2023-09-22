@@ -1,8 +1,8 @@
 ---
-title: "🗓️ Week 02 - Linear Regression"
+title: "🗓️ Week 02 - Linear Regression / OLS"
 ---
 
-In this first week, we will cover what you can expect to learn from this course and the course logistics: all you need to know about the structure of the lectures, classes, assessments, and how we will interact throughout this course. 
+In this week, we start looking how we can use data to describe relationships between two variables and distinguish between alternative scenarios. 
 
 ## 👨‍🏫 Lecture Slides 
 
