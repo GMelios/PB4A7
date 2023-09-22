@@ -2,7 +2,7 @@
 title: "🗓️ Week 05 - Binary Variables and Functional Form"
 ---
 
-In this week we will focus on regressions with binary variables and functional form.
+In this week, we will focus on how we analyse and interpret binary independent variables.
 
 ## 👨‍🏫 Lecture Slides 
 

@@ -1,5 +1,5 @@
 ---
-title: "<font style='font-size:1em;'>🗓️ Week 8<br/> Regresssion Discontinuity Designs</font>"
+title: "<font style='font-size:1em;'>🗓️ Week 8<br/> Regression Discontinuity Designs</font>"
 author: Dr. [George Melios](#)
 institute: '[London School of Economics and Political Science](#)'
 date: 18 September 2023
