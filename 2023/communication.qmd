@@ -4,18 +4,18 @@ format: html
 editor: visual
 ---
 
-::: {.callout-important collapse=false}
+::: {.callout-important collapse="false"}
 ## 📢 Description
+
 We will use this space to make class announcements throughout the semester!
 :::
 
-::: {.callout-important collapse=false}
+::: {.callout-important collapse="false"}
 ## 📢 Discord
-First and important announcement, [Join the Class on Discord](https://discord.gg/vGUmwDPx).
+
+First and important announcement, [Join the Class on Discord](https://discord.com/invite/nHURPx6N).
 :::
 
-
 # Requirements
+
 Download and install [STATA](https://moodle.lse.ac.uk/course/view.php?id=7882) or [R](https://www.r-project.org). Throughout the class, we will rely on STATA for seminars but codes will be provided for R as well.
-
-
