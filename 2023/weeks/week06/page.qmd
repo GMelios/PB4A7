@@ -1,5 +1,5 @@
 ---
-title: "🗓️ Week 06 - Within Variation and Fixed Effects."
+title: "🗓️ Week 06 - Reading Week"
 ---
 
 In this week, we will focus on how we analyse within variation and include fixed effects. 

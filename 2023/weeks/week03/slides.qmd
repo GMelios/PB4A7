@@ -1,6 +1,6 @@
 ---
 subtitle: "PB4A7- Quantitative Applications for Behavioural Science"
-title: "<font style='font-size:1em;'>🗓️ Week 3<br/> Presessionals</font>"
+title: "<font style='font-size:1em;'>🗓️ Week 3<br/> Hypothesis Testing</font>"
 author: Dr. [George Melios](#)
 institute: '[London School of Economics and Political Science](#)'
 date: 10 October 2023

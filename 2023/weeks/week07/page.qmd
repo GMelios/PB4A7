@@ -1,8 +1,8 @@
 ---
-title: "🗓️ Week 07 - Difference in Difference"
+title: "🗓️ Week 07 - Counterfactual world"
 ---
 
-In this week, we will focus on causal inference through Difference in Difference estimators. First, we will decompose the mechanics and conditions of Diff-in-Diff estimators and then we will briefly discuss current methodological debates and advances.
+In this week, we will focus on the mathematical aspect of counterfactuals.
 
 ## 👨‍🏫 Lecture Slides 
 

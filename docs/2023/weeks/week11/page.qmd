@@ -1,0 +1,24 @@
+---
+title: "🗓️ Week 11 - Difference in Differences"
+---
+
+In this week, we will focus on causal inference through Difference in Difference estimators. First, we will decompose the mechanics and conditions of Diff-in-Diff estimators and then we will briefly discuss current methodological debates and advances.
+
+## 👨‍🏫 Lecture Slides 
+
+Either click on the slide area below or click [here](slides.qmd) to view it in fullscreen.
+Use your keypad to navigate the slides.
+
+<div class="container" style="position: relative;overflow: hidden;width: 100%;min-height:600px;">
+<iframe src="slides.html" style="position=absolute;top: 0;left: 0;bottom: 0;right: 0;width: 100%;min-height:600px;"></iframe>
+</div>
+
+🎥 Looking for lecture recordings? You can only find those on Moodle.
+
+## 📚 Recommended Reading
+
+- Check the end of slides for the list of references cited in the lecture.
+
+## 📟 Communication
+
+- If you feel like it, introduce yourself in the `#introductions` channel on Discord
