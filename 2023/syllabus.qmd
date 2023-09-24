@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Syllabus"
 format: html
 editor: visual
 quarto:
