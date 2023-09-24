@@ -65,9 +65,9 @@
   {
     "objectID": "2023/weeks/week01/slides.html#what-is-this-class",
     "href": "2023/weeks/week01/slides.html#what-is-this-class",
-    "title": "🗓️ Week 0 Presessionals",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
     "section": "What is this class",
-    "text": "What is this class\n\nThis is econometrics\nEconometrics is a field that covers how economists think about statistical analysis\nMany other social science fields (and fields like epidemiology) have picked up econometric tools as well becuase of how useful they tend to be"
+    "text": "What is this class\n\nIt’s a research design course on quasi-experimental methods\nLet’s break it down:\n\nResearch Design -&gt; How you transform an idea / question about the world to applied research\nQuasi-Experiments -&gt; Not by designing new experiments with random assignment. (how? We will see over the next 11 weeks)"
   },
   {
     "objectID": "2023/weeks/week09/slides.html",
@@ -1034,5 +1034,236 @@
     "title": "🗓️ Week 8 Regression Discontinuity Designs",
     "section": "That’s it!",
     "text": "That’s it!\n\nThat’s what we have for RDD\nGo explore the regression discontinuity Seminar\nAnd the paper to read!\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#what-you-should-expect",
+    "href": "2023/weeks/week01/slides.html#what-you-should-expect",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "What you should expect",
+    "text": "What you should expect\n\nConfidence: You will feel like you have a good understanding of design-based causal inference by the end such that it doesn’t feel so mysterious or intimidating\nComprehension: You will have learned a lot both conceptually but also in various specifics, particularly with regards to issues around identification and estimation\nCompetency: You will have had some experience working together implementing these methods using code in Stata syntax, possession of programs, knowledge of packages"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#lectures-plan",
+    "href": "2023/weeks/week01/slides.html#lectures-plan",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Lectures plan",
+    "text": "Lectures plan\n\nWeek 2 - Linear regressions\nWeek 3 - Hypothesis testing\nWeek 4 – Linear regressions with multiple regressors / Non-linear functions\nWeek 5 – Regressions on Binary variables\nWeek 6 – BREAK!!! (eeeehm Reading Week)\nWeek 7 – Recap & POTENTIAL OUTCOMES\nWeek 8 – Panel regressions\nWeek 9 – Regression Discontinuity Designs\nWeek 10 – Instrumental Variables\nWeek 11 – Difference in Differences"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#what-is-a-good-research-question",
+    "href": "2023/weeks/week01/slides.html#what-is-a-good-research-question",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "What is a good research question?",
+    "text": "What is a good research question?\n\nComing up with questions is easy.\nBut coming up with good ones, is tricky. Good RQ:"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#research-designs",
+    "href": "2023/weeks/week01/slides.html#research-designs",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Research Designs",
+    "text": "Research Designs\n\nQuantitative empirical analysis uses data to explore, test or estimate a relationship."
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#what-is-a-good-research-question-1",
+    "href": "2023/weeks/week01/slides.html#what-is-a-good-research-question-1",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "What is a good research question?",
+    "text": "What is a good research question?\n\nComing up with questions is easy.\nBut coming up with good ones, is tricky. Good RQ:\n\nA question that can be answered / Researchable:\nHow can you answer a question which is unanswerable?\nWhat versus why? Are you trying to determine what causes Y, or why something causes Y.\n\nImprove our understanding of the world:\n\nDoesn’t have to shake the foundations of science and human knowledge\nWhat if I find an unexpected result?"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#research-designs-1",
+    "href": "2023/weeks/week01/slides.html#research-designs-1",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Research Designs",
+    "text": "Research Designs\n\nFrom a broad spectrum of methodologies, we will cover:"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#causal-inference",
+    "href": "2023/weeks/week01/slides.html#causal-inference",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Causal Inference",
+    "text": "Causal Inference\n\nContemplating interventios that change behaviour:\n\nHow would littering parks change if we increase the severity of fines?\n\nIs public shaming more effective?\n\nWhat if we increase other types of fines (i.e. driving)?\n\nWill people commit less crimes?\n\n\n\nEach of these policies is asking what happens to some outcome if we change on factor – the intervention – and hold all other factors constant."
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#a-little-throwback",
+    "href": "2023/weeks/week01/slides.html#a-little-throwback",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "A little throwback",
+    "text": "A little throwback\n\nOctober 2021’s Nobel Prize in economics went to Card, Angrist and Imbens\nBut it’s arguably as much to Princeton’s mid 1980s Industrial Relations group as it’s ground zero for the credibility revolution\nStarts with Orley Ashenfelter, who had been working on job trainings programs\nKEY individuals: Orley Ashenfelter, David Card (Orley’s student), Josh Angrist (Card and Orley’s student), Alan Krueger (hired by Orley), Bob Lalonde (Card and Orley’s student) and then a generation of students (Levine, Currie, Pischke)"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#a-little-throwback-1",
+    "href": "2023/weeks/week01/slides.html#a-little-throwback-1",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "A little throwback",
+    "text": "A little throwback\n\nAngrist started working on how randomization in Vietnam drafting can explain later outcomes (we will see this in Week 10)\nMeets Gibens and they both get mentored by Gary Chamberlain\nThey propose the potential outcomes framework\nThis course is about these people, their ideas, subsequent development and how the revolutionised modern empirical research with observational data"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#introduction-to-counterfactuals",
+    "href": "2023/weeks/week01/slides.html#introduction-to-counterfactuals",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Introduction to counterfactuals",
+    "text": "Introduction to counterfactuals\n\nLet’s do a little thought experiment"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#introduction-to-counterfactuals-1",
+    "href": "2023/weeks/week01/slides.html#introduction-to-counterfactuals-1",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Introduction to counterfactuals",
+    "text": "Introduction to counterfactuals\n\nLet’s do a little thought experiment"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#introduction-to-counterfactuals-2",
+    "href": "2023/weeks/week01/slides.html#introduction-to-counterfactuals-2",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Introduction to counterfactuals",
+    "text": "Introduction to counterfactuals\n\nLet’s do a little thought experiment\nAliens come and orbit earth, in superposition.\n\nThey see sick people in hospitals\nWhat do they? think?"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#introduction-to-counterfactuals-3",
+    "href": "2023/weeks/week01/slides.html#introduction-to-counterfactuals-3",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Introduction to counterfactuals",
+    "text": "Introduction to counterfactuals\n\nLet’s do a little thought experiment\nAliens come and orbit earth, in superposition.\n\nThey see sick people in hospitals\nWhat do they? think?\nHospitals kill people. What is the difference? Doctors?\n\nThey kill the doctors, unplug patients from machines, throw open the doors – many more patients inexplicably die\nSounds ridiculous?"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#three-types-of-errors",
+    "href": "2023/weeks/week01/slides.html#three-types-of-errors",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Three types of errors",
+    "text": "Three types of errors\n\nCorrelation =/= causation"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#three-types-of-errors-1",
+    "href": "2023/weeks/week01/slides.html#three-types-of-errors-1",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Three types of errors",
+    "text": "Three types of errors\n\nCorrelation =/= causation\nSomething Happening first may not imply causality (rooster)"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#three-types-of-errors-2",
+    "href": "2023/weeks/week01/slides.html#three-types-of-errors-2",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Three types of errors",
+    "text": "Three types of errors\n\nCorrelation =/= causation\nSomething Happening first may not imply causality (rooster)\nNo correlation does not imply no causation"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#introduction-to-counterfactuals-4",
+    "href": "2023/weeks/week01/slides.html#introduction-to-counterfactuals-4",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Introduction to counterfactuals",
+    "text": "Introduction to counterfactuals\n\nLet’s do a little thought experiment\nAliens come and orbit earth, in superposition.\n\nThey see sick people in hospitals\nWhat do they? think?\nHospitals kill people. What is the difference? Doctors?\n\nThey kill the doctors, unplug patients from machines, throw open the doors – many more patients inexplicably die\nSounds ridiculous?\nAren’t we all aliens in our research?"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#research-designs-and-causality-1",
+    "href": "2023/weeks/week01/slides.html#research-designs-and-causality-1",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Research Designs and Causality",
+    "text": "Research Designs and Causality\nExample: If we want to know whether a vaccine works\n\nWe compare people who have gotten vaccinated and those who took a placebo instead"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#research-designs-and-causality-2",
+    "href": "2023/weeks/week01/slides.html#research-designs-and-causality-2",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Research Designs and Causality",
+    "text": "Research Designs and Causality\nExample: If we want to know whether a vaccine works\n\nWe compare people who have gotten vaccinated and those who took a placebo instead\nIn a classic clinical experiment, one applies a ‘treatment’ (0 = placebo, 1 = vaccine) to some set of n ‘subjects’ and observes some ‘outcome’ (Y).\nWe can then estimate:\n\nY = infection(0,1)"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#research-designs-and-causality-3",
+    "href": "2023/weeks/week01/slides.html#research-designs-and-causality-3",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Research Designs and Causality",
+    "text": "Research Designs and Causality\n\nEach individual i is assigned into one of the treatment options (0 = placebo, 1 = vaccine)\nTherefore, each i as two potential outcomes:\n\nWhat would happen if they got the placebo? Yi (0)\nWhat would happen if they got the vaccine? Yi (1)\n\nDid vaccines prevent infection?\n\nTo answer this we need to know what happened to the individual if they got the vaccine and what happened to the same individual if they got the placebo."
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#counterfactuals",
+    "href": "2023/weeks/week01/slides.html#counterfactuals",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Counterfactuals",
+    "text": "Counterfactuals\n\nWhat actually happened (i.e., the ‘factual’):\n\nI got the vaccine and did not get sick\nTreatment (X) = 1\nObserved outcome = Yi(1)\n\nThe counterfactual: (what would have happened)\n\nIf I did not get the vaccine, would I have fallen sick?\nCounterfactual treatment (X) = 0\nCounterfactual outcome = Yi(0)"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#counterfactuals-1",
+    "href": "2023/weeks/week01/slides.html#counterfactuals-1",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Counterfactuals",
+    "text": "Counterfactuals\n\nAfter treatment is assigned there is potential for only one outcome to be observed"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#counterfactuals-2",
+    "href": "2023/weeks/week01/slides.html#counterfactuals-2",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Counterfactuals",
+    "text": "Counterfactuals\n\nBut ideally we would like to observe two:"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#fundamental-problem-of-causal-inference",
+    "href": "2023/weeks/week01/slides.html#fundamental-problem-of-causal-inference",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Fundamental Problem of Causal Inference",
+    "text": "Fundamental Problem of Causal Inference\n\nOnce we observe one treatment for one individual, we cannot observe a different treatment for the same individual.\nThis is called the “fundamental problem of causal inference.” Each potential outcome is observable, but we can never observe all of them.” (Rubin, 2005, p. 323).\nThen, why are we discussing all these?"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#fundamental-problem-of-causal-inference-1",
+    "href": "2023/weeks/week01/slides.html#fundamental-problem-of-causal-inference-1",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Fundamental Problem of Causal Inference",
+    "text": "Fundamental Problem of Causal Inference\n\nOnce we observe one treatment for one individual, we cannot observe a different treatment for the same individual.\nThis is called the “fundamental problem of causal inference.” Each potential outcome is observable, but we can never observe all of them.” (Rubin, 2005, p. 323).\nThen, why are we discussing all these?\nWe can observe different treatments across different people.\nThis may be a way of solving the fundamental problem, but it introduces a new problem we must consider."
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#selection-bias",
+    "href": "2023/weeks/week01/slides.html#selection-bias",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Selection Bias",
+    "text": "Selection Bias\n\nThis new problem arises because different people are… DIFFERENT!"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#selection-bias-1",
+    "href": "2023/weeks/week01/slides.html#selection-bias-1",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Selection Bias",
+    "text": "Selection Bias\n\nDifferences between people following a treatment may be because of the treatment, or they may be because of the differences in the people being treated.\nThis is selection bias.\nLet’s consider some other factors which may matter for selection bias."
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#addressing-selection-bias",
+    "href": "2023/weeks/week01/slides.html#addressing-selection-bias",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Addressing Selection Bias",
+    "text": "Addressing Selection Bias\n\nSelect a large enough random sample and divide them into two groups.\n\nCharacteristics which contribute to selection bias should on average be distributed the same between both groups.\nTherefore, we expect that the treatment and control groups should differ only because of the treatment, and in absence of the treatment, would produce the same results."
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#addressing-selection-bias-1",
+    "href": "2023/weeks/week01/slides.html#addressing-selection-bias-1",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Addressing Selection Bias",
+    "text": "Addressing Selection Bias\n\nEach group differs within the group…\nBut, on average, the groups themselves are the same, and so are comparable.\nThe effect of treatment on average would then be:\nE(Y | T = 1) – E(Y | T = 0) = Average Treatment Effect (ATE)"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#treatment-effect",
+    "href": "2023/weeks/week01/slides.html#treatment-effect",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Treatment effect",
+    "text": "Treatment effect\n\nThe effect of the intervention then would be:\n\nTreatment effect of intervention = Outvome of Treated - Outcome of Untreated + Selection Bias\nSelection bias is the difference in average outcomes between treatment and control groups due to factors other than the treatment status\nThe true treatment effect, selection bias needs to be eliminated, or shown to be reasonably assumed to be zero.\nTo eliminate selection bias, we need well designed experiments (Matteo’s class) and large enough samples"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#experiments-not-always-the-solution",
+    "href": "2023/weeks/week01/slides.html#experiments-not-always-the-solution",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Experiments not always the solution",
+    "text": "Experiments not always the solution\n\nTime consuming and expensive\nMay have ethical issues\nRequire large samples for the assumptions to hold\nSuffer from drop-out and non-compliance\nEstimated parameters in an experiment may different from the parameters in which the intervention will actually take place.\nNot very easy to observe ‘real’ behaviours or consequential behaviours because of the setting.\nAn interesting paper on the limits of RCTs from Deaton (Nobel laureate) and Cartwright (2017), if you’re interested!\nWhat do we do then?"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#causal-inference-1",
+    "href": "2023/weeks/week01/slides.html#causal-inference-1",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Causal inference",
+    "text": "Causal inference\n\nWe design a strategy (Identification Strategy from now on) that allows us to:\n\nIdentify and isolate the random variation in treatment (i.e. a natural disaster)\nRely on institutional knowledge, theory and data to:\n\nReduce as much as possible Selection Bias\nIdentify outcomes for treated and untreated populations\nEstimate average treatment effects"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#what-follows",
+    "href": "2023/weeks/week01/slides.html#what-follows",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "What follows?",
+    "text": "What follows?\n\nSeminar today:\n\nIntro to Workflows and Stata\n\nWeek 2: Hypothesis testing\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
   }
 ]

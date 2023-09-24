@@ -351,15 +351,408 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 </div>
 
   <p class="date">26 Sep 2023</p>
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">What we will cover today:</h2>
+<ul>
+<li><a href="#/what-is-pb4a7" id="/toc-what-is-pb4a7">What is PB4A7</a></li>
+<li><a href="#/a-little-throwback-to-causal-inference" id="/toc-a-little-throwback-to-causal-inference">A little throwback to causal inference</a></li>
+<li><a href="#/introduction-to-counterfactuals" id="/toc-introduction-to-counterfactuals">Introduction to counterfactuals</a></li>
+<li><a href="#/research-designs-and-causality" id="/toc-research-designs-and-causality">Research Designs and Causality</a></li>
+</ul>
+</nav>
+</section>
+<section>
+<section id="what-is-pb4a7" class="title-slide slide level1">
+<h1>What is PB4A7</h1>
+
+</section>
+<section id="what-is-this-class" class="slide level2">
+<h2>What is this class</h2>
+<ul>
+<li>It’s a research design course on quasi-experimental methods</li>
+<li>Let’s break it down:
+<ul>
+<li>Research Design -&gt; How you transform an idea / question about the world to applied research</li>
+<li>Quasi-Experiments -&gt; Not by designing new experiments with random assignment. (how? We will see over the next 11 weeks)</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-you-should-expect" class="slide level2">
+<h2>What you should expect</h2>
+<ul>
+<li><p><strong>Confidence</strong>: You will feel like you have a good understanding of design-based causal inference by the end such that it doesn’t feel so mysterious or intimidating</p></li>
+<li><p><strong>Comprehension</strong>: You will have learned a lot both conceptually but also in various specifics, particularly with regards to issues around identification and estimation</p></li>
+<li><p><strong>Competency</strong>: You will have had some experience working together implementing these methods using code in Stata syntax, possession of programs, knowledge of packages</p></li>
+</ul>
+</section>
+<section id="lectures-plan" class="slide level2">
+<h2>Lectures plan</h2>
+<ul>
+<li>Week 2 - Linear regressions</li>
+<li>Week 3 - Hypothesis testing</li>
+<li>Week 4 – Linear regressions with multiple regressors / Non-linear functions</li>
+<li>Week 5 – Regressions on Binary variables</li>
+<li>Week 6 – BREAK!!! (eeeehm Reading Week)</li>
+<li>Week 7 – Recap &amp; POTENTIAL OUTCOMES</li>
+<li>Week 8 – Panel regressions</li>
+<li>Week 9 – Regression Discontinuity Designs</li>
+<li>Week 10 – Instrumental Variables</li>
+<li>Week 11 – Difference in Differences</li>
+</ul>
+</section>
+<section id="what-is-a-good-research-question" class="slide level2">
+<h2>What is a good research question?</h2>
+<ul>
+<li><p>Coming up with questions is easy.</p></li>
+<li><p>But coming up with good ones, is tricky. Good RQ:</p></li>
+</ul>
+</section>
+<section id="what-is-a-good-research-question-1" class="slide level2">
+<h2>What is a good research question?</h2>
+<ul>
+<li><p>Coming up with questions is easy.</p></li>
+<li><p>But coming up with good ones, is tricky. Good RQ:</p></li>
+<li><ul>
+<li><strong>A question that can be answered / Researchable</strong>:</li>
+<li>How can you answer a question which is unanswerable?</li>
+<li>What versus why? Are you trying to determine what causes Y, or why something causes Y.</li>
+</ul></li>
+<li><p><strong>Improve our understanding of the world</strong>:</p>
+<ul>
+<li>Doesn’t have to shake the foundations of science and human knowledge</li>
+<li>What if I find an unexpected result?</li>
+</ul></li>
+</ul>
+</section>
+<section id="research-designs" class="slide level2">
+<h2>Research Designs</h2>
+<ul>
+<li>Quantitative empirical analysis uses data to explore, test or estimate a relationship.</li>
+</ul>
+<figure>
+<img src="../../../2023/weeks/week01/RDesign.png" alt="RD" style="width:35em;height:15em;font-size:1em;" class="img-responsive atto_image_button_text-bottom">
+</figure>
+</section>
+<section id="research-designs-1" class="slide level2">
+<h2>Research Designs</h2>
+<ul>
+<li>From a broad spectrum of methodologies, we will cover:</li>
+</ul>
+<figure>
+<img src="../../../2023/weeks/week01/Design_update.png" alt="RD" class="img-responsive atto_image_button_text-bottom">
+</figure>
+</section>
+<section id="causal-inference" class="slide level2">
+<h2>Causal Inference</h2>
+<ul>
+<li><p>Contemplating interventios that change behaviour:</p>
+<ul>
+<li>How would littering parks change if we increase the severity of fines?
+<ul>
+<li>Is public shaming more effective?</li>
+</ul></li>
+<li>What if we increase other types of fines (i.e.&nbsp;driving)?
+<ul>
+<li>Will people commit less crimes?</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Each of these policies is asking what happens to some outcome if we change on factor – the intervention – and hold all other factors constant.</p>
 </section>
 <section class="slide level2">
 
+</section></section>
+<section>
+<section id="a-little-throwback-to-causal-inference" class="title-slide slide level1">
+<h1>A little throwback to causal inference</h1>
+
+</section>
+<section id="a-little-throwback" class="slide level2">
+<h2>A little throwback</h2>
+<ul>
+<li><p>October 2021’s Nobel Prize in economics went to Card, Angrist and Imbens</p></li>
+<li><p>But it’s arguably as much to Princeton’s mid 1980s Industrial Relations group as it’s ground zero for the credibility revolution</p></li>
+<li><p>Starts with Orley Ashenfelter, who had been working on job trainings programs</p></li>
+<li><p>KEY individuals: Orley Ashenfelter, David Card (Orley’s student), Josh Angrist (Card and Orley’s student), Alan Krueger (hired by Orley), Bob Lalonde (Card and Orley’s student) and then a generation of students (Levine, Currie, Pischke)</p></li>
+</ul>
+</section>
+<section id="a-little-throwback-1" class="slide level2">
+<h2>A little throwback</h2>
+<ul>
+<li><p>Angrist started working on how randomization in Vietnam drafting can explain later outcomes (we will see this in Week 10)</p></li>
+<li><p>Meets Gibens and they both get mentored by Gary Chamberlain</p></li>
+<li><p>They propose the potential outcomes framework</p></li>
+<li><p>This course is about these people, their ideas, subsequent development and how the revolutionised modern empirical research with observational data</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="introduction-to-counterfactuals" class="title-slide slide level1">
+<h1>Introduction to counterfactuals</h1>
+
+</section>
+<section id="introduction-to-counterfactuals-1" class="slide level2">
+<h2>Introduction to counterfactuals</h2>
+<ul>
+<li>Let’s do a little thought experiment</li>
+</ul>
+</section>
+<section id="introduction-to-counterfactuals-2" class="slide level2">
+<h2>Introduction to counterfactuals</h2>
+<ul>
+<li><p>Let’s do a little thought experiment</p></li>
+<li><p>Aliens come and orbit earth, in superposition.</p>
+<ul>
+<li>They see sick people in hospitals</li>
+<li>What do they? think?</li>
+</ul></li>
+</ul>
+</section>
+<section id="introduction-to-counterfactuals-3" class="slide level2">
+<h2>Introduction to counterfactuals</h2>
+<ul>
+<li><p>Let’s do a little thought experiment</p></li>
+<li><p>Aliens come and orbit earth, in superposition.</p>
+<ul>
+<li>They see sick people in hospitals</li>
+<li>What do they? think?</li>
+<li>Hospitals kill people. What is the difference? Doctors?</li>
+</ul></li>
+<li><p>They kill the doctors, unplug patients from machines, throw open the doors – many more patients inexplicably die</p></li>
+<li><p>Sounds ridiculous?</p></li>
+</ul>
+</section>
+<section id="introduction-to-counterfactuals-4" class="slide level2">
+<h2>Introduction to counterfactuals</h2>
+<ul>
+<li><p>Let’s do a little thought experiment</p></li>
+<li><p>Aliens come and orbit earth, in superposition.</p>
+<ul>
+<li>They see sick people in hospitals</li>
+<li>What do they? think?</li>
+<li>Hospitals kill people. What is the difference? Doctors?</li>
+</ul></li>
+<li><p>They kill the doctors, unplug patients from machines, throw open the doors – many more patients inexplicably die</p></li>
+<li><p>Sounds ridiculous?</p></li>
+<li><p><strong>Aren’t we all aliens in our research?</strong></p></li>
+</ul>
+</section>
+<section id="three-types-of-errors" class="slide level2">
+<h2>Three types of errors</h2>
+<ul>
+<li>Correlation =/= causation</li>
+</ul>
+</section>
+<section id="three-types-of-errors-1" class="slide level2">
+<h2>Three types of errors</h2>
+<ul>
+<li>Correlation =/= causation</li>
+<li>Something Happening first may not imply causality (rooster)</li>
+</ul>
+</section>
+<section id="three-types-of-errors-2" class="slide level2">
+<h2>Three types of errors</h2>
+<ul>
+<li>Correlation =/= causation</li>
+<li>Something Happening first may not imply causality (rooster)</li>
+<li>No correlation does not imply no causation</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="research-designs-and-causality" class="title-slide slide level1">
+<h1>Research Designs and Causality</h1>
+
+</section>
+<section id="research-designs-and-causality-1" class="slide level2">
+<h2>Research Designs and Causality</h2>
+<p>Example: If we want to know whether a vaccine works</p>
+<ul>
+<li>We compare people who have gotten vaccinated and those who took a placebo instead</li>
+</ul>
+<figure>
+<img src="../../../2023/weeks/week01/vaccines.png" alt="RD" class="img-responsive atto_image_button_text-bottom">
+</figure>
+</section>
+<section id="research-designs-and-causality-2" class="slide level2">
+<h2>Research Designs and Causality</h2>
+<p>Example: If we want to know whether a vaccine works</p>
+<ul>
+<li><p>We compare people who have gotten vaccinated and those who took a placebo instead</p></li>
+<li><p>In a classic clinical experiment, one applies a ‘treatment’ (0 = placebo, 1 = vaccine) to some set of n ‘subjects’ and observes some ‘outcome’ (Y).</p></li>
+<li><p>We can then estimate:</p></li>
+<li><ul>
+<li>Y = infection(0,1)</li>
+</ul></li>
+</ul>
+</section>
+<section id="research-designs-and-causality-3" class="slide level2">
+<h2>Research Designs and Causality</h2>
+<ul>
+<li><p>Each individual <em>i</em> is assigned into one of the treatment options (0 = placebo, 1 = vaccine)</p></li>
+<li><p>Therefore, each i as two potential outcomes:</p>
+<ul>
+<li>What would happen if they got the placebo? <em>Y<sub>i</sub></em> (0)</li>
+<li>What would happen if they got the vaccine? <em>Y<sub>i</sub></em> (1)</li>
+</ul></li>
+<li><p>Did vaccines prevent infection?</p>
+<ul>
+<li>To answer this we need to know what happened to the individual if they got the vaccine and what happened to the same individual if they got the placebo.</li>
+</ul></li>
+</ul>
+</section>
+<section id="counterfactuals" class="slide level2">
+<h2>Counterfactuals</h2>
+<ul>
+<li>What actually happened (i.e., the ‘factual’):
+<ul>
+<li>I got the vaccine and did not get sick</li>
+<li>Treatment (X) = 1</li>
+<li>Observed outcome = <em>Y<sub>i</sub></em>(1)</li>
+</ul></li>
+<li>The counterfactual: (what would have happened)
+<ul>
+<li>If I did not get the vaccine, would I have fallen sick?</li>
+<li>Counterfactual treatment (X) = 0</li>
+<li>Counterfactual outcome = <em>Y<sub>i</sub></em>(0)</li>
+</ul></li>
+</ul>
+</section>
+<section id="counterfactuals-1" class="slide level2">
+<h2>Counterfactuals</h2>
+<ul>
+<li>After treatment is assigned there is potential for only one outcome to be observed</li>
+</ul>
+<figure>
+<img src="../../../2023/weeks/week01/onepath.png" alt="RD" class="img-responsive atto_image_button_text-bottom">
+</figure>
+</section>
+<section id="counterfactuals-2" class="slide level2">
+<h2>Counterfactuals</h2>
+<ul>
+<li>But ideally we would like to observe two:</li>
+</ul>
+<figure>
+<img src="../../../2023/weeks/week01/teopaths.png" alt="RD" class="img-responsive atto_image_button_text-bottom">
+</figure>
+</section>
+<section id="fundamental-problem-of-causal-inference" class="slide level2">
+<h2>Fundamental Problem of Causal Inference</h2>
+<ul>
+<li><p>Once we observe one treatment for one individual, we cannot observe a different treatment for the same individual.</p></li>
+<li><p>This is called the “fundamental problem of causal inference.” Each potential outcome is observable, but we can never observe all of them.” (Rubin, 2005, p.&nbsp;323).</p></li>
+<li><p>Then, why are we discussing all these?</p></li>
+</ul>
+</section>
+<section id="fundamental-problem-of-causal-inference-1" class="slide level2">
+<h2>Fundamental Problem of Causal Inference</h2>
+<ul>
+<li><p>Once we observe one treatment for one individual, we cannot observe a different treatment for the same individual.</p></li>
+<li><p>This is called the “fundamental problem of causal inference.” Each potential outcome is observable, but we can never observe all of them.” (Rubin, 2005, p.&nbsp;323).</p></li>
+<li><p>Then, why are we discussing all these?</p></li>
+<li><p>We <strong>can</strong> observe different treatments across <strong>different people</strong>.</p></li>
+<li><p>This may be a way of solving the fundamental problem, but it introduces a new problem we must consider.</p></li>
+</ul>
+</section>
+<section id="selection-bias" class="slide level2">
+<h2>Selection Bias</h2>
+<ul>
+<li>This new problem arises because different people are… <strong>DIFFERENT</strong>!</li>
+</ul>
+<figure>
+<img src="../../../2023/weeks/week01/people.png" alt="RD" class="img-responsive atto_image_button_text-bottom">
+</figure>
+</section>
+<section id="selection-bias-1" class="slide level2">
+<h2>Selection Bias</h2>
+<ul>
+<li><p>Differences between people following a treatment may be because of the treatment, or they may be because of the differences in the people being treated.</p></li>
+<li><p>This is selection bias.</p></li>
+<li><p>Let’s consider some other factors which may matter for selection bias.</p></li>
+</ul>
+<figure>
+<img src="../../../2023/weeks/week01/differences.png" alt="RD" class="img-responsive atto_image_button_text-bottom">
+</figure>
+</section>
+<section id="addressing-selection-bias" class="slide level2">
+<h2>Addressing Selection Bias</h2>
+<ul>
+<li><p>Select a large enough random sample and divide them into two groups.</p>
+<ul>
+<li>Characteristics which contribute to selection bias should on average be distributed the same between both groups.</li>
+<li>Therefore, we expect that the treatment and control groups should differ only because of the treatment, and in absence of the treatment, would produce the same results.</li>
+</ul></li>
+</ul>
+</section>
+<section id="addressing-selection-bias-1" class="slide level2">
+<h2>Addressing Selection Bias</h2>
+<ul>
+<li><p>Each group differs <strong>within</strong> the group…</p></li>
+<li><p>But, <strong>on average</strong>, the groups themselves are the same, and so are <strong>comparable</strong>.</p></li>
+<li><p>The effect of treatment on average would then be:</p></li>
+<li><p>E(Y | T = 1) – E(Y | T = 0) = Average Treatment Effect (ATE)</p></li>
+</ul>
+</section>
+<section id="treatment-effect" class="slide level2">
+<h2>Treatment effect</h2>
+<ul>
+<li><p>The effect of the intervention then would be:</p>
+<ul>
+<li><p>Treatment effect of intervention = Outvome of Treated - Outcome of Untreated + Selection Bias</p></li>
+<li><p>Selection bias is the difference in average outcomes between treatment and control groups due to factors other than the treatment status</p></li>
+<li><p>The true treatment effect, selection bias needs to be eliminated, or shown to be reasonably assumed to be zero.</p></li>
+<li><p>To eliminate selection bias, we need well designed experiments (Matteo’s class) and large enough samples</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="experiments-not-always-the-solution" class="slide level2">
+<h2>Experiments not always the solution</h2>
+<ul>
+<li>Time consuming and expensive</li>
+<li>May have ethical issues</li>
+<li>Require large samples for the assumptions to hold</li>
+<li>Suffer from drop-out and non-compliance</li>
+<li>Estimated parameters in an experiment may different from the parameters in which the intervention will actually take place.</li>
+<li>Not very easy to observe ‘real’ behaviours or consequential behaviours because of the setting.</li>
+<li>An interesting paper on the <a href="https://www.sciencedirect.com/science/article/pii/S0277953617307359">limits of RCTs</a> from Deaton (Nobel laureate) and Cartwright (2017), if you’re interested!</li>
+<li><strong>What do we do then?</strong></li>
+</ul>
+</section>
+<section id="causal-inference-1" class="slide level2">
+<h2>Causal inference</h2>
+<ul>
+<li><p>We design a strategy (<strong>Identification Strategy</strong> from now on) that allows us to:</p>
+<ul>
+<li>Identify and isolate the random variation in treatment (i.e.&nbsp;a natural disaster)</li>
+<li>Rely on institutional knowledge, theory and data to:
+<ul>
+<li>Reduce as much as possible Selection Bias</li>
+<li>Identify outcomes for treated and untreated populations</li>
+<li>Estimate average treatment effects</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="what-follows" class="slide level2">
+<h2>What follows?</h2>
+<ul>
+<li><p>Seminar today:</p>
+<ul>
+<li>Intro to Workflows and Stata</li>
+</ul></li>
+<li><p>Week 2: Hypothesis testing</p></li>
+</ul>
 
 
 <img src="../../../figures/logos/MY_INSTITUTION.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>PB4A7- Quantitative Applications for Behavioural Science</p>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -571,6 +964,44 @@ Dr.&nbsp;<a href="#/">George Melios</a>
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

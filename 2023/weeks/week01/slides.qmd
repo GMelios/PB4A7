@@ -23,3 +23,428 @@ format:
     footer: 'PB4A7- Quantitative Applications for Behavioural Science'
 ---
 
+
+```{r setup, include=TRUE}
+library(directlabels)
+library(tidyverse)
+library(ggdag)
+library(grid)
+library(ggplot2)
+theme_metro <- function(x) {
+  theme_classic() + 
+  theme(panel.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
+        plot.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
+        text = element_text(size = 16),
+        axis.title.x = element_text(hjust = 1),
+        axis.title.y = element_text(hjust = 1, angle = 0))
+}
+theme_metro_regtitle <- function(x) {
+  theme_classic() + 
+  theme(panel.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
+        plot.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
+        text = element_text(size = 16))
+}
+```
+
+# What is PB4A7
+
+## What is this class
+
+- It’s a research design course on quasi-experimental methods
+- Let’s break it down: 
+  - Research Design -> How you transform an idea / question about the world to applied research
+  - Quasi-Experiments -> Not by designing new experiments with random assignment. (how? We will see over the next 11 weeks)
+
+---
+
+## What you should expect
+
+- **Confidence**: You will feel like you have a good understanding of design-based causal inference by the end such that it doesn’t feel so mysterious or intimidating
+
+- **Comprehension**: You will have learned a lot both conceptually but also in various specifics, particularly with regards to issues around identification and estimation
+
+- **Competency**: You will have had some experience working together implementing these methods using code in Stata syntax, possession of programs, knowledge of packages
+
+---
+
+## Lectures plan
+
+- Week 2 - Linear regressions
+- Week 3 - Hypothesis testing
+- Week 4 – Linear regressions with multiple regressors / Non-linear functions
+- Week 5 – Regressions on Binary variables
+- Week 6 – BREAK!!! (eeeehm Reading Week)
+- Week 7 – Recap & POTENTIAL OUTCOMES
+- Week 8 – Panel regressions
+- Week 9 – Regression Discontinuity Designs
+- Week 10 – Instrumental Variables
+- Week 11 – Difference in Differences
+
+## What is a good research question?
+
+- Coming up with questions is easy. 
+
+- But coming up with good ones, is tricky. Good RQ: 
+
+---
+
+## What is a good research question?
+
+- Coming up with questions is easy. 
+
+- But coming up with good ones, is tricky. Good RQ: 
++ - **A question that can be answered / Researchable**: 
+  - How can you answer a question which is unanswerable? 
+  - What versus why? Are you trying to determine what causes Y, or why something causes  Y. 
+
+
+- **Improve our understanding of the world**: 
+  - Doesn’t have to shake the foundations of science and human knowledge
+  - What if I find an unexpected result?
+  
+---  
+
+## Research Designs 
+
+- Quantitative empirical analysis uses data to explore, test or estimate a relationship.
+
+
+<figure>
+    <img src="/2023/weeks/week01/RDesign.png" alt="RD"
+    style="width:35em;height:15em;font-size:1em;" 
+    class="img-responsive atto_image_button_text-bottom">
+</figure>
+
+---
+
+## Research Designs 
+
+- From a broad spectrum of methodologies, we will cover:
+
+<figure>
+    <img src="/2023/weeks/week01/Design_update.png" alt="RD"
+    class="img-responsive atto_image_button_text-bottom">
+</figure>
+
+---
+
+## Causal Inference 
+
+- Contemplating interventios that change behaviour:
+
+  - How would littering parks change if we increase the severity of fines? 
+    - Is public shaming more effective?
+  - What if we increase other types of fines (i.e. driving)?
+    - Will people commit less crimes?
+
+Each of these policies is asking what happens to some outcome if we change on factor – the intervention – and hold all other factors constant.
+
+---
+
+# A little throwback to causal inference
+
+## A little throwback
+
+- October 2021’s Nobel Prize in economics went to Card, Angrist and Imbens
+
+- But it’s arguably as much to Princeton’s mid 1980s Industrial Relations group as it’s ground zero for the credibility revolution
+
+- Starts with Orley Ashenfelter, who had been working on job trainings programs
+
+- KEY individuals: Orley Ashenfelter, David Card (Orley’s student), Josh Angrist (Card and Orley’s student), Alan Krueger (hired by Orley), Bob Lalonde (Card and Orley’s student) and then a generation of students (Levine, Currie, Pischke)
+
+---
+
+## A little throwback
+
+- Angrist started working on how randomization in Vietnam drafting can explain later outcomes (we will see this in Week 10)
+
+- Meets Gibens and they both get mentored by Gary Chamberlain
+
+- They propose the potential outcomes framework
+
+- This course is about these people, their ideas, subsequent development and how the revolutionised modern empirical research with observational data
+
+---
+
+# Introduction to counterfactuals
+
+## Introduction to counterfactuals
+
+- Let's do a little thought experiment
+
+---
+
+## Introduction to counterfactuals
+
+- Let's do a little thought experiment
+
+- Aliens come and orbit earth, in superposition.
+  - They see sick people in hospitals
+  - What do they? think?
+
+---
+
+## Introduction to counterfactuals
+
+- Let's do a little thought experiment
+
+- Aliens come and orbit earth, in superposition.
+  - They see sick people in hospitals
+  - What do they? think?
+   - Hospitals kill people. What is the difference? Doctors?
+
+- They kill the doctors, unplug patients from machines, throw open the doors – many more patients inexplicably die
+
+- Sounds ridiculous?
+
+---
+
+## Introduction to counterfactuals
+
+- Let's do a little thought experiment
+
+- Aliens come and orbit earth, in superposition.
+  - They see sick people in hospitals
+  - What do they? think?
+   - Hospitals kill people. What is the difference? Doctors?
+
+- They kill the doctors, unplug patients from machines, throw open the doors – many more patients inexplicably die
+
+- Sounds ridiculous?
+
+- **Aren't we all aliens in our research?**
+
+---
+
+## Three types of errors
+
+- Correlation =/= causation
+
+---
+
+## Three types of errors
+
+- Correlation =/= causation
+- Something Happening first may not imply causality (rooster)
+
+---
+
+## Three types of errors
+
+- Correlation =/= causation
+- Something Happening first may not imply causality (rooster)
+- No correlation does not imply no causation
+
+---
+
+# Research Designs and Causality 
+
+## Research Designs and Causality 
+
+Example: If we want to know whether a vaccine works
+
+- We compare people who have gotten vaccinated and those who took a placebo instead
+
+
+<figure>
+    <img src="/2023/weeks/week01/vaccines.png" alt="RD"
+    class="img-responsive atto_image_button_text-bottom">
+</figure>
+
+---
+
+## Research Designs and Causality 
+
+Example: If we want to know whether a vaccine works
+
+- We compare people who have gotten vaccinated and those who took a placebo instead
+
+- In a classic clinical experiment, one applies a ‘treatment’ (0 = placebo, 1 = vaccine) to some set of n ‘subjects’ and observes some ‘outcome’ (Y).
+
+- We can then estimate:
++ - Y = infection(0,1)
+
+---
+
+## Research Designs and Causality 
+
+- Each individual _i_ is assigned into one of the treatment options (0 = placebo, 1 = vaccine)
+
+- Therefore, each i as two potential outcomes:
+
+  - What would happen if they got the placebo? _Y<sub>i_ (0)
+  - What would happen if they got the vaccine? _Y<sub>i_ (1)
+
+- Did vaccines prevent infection? 
+  - To answer this we need to know what happened to the individual if they got the vaccine and what happened to the same individual if they got the placebo.
+
+--- 
+
+## Counterfactuals
+
+- What actually happened (i.e., the ‘factual’):
+    - I got the vaccine and did not get sick
+    - Treatment (X) = 1
+    - Observed outcome = _Y<sub>i_(1)
+
+- The counterfactual: (what would have happened)
+    - If I did not get the vaccine, would I have fallen sick?
+    - Counterfactual treatment (X) = 0
+    - Counterfactual outcome = _Y<sub>i_(0)
+
+--- 
+
+## Counterfactuals
+
+- After treatment is assigned there is potential for only one outcome to be observed 
+
+
+<figure>
+    <img src="/2023/weeks/week01/onepath.png" alt="RD"
+    class="img-responsive atto_image_button_text-bottom">
+</figure>
+
+--- 
+
+## Counterfactuals
+
+- But ideally we would like to observe two:
+
+<figure>
+    <img src="/2023/weeks/week01/teopaths.png" alt="RD"
+    class="img-responsive atto_image_button_text-bottom">
+</figure>
+
+--- 
+
+## Fundamental Problem of Causal Inference
+
+- Once we observe one treatment for one individual, we cannot observe a different treatment for the same individual.
+
+- This is called the “fundamental problem of causal inference.” Each potential outcome is observable, but we can never observe all of them.” (Rubin, 2005, p. 323).
+
+- Then, why are we discussing all these? 
+
+--- 
+
+## Fundamental Problem of Causal Inference
+
+- Once we observe one treatment for one individual, we cannot observe a different treatment for the same individual.
+
+- This is called the “fundamental problem of causal inference.” Each potential outcome is observable, but we can never observe all of them.” (Rubin, 2005, p. 323).
+
+- Then, why are we discussing all these? 
+
+- We **can** observe different treatments across **different people**. 
+
+- This may be a way of solving the fundamental problem, but it introduces a new problem we must consider.
+
+--- 
+
+## Selection Bias
+
+- This new problem arises because different people are… **DIFFERENT**!
+
+<figure>
+    <img src="/2023/weeks/week01/people.png" alt="RD"
+    class="img-responsive atto_image_button_text-bottom">
+</figure>
+
+--- 
+
+## Selection Bias
+
+- Differences between people following a treatment may be because of the treatment, or they may be because of the differences in the people being treated. 
+
+- This is selection bias.
+
+- Let’s consider some other factors which may matter for selection bias.
+
+<figure>
+    <img src="/2023/weeks/week01/differences.png" alt="RD"
+    class="img-responsive atto_image_button_text-bottom">
+</figure>
+
+--- 
+
+## Addressing Selection Bias
+
+- Select a large enough random sample and divide them into two groups.
+
+    - Characteristics which contribute to selection bias should on average be distributed the same between both groups.
+    - Therefore, we expect that the treatment and control groups should differ only because of the treatment, and in absence of the treatment, would produce the same results.
+
+
+--- 
+
+## Addressing Selection Bias
+
+- Each group differs **within** the group…
+
+- But, **on average**, the groups themselves are the same, and so are **comparable**.
+
+- The effect of treatment on average would then be:
+
+- E(Y | T = 1) – E(Y | T = 0) =  Average Treatment Effect (ATE)
+
+---
+
+## Treatment effect 
+
+- The effect of the intervention then would be: 
+
+  - Treatment effect of intervention = Outvome of Treated - Outcome of Untreated + Selection Bias 
+
+  - Selection bias is the difference in average outcomes between treatment and control groups due to factors other than the treatment status
+
+  - The true treatment effect, selection bias needs to be eliminated, or shown to be reasonably assumed to be zero.
+
+  - To eliminate selection bias, we need well designed experiments (Matteo's class) and large enough samples 
+
+---
+
+## Experiments not always the solution 
+
+- Time consuming and expensive
+- May have ethical issues
+- Require large samples for the assumptions to hold
+- Suffer from drop-out and non-compliance
+- Estimated parameters in an experiment may different from the parameters in which the intervention will actually take place.
+- Not very easy to observe ‘real’ behaviours or consequential behaviours because of the setting.
+- An interesting paper on the [limits of RCTs](https://www.sciencedirect.com/science/article/pii/S0277953617307359) from Deaton (Nobel laureate) and Cartwright (2017), if you’re interested!
+- **What do we do then?**
+
+---
+
+## Causal inference
+
+- We design a strategy (**Identification Strategy** from now on) that allows us to:
+
+    - Identify and isolate the random variation in treatment (i.e. a natural disaster)
+    - Rely on institutional knowledge, theory and data to:
+      - Reduce as much as possible Selection Bias
+      - Identify outcomes for treated and untreated populations
+      - Estimate average treatment effects 
+
+---
+
+## What follows? 
+
+- Seminar today:
+
+  -  Intro to Workflows and Stata
+
+- Week 2: Hypothesis testing
+
+
+
+
+
+
+
+
+
+
+
+
