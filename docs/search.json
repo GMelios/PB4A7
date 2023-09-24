@@ -1265,5 +1265,152 @@
     "title": "🗓️ Week 1 Introduction to counterfactuals",
     "section": "What follows?",
     "text": "What follows?\n\nSeminar today:\n\nIntro to Workflows and Stata\n\nWeek 2: Hypothesis testing\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#background-1",
+    "href": "2023/weeks/week01/slides_sem.html#background-1",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Background",
+    "text": "Background\n\nThink about the following:\n\nfor most of the history of science, and really all the social sciences, there was practically no data – only theories about data\nToday we are drowning in data (remember the memes)\nOrdinary people have more data than they know what to do with\n\nSmart watches, sleep data, calories, screen time bla bla bla\n\n\nAs such, in causal inference (or any quantitative work) it’s hard to separate the question from the actual work (programming)"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#code-and-software",
+    "href": "2023/weeks/week01/slides_sem.html#code-and-software",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Code and Software",
+    "text": "Code and Software\n\nFor causal Inference we need:\n\nData\nSoftware for data (Stata for example)\nUnderstanding of statistics\nProgramming skills\n\nWhich softare?\n\nR, Stata, Python, SAS, SPSS\n\nToday we are going to see Language agnostic programming principnes that are usually not covered in econ classes"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#making-mistakes",
+    "href": "2023/weeks/week01/slides_sem.html#making-mistakes",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Making mistakes",
+    "text": "Making mistakes\n\nOnce upon a time there were 2 young researchers that spent 8 months trying to disprove an important work in political psychology (i.e. liberals are less biased than conservatives)\nAfter about 10 conference presentations, half a dozen talks\nThey decided to send an email to the people they were trying to disprove and send the paper for publication"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#making-mistakes-1",
+    "href": "2023/weeks/week01/slides_sem.html#making-mistakes-1",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Making mistakes",
+    "text": "Making mistakes\n\nThe original (super famous) academics came back suggesting that their analysis doesn’t produce the same results\nDigging in their directories, the youngsters found countless versions of codes and data - hundreds of files with randome names\nAnd once the code was running again, they found a critical coding error (one comma missing) that corrected (destroyed) their results\nThe youngsters were devastated. Took them another 2 years to pick up the courage, redo the work and actually disprove the original paper"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#anna-karenina-principle",
+    "href": "2023/weeks/week01/slides_sem.html#anna-karenina-principle",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Anna Karenina Principle",
+    "text": "Anna Karenina Principle\nHappy families are all alike; every unhappy family is unhappy in its own way - Leo Tolstoy, Anna Karenina\nGood empirical work is all alike; every bad empirical work is bad in its own way - Scott Cunningham, Causal Mixtape"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#what-do-we-learn",
+    "href": "2023/weeks/week01/slides_sem.html#what-do-we-learn",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "What do we learn?",
+    "text": "What do we learn?\n\nMost mistakes are not due to insufficient knowledge of coding\nThe cose of most errors is due to poorly designed empirical workflow\nThis is why we ll spend a whole seminar on this"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#workflow-1",
+    "href": "2023/weeks/week01/slides_sem.html#workflow-1",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Workflow",
+    "text": "Workflow\nDefinition:\nA workflow consists of an orchestrated and repeatable pattern of activity, enabled by the systematic organization of resources into processes that transform materials, provide services, or process information"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#empirical-workflow",
+    "href": "2023/weeks/week01/slides_sem.html#empirical-workflow",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Empirical Workflow",
+    "text": "Empirical Workflow\n\nWorkflow is like a checklist you bind yourself to when you get your hands on data\n\nIt’s like a morning routine:\n\nAlarm goes off\nYou wash up\nMake coffee\n\n\nEmpirical workflow is a core set of tasks which as you mature you build from experience\n\nFinding the outlier errors is difficult\nWorkflows are to catch the most common errors\nIt’s like an intermediate step between getting data and analysing data"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#checklist",
+    "href": "2023/weeks/week01/slides_sem.html#checklist",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Checklist",
+    "text": "Checklist\n\nEmpirical workflows are really just a checklist of actions you will take before analyzing ANY data\nIt is imperative that you don’t start analysing the data until the list is checked off\nRESIST IT\nIt should be a few, simple, yet non-negotiable, programming commands and exercises to check for errors\nWe ll go over mine - feel free to add your own if you want"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#empirical-workflows-require-scarce-time-inputs",
+    "href": "2023/weeks/week01/slides_sem.html#empirical-workflows-require-scarce-time-inputs",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Empirical workflows require scarce time inputs",
+    "text": "Empirical workflows require scarce time inputs\n\nAll of us are living at the edge of our resource constraints, and our most scarce resources is time\nTo do anything, we must sacrifice something else because all activities use time – including cleaning and arranging our data\nData work is like a marathon:\n\nInvolves far more time training than running - involves far more time doing tedious and repetitive tasks\n\nSince tedious task are repeated, the have the most potential for error\nEspecially for dissertations - However long you thing cleaning and organising data will take, multiply by 10"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#step-1---read-the-codebook",
+    "href": "2023/weeks/week01/slides_sem.html#step-1---read-the-codebook",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Step 1 - Read the codebook",
+    "text": "Step 1 - Read the codebook\n\nDatasets often come with very large documetns describing in detail the production of data\nYou mush become as much of an expert on the codebook as you are on your own research topic\nAllows to interpret the data you acquired\nSet aside time to study it and keep it handy\nSame goes for readme files that go with some datasets"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#do-not-touch-the-original-data",
+    "href": "2023/weeks/week01/slides_sem.html#do-not-touch-the-original-data",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Do Not Touch the Original Data",
+    "text": "Do Not Touch the Original Data\n\nAnd I repeat Do Not Touch the Original Data"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#do-not-touch-the-original-data-1",
+    "href": "2023/weeks/week01/slides_sem.html#do-not-touch-the-original-data-1",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Do Not Touch the Original Data",
+    "text": "Do Not Touch the Original Data\n\nEmpirical workflows require data manipulation\nIt is imperative taht you always only work with copies\nNever save over the original dataset - be careful of softwares like excel that may do it automatically\nAvoid this by storing the raw data separate from copies\nIf you alter the raw data, you might never have the chance to get them back"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#step-2---folder-structure-and-directories",
+    "href": "2023/weeks/week01/slides_sem.html#step-2---folder-structure-and-directories",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Step 2 - Folder Structure and Directories",
+    "text": "Step 2 - Folder Structure and Directories\n\nAfter our error, I did an extensive research on how problems like these tend to happen\nCame back wit hthe following important steps\n\nHierarchical folder structure\nAutomation\nNaming convention\nVersion Control"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#step-2---helping-your-future-self",
+    "href": "2023/weeks/week01/slides_sem.html#step-2---helping-your-future-self",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Step 2 - Helping your future self",
+    "text": "Step 2 - Helping your future self\n\nRemember your future self is also operating at the edge of her production possibilities\nThe typical quantitative project may have hundreds of files of various types and will take years from first thought to completion\nSo imagine if all files are not stored together, without some sort of archivign\nBest way to resolve this is hierarchical folder structures"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#step-2---subdirectory-organisation",
+    "href": "2023/weeks/week01/slides_sem.html#step-2---subdirectory-organisation",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Step 2 - Subdirectory organisation",
+    "text": "Step 2 - Subdirectory organisation"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#step-2---automation",
+    "href": "2023/weeks/week01/slides_sem.html#step-2---automation",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Step 2 - Automation",
+    "text": "Step 2 - Automation\n\nAvoid as much as possible copy pasting information\nYour future self doesn’t remember 4 weeks/months from now how you made these tables and figures\nUse a code notebook (do file in Stata) where all commands you run are kept together in order\nEvery final output should be able to be reproduced by just pressing one run command"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#step-2---beautiful-code",
+    "href": "2023/weeks/week01/slides_sem.html#step-2---beautiful-code",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Step 2 - Beautiful Code",
+    "text": "Step 2 - Beautiful Code\n\nYour ideal goal is to make beautiful code\nAt minimum, don’t make it ugly - unreadable for your future self\nConsider a new text editor like Visual Studio Code which allows for\n\nColored syntax\nIndentation\nColumn editing and more\n\nStata and R come with their own editors but Visual Studio allows you to have one for all"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#step-3---eyeballing",
+    "href": "2023/weeks/week01/slides_sem.html#step-3---eyeballing",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Step 3 - Eyeballing",
+    "text": "Step 3 - Eyeballing"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#step-3---eyeballing-1",
+    "href": "2023/weeks/week01/slides_sem.html#step-3---eyeballing-1",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Step 3 - Eyeballing",
+    "text": "Step 3 - Eyeballing\n\nHuman eyes have evolved to spot patterns\nWe can therefore use it to find things that belong and those that don’t\nFirst just scan the data in its spreadsheet form - get comfortable with what you are going to be using\nBrowse for Stata for example\nUse this to see if anything jumps out"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides_sem.html#step-4---missing-observations",
+    "href": "2023/weeks/week01/slides_sem.html#step-4---missing-observations",
+    "title": "💻 Seminar 1  Hidden Curriculum",
+    "section": "Step 4 - Missing observations",
+    "text": "Step 4 - Missing observations\n\nCheck the size of your dataset in Stata using count\nCheck the number of observations per variable in stata using summarize or summ\nUse tabulate also to check if, very oftern, missing observations are recorded with a -9 or -1 or 9999 (some illogical - probably- negative value)"
   }
 ]
