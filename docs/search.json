@@ -1412,5 +1412,89 @@
     "title": "💻 Seminar 1  Hidden Curriculum",
     "section": "Step 4 - Missing observations",
     "text": "Step 4 - Missing observations\n\nCheck the size of your dataset in Stata using count\nCheck the number of observations per variable in stata using summarize or summ\nUse tabulate also to check if, very oftern, missing observations are recorded with a -9 or -1 or 9999 (some illogical - probably- negative value)"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#data-generating-process-1",
+    "href": "2023/weeks/week01/slides.html#data-generating-process-1",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Data Generating Process",
+    "text": "Data Generating Process\n\nAnother example is a model of supply and demand\nWe observe prices and quantities in a competitive market\nWhat led to those being the prices and quantities we see?\nThe supply and demand model and its equilibrium, we theorize!"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#data-generating-process-2",
+    "href": "2023/weeks/week01/slides.html#data-generating-process-2",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Data Generating Process",
+    "text": "Data Generating Process"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#data-generating-process-3",
+    "href": "2023/weeks/week01/slides.html#data-generating-process-3",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Data Generating Process",
+    "text": "Data Generating Process\n\nThe prices that we observe come from that theoretical construct\nWhen we see the prices and quantities moving, according to our theory, it’s because the S and D lines are moving\nBut we can’t see the S and D lines\nOur goal: use the observations we do see to infer what the theoretical model (data generating process) is"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#data-generating-process-4",
+    "href": "2023/weeks/week01/slides.html#data-generating-process-4",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Data Generating Process",
+    "text": "Data Generating Process\n\nHarder than it sounds. What inference about S and D can we draw from these observations?"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#causality-1",
+    "href": "2023/weeks/week01/slides.html#causality-1",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Causality",
+    "text": "Causality\n\nWe can also represent this set of relationships as a graph, with arrows telling you what variables cause each other"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#causality-2",
+    "href": "2023/weeks/week01/slides.html#causality-2",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Causality",
+    "text": "Causality\n\nWe do this because most of the relationships we’re interested in are causal - we want to know, if we could reach in and manipulate \\(X\\), would \\(Y\\) change as a result, and how much?\nDoes the minimum wage reduce employment?\nDoes quantitative easing avert recessions?\nDoes six-sigma improve business performance?\nDoes getting an MBA make you a better manager?"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#causality-3",
+    "href": "2023/weeks/week01/slides.html#causality-3",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Causality",
+    "text": "Causality\n\nImagine this is the graph we see for minimum wage and employment"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#causality-4",
+    "href": "2023/weeks/week01/slides.html#causality-4",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Causality",
+    "text": "Causality\n\nDoes that mean that the minimum wage harms employment?\nMaybe! But also maybe not\nWhat the graph shows us is a correlation\nAnd correlation is not the same thing as causation"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#causality-5",
+    "href": "2023/weeks/week01/slides.html#causality-5",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Causality",
+    "text": "Causality\n\nA given correlation, like the negative relationship between minimum wage changes and employment changes, can be consistent with a number of different causal relationships\nAs econometricians, we need to figure out which one it is!\nHow can we narrow it down?\nHow many of the diagrams on the next page can be consistent with that negative relationship?"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#eight-possible-relationships",
+    "href": "2023/weeks/week01/slides.html#eight-possible-relationships",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Eight Possible Relationships",
+    "text": "Eight Possible Relationships"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#causality-6",
+    "href": "2023/weeks/week01/slides.html#causality-6",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Causality",
+    "text": "Causality\n\nThe only ones we can eliminate are d, g, and h\nAll the rest are possible!\nIf f is correct, we see the negative relationship even though minimum wage has nothing to do with causing employment (like the ice cream and shorts example)\nIf a is correct, then even though we know minimum wage causes employment to change, the size or even direction of the relationship will be wrong (why?)"
+  },
+  {
+    "objectID": "2023/weeks/week01/slides.html#causality-7",
+    "href": "2023/weeks/week01/slides.html#causality-7",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Causality",
+    "text": "Causality\n\nSo which of them is likely to be correct?\nThat depends on what we think \\(\\varepsilon\\) is\n\\(\\varepsilon\\) is everything that determines \\(Y\\) other than \\(X\\)\nPerhaps the health of the economy, or the policies that area has chosen\nSo we almost certainly have a graph with \\(\\varepsilon \\rightarrow Y\\)\nDo those things also affect the choice to raise the minimum wage? If so we’re in graph a. That downward relationship could be due to a null relationship, or even a positive one (or perhaps a more negative one?)"
   }
 ]
