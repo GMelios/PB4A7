@@ -3183,5 +3183,159 @@
     "title": "🗓️ Week 2 Hypothesis Testing",
     "section": "Ordinary Least Squares",
     "text": "Ordinary Least Squares\n\nNow that we have our line in parametric terms, we can pick our estimates of \\(\\beta_0\\) and \\(\\beta_1\\) in order to make the squared residuals as small as possible\nPick \\(\\hat{\\beta_0}\\) and \\(\\hat{\\beta_1}\\) to minimize:\n\n\\[ \\sum_i (residual_i^2) \\]\n\\[ \\sum_i ((Y_i - \\hat{Y})^2) \\]\n\\[ \\sum_i ((Y_i - \\hat{\\beta_0} - \\hat{\\beta_1}X_i)^2) \\]\nWhere the \\(_i\\) refers to a particular observation. \\(\\sum_i\\) means “sum this up over all the observations”\n(Conveniently, you can pick \\(\\hat{\\beta_0}\\) and \\(\\hat{\\beta_1}\\) to minimize that expression with basic calculus)"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#truth-and-reality-1",
+    "href": "2023/weeks/week03/slides.html#truth-and-reality-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Truth and Reality",
+    "text": "Truth and Reality\n\nToday we’ll be covering hypothesis testing, which is one approach to using reality to get closer to the truth\nIt works by subtraction\nWe test whether certain versions of the truth are likely or unlikely\nAnd if we find that they’re unlikely, we can reject that version of the truth, narrowing down what the actual possibilities are and getting closer and closer to the actual truth"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#truth-and-reality-2",
+    "href": "2023/weeks/week03/slides.html#truth-and-reality-2",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Truth and Reality",
+    "text": "Truth and Reality\n\nWhen we’re talking about the truth here, we’re referring to the true data generating process (DGP)\nFor example, if this is the true DGP:\n\n\\[ Wage_i = \\beta_0 + \\beta_1AdultHeight_i + \\varepsilon_i \\]\nwhere \\(cor(AdultHeight_i,\\varepsilon_i) = 0\\), then…\n\nPerson \\(i\\)’s wage is truly determined by a linear function of your height, plus an unrelated error term \\(\\varepsilon_i\\)\nWhy might someone have a high wage? Either they’re tall, or they have a high error term, or both. No other way!"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#truth-and-reality-3",
+    "href": "2023/weeks/week03/slides.html#truth-and-reality-3",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Truth and Reality",
+    "text": "Truth and Reality\n\nOur ability to estimate that true model depends on our ability to avoid inference and identification error\nIf we assume that’s the true DGP, there’s no endogeneity, and the relationship between \\(Wage\\) and \\(AdultHeight\\) is a straight line, so regular ’ol OLS of \\(Wage\\) on \\(AdultHeight\\) will not give us identification error\nBut we also need to be careful about inference error\nWhen we run that regression, what does our \\(\\hat{\\beta}_1\\) say about the true value \\(\\beta_1\\)?"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#sampling-variation-1",
+    "href": "2023/weeks/week03/slides.html#sampling-variation-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Sampling Variation",
+    "text": "Sampling Variation\n\nNotice that there is plenty of variation around the true value of \\(2\\)\nNow let’s imagine we don’t know that and are trying to answer the question “is the truth \\(\\beta_1 = 2\\)?”\nWe don’t have the full sampling distribution, we just have a single estimate:\n\n\n\n(Intercept)           X \n   2.798554    2.215880 \n\n\n\nAll we see is \\(\\hat{\\beta}_1 =\\) 2.22. So… is \\(\\beta_1 = 2\\)?"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#null-distribution",
+    "href": "2023/weeks/week03/slides.html#null-distribution",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Null Distribution",
+    "text": "Null Distribution\n\nThe “null distribution” is what the sampling distribution of the estimator would be if our null distribution were true\nWe can see that in the sampling distribution we have!\n\\(\\beta_1 = 2\\) is true, and here’s what the sampling distribution looks like! (although it would be smoother with more samples)"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#null-distribution-1",
+    "href": "2023/weeks/week03/slides.html#null-distribution-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Null Distribution",
+    "text": "Null Distribution\n\nSo the key question that a hypothesis test asks is: given this null distribution, how unlikely is it that we get the result we get?\nIf it’s super unlikely that the null is true and we get our result, well…\nWe definitely got our result…\nSo the null must be the part that’s wrong!\nThat’s when we reject the null - we find that the sampling distribution under the null hardly ever produces a result like ours, so that’s probably the wrong sampling distribution and thus the wrong null!"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#null-distribution-2",
+    "href": "2023/weeks/week03/slides.html#null-distribution-2",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Null Distribution",
+    "text": "Null Distribution\n\nHow does this work out with our estimate of 2.22?\nLet’s stick it on the graph"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#hypothesis-test",
+    "href": "2023/weeks/week03/slides.html#hypothesis-test",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\n\nOur test comes down to: how weird would it be to get a result this far from the “truth” or farther?\nWe can figure this out by shading in the parts of the null distribution this far from the null truth or farther\nSo we shade 2.22 and above, and also 2 - abs(2.22 - 2) = 1.78 and below."
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#hypothesis-test-1",
+    "href": "2023/weeks/week03/slides.html#hypothesis-test-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\n\nBased off of this sampling distribution, there’s a 31% + 26% = 57% chance of getting something as weird as we got or weirder (or for a one-tailed test, a 26% chance of getting something that high or higher) if the null of \\(\\beta_1 = 2\\) is true\nThat’s not too unlikely! So, we would fail to reject the null of \\(\\beta_1 = 2\\)\nThis doesn’t mean that we conclude that \\(\\beta_1 = 2\\) is true, it just means we can’t rule it out"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#the-null-distribution",
+    "href": "2023/weeks/week03/slides.html#the-null-distribution",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "The Null Distribution",
+    "text": "The Null Distribution\n\nOf course, we generated this null distribution by just randomly creating a few random samples\nWe also happen to know that if we had infinite samples, the sampling distribution of OLS would be a normal distribution with the mean at the true value and the standard deviation determined by \\(var(X)\\), the variance of the residual, and the sample size. The real null distribution looks like this:"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#the-null-distribution-1",
+    "href": "2023/weeks/week03/slides.html#the-null-distribution-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "The Null Distribution",
+    "text": "The Null Distribution\n\nSo with the estimate we made from the sample we got (2.22), we can’t reject a null \\(\\beta_1 = 2\\)\nWhich is good!! That’s the truth. We don’t want to reject it!\nHow about other nulls? Can we reject those?\nCan we reject a null that \\(\\beta_1 = 0\\)?\n(by default, most null hypotheses are that the parameter is 0)\nLet’s follow the same steps!"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#the-null-distribution-2",
+    "href": "2023/weeks/week03/slides.html#the-null-distribution-2",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "The Null Distribution",
+    "text": "The Null Distribution\n\nNow that’s unlikely. We can reject that the true value is 0."
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#p-values-1",
+    "href": "2023/weeks/week03/slides.html#p-values-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "p-values",
+    "text": "p-values\n\nThe lower the p-value, the less likely it is that we got our result AND the null is true\nAnd since we definitely got our result, a really low p-value says we should reject the null\nHow low does it need to be to reject the null?\nWell…"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#p-values-and-.05",
+    "href": "2023/weeks/week03/slides.html#p-values-and-.05",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "p-values and .05",
+    "text": "p-values and .05\n\nIt’s common practice to decide on a confidence level and a corresponding \\(\\alpha\\), most commonly a 95% confidence level \\(\\rightarrow \\alpha = .05\\), and reject the null if the p-value is lower than \\(\\alpha\\)\nWhy 95%? Completely arbitrary. Someone picked it out of thin air a hundred years ago as a just-for-instance and we still use it 🤷\nHaving a hard-and-fast threshold like this is not a great idea ( \\(p=.04\\) is rejection, but \\(p=.06\\) is not?), but it’s a very hard habit to break\nKey takeaway: get familiar with the concept of rejecting the null when the p-value is lower than .05, because you’ll see it\nBUT don’t get too hung up on black-and-white rejection in general"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#power-1",
+    "href": "2023/weeks/week03/slides.html#power-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Power",
+    "text": "Power\n\nBecause the smaller we make our confidence level, the less likely we are to reject the null in general\nWhich means we’ll also fail to reject it if it’s actually false (a “false negative”)\nWe want a low false-positive rate, but also a low false-negative rate\nThe false negative rate is called “power.” If we will reject the null 80% of the time when it’s actually false, we have 80% power\nAs \\(\\alpha\\) shrinks, false-positive rates decline, but false-negative rates increase\nStrike a balance!\n\n(minor sidenote: “false positive” and “false negative” are sometimes referred to as “Type I Error” and “Type II Error” - these are not great terms because they are hard to remember! If you encounter them, just remember that in “The boy who cried wolf” the townspeople think there’s a wolf when there’s not, then think there’s not a wolf when there is, committing Type I and II error in that order)"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#what-we-just-did",
+    "href": "2023/weeks/week03/slides.html#what-we-just-did",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "What we just did…",
+    "text": "What we just did…\n\nThis is how we thought of it - we picked a null, figured out the null distribution (the sampling distribution of the estimator assuming the null was true), and checked if our estimate was unlikely enough that we could reject the null"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#instead",
+    "href": "2023/weeks/week03/slides.html#instead",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Instead…",
+    "text": "Instead…\n\nBy thinking about standard errors, we instead center the sampling distribution around our estimate. If the null is far away, we reject that null (result should be the same)!"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#confidence-intervals",
+    "href": "2023/weeks/week03/slides.html#confidence-intervals",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\n\nSo what we’re thinking now is not “is our estimate close to the null?” but rather “is that null close to our estimate?”\nWe can go one step further and ask “which nulls are close to our estimate?” and figure out which nulls we can think about rejecting from there\nA confidence interval shows the range of nulls that would not be rejected by our estimate\nEverything outside that range can be rejected"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#confidence-intervals-1",
+    "href": "2023/weeks/week03/slides.html#confidence-intervals-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\n\nThis takes the form of\n\n\\[ \\hat{\\beta}_1 \\pm Z(s.e.) \\]\n\nWhere \\(Z\\) is some value from our distribution that gives us the \\(1-\\alpha\\) percentile (for a 95% confidence interval with a normal sampling distribution, \\(Z = 1.96\\))\nand \\(s.e.\\) is the standard error of \\(\\hat{\\beta}_1\\)"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#confidence-intervals-2",
+    "href": "2023/weeks/week03/slides.html#confidence-intervals-2",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\n\nThinking back to our estimate:\n\n\n\n\n\n\n\nModel 1\n\n\n(Intercept)\n2.80 \n\n\n\n(0.21)\n\n\nX\n2.22 \n\n\n\n(0.37)\n\n\nN\n100    \n\n\n\n\n\n\n\n\nOur estimate of the coefficient is 2.22, and our estimate of the standard error is 0.37\nSo for a 95% confidence interval, assuming normality, we get 2.22 \\(\\pm\\) 1.96* 0.37, or [1.49,2.94]"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#confidence-intervals-3",
+    "href": "2023/weeks/week03/slides.html#confidence-intervals-3",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\n\nWe can see this graphically as well - we should only reject nulls in those 5% tails for a 95% confidence interval"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides.html#concept-checks-2",
+    "href": "2023/weeks/week03/slides.html#concept-checks-2",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nWhat feature of the sampling distribution of the \\(\\beta\\) does the standard error describe?\nWhy do we get the same reject/don’t reject result if we center the sampling distribution around the null as around our estimate?\nWe perform an estimate of \\(\\hat{\\beta}_1\\) and get a 95% confidence interval of [-1.3, 2.1]. Describe what this means in a sentence.\nIn the above confidence interval, can we reject the null of \\(\\beta_1 = 0\\)?\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
   }
 ]
