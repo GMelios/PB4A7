@@ -13,7 +13,7 @@
 
   <meta name="author" content="Dr.&nbsp;George Melios">
   <meta name="dcterms.date" content="03 October 2023">
-  <title>PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 2 Hypothesis Testing</title>
+  <title>PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 2 Fitting Lines </title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -322,9 +322,9 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 2 Hypothesis Testing">
+<meta property="og:title" content="PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 2 Fitting Lines ">
 <meta property="og:site-name" content="PB4A7 - Quantitative Applications for Behavioural Science">
-<meta name="twitter:title" content="PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 2 Hypothesis Testing">
+<meta name="twitter:title" content="PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 2 Fitting Lines ">
 <meta name="twitter:creator" content="@georgemelios">
 <meta name="twitter:site" content="\www.georgemelios.com">
 <meta name="twitter:card" content="summary">
@@ -334,7 +334,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block">
-  <h1 class="title"><font style="font-size:1em;">🗓️ Week 2<br> Hypothesis Testing</font></h1>
+  <h1 class="title"><font style="font-size:1em;">🗓️ Week 2<br> Fitting Lines </font></h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -348,6 +348,373 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 </div>
 
   <p class="date">03 Oct 2023</p>
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">What we will cover today:</h2>
+<ul>
+<li><a href="#/identification-error" id="/toc-identification-error">Identification Error</a></li>
+<li><a href="#/data-generating-process" id="/toc-data-generating-process">Data Generating Process</a></li>
+<li><a href="#/regressions" id="/toc-regressions">Regressions</a></li>
+<li><a href="#/ols-simulator" id="/toc-ols-simulator">OLS Simulator</a></li>
+<li><a href="#/concept-checks-1" id="/toc-concept-checks-1">Concept Checks</a></li>
+<li><a href="#/recap" id="/toc-recap">Recap</a></li>
+</ul>
+</nav>
+</section>
+<section>
+<section id="identification-error" class="title-slide slide level1">
+<h1>Identification Error</h1>
+<ul>
+<li>What is identification error?</li>
+<li><em>Identification</em> is how you link the <em>result you see</em> with the <em>conclusion you draw from it</em></li>
+<li>For example, say you observe that kids who play video games are more aggressive in everyday life (result), and you conclude from that result that video games make kids more aggressive (conclusion)</li>
+<li>If <em>seeing that result is actually evidence for that conclusion</em>, then we are properly <em>identified</em></li>
+</ul>
+</section>
+<section id="identification-error-1" class="slide level2">
+<h2>Identification Error</h2>
+<ul>
+<li>Another reason why we might see that result, i.e.&nbsp;if the same result could give us a different conclusion, like <em>kids who are aggressive play more video games</em> or <em>people notice aggression more when kids play video games</em>, then</li>
+<li><em>we have made an </em>identification error* - our result was not identified!*</li>
+<li>Identification error is when your result in the data doesn’t actually have a clear theory (“why” or “because”)</li>
+<li>For example, if you observe that people tend to wear more shorts on days they eat more ice cream, and you conclude that eating ice cream makes you put on shorts</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="data-generating-process" class="title-slide slide level1">
+<h1>Data Generating Process</h1>
+<ul>
+<li>To avoid identification error, economists think closely about the <em>data generating process</em></li>
+<li>What is a data generating process?</li>
+<li>The data generating process is the <em>true set of laws</em> that determine where our data comes from</li>
+<li>For example, if you hold a rock and drop it, it falls to the floor</li>
+<li>What is the data we observe? (Hold the rock &amp; Rock is up) and (Let go &amp; Rock is down)</li>
+<li>What is the data generating process? Gravity makes the rock fall down when you drop it</li>
+</ul>
+</section>
+<section id="data-generating-process-1" class="slide level2">
+<h2>Data Generating Process</h2>
+<ul>
+<li>Another example is a model of supply and demand</li>
+<li>We observe prices and quantities in a competitive market</li>
+<li>What led to those being the prices and quantities we see?</li>
+<li>The supply and demand model and its equilibrium, we theorize!</li>
+</ul>
+</section>
+<section id="data-generating-process-2" class="slide level2">
+<h2>Data Generating Process</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-1-1.png" class="img-fluid r-stretch" width="960"></section>
+<section id="data-generating-process-3" class="slide level2">
+<h2>Data Generating Process</h2>
+<ul>
+<li>The prices that we observe come from that theoretical construct</li>
+<li>When we see the prices and quantities moving, according to our theory, it is because the S and D lines are moving</li>
+<li>But we cannot see the S and D lines</li>
+<li>Our goal: use the observations we do see to <em>infer</em> what the theoretical model (data generating process) is</li>
+</ul>
+</section>
+<section id="data-generating-process-4" class="slide level2">
+<h2>Data Generating Process</h2>
+<ul>
+<li>Harder than it sounds. What inference about S and D can we draw from these observations?</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="img-fluid r-stretch" width="960"></section>
+<section id="causality" class="slide level2">
+<h2>Causality</h2>
+<ul>
+<li>A data generating process can be described by a series of <em>equations</em> that describe where the data comes from. For example:</li>
+</ul>
+<p><span class="math display">\[ X = \gamma_0 + \gamma_1\varepsilon + \nu \]</span></p>
+<p><span class="math display">\[ Y = \beta_0 + \beta_1X + \varepsilon \]</span></p>
+<ul>
+<li>This says ” <span class="math inline">\(X\)</span> is caused by <span class="math inline">\(\varepsilon\)</span> and <span class="math inline">\(\nu\)</span>, and <span class="math inline">\(Y\)</span> is caused by <span class="math inline">\(X\)</span> and <span class="math inline">\(\varepsilon\)</span>”</li>
+<li>The <em>truth</em> is that an increase in <span class="math inline">\(X\)</span> <em>causally increases <span class="math inline">\(Y\)</span></em> by <span class="math inline">\(\beta_1\)</span></li>
+<li>The goal of econometrics is to be able to estimate what <span class="math inline">\(\beta_1\)</span> is accurately</li>
+</ul>
+</section>
+<section id="causality-1" class="slide level2">
+<h2>Causality</h2>
+<ul>
+<li>We can also represent this set of relationships as a graph, with arrows telling you what variables cause each other</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="img-fluid r-stretch" width="576"></section>
+<section id="causality-2" class="slide level2">
+<h2>Causality</h2>
+<ul>
+<li>We do this because most of the relationships we’re interested in are causal - we want to know, if we could reach in and <em>manipulate</em> <span class="math inline">\(X\)</span>, would <span class="math inline">\(Y\)</span> change as a result, and how much?</li>
+<li>Does the minimum wage reduce employment?</li>
+<li>Does quantitative easing avert recessions?</li>
+<li>Does six-sigma improve business performance?</li>
+<li>Does getting an MBA make you a better manager?</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="regressions" class="title-slide slide level1">
+<h1>Regressions</h1>
+<ul>
+<li>In statistics, regression is the practice of <em>line-fitting</em></li>
+<li>We want to <em>use one variable to predict another</em></li>
+<li>Let’s say using <span class="math inline">\(X\)</span> to predict <span class="math inline">\(Y\)</span></li>
+<li>We’d refer to <span class="math inline">\(X\)</span> as the “independent variable”, and <span class="math inline">\(Y\)</span> as the “dependent variable” (dependent on <span class="math inline">\(X\)</span> that is)</li>
+<li>Regression is the idea that we should characterize the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> as a <em>line</em>, and use that line to predict <span class="math inline">\(Y\)</span></li>
+</ul>
+</section>
+<section id="x-and-y" class="slide level2">
+<h2><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></h2>
+<ul>
+<li>I have an <span class="math inline">\(X\)</span> value of 2.5 and want to predict what <span class="math inline">\(Y\)</span> will be. What can I do?</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="img-fluid r-stretch" width="960"></section>
+<section id="x-and-y-1" class="slide level2">
+<h2><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></h2>
+<ul>
+<li>I can’t just say “just predict whatever values of <span class="math inline">\(Y\)</span> we see for <span class="math inline">\(X = 2.5\)</span>, because there are multiple of those!</li>
+<li>Plus, what if we want to predict for a value we DON’T have any actual observations of, like <span class="math inline">\(X = 4.3\)</span>?</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="img-fluid r-stretch" width="960"></section>
+<section id="data-is-granular" class="slide level2">
+<h2>Data is Granular</h2>
+<ul>
+<li>If I try to fit <em>every point</em>, I’ll get a mess that won’t really tell me the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></li>
+<li>So, we <em>simplify</em> the relationship into a <em>shape</em>: a line! The line smooths out those three points around 2.5 and fills in that gap around 4.3</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="img-fluid r-stretch" width="960"></section>
+<section id="isnt-this-worse" class="slide level2">
+<h2>Isn’t This Worse?</h2>
+<ul>
+<li>By adding a line, we are necessarily <em>simplifying</em> our presentation of the data. We’re tossing out information!</li>
+<li>Our prediction of the <em>data we have</em> will be less accurate than if we just make predictions point-by-point</li>
+<li>However, we’ll do a better job predicting <em>other</em> data (avoiding “overfitting”)</li>
+<li>And, since a <em>shape</em> is something we can interpret, as opposed to a long list of predictions, which we can’t really, the line will do a better job of telling us about the <em>true underlying relationship</em></li>
+</ul>
+</section>
+<section id="the-line-does-a-few-things" class="slide level2">
+<h2>The Line Does a Few Things:</h2>
+<ul>
+<li>We can get a <em>prediction</em> of <span class="math inline">\(Y\)</span> for a given value of <span class="math inline">\(X\)</span> (If we follow <span class="math inline">\(X = 2.5\)</span> up to our line we get <span class="math inline">\(Y = 7.6\)</span>)</li>
+<li>We see the <em>relationship</em>: the line slopes up, telling us that “more <span class="math inline">\(X\)</span> means more <span class="math inline">\(Y\)</span> too!”</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" class="img-fluid r-stretch" width="960"></section>
+<section id="lines" class="slide level2">
+<h2>Lines</h2>
+<ul>
+<li>That line we get is the <em>fit</em> of our model</li>
+<li>A model “fit” means we’ve taken a <em>shape</em> (our line) and picked the one that best fits our data</li>
+<li>All forms of regression do this</li>
+<li>Ordinary least squares specifically uses a <em>straight line</em> as its shape</li>
+<li>The resulting line we get can also be written out as an actual line, i.e.</li>
+</ul>
+<p><span class="math display">\[ Y = intercept + slope*X \]</span></p>
+</section>
+<section id="lines-1" class="slide level2">
+<h2>Lines</h2>
+<ul>
+<li>We can use that line as… a line!</li>
+<li>If we plug in a value of <span class="math inline">\(X\)</span>, we get a prediction for <span class="math inline">\(Y\)</span></li>
+<li>Because these <span class="math inline">\(Y\)</span> values are predictions, we’ll give them a hat <span class="math inline">\(\hat{Y}\)</span></li>
+</ul>
+<p><span class="math display">\[ Y = 3 + 4*X \]</span></p>
+<p><span class="math display">\[ \hat{Y} = 3 + 4*(3.2) \]</span></p>
+<p><span class="math display">\[ \hat{Y} = 15.8 \]</span></p>
+</section>
+<section id="lines-2" class="slide level2">
+<h2>Lines</h2>
+<ul>
+<li>We can also use it to explain the relationship</li>
+<li>Whatever the intercept is, that’s what we predict for <span class="math inline">\(Y\)</span> when <span class="math inline">\(X = 0\)</span></li>
+</ul>
+<p><span class="math display">\[ Y = 3 + 4*X \]</span></p>
+<p><span class="math display">\[ \hat{Y} = 3 + 4*0 \]</span></p>
+<p><span class="math display">\[ \hat{Y} = 3 \]</span></p>
+</section>
+<section id="lines-3" class="slide level2">
+<h2>Lines</h2>
+<ul>
+<li>And as <span class="math inline">\(X\)</span> increases, we know how much we expect <span class="math inline">\(Y\)</span> to increase because of the slope</li>
+</ul>
+<p><span class="math display">\[ Y = 3 + 4*X \]</span></p>
+<p><span class="math display">\[ \hat{Y} = 3 + 4*3 = 15 \]</span></p>
+<p><span class="math display">\[ \hat{Y} = 3 + 4*4 = 19 \]</span></p>
+<ul>
+<li>When <span class="math inline">\(X\)</span> increases by <span class="math inline">\(1\)</span>, <span class="math inline">\(Y\)</span> increases by the slope (which is <span class="math inline">\(4\)</span> here)</li>
+</ul>
+</section>
+<section id="ordinary-least-squares" class="slide level2">
+<h2>Ordinary Least Squares</h2>
+<ul>
+<li>Regression fits a <em>shape</em> to the data</li>
+<li>Ordinary least squares specifically fits a <em>straight line</em> to the data</li>
+<li>The straight line is described using an <span class="math inline">\(intercept\)</span> and a <span class="math inline">\(slope\)</span></li>
+<li>When we plug an <span class="math inline">\(X\)</span> into the line, we get a prediction for <span class="math inline">\(Y\)</span>, which we call <span class="math inline">\(\hat{Y}\)</span></li>
+<li>When <span class="math inline">\(X = 0\)</span>, we predict <span class="math inline">\(\hat{Y} = intercept\)</span></li>
+<li>When <span class="math inline">\(X\)</span> increases by <span class="math inline">\(1\)</span>, our prediction of <span class="math inline">\(Y\)</span> increases by the <span class="math inline">\(slope\)</span></li>
+<li>If <span class="math inline">\(slope &gt; 0\)</span>, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are positively related/correlated</li>
+<li>If <span class="math inline">\(slope &lt; 0\)</span>, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are negatively related/correlated</li>
+</ul>
+</section>
+<section id="concept-checks" class="slide level2">
+<h2>Concept Checks</h2>
+<ul>
+<li>How does producing a <em>line</em> let us use <span class="math inline">\(X\)</span> to predict <span class="math inline">\(Y\)</span>?</li>
+<li>If our line is <span class="math inline">\(Y = 5 - 2*X\)</span>, explain what the <span class="math inline">\(-2\)</span> means in a sentence</li>
+<li>Not all of the points are exactly on the line, meaning some of our predictions will be wrong! Should we be concerned? Why or why not?</li>
+</ul>
+</section>
+<section id="how" class="slide level2">
+<h2>How?</h2>
+<ul>
+<li>We know that regression fits a line</li>
+<li>But how does it do that exactly?</li>
+<li>It picks the line that produces the <em>smallest squares</em></li>
+<li>Thus, “ordinary least squares”</li>
+</ul>
+</section>
+<section id="predictions-and-residuals" class="slide level2">
+<h2>Predictions and Residuals</h2>
+<ul>
+<li>Whenever you make a prediction of any kind, you rarely get it <em>exactly right</em></li>
+<li>The difference between your prediction and the actual data is the <em>residual</em></li>
+</ul>
+<p><span class="math display">\[ Y = 3 + 4*X \]</span></p>
+<p>If we have a data point where <span class="math inline">\(X = 4\)</span> and <span class="math inline">\(Y = 18\)</span>, then</p>
+<p><span class="math display">\[ \hat{Y} = 3 + 4*4 = 19 \]</span></p>
+<p>Then the <em>residual</em> is <span class="math inline">\(Y - \hat{Y} = 18 - 19 = -1\)</span>.</p>
+</section>
+<section id="predictions-and-residuals-1" class="slide level2">
+<h2>Predictions and Residuals</h2>
+<p>So really, our relationship doesn’t look like this…</p>
+<p><span class="math display">\[ Y = intercept + slope*X \]</span></p>
+<p>Instead, it’s…</p>
+<p><span class="math display">\[ Y = intercept + slope*X + residual \]</span></p>
+<p>We still use <span class="math inline">\(intercept + slope*X\)</span> to predict <span class="math inline">\(Y\)</span> though, so this is also</p>
+<p><span class="math display">\[ Y = \hat{Y} + residual \]</span></p>
+</section>
+<section id="ordinary-least-squares-1" class="slide level2">
+<h2>Ordinary Least Squares</h2>
+<ul>
+<li>As you’d guess, a good prediction should make the residuals as small as possible</li>
+<li>We want to pick a line to do that</li>
+<li>And in particular, we’re going to <em>square</em> those residuals, so the really-big residuals count even more. We really don’t want to have points that are super far away from the line!</li>
+<li>Then, we pick a line to minimize those squared residuals (“least squares”)</li>
+</ul>
+</section>
+<section id="ordinary-least-squares-2" class="slide level2">
+<h2>Ordinary Least Squares</h2>
+<ul>
+<li>Start with our data</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-8-1.png" class="img-fluid r-stretch" width="960"></section>
+<section id="ordinary-least-squares-3" class="slide level2">
+<h2>Ordinary Least Squares</h2>
+<ul>
+<li>Let’s just pick a line at random, not necessarily from OLS</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-9-1.png" class="img-fluid r-stretch" width="960"></section>
+<section id="ordinary-least-squares-4" class="slide level2">
+<h2>Ordinary Least Squares</h2>
+<ul>
+<li>The vertical distance from point to line is the residual</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-10-1.png" class="img-fluid r-stretch" width="960"></section>
+<section id="ordinary-least-squares-5" class="slide level2">
+<h2>Ordinary Least Squares</h2>
+<ul>
+<li>Now square those residuals</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-11-1.png" class="img-fluid r-stretch" width="960"></section>
+<section id="ordinary-least-squares-6" class="slide level2">
+<h2>Ordinary Least Squares</h2>
+<ul>
+<li>Can we get the total area in the squares smaller with a different line?</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="img-fluid r-stretch" width="960"></section>
+<section id="ordinary-least-squares-7" class="slide level2">
+<h2>Ordinary Least Squares</h2>
+<ul>
+<li>Ordinary Least Squares, I can promise you, gets it the smallest</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="img-fluid r-stretch" width="960"></section>
+<section id="ordinary-least-squares-8" class="slide level2">
+<h2>Ordinary Least Squares</h2>
+<ul>
+<li>How does it figure out which line makes the smallest squares?</li>
+<li>There’s a mathematical formula for that!</li>
+<li>First, instead of thinking of <span class="math inline">\(intercept\)</span> and <span class="math inline">\(slope\)</span>, we reframe the line as having <em>parameters</em> we can pick</li>
+</ul>
+<p><span class="math display">\[ Y = intercept + slope*X + residual \]</span></p>
+<p><span class="math display">\[ Y = \beta_0 + \beta_1X + \varepsilon \]</span></p>
+</section>
+<section id="terminology-sidenote" class="slide level2">
+<h2>Terminology Sidenote</h2>
+<p><span class="math display">\[ Y = \beta_0 + \beta_1X + \varepsilon \]</span></p>
+<ul>
+<li>In metrics, Greek letters represent “the truth” - in <em>the true process by which the data is generated</em>, a one-unit increase in <span class="math inline">\(X\)</span> is related to a <span class="math inline">\(\beta_1\)</span> increase in <span class="math inline">\(Y\)</span></li>
+<li>When we put a hat on anything, that is our <em>prediction</em> or <em>estimation</em> of that true thing. <span class="math inline">\(\hat{Y}\)</span> is our prediction of <span class="math inline">\(Y\)</span>, and <span class="math inline">\(\hat{\beta_1}\)</span> is our estimate of what we think the true <span class="math inline">\(\beta_1\)</span> is</li>
+<li>Note “residual” =/= <span class="math inline">\(\varepsilon\)</span> - residuals are what’s actually left over from our prediction with real data, but the <em>error</em> <span class="math inline">\(\varepsilon\)</span> is the <em>true</em> difference between our line and <span class="math inline">\(Y\)</span>.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="ols-simulator" class="title-slide slide level1">
+<h1>OLS Simulator</h1>
+<ul>
+<li>Take a look at this OLS simulator and play around with it: <a href="https://econometricsbysimulation.shinyapps.io/OLS-App/">https://econometricsbysimulation.shinyapps.io/OLS-App/</a></li>
+<li>Click “Show Residuals” to turn that on</li>
+<li>Try different data generating processes and standard deviations</li>
+<li>What settings make the residuals small or large? Any guesses why?</li>
+<li>What happens if you take the intercept out? What does that make our line do?</li>
+<li>How close does the line come to the data generating process? Intercept and slope are in the second table below the graph under “Estimate”</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="concept-checks-1" class="title-slide slide level1">
+<h1>Concept Checks</h1>
+<ul>
+<li>Why might we want to minimize squared residuals rather than just residuals?</li>
+<li>What’s the difference between a residual and an error?</li>
+<li>If I have the below OLS-fitted line from a dataset of children:</li>
+</ul>
+<p><span class="math display">\[ Height (Inches) = 18 + 2*Age\]</span></p>
+<p>And we have the kids Darryl who is 10 years old and 40 inches tall, and Bijetri who is 9 years old and 37 inches tall, what are each of their: (a) predicted values, (b) residuals, and then what is the sum of their squared residuals?</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="recap" class="title-slide slide level1">
+<h1>Recap</h1>
+<ul>
+<li>Regression is the practice of fitting a <em>shape</em> to data so as to explain the relationship more generally</li>
+<li>Ordinary least squares fits a <em>straight line</em></li>
+<li>It picks the straight line that minimizes the <em>sum of squared residuals</em></li>
+<li>That line has an intercept <span class="math inline">\(\beta_0\)</span> (Our prediction <span class="math inline">\(\hat{Y}\)</span> when <span class="math inline">\(X = 0\)</span>) and a slope <span class="math inline">\(\beta_1\)</span> (how much higher we predict <span class="math inline">\(Y\)</span> will be when we look at an <span class="math inline">\(X\)</span> one unit higher)</li>
+<li>The <em>residual</em> is the difference between our prediction <span class="math inline">\(\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1X\)</span> and the actual number <span class="math inline">\(Y\)</span></li>
+</ul>
+<p><span class="math display">\[ Y = \beta_0 + \beta_1 X + \varepsilon \]</span> <span class="math display">\[ \hat{Y} = \hat{\beta}_0 + \hat{\beta}_1X \]</span></p>
 </section>
 <section class="slide level2">
 
@@ -356,7 +723,7 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <img src="../../../figures/logos/MY_INSTITUTION.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>PB4A7- Quantitative Applications for Behavioural Science</p>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -568,6 +935,44 @@ Dr.&nbsp;<a href="#/">George Melios</a>
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

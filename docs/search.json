@@ -219,9 +219,9 @@
   {
     "objectID": "2023/weeks/week02/slides.html",
     "href": "2023/weeks/week02/slides.html",
-    "title": "🗓️ Week 0 Presessionals",
+    "title": "🗓️ Week 2 Fitting Lines",
     "section": "",
-    "text": "Dr. Melios Research Fellow\n\n\n\n\nPhD in Economics\nBackground: Economics, Political Science, Behavioural Science\n\nPolitical Economy  Beliefs  Wellbeing"
+    "text": "What is identification error?\nIdentification is how you link the result you see with the conclusion you draw from it\nFor example, say you observe that kids who play video games are more aggressive in everyday life (result), and you conclude from that result that video games make kids more aggressive (conclusion)\nIf seeing that result is actually evidence for that conclusion, then we are properly identified\n\n\n\n\n\nAnother reason why we might see that result, i.e. if the same result could give us a different conclusion, like kids who are aggressive play more video games or people notice aggression more when kids play video games, then\nwe have made an identification error* - our result was not identified!*\nIdentification error is when your result in the data doesn’t actually have a clear theory (“why” or “because”)\nFor example, if you observe that people tend to wear more shorts on days they eat more ice cream, and you conclude that eating ice cream makes you put on shorts"
   },
   {
     "objectID": "2023/weeks/week02/slides.html#your-lecturer",
@@ -2896,5 +2896,292 @@
     "title": "💻 Seminar 1 - Hidden Curriculum",
     "section": "📟 Communication",
     "text": "📟 Communication\n\nHave questions? Feel free to pop them up on #Week 1 channel on Discord"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#identification-error-1",
+    "href": "2023/weeks/week02/slides.html#identification-error-1",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Identification Error",
+    "text": "Identification Error\n\nAnother reason why we might see that result, i.e. if the same result could give us a different conclusion, like kids who are aggressive play more video games or people notice aggression more when kids play video games, then\nwe have made an identification error* - our result was not identified!*\nIdentification error is when your result in the data doesn’t actually have a clear theory (“why” or “because”)\nFor example, if you observe that people tend to wear more shorts on days they eat more ice cream, and you conclude that eating ice cream makes you put on shorts"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#data-generating-process-2",
+    "href": "2023/weeks/week02/slides.html#data-generating-process-2",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Data Generating Process",
+    "text": "Data Generating Process"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#data-generating-process-3",
+    "href": "2023/weeks/week02/slides.html#data-generating-process-3",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Data Generating Process",
+    "text": "Data Generating Process\n\nThe prices that we observe come from that theoretical construct\nWhen we see the prices and quantities moving, according to our theory, it is because the S and D lines are moving\nBut we cannot see the S and D lines\nOur goal: use the observations we do see to infer what the theoretical model (data generating process) is"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#data-generating-process-4",
+    "href": "2023/weeks/week02/slides.html#data-generating-process-4",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Data Generating Process",
+    "text": "Data Generating Process\n\nHarder than it sounds. What inference about S and D can we draw from these observations?"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#causality",
+    "href": "2023/weeks/week02/slides.html#causality",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Causality",
+    "text": "Causality\n\nA data generating process can be described by a series of equations that describe where the data comes from. For example:\n\n\\[ X = \\gamma_0 + \\gamma_1\\varepsilon + \\nu \\]\n\\[ Y = \\beta_0 + \\beta_1X + \\varepsilon \\]\n\nThis says ” \\(X\\) is caused by \\(\\varepsilon\\) and \\(\\nu\\), and \\(Y\\) is caused by \\(X\\) and \\(\\varepsilon\\)”\nThe truth is that an increase in \\(X\\) causally increases \\(Y\\) by \\(\\beta_1\\)\nThe goal of econometrics is to be able to estimate what \\(\\beta_1\\) is accurately"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#causality-1",
+    "href": "2023/weeks/week02/slides.html#causality-1",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Causality",
+    "text": "Causality\n\nWe can also represent this set of relationships as a graph, with arrows telling you what variables cause each other"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#causality-2",
+    "href": "2023/weeks/week02/slides.html#causality-2",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Causality",
+    "text": "Causality\n\nWe do this because most of the relationships we’re interested in are causal - we want to know, if we could reach in and manipulate \\(X\\), would \\(Y\\) change as a result, and how much?\nDoes the minimum wage reduce employment?\nDoes quantitative easing avert recessions?\nDoes six-sigma improve business performance?\nDoes getting an MBA make you a better manager?"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#causality-3",
+    "href": "2023/weeks/week02/slides.html#causality-3",
+    "title": "🗓️ Week 2 Hypothesis Testing",
+    "section": "Causality",
+    "text": "Causality\n\nImagine this is the graph we see for minimum wage and employment"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#causality-5",
+    "href": "2023/weeks/week02/slides.html#causality-5",
+    "title": "🗓️ Week 2 Hypothesis Testing",
+    "section": "Causality",
+    "text": "Causality\n\nA given correlation, like the negative relationship between minimum wage changes and employment changes, can be consistent with a number of different causal relationships\nAs econometricians, we need to figure out which one it is!\nHow can we narrow it down?\nHow many of the diagrams on the next page can be consistent with that negative relationship?"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#eight-possible-relationships",
+    "href": "2023/weeks/week02/slides.html#eight-possible-relationships",
+    "title": "🗓️ Week 2 Hypothesis Testing",
+    "section": "Eight Possible Relationships",
+    "text": "Eight Possible Relationships"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#causality-6",
+    "href": "2023/weeks/week02/slides.html#causality-6",
+    "title": "🗓️ Week 2 Hypothesis Testing",
+    "section": "Causality",
+    "text": "Causality\n\nThe only ones we can eliminate are d, g, and h\nAll the rest are possible!\nIf f is correct, we see the negative relationship even though minimum wage has nothing to do with causing employment (like the ice cream and shorts example)\nIf a is correct, then even though we know minimum wage causes employment to change, the size or even direction of the relationship will be wrong (why?)"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#causality-7",
+    "href": "2023/weeks/week02/slides.html#causality-7",
+    "title": "🗓️ Week 2 Hypothesis Testing",
+    "section": "Causality",
+    "text": "Causality\n\nSo which of them is likely to be correct?\nThat depends on what we think \\(\\varepsilon\\) is\n\\(\\varepsilon\\) is everything that determines \\(Y\\) other than \\(X\\)\nPerhaps the health of the economy, or the policies that area has chosen\nSo we almost certainly have a graph with \\(\\varepsilon \\rightarrow Y\\)\nDo those things also affect the choice to raise the minimum wage? If so we’re in graph a. That downward relationship could be due to a null relationship, or even a positive one (or perhaps a more negative one?)"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#endogeneity",
+    "href": "2023/weeks/week02/slides.html#endogeneity",
+    "title": "🗓️ Week 2 Hypothesis Testing",
+    "section": "Endogeneity",
+    "text": "Endogeneity\n\nSo “correlation isn’t causation” isn’t quite complete\nIt’s more “only certain correlations are causal”\nMany correlations are beset by these problems like endogeneity, i.e. the presence of another variable like \\(\\varepsilon\\) related to both \\(X\\) and \\(Y\\), giving the effect a “back door”\nSo the correlation reflects both the causal effect and also the influence of \\(\\varepsilon\\)"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#random-experiments-1",
+    "href": "2023/weeks/week02/slides.html#random-experiments-1",
+    "title": "🗓️ Week 2 Hypothesis Testing",
+    "section": "Random Experiments",
+    "text": "Random Experiments\n\nFor this reason, random experiments are generally considered the “gold standard”\nAlthough they have their own problems, of course (your experimental sample might not represent the population well, there are plenty of statistical mistakes to make, people may act differently knowing they’re in an experiment, etc. etc.)\nBut regardless, we’re looking here at questions for which we can’t run an experiment, becuase it’s impossible or infeasible or immoral\nSo one way we can think about solving this endogeneity problem with econometrics is to use our observational data in such a way that it behaves as though there were an experiment being run\nPlenty of ways to do this we’ll go over in this course!"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#concept-check",
+    "href": "2023/weeks/week02/slides.html#concept-check",
+    "title": "🗓️ Week 2 Hypothesis Testing",
+    "section": "Concept Check",
+    "text": "Concept Check\n\nWhat does it mean to say that \\(X\\) has a causal effect on \\(Y\\)?\nWhy might the relationship between \\(X\\) and \\(Y\\) in data not be the same as the causal effect?\nWhat is an example of observational data?\nConsider the question of “Does getting an MBA make you a better manager?” What are \\(X\\) and \\(Y\\) here? What would be in the error term \\(\\varepsilon\\)? Are we likely to have an endogeneity problem here?"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#spurious-correlations",
+    "href": "2023/weeks/week02/slides.html#spurious-correlations",
+    "title": "🗓️ Week 2 Hypothesis Testing",
+    "section": "Spurious Correlations",
+    "text": "Spurious Correlations\n\nLet’s visit this site all about “spurious” correlations (i.e. correlations that almost certainly do not reveal a true effect of one variable on the other): https://tylervigen.com/spurious-correlations\nTake a look at how easy it is to find variables that are related statistically, even though clearly neither causes the other\nDo you think this correlation is an example of inferential error (just random chance) or identification error (truly related, but not because one causes the other)? Why?"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#data-generating-process-1",
+    "href": "2023/weeks/week02/slides.html#data-generating-process-1",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Data Generating Process",
+    "text": "Data Generating Process\n\nAnother example is a model of supply and demand\nWe observe prices and quantities in a competitive market\nWhat led to those being the prices and quantities we see?\nThe supply and demand model and its equilibrium, we theorize!"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#x-and-y",
+    "href": "2023/weeks/week02/slides.html#x-and-y",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "\\(X\\) and \\(Y\\)",
+    "text": "\\(X\\) and \\(Y\\)\n\nI have an \\(X\\) value of 2.5 and want to predict what \\(Y\\) will be. What can I do?"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#x-and-y-1",
+    "href": "2023/weeks/week02/slides.html#x-and-y-1",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "\\(X\\) and \\(Y\\)",
+    "text": "\\(X\\) and \\(Y\\)\n\nI can’t just say “just predict whatever values of \\(Y\\) we see for \\(X = 2.5\\), because there are multiple of those!\nPlus, what if we want to predict for a value we DON’T have any actual observations of, like \\(X = 4.3\\)?"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#data-is-granular",
+    "href": "2023/weeks/week02/slides.html#data-is-granular",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Data is Granular",
+    "text": "Data is Granular\n\nIf I try to fit every point, I’ll get a mess that won’t really tell me the relationship between \\(X\\) and \\(Y\\)\nSo, we simplify the relationship into a shape: a line! The line smooths out those three points around 2.5 and fills in that gap around 4.3"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#isnt-this-worse",
+    "href": "2023/weeks/week02/slides.html#isnt-this-worse",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Isn’t This Worse?",
+    "text": "Isn’t This Worse?\n\nBy adding a line, we are necessarily simplifying our presentation of the data. We’re tossing out information!\nOur prediction of the data we have will be less accurate than if we just make predictions point-by-point\nHowever, we’ll do a better job predicting other data (avoiding “overfitting”)\nAnd, since a shape is something we can interpret, as opposed to a long list of predictions, which we can’t really, the line will do a better job of telling us about the true underlying relationship"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#the-line-does-a-few-things",
+    "href": "2023/weeks/week02/slides.html#the-line-does-a-few-things",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "The Line Does a Few Things:",
+    "text": "The Line Does a Few Things:\n\nWe can get a prediction of \\(Y\\) for a given value of \\(X\\) (If we follow \\(X = 2.5\\) up to our line we get \\(Y = 7.6\\))\nWe see the relationship: the line slopes up, telling us that “more \\(X\\) means more \\(Y\\) too!”"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#lines",
+    "href": "2023/weeks/week02/slides.html#lines",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Lines",
+    "text": "Lines\n\nThat line we get is the fit of our model\nA model “fit” means we’ve taken a shape (our line) and picked the one that best fits our data\nAll forms of regression do this\nOrdinary least squares specifically uses a straight line as its shape\nThe resulting line we get can also be written out as an actual line, i.e.\n\n\\[ Y = intercept + slope*X \\]"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#lines-1",
+    "href": "2023/weeks/week02/slides.html#lines-1",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Lines",
+    "text": "Lines\n\nWe can use that line as… a line!\nIf we plug in a value of \\(X\\), we get a prediction for \\(Y\\)\nBecause these \\(Y\\) values are predictions, we’ll give them a hat \\(\\hat{Y}\\)\n\n\\[ Y = 3 + 4*X \\]\n\\[ \\hat{Y} = 3 + 4*(3.2) \\]\n\\[ \\hat{Y} = 15.8 \\]"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#lines-2",
+    "href": "2023/weeks/week02/slides.html#lines-2",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Lines",
+    "text": "Lines\n\nWe can also use it to explain the relationship\nWhatever the intercept is, that’s what we predict for \\(Y\\) when \\(X = 0\\)\n\n\\[ Y = 3 + 4*X \\]\n\\[ \\hat{Y} = 3 + 4*0 \\]\n\\[ \\hat{Y} = 3 \\]"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#lines-3",
+    "href": "2023/weeks/week02/slides.html#lines-3",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Lines",
+    "text": "Lines\n\nAnd as \\(X\\) increases, we know how much we expect \\(Y\\) to increase because of the slope\n\n\\[ Y = 3 + 4*X \\]\n\\[ \\hat{Y} = 3 + 4*3 = 15 \\]\n\\[ \\hat{Y} = 3 + 4*4 = 19 \\]\n\nWhen \\(X\\) increases by \\(1\\), \\(Y\\) increases by the slope (which is \\(4\\) here)"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#ordinary-least-squares",
+    "href": "2023/weeks/week02/slides.html#ordinary-least-squares",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Ordinary Least Squares",
+    "text": "Ordinary Least Squares\n\nRegression fits a shape to the data\nOrdinary least squares specifically fits a straight line to the data\nThe straight line is described using an \\(intercept\\) and a \\(slope\\)\nWhen we plug an \\(X\\) into the line, we get a prediction for \\(Y\\), which we call \\(\\hat{Y}\\)\nWhen \\(X = 0\\), we predict \\(\\hat{Y} = intercept\\)\nWhen \\(X\\) increases by \\(1\\), our prediction of \\(Y\\) increases by the \\(slope\\)\nIf \\(slope &gt; 0\\), \\(X\\) and \\(Y\\) are positively related/correlated\nIf \\(slope &lt; 0\\), \\(X\\) and \\(Y\\) are negatively related/correlated"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#concept-checks",
+    "href": "2023/weeks/week02/slides.html#concept-checks",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nHow does producing a line let us use \\(X\\) to predict \\(Y\\)?\nIf our line is \\(Y = 5 - 2*X\\), explain what the \\(-2\\) means in a sentence\nNot all of the points are exactly on the line, meaning some of our predictions will be wrong! Should we be concerned? Why or why not?"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#how",
+    "href": "2023/weeks/week02/slides.html#how",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "How?",
+    "text": "How?\n\nWe know that regression fits a line\nBut how does it do that exactly?\nIt picks the line that produces the smallest squares\nThus, “ordinary least squares”"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#predictions-and-residuals",
+    "href": "2023/weeks/week02/slides.html#predictions-and-residuals",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Predictions and Residuals",
+    "text": "Predictions and Residuals\n\nWhenever you make a prediction of any kind, you rarely get it exactly right\nThe difference between your prediction and the actual data is the residual\n\n\\[ Y = 3 + 4*X \\]\nIf we have a data point where \\(X = 4\\) and \\(Y = 18\\), then\n\\[ \\hat{Y} = 3 + 4*4 = 19 \\]\nThen the residual is \\(Y - \\hat{Y} = 18 - 19 = -1\\)."
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#predictions-and-residuals-1",
+    "href": "2023/weeks/week02/slides.html#predictions-and-residuals-1",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Predictions and Residuals",
+    "text": "Predictions and Residuals\nSo really, our relationship doesn’t look like this…\n\\[ Y = intercept + slope*X \\]\nInstead, it’s…\n\\[ Y = intercept + slope*X + residual \\]\nWe still use \\(intercept + slope*X\\) to predict \\(Y\\) though, so this is also\n\\[ Y = \\hat{Y} + residual \\]"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#ordinary-least-squares-1",
+    "href": "2023/weeks/week02/slides.html#ordinary-least-squares-1",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Ordinary Least Squares",
+    "text": "Ordinary Least Squares\n\nAs you’d guess, a good prediction should make the residuals as small as possible\nWe want to pick a line to do that\nAnd in particular, we’re going to square those residuals, so the really-big residuals count even more. We really don’t want to have points that are super far away from the line!\nThen, we pick a line to minimize those squared residuals (“least squares”)"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#ordinary-least-squares-2",
+    "href": "2023/weeks/week02/slides.html#ordinary-least-squares-2",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Ordinary Least Squares",
+    "text": "Ordinary Least Squares\n\nStart with our data"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#ordinary-least-squares-3",
+    "href": "2023/weeks/week02/slides.html#ordinary-least-squares-3",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Ordinary Least Squares",
+    "text": "Ordinary Least Squares\n\nLet’s just pick a line at random, not necessarily from OLS"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#ordinary-least-squares-4",
+    "href": "2023/weeks/week02/slides.html#ordinary-least-squares-4",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Ordinary Least Squares",
+    "text": "Ordinary Least Squares\n\nThe vertical distance from point to line is the residual"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#ordinary-least-squares-5",
+    "href": "2023/weeks/week02/slides.html#ordinary-least-squares-5",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Ordinary Least Squares",
+    "text": "Ordinary Least Squares\n\nNow square those residuals"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#ordinary-least-squares-6",
+    "href": "2023/weeks/week02/slides.html#ordinary-least-squares-6",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Ordinary Least Squares",
+    "text": "Ordinary Least Squares\n\nCan we get the total area in the squares smaller with a different line?"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#ordinary-least-squares-7",
+    "href": "2023/weeks/week02/slides.html#ordinary-least-squares-7",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Ordinary Least Squares",
+    "text": "Ordinary Least Squares\n\nOrdinary Least Squares, I can promise you, gets it the smallest"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#ordinary-least-squares-8",
+    "href": "2023/weeks/week02/slides.html#ordinary-least-squares-8",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Ordinary Least Squares",
+    "text": "Ordinary Least Squares\n\nHow does it figure out which line makes the smallest squares?\nThere’s a mathematical formula for that!\nFirst, instead of thinking of \\(intercept\\) and \\(slope\\), we reframe the line as having parameters we can pick\n\n\\[ Y = intercept + slope*X + residual \\]\n\\[ Y = \\beta_0 + \\beta_1X + \\varepsilon \\]"
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#terminology-sidenote",
+    "href": "2023/weeks/week02/slides.html#terminology-sidenote",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Terminology Sidenote",
+    "text": "Terminology Sidenote\n\\[ Y = \\beta_0 + \\beta_1X + \\varepsilon \\]\n\nIn metrics, Greek letters represent “the truth” - in the true process by which the data is generated, a one-unit increase in \\(X\\) is related to a \\(\\beta_1\\) increase in \\(Y\\)\nWhen we put a hat on anything, that is our prediction or estimation of that true thing. \\(\\hat{Y}\\) is our prediction of \\(Y\\), and \\(\\hat{\\beta_1}\\) is our estimate of what we think the true \\(\\beta_1\\) is\nNote “residual” =/= \\(\\varepsilon\\) - residuals are what’s actually left over from our prediction with real data, but the error \\(\\varepsilon\\) is the true difference between our line and \\(Y\\)."
+  },
+  {
+    "objectID": "2023/weeks/week02/slides.html#ordinary-least-squares-9",
+    "href": "2023/weeks/week02/slides.html#ordinary-least-squares-9",
+    "title": "🗓️ Week 2 Hypothesis Testing",
+    "section": "Ordinary Least Squares",
+    "text": "Ordinary Least Squares\n\nNow that we have our line in parametric terms, we can pick our estimates of \\(\\beta_0\\) and \\(\\beta_1\\) in order to make the squared residuals as small as possible\nPick \\(\\hat{\\beta_0}\\) and \\(\\hat{\\beta_1}\\) to minimize:\n\n\\[ \\sum_i (residual_i^2) \\]\n\\[ \\sum_i ((Y_i - \\hat{Y})^2) \\]\n\\[ \\sum_i ((Y_i - \\hat{\\beta_0} - \\hat{\\beta_1}X_i)^2) \\]\nWhere the \\(_i\\) refers to a particular observation. \\(\\sum_i\\) means “sum this up over all the observations”\n(Conveniently, you can pick \\(\\hat{\\beta_0}\\) and \\(\\hat{\\beta_1}\\) to minimize that expression with basic calculus)"
   }
 ]
