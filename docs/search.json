@@ -3337,5 +3337,33 @@
     "title": "🗓️ Week 3 Hypothesis Testing",
     "section": "Concept Checks",
     "text": "Concept Checks\n\nWhat feature of the sampling distribution of the \\(\\beta\\) does the standard error describe?\nWhy do we get the same reject/don’t reject result if we center the sampling distribution around the null as around our estimate?\nWe perform an estimate of \\(\\hat{\\beta}_1\\) and get a 95% confidence interval of [-1.3, 2.1]. Describe what this means in a sentence.\nIn the above confidence interval, can we reject the null of \\(\\beta_1 = 0\\)?\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides_sem.html#ols-1",
+    "href": "2023/weeks/week03/slides_sem.html#ols-1",
+    "title": "💻 Seminar 3 Hypothesis testing & OLS",
+    "section": "OLS",
+    "text": "OLS\n\nDuring this seminar:\n\nWe will go through Seminar 2 & 3 exercises.\nPlease conduct your analyses on your do-files and keep a log-file.\nSee how we can run OLS on STATA and test hypotheses"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides_sem.html#tasks",
+    "href": "2023/weeks/week03/slides_sem.html#tasks",
+    "title": "💻 Seminar 3 Hypothesis testing & OLS",
+    "section": "Tasks",
+    "text": "Tasks\n\nRegress education on yearsexp. Interpret the coefficient. What does the result tell us?\nCreate a set of dummy variables to capture the different levels of education on yearsexp."
+  },
+  {
+    "objectID": "2023/weeks/week03/slides_sem.html#tasks-1",
+    "href": "2023/weeks/week03/slides_sem.html#tasks-1",
+    "title": "💻 Seminar 3 Hypothesis testing & OLS",
+    "section": "Tasks",
+    "text": "Tasks\n\nTest the null hypothesis that there is no effect of earning a college degree on yearsexp using an OLS regression model. State the alternate hypothesis.\n\nInterpret the estimated coefficient.\nBased on the results, do you reject the null hypothesis? Explain using t-statistic, p-values and confidence intervals.\nWhat is the prediction for an applicant who has not earned a a college degree?\nWhat is the prediction for an applicant who has earned a a college degree?"
+  },
+  {
+    "objectID": "2023/weeks/week03/slides_sem.html#tasks-2",
+    "href": "2023/weeks/week03/slides_sem.html#tasks-2",
+    "title": "💻 Seminar 3 Hypothesis testing & OLS",
+    "section": "Tasks",
+    "text": "Tasks\n\nTest the null hypothesis that there is no effect of earning a college degree on yearsexp using an OLS regression model using robust Standard Errors. Do the coefficient values change?\nTest the null hypothesis that there is no effect of earning a college degree on yearsexp using ANOVA.\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
   }
 ]
