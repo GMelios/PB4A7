@@ -3365,5 +3365,341 @@
     "title": "💻 Seminar 3 Hypothesis testing & OLS",
     "section": "Tasks",
     "text": "Tasks\n\nTest the null hypothesis that there is no effect of earning a college degree on yearsexp using an OLS regression model using robust Standard Errors. Do the coefficient values change?\nTest the null hypothesis that there is no effect of earning a college degree on yearsexp using ANOVA.\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#the-right-hand-side-1",
+    "href": "2023/weeks/week05/slides.html#the-right-hand-side-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "The Right Hand Side",
+    "text": "The Right Hand Side\nWe will look at three features of the right-hand side\n\nWhat if the variable is categorical or binary? (binary variables)\nWhat if the variable has a nonlinear effect on \\(Y\\) (polynomials and logarithms)\nWhat if the effect of one variable depends on the value of another variable? (interaction terms)"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#comparison-of-means",
+    "href": "2023/weeks/week05/slides.html#comparison-of-means",
+    "title": "Binary Variables and Functional Form",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means\n\nWhen a binary variable is an independent variable, what we are often interested in doing is comparing means\nIs mean income higher inside the US or outside?\nIs mean height higher for kids who got a nutrition supplement or those who didn’t?\nIs mean GDP growth higher with or without a floating exchange rate?"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#comparison-of-means-1",
+    "href": "2023/weeks/week05/slides.html#comparison-of-means-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means\n\nLet’s compare log earnings in 1993 between married people 30 or older vs. never-married people 30 or older\nSeems to be a slight favor to the married men\n\n\ndata(PSID, package = 'Ecdat')\nPSID &lt;- PSID %&gt;%\n  filter(age &gt;= 30, married %in% c('married','never married'), earnings &gt; 0) %&gt;%\n  mutate(married  = married == 'married')\nPSID %&gt;%\n  group_by(married) %&gt;%\n  summarize(log_earnings = mean(log(earnings)))\n\n# A tibble: 2 × 2\n  married log_earnings\n  &lt;lgl&gt;          &lt;dbl&gt;\n1 FALSE           9.26\n2 TRUE            9.47"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#comparison-of-means-2",
+    "href": "2023/weeks/week05/slides.html#comparison-of-means-2",
+    "title": "Binary Variables and Functional Form",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#comparison-of-means-3",
+    "href": "2023/weeks/week05/slides.html#comparison-of-means-3",
+    "title": "Binary Variables and Functional Form",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means\n\nThe difference between the means follows a t-distribution under the null that they’re identical\nSo of course we can do a hypothesis test of whether they’re different\nBut why bother trotting out a specific test when we can just do a regression?\n(In fact, a lot of specific tests can be replaced with basic regression, see this explainer)\n\n\nfeols(log(earnings) ~ married, data = PSID)\n\nOLS estimation, Dep. Var.: log(earnings)\nObservations: 2,830 \nStandard-errors: IID \n            Estimate Std. Error   t value   Pr(&gt;|t|)    \n(Intercept) 9.255160   0.052891 174.98636  &lt; 2.2e-16 ***\nmarriedTRUE 0.212731   0.057760   3.68305 0.00023478 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\nRMSE: 1.13028   Adj. R2: 0.004422"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#comparison-of-means-4",
+    "href": "2023/weeks/week05/slides.html#comparison-of-means-4",
+    "title": "Binary Variables and Functional Form",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means\nNotice:\n\nThe intercept gives the mean for the non-married group\nThe coefficient on marriedTRUE gives the married minus non-married difference\nThe t-stat and p-value on that coefficient are exactly the same as that t.test (except the t is reversed; same deal)\ni.e. the coefficient on a binary variable in a regression gives the difference in means\nIf we’d defined it the other way, with “not married” as the independent variable, the intercept would be the mean for the married group (i.e. “not married = 0”), and the coefficient would be the exact same but times \\(-1\\) (same difference, just opposite direction!)"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#comparison-of-means-5",
+    "href": "2023/weeks/week05/slides.html#comparison-of-means-5",
+    "title": "Binary Variables and Functional Form",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means\nWhy does OLS give us a comparison of means when you give it a binary variable?\n\nThe only \\(X\\) values are 0 (FALSE) and 1 (TRUE)\nBecause of this, OLS no longer really fits a line, it’s more of two separate means\nAnd when you’re estimating to minimize the sum of squared errors separately for each group, can’t do any better than to predict the mean!\nSo you get the mean of each group as each group’s prediction"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#binary-with-controls",
+    "href": "2023/weeks/week05/slides.html#binary-with-controls",
+    "title": "Binary Variables and Functional Form",
+    "section": "Binary with Controls",
+    "text": "Binary with Controls\n\nObviously this is handy for including binary controls, but why do this for binary treatments? Because we can add controls!\n\n\n\n                feols(log(earning..\nDependent Var.:       log(earnings)\n                                   \nConstant          8.740*** (0.1478)\nmarriedTRUE      0.3404*** (0.0579)\nkids            -0.2259*** (0.0159)\nage              0.0223*** (0.0038)\n_______________ ___________________\nS.E. type                       IID\nObservations                  2,803\nR2                          0.07609\nAdj. R2                     0.07510\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#multicollinearity",
+    "href": "2023/weeks/week05/slides.html#multicollinearity",
+    "title": "Binary Variables and Functional Form",
+    "section": "Multicollinearity",
+    "text": "Multicollinearity\n\nWhy is just one side of it on the regression? Why aren’t “married” and “not married” BOTH included?\nBecause regression couldn’t give an answer!"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#multicollinearity-1",
+    "href": "2023/weeks/week05/slides.html#multicollinearity-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Multicollinearity",
+    "text": "Multicollinearity\n\nMean of married is \\(9.47\\) and of non-married is \\(9.26\\). \\[ \\log(Earnings) = 0 + 9.47Married + 9.26NonMarried \\] \\[ \\log(Earnings) = 3 + 6.47Married + 6.26NonMarried \\]\nThese (and infinitely many other options) all give the exact same predictions! OLS can’t pick between them. There’s no single best way to minimize squared residuals\nSo we pick one with convenient properties, setting one of the categories to have a coefficient of 0 (dropping it) and making the coefficient on the other the difference relative to the one we left out"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#more-than-two-categories",
+    "href": "2023/weeks/week05/slides.html#more-than-two-categories",
+    "title": "Binary Variables and Functional Form",
+    "section": "More than Two Categories",
+    "text": "More than Two Categories\n\nThat interpretation - dropping one and making the other relative to that, conveniently extends to multi-category variables\nWhy stop at binary categorical variables? There are plenty of categorical variables with more than two values\nWhat is your education level? What is your religious denomination? What continent are you on?\nWe can put these in a regression by turning each value into its own binary variable\n(and then dropping one so the coefficients on the others give you the difference with the omitted one)"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#more-than-two-categories-1",
+    "href": "2023/weeks/week05/slides.html#more-than-two-categories-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "More than Two Categories",
+    "text": "More than Two Categories\n\nMake the mean of group A be 1, of group B be 2, etc.\n\n\ntib &lt;- tibble(group = sample(LETTERS[1:4], 10000, replace = TRUE)) %&gt;%\n  mutate(Y = rnorm(10000) + (group == \"A\") + 2*(group == \"B\") + 3*(group == \"C\") + 4*(group == \"D\"))\nfeols(Y ~ group, data = tib)\n\nOLS estimation, Dep. Var.: Y\nObservations: 10,000 \nStandard-errors: IID \n            Estimate Std. Error  t value  Pr(&gt;|t|)    \n(Intercept) 0.992778   0.019805  50.1275 &lt; 2.2e-16 ***\ngroupB      0.983373   0.028318  34.7257 &lt; 2.2e-16 ***\ngroupC      2.015278   0.028268  71.2908 &lt; 2.2e-16 ***\ngroupD      2.985321   0.028117 106.1760 &lt; 2.2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\nRMSE: 1.00187   Adj. R2: 0.557065"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#more-than-two-categories-2",
+    "href": "2023/weeks/week05/slides.html#more-than-two-categories-2",
+    "title": "Binary Variables and Functional Form",
+    "section": "More than Two Categories",
+    "text": "More than Two Categories\n\nBy changing the reference group, the coefficients change because they’re “different from” a different group!\nAnd notice that, as before, the intercept is the mean of the omitted group (although this changes once you add controls; the intercept is the predicted mean when all right-hand-side variables are 0)\n\n\ntib &lt;- tib %&gt;% mutate(group = factor(group, levels = c('B','A','C','D')))\nfeols(Y ~ group, data = tib)\n\nOLS estimation, Dep. Var.: Y\nObservations: 10,000 \nStandard-errors: IID \n             Estimate Std. Error  t value  Pr(&gt;|t|)    \n(Intercept)  1.976151   0.020241  97.6327 &lt; 2.2e-16 ***\ngroupA      -0.983373   0.028318 -34.7257 &lt; 2.2e-16 ***\ngroupC       1.031905   0.028575  36.1118 &lt; 2.2e-16 ***\ngroupD       2.001948   0.028425  70.4286 &lt; 2.2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\nRMSE: 1.00187   Adj. R2: 0.557065"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#more-than-two-categories-3",
+    "href": "2023/weeks/week05/slides.html#more-than-two-categories-3",
+    "title": "Binary Variables and Functional Form",
+    "section": "More than Two Categories",
+    "text": "More than Two Categories\n\nSome Interpretations: Controlling for number of kids and age, people with a high school degree have log earnings .324 higher than those without a high school degree (earnings 32.4% higher). BA-holders have earnings 84.8% higher than those without a HS degree\nControlling for kids and age, a graduate degree earns (.976 - .848 =) 12.8% more than someone with a BA (glht() could help!)\n\n\n\n\nNo High School Degree    High School Degree          Some College \n                  333                  1105                   708 \n    Bachelor's Degree       Graduate Degree \n                  356                   301 \n\n\nOLS estimation, Dep. Var.: log(earnings)\nObservations: 2,803 \nStandard-errors: IID \n                             Estimate Std. Error  t value   Pr(&gt;|t|)    \n(Intercept)                  8.360245   0.156293 53.49092  &lt; 2.2e-16 ***\neducationHigh School Degree  0.323807   0.067175  4.82036 1.5096e-06 ***\neducationSome College        0.576478   0.071976  8.00934 1.6758e-15 ***\neducationBachelor's Degree   0.848200   0.082697 10.25666  &lt; 2.2e-16 ***\neducationGraduate Degree     0.976291   0.086842 11.24212  &lt; 2.2e-16 ***\nkids                        -0.149679   0.015689 -9.54045  &lt; 2.2e-16 ***\nage                          0.023137   0.003741  6.18453 7.1388e-10 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\nRMSE: 1.05675   Adj. R2: 0.123473"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#concept-checks",
+    "href": "2023/weeks/week05/slides.html#concept-checks",
+    "title": "Binary Variables and Functional Form",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nIf \\(X\\) is binary, in sentences interpret the coefficients from the estimated OLS equation \\(Y = 4 + 3X + 2Z\\)\nHow might a comparison of means come in handy if you wanted to analyze the results of a randomized policy experiment?\nIf you had a data set of people from every continent and added “continent” as a control, how many coefficients would this add to your model?\nIf in that regression you really wanted to compare Europe to Asia specifically, what might you do so that the regression made this easy?"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#interpreting-ols",
+    "href": "2023/weeks/week05/slides.html#interpreting-ols",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interpreting OLS",
+    "text": "Interpreting OLS\n\nTo think more about the right-hand-side, let’s go back to our original interpretation of an OLS coefficient \\[ Y = \\beta_0 + \\beta_1X + \\varepsilon \\]\nA one-unit change in \\(X\\) is associated with a \\(\\beta_1\\)-unit change in \\(Y\\)\nThis logic still works with binary variables since “a one-unit change in \\(X\\)” means “changing \\(X\\) from No to Yes”\nNotice that this assumes that a one-unit change in \\(X\\) always has the same effect on \\(\\beta_1\\) no matter what else is going on\nWhat if that’s not true?"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#functional-form",
+    "href": "2023/weeks/week05/slides.html#functional-form",
+    "title": "Binary Variables and Functional Form",
+    "section": "Functional Form",
+    "text": "Functional Form\n\nWe talked before about times when a linear model like standard OLS might not be sufficient\nHowever, as long as those non-linearities are on the right hand side, we can fix the problem easily but just having \\(X\\) enter non-linearly! Run it through a transformation!\nThe most common transformations by far are polynomials and logarithms"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#functional-form-1",
+    "href": "2023/weeks/week05/slides.html#functional-form-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Functional Form",
+    "text": "Functional Form\n\nWhy do this? Because sometimes a straight line is clearly not going to do the trick!"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#polynomials",
+    "href": "2023/weeks/week05/slides.html#polynomials",
+    "title": "Binary Variables and Functional Form",
+    "section": "Polynomials",
+    "text": "Polynomials\n\n\\(\\beta_1X\\) is a “first order polynomial” - there’s one term\n\\(\\beta_1X + \\beta_2X^2\\) is a “second order polynomial” or a “quadratic” - two terms (note both included, it’s not just \\(X^2\\))\n\\(\\beta_1X + \\beta_2X^2 + \\beta_3X^3\\) is a third-order or cubic, etc."
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#polynomials-1",
+    "href": "2023/weeks/week05/slides.html#polynomials-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Polynomials",
+    "text": "Polynomials\nWhat do they do?\n\nThe more polynomial terms, the more flexible the line can be. With enough terms you can mimic any shape of relationship\nOf course, if you just add a whole buncha terms, it gets very noisy, and prediction out-of-sample gets very bad\nKeep it minimal - quadratics are almost always enough, unless you have reason to believe there’s a true more-complex relationship. You can try adding higher-order terms and see if they make a difference"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#polynomials-2",
+    "href": "2023/weeks/week05/slides.html#polynomials-2",
+    "title": "Binary Variables and Functional Form",
+    "section": "Polynomials",
+    "text": "Polynomials\n\nThe true relationship is quadratic"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#polynomials-3",
+    "href": "2023/weeks/week05/slides.html#polynomials-3",
+    "title": "Binary Variables and Functional Form",
+    "section": "Polynomials",
+    "text": "Polynomials\n\nHigher-order terms don’t do anything for us here (because a quadratic is sufficient!)"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#polynomials-in-r",
+    "href": "2023/weeks/week05/slides.html#polynomials-in-r",
+    "title": "Binary Variables and Functional Form",
+    "section": "Polynomials in R",
+    "text": "Polynomials in R\n\nWe can add an I() function to our regression to do a calculation on a variable before including it. So I(X^2) adds a squared term\nThere’s also a poly() function but avoid it - it does something slightly different\n\n\n# Linear\nfeols(Y ~ X, data = df)\n# Quadratic\nfeols(Y ~ X + I(X^2), data = df)\n# Cubic\nfeols(Y ~ X + I(X^2) + I(X^3), data = df)"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#concept-check",
+    "href": "2023/weeks/week05/slides.html#concept-check",
+    "title": "Binary Variables and Functional Form",
+    "section": "Concept Check",
+    "text": "Concept Check\n\nWhat’s the effect of a one-unit change in \\(X\\) at \\(X = 0\\), \\(X = 1\\), and \\(X = 2\\) for each of these?\n\n\n\n                feols(Y ~ X, dat.. feols(Y ~ X + I(.. feols(Y ~ X + I(...1\nDependent Var.:                  Y                  Y                    Y\n                                                                          \nConstant         7.285*** (0.5660)   -0.1295 (0.3839)      0.0759 (0.5091)\nX               -8.934*** (0.1953)   0.9779* (0.3831)      0.4542 (0.9331)\nX square                           -2.003*** (0.0752)   -1.738*** (0.4368)\nX cube                                                    -0.0354 (0.0574)\n_______________ __________________ __________________   __________________\nS.E. type                      IID                IID                  IID\nObservations                   200                200                  200\nR2                         0.91357            0.98122              0.98126\nAdj. R2                    0.91313            0.98103              0.98097\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#logarithms",
+    "href": "2023/weeks/week05/slides.html#logarithms",
+    "title": "Binary Variables and Functional Form",
+    "section": "Logarithms",
+    "text": "Logarithms\n\nAnother common transformation, both for dependent and independent variables, is to take the logarithm\nThis has the effect of pulling in extreme values from strongly right-skewed data and making linear relationships pop out\nIncome, for example, is almost always used with a logarithm\nIt also gives the coefficients a nice percentage-based interpretation"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#logarithms-1",
+    "href": "2023/weeks/week05/slides.html#logarithms-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Logarithms",
+    "text": "Logarithms"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#or-if-you-prefer",
+    "href": "2023/weeks/week05/slides.html#or-if-you-prefer",
+    "title": "Binary Variables and Functional Form",
+    "section": "Or if you prefer…",
+    "text": "Or if you prefer…\n\nNotice the change in axes"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#logarithms-2",
+    "href": "2023/weeks/week05/slides.html#logarithms-2",
+    "title": "Binary Variables and Functional Form",
+    "section": "Logarithms",
+    "text": "Logarithms\n\nHow can we interpret them?\nThe key is to remember that \\(\\log(X) + a \\approx \\log((1+a)X)\\), meaning that a \\(a\\)-unit change in \\(log(X)\\) is similar to a \\(a\\times100%\\) change in \\(X\\)\nSo, walk through our “one-unit change in the variable” logic from before, but whenever we hit a log, change that into a percentage!"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#logarithms-3",
+    "href": "2023/weeks/week05/slides.html#logarithms-3",
+    "title": "Binary Variables and Functional Form",
+    "section": "Logarithms",
+    "text": "Logarithms\n\n\\(Y = \\beta_0 + \\beta_1\\log(X)\\) A one-unit change in \\(\\log(X)\\), or a 100% change in \\(X\\), is associated with a \\(\\beta_1\\)-unit change in \\(Y\\)\n\\(\\log(Y) = \\beta_0 + \\beta_1X\\) a one-unit change in \\(X\\) is associated with a \\(\\beta_1\\times 100\\)% change in \\(Y\\)\n\\(\\log(Y) = \\beta_0 + \\beta_1\\log(X)\\) A one-unit change in \\(\\log(X)\\), or a or a 100% change in \\(X\\), is associated with a \\(\\beta_1\\)-unit change in \\(\\log(Y)\\), or a \\(\\beta_1\\times100\\)% change in \\(Y\\).\n(Try also with changes smaller than one unit - that’s usually more reasonable)"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#logarithms-4",
+    "href": "2023/weeks/week05/slides.html#logarithms-4",
+    "title": "Binary Variables and Functional Form",
+    "section": "Logarithms",
+    "text": "Logarithms\nDownsides:\n\nLogarithms require that all data be positive. No negatives or zeroes!\nFairly rare that a variable with negative values wants a log anyway\nBut zeroes are common! A common practice is to just do \\(log(X+1)\\) but this is pretty arbitrary"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#functional-form-2",
+    "href": "2023/weeks/week05/slides.html#functional-form-2",
+    "title": "Binary Variables and Functional Form",
+    "section": "Functional Form",
+    "text": "Functional Form\n\nIn general, you want the shape of your function to match the shape of the relationship in the data (or, even better, the true relationship)\nPolynomials and logs can usually get you there!\nWhich to use? Use logs for highly skewed data or variables with exponential relationships\nUse polynomials if it doesn’t look straight! Check that scatterplot and see how not-straight it is!"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#concept-checks-1",
+    "href": "2023/weeks/week05/slides.html#concept-checks-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nWhich of the following variables would you likely want to log before using them? Income, height, wealth, company size, home square footage\nIn each of the following estimated OLS lines, interpret the coefficient by filling in “A [blank] change in X is associated with a [blank] change in Y”:\n\n\\[ Y = 1 + 2\\log(X) \\] \\[ \\log(Y) = 3 + 2\\log(X) \\]\n\\[ \\log(Y) = 4 + 3X \\]"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#interactions",
+    "href": "2023/weeks/week05/slides.html#interactions",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interactions",
+    "text": "Interactions\n\nFor both polynomials and logarithms, the effect of a one-unit change in \\(X\\) differs depending on its current value (for logarithms, a 1-unit change in \\(X\\) is different percentage changes in \\(X\\) depending on current value)\nBut why stop there? Maybe the effect of \\(X\\) differs depending on the current value of other variables!\nEnter interaction terms!\n\n\\[ Y = \\beta_0 + \\beta_1X + \\beta_2Z + \\beta_3X\\times Z + \\varepsilon \\] - Interaction terms are a little tough but also extremely important."
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#interactions-1",
+    "href": "2023/weeks/week05/slides.html#interactions-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interactions",
+    "text": "Interactions\nExpect to come back to these slides, as you’re almost certainly going to use interaction terms in both our assessment and the dissertation"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#interactions-2",
+    "href": "2023/weeks/week05/slides.html#interactions-2",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interactions",
+    "text": "Interactions\n\nChange in the value of a control can shift a regression line up and down\nUsing the model \\(Y = \\beta_0 + \\beta_1X + \\beta_2Z\\), estimated as \\(Y = .01 + 1.2X + .95Z\\):"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#interactions-3",
+    "href": "2023/weeks/week05/slides.html#interactions-3",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interactions",
+    "text": "Interactions\n\nBut an interaction can both shift the line up and down AND change its slope\nUsing the model \\(Y = \\beta_0 + \\beta_1X + \\beta_2Z + \\beta_3X\\times Z\\), estimated as \\(Y = .035 + 1.14X + .94Z + 1.02X\\times Z\\):"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#interactions-4",
+    "href": "2023/weeks/week05/slides.html#interactions-4",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interactions",
+    "text": "Interactions\n\nHow can we interpret an interaction?\nThe idea is that the interaction shows how the effect of one variable changes as the value of the other changes\nThe derivative helps!\n\n\\[ Y = \\beta_0 + \\beta_1X + \\beta_2Z + \\beta_3X\\times Z \\] \\[ \\partial Y/\\partial X = \\beta_1 + \\beta_3 Z \\]\n\nThe effect of \\(X\\) is \\(\\beta_1\\) when \\(Z = 0\\), or \\(\\beta_1 + \\beta_3\\) when \\(Z = 1\\), or \\(\\beta_1 + 3\\beta_3\\) if \\(Z = 3\\)!"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#interactions-5",
+    "href": "2023/weeks/week05/slides.html#interactions-5",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interactions",
+    "text": "Interactions\n\nOften we are doing interactions with binary variables to see how an effect differs across groups\nNow, instead of the intercept giving the baseline and the binary coefficient giving the difference, the coefficient on \\(X\\) is the baseline effect of \\(X\\) and the interaction is the difference in the effect of \\(X\\)\nThe interaction coefficient becomes “the difference in the effect of \\(X\\) between the \\(Z\\) =”No” and \\(Z\\) = “Yes” groups”\n(What if it’s continuous? Mathematically the same but the thinking changes - the interaction term is the difference in the effect of \\(X\\) you get when increasing \\(Z\\) by one unit)"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#notes-on-interactions",
+    "href": "2023/weeks/week05/slides.html#notes-on-interactions",
+    "title": "Binary Variables and Functional Form",
+    "section": "Notes on Interactions",
+    "text": "Notes on Interactions\n\nLike with polynomials, the coefficients on their own now have little meaning and must be evaluated alongside each other. \\(\\beta_1\\) by itself is just “the effect of \\(X\\) when \\(Z = 0\\)”, not “the effect of \\(X\\)”\nYes, you do almost always want to include both variables in un-interacted form and interacted form. Otherwise the interpretation gets very thorny"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#in-r",
+    "href": "2023/weeks/week05/slides.html#in-r",
+    "title": "Binary Variables and Functional Form",
+    "section": "In R!",
+    "text": "In R!\n\nBinary variables in R (on the right-hand-side) you can just treat as normal variables\nCategorical variables too (although if it’s numeric you may need to run it through factor() first, or i() in feols())\nIn feols() you can specify which group gets dropped using i() and setting ref in it\n\n\n# drops married = FALSE\nfeols(log(earnings) ~ married, data = PSID)\n# drops married = TRUE\nfeols(log(earnings) ~ i(married, ref = 'TRUE'), data = PSID)"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#binary-variables-1",
+    "href": "2023/weeks/week05/slides.html#binary-variables-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Binary Variables",
+    "text": "Binary Variables\n\n\n                            feols(log(earning..\nDependent Var.:                   log(earnings)\n                                               \nConstant                      10.06*** (0.0701)\neducationGraduateDegree        0.1673* (0.0842)\neducationHighSchoolDegree   -0.5433*** (0.0658)\neducationNoHighSchoolDegree -0.9404*** (0.0826)\neducationSomeCollege        -0.2893*** (0.0699)\nI(kids&gt;0)TRUE               -0.2922*** (0.0548)\n___________________________ ___________________\nS.E. type                                   IID\nObservations                              2,803\nR2                                      0.09907\nAdj. R2                                 0.09746\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#polynomials-and-logarithms",
+    "href": "2023/weeks/week05/slides.html#polynomials-and-logarithms",
+    "title": "Binary Variables and Functional Form",
+    "section": "Polynomials and Logarithms",
+    "text": "Polynomials and Logarithms\n\nAs previously discussed, \\(I()\\) will let us do functions like \\(X^2\\)\nWe can also do log() straight in the regression.\n\n\nlm(Y ~ X + I(X^2) + I(X^3), data = df)\nlm(log(Y) ~ log(X), data = df)"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#interactions-6",
+    "href": "2023/weeks/week05/slides.html#interactions-6",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interactions",
+    "text": "Interactions\n\nMarriage for those without a college degree raises earnings by 24%. A college degree reduces the marriage premium by 25%. Marriage for those with a college degree reduces earnings by .24 - .25 = -1%\n\n\n\n                          feols(log(earnin..\nDependent Var.:                log(earnings)\n                                            \nConstant                   9.087*** (0.0583)\nmarriedTRUE               0.2381*** (0.0638)\ncollegeTRUE               0.8543*** (0.1255)\nmarriedTRUE x collegeTRUE  -0.2541. (0.1363)\n_________________________ __________________\nS.E. type                                IID\nObservations                           2,803\nR2                                   0.06253\nAdj. R2                              0.06153\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#tests",
+    "href": "2023/weeks/week05/slides.html#tests",
+    "title": "Binary Variables and Functional Form",
+    "section": "Tests",
+    "text": "Tests\n\nwald() can be handy for testing groups of binary variables for a categorical\nAlso good for testing all the polynomial terms, or testing if the effect of \\(X\\) is significant at a certain value of \\(Z\\)\n\n\n# Is the education effect zero overall?\nm1 &lt;- feols(log(earnings)~educatn, data = PSID)\nwald(m1, 'educatn')\n\n# Does X have any effect?\nm2 &lt;- feols(Y ~ X + I(X^2) + I(X^3), data = df)\nwald(m2, 'X') # Gets all coefficients with an 'X' anywhere in the name - check this is right!\n\n# Is the effect of X significant when Z = 5?\nlibrary(multcomp)\nm3 &lt;- lm(Y ~ X*Z, data = df)\nglht(m3, 'X + 5*X:Z= 0') %&gt;% summary()\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#polynomials-4",
+    "href": "2023/weeks/week05/slides.html#polynomials-4",
+    "title": "Binary Variables and Functional Form",
+    "section": "Polynomials",
+    "text": "Polynomials\n\nInterpret polynomials using the derivative\n\\(\\partial Y/\\partial X\\) will be different depending on the value of \\(X\\) (as it should! Notice in the graph that the slope changes for different values of \\(X\\))\n\n\\[ Y = \\beta_1X + \\beta_2X^2 \\] \\[ \\partial Y/\\partial X = \\beta_1 + 2\\beta_2X \\]\nSo at \\(X = 0\\), the effect of a one-unit change in \\(X\\) is \\(\\beta_1\\). At \\(X = 1\\), it’s \\(\\beta_1 + \\beta_2\\). At \\(X = 5\\) it’s \\(\\beta_1 + 5\\beta_2\\)."
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#polynomials-5",
+    "href": "2023/weeks/week05/slides.html#polynomials-5",
+    "title": "Binary Variables and Functional Form",
+    "section": "Polynomials",
+    "text": "Polynomials\n\nIMPORTANT: when you have a polynomial, the coefficients on each individual term mean very little on their own. You have to consider them alongisde the other coefficients from the polynomial! Never interpret \\(\\beta_1\\) here without thinking about \\(\\beta_2\\) alongside. Also, the significance of the individual terms doesn’t really matter - consider doing an F-test of all of them at once."
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#interactions-7",
+    "href": "2023/weeks/week05/slides.html#interactions-7",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interactions",
+    "text": "Interactions\n\nX*Z will include X, Z, and also their interaction\nIf necessary, X:Z is the interaction only, but you rarely need this. However, it’s handy for referring to the interaction term in linearHypothesis!\nIn feols() the i() function is a very powerful way of doing interactions\n\n\nfeols(Y ~ X*Z, data = df)\nfeols(Y ~ X + X:Z, data = df)\nfeols(Y ~ i(Z, X), data = df)\nfeols(Y ~ i(Z, X), data = df) |&gt; iplot()"
+  },
+  {
+    "objectID": "2023/weeks/week05/slides.html#notes-on-interactions-1",
+    "href": "2023/weeks/week05/slides.html#notes-on-interactions-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Notes on Interactions",
+    "text": "Notes on Interactions\n\nInteraction effects are poorly powered. You need a lot of data to be able to tell whether an effect is different in two groups. If \\(N\\) observations is adequate power to see if the effect itself is different from zero, you need a sample of roughly \\(16\\times N\\) to see if the difference in effects is nonzero. Sixteen times!!\nIt’s tempting to try interacting your effect with everything to see if it’s bigger/smaller/nonzero in some groups, but because it’s poorly powered, this is a bad idea! You’ll get a lot of false positives\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
   }
 ]

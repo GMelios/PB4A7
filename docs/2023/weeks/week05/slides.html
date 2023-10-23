@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Dr.&nbsp;George Melios">
-  <meta name="dcterms.date" content="18 September 2023">
+  <meta name="dcterms.date" content="23 October 2023">
   <title>PB4A7 - Quantitative Applications for Behavioural Science - Binary Variables and Functional Form</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -415,58 +415,14 @@ Dr.&nbsp;<a href="#/">George Melios</a>
     </div>
 </div>
 
-  <p class="date">Updated 2023-09-21</p>
+  <p class="date">Updated 2023-10-23</p>
 </section><section id="TOC">
 <nav role="doc-toc"> 
 <h2 id="toc-title">What we will cover today:</h2>
 <ul>
 <li><a href="#/check-in" id="/toc-check-in">Check-in</a></li>
 <li><a href="#/the-right-hand-side" id="/toc-the-right-hand-side">The Right Hand Side</a></li>
-<li><a href="#/the-right-hand-side-1" id="/toc-the-right-hand-side-1">The Right Hand Side</a></li>
 <li><a href="#/binary-data" id="/toc-binary-data">Binary Data</a></li>
-<li><a href="#/comparison-of-means" id="/toc-comparison-of-means">Comparison of Means</a></li>
-<li><a href="#/comparison-of-means-1" id="/toc-comparison-of-means-1">Comparison of Means</a></li>
-<li><a href="#/comparison-of-means-2" id="/toc-comparison-of-means-2">Comparison of Means</a></li>
-<li><a href="#/comparison-of-means-3" id="/toc-comparison-of-means-3">Comparison of Means</a></li>
-<li><a href="#/comparison-of-means-4" id="/toc-comparison-of-means-4">Comparison of Means</a></li>
-<li><a href="#/comparison-of-means-5" id="/toc-comparison-of-means-5">Comparison of Means</a></li>
-<li><a href="#/binary-with-controls" id="/toc-binary-with-controls">Binary with Controls</a></li>
-<li><a href="#/multicollinearity" id="/toc-multicollinearity">Multicollinearity</a></li>
-<li><a href="#/more-than-two-categories" id="/toc-more-than-two-categories">More than Two Categories</a></li>
-<li><a href="#/more-than-two-categories-1" id="/toc-more-than-two-categories-1">More than Two Categories</a></li>
-<li><a href="#/more-than-two-categories-2" id="/toc-more-than-two-categories-2">More than Two Categories</a></li>
-<li><a href="#/more-than-two-categories-3" id="/toc-more-than-two-categories-3">More than Two Categories</a></li>
-<li><a href="#/concept-checks" id="/toc-concept-checks">Concept Checks</a></li>
-<li><a href="#/interpreting-ols" id="/toc-interpreting-ols">Interpreting OLS</a></li>
-<li><a href="#/functional-form" id="/toc-functional-form">Functional Form</a></li>
-<li><a href="#/functional-form-1" id="/toc-functional-form-1">Functional Form</a></li>
-<li><a href="#/polynomials" id="/toc-polynomials">Polynomials</a></li>
-<li><a href="#/polynomials-1" id="/toc-polynomials-1">Polynomials</a></li>
-<li><a href="#/polynomials-2" id="/toc-polynomials-2">Polynomials</a></li>
-<li><a href="#/polynomials-3" id="/toc-polynomials-3">Polynomials</a></li>
-<li><a href="#/polynomials-in-r" id="/toc-polynomials-in-r">Polynomials in R</a></li>
-<li><a href="#/concept-check" id="/toc-concept-check">Concept Check</a></li>
-<li><a href="#/logarithms" id="/toc-logarithms">Logarithms</a></li>
-<li><a href="#/logarithms-1" id="/toc-logarithms-1">Logarithms</a></li>
-<li><a href="#/or-if-you-prefer" id="/toc-or-if-you-prefer">Or if you prefer…</a></li>
-<li><a href="#/logarithms-2" id="/toc-logarithms-2">Logarithms</a></li>
-<li><a href="#/logarithms-3" id="/toc-logarithms-3">Logarithms</a></li>
-<li><a href="#/logarithms-4" id="/toc-logarithms-4">Logarithms</a></li>
-<li><a href="#/functional-form-2" id="/toc-functional-form-2">Functional Form</a></li>
-<li><a href="#/concept-checks-1" id="/toc-concept-checks-1">Concept Checks</a></li>
-<li><a href="#/interactions" id="/toc-interactions">Interactions</a></li>
-<li><a href="#/interactions-1" id="/toc-interactions-1">Interactions</a></li>
-<li><a href="#/interactions-2" id="/toc-interactions-2">Interactions</a></li>
-<li><a href="#/interactions-3" id="/toc-interactions-3">Interactions</a></li>
-<li><a href="#/interactions-4" id="/toc-interactions-4">Interactions</a></li>
-<li><a href="#/interactions-5" id="/toc-interactions-5">Interactions</a></li>
-<li><a href="#/notes-on-interactions" id="/toc-notes-on-interactions">Notes on Interactions</a></li>
-<li><a href="#/in-r" id="/toc-in-r">In R!</a></li>
-<li><a href="#/binary-variables" id="/toc-binary-variables">Binary variables</a></li>
-<li><a href="#/binary-variables-1" id="/toc-binary-variables-1">Binary Variables</a></li>
-<li><a href="#/polynomials-and-logarithms" id="/toc-polynomials-and-logarithms">Polynomials and Logarithms</a></li>
-<li><a href="#/interactions-6" id="/toc-interactions-6">Interactions</a></li>
-<li><a href="#/tests" id="/toc-tests">Tests</a></li>
 </ul>
 </nav>
 </section>
@@ -508,12 +464,8 @@ pre[class] {
 <li>Today we will think harder about it!</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="the-right-hand-side-1" class="title-slide slide level1">
-<h1>The Right Hand Side</h1>
+<section id="the-right-hand-side-1" class="slide level2">
+<h2>The Right Hand Side</h2>
 <p>We will look at three features of the right-hand side</p>
 <ul>
 <li>What if the variable is <em>categorical</em> or <em>binary</em>? (binary variables)</li>
@@ -535,12 +487,8 @@ pre[class] {
 <li>Is a floating exchange rate in effect? Yes / No</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="comparison-of-means" class="title-slide slide level1">
-<h1>Comparison of Means</h1>
+<section id="comparison-of-means" class="slide level2">
+<h2>Comparison of Means</h2>
 <ul>
 <li>When a binary variable is an independent variable, what we are often interested in doing is <em>comparing means</em></li>
 <li>Is mean income higher inside the US or outside?</li>
@@ -548,12 +496,8 @@ pre[class] {
 <li>Is mean GDP growth higher with or without a floating exchange rate?</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="comparison-of-means-1" class="title-slide slide level1">
-<h1>Comparison of Means</h1>
+<section id="comparison-of-means-1" class="slide level2">
+<h2>Comparison of Means</h2>
 <ul>
 <li>Let’s compare log earnings in 1993 between married people 30 or older vs.&nbsp;never-married people 30 or older</li>
 <li>Seems to be a slight favor to the married men</li>
@@ -575,20 +519,12 @@ pre[class] {
 </div>
 </div>
 </section>
-<section class="slide level2">
+<section id="comparison-of-means-2" class="slide level2">
+<h2>Comparison of Means</h2>
 
-</section></section>
-<section>
-<section id="comparison-of-means-2" class="title-slide slide level1">
-<h1>Comparison of Means</h1>
-
-<img data-src="slides_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid r-stretch" width="768"></section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="comparison-of-means-3" class="title-slide slide level1">
-<h1>Comparison of Means</h1>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="comparison-of-means-3" class="slide level2">
+<h2>Comparison of Means</h2>
 <ul>
 <li><p>The <em>difference between the means</em> follows a t-distribution under the null that they’re identical</p></li>
 <li><p>So of course we can do a hypothesis test of whether they’re different</p></li>
@@ -610,12 +546,8 @@ RMSE: 1.13028   Adj. R2: 0.004422</code></pre>
 </div>
 </div>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="comparison-of-means-4" class="title-slide slide level1">
-<h1>Comparison of Means</h1>
+<section id="comparison-of-means-4" class="slide level2">
+<h2>Comparison of Means</h2>
 <p>Notice:</p>
 <ul>
 <li>The intercept gives the mean for the <em>non-married</em> group</li>
@@ -625,12 +557,8 @@ RMSE: 1.13028   Adj. R2: 0.004422</code></pre>
 <li>If we’d defined it the other way, with “not married” as the independent variable, the intercept would be the mean for the <em>married</em> group (i.e.&nbsp;“not married = 0”), and the coefficient would be the exact same but times <span class="math inline">\(-1\)</span> (same difference, just opposite direction!)</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="comparison-of-means-5" class="title-slide slide level1">
-<h1>Comparison of Means</h1>
+<section id="comparison-of-means-5" class="slide level2">
+<h2>Comparison of Means</h2>
 <p>Why does OLS give us a comparison of means when you give it a binary variable?</p>
 <ul>
 <li>The only <span class="math inline">\(X\)</span> values are 0 (FALSE) and 1 (TRUE)</li>
@@ -639,12 +567,8 @@ RMSE: 1.13028   Adj. R2: 0.004422</code></pre>
 <li>So you get the mean of each group as each group’s prediction</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="binary-with-controls" class="title-slide slide level1">
-<h1>Binary with Controls</h1>
+<section id="binary-with-controls" class="slide level2">
+<h2>Binary with Controls</h2>
 <ul>
 <li>Obviously this is handy for including binary controls, but why do this for binary treatments? Because we can add controls!</li>
 </ul>
@@ -667,29 +591,23 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="multicollinearity" class="title-slide slide level1">
-<h1>Multicollinearity</h1>
+<section id="multicollinearity" class="slide level2">
+<h2>Multicollinearity</h2>
 <ul>
 <li>Why is just one side of it on the regression? Why aren’t “married” and “not married” BOTH included?</li>
 <li>Because regression couldn’t give an answer!</li>
-<li>Mean of married is <span class="math inline">\(9.47\)</span> and of non-married is <span class="math inline">\(9.26\)</span>.</li>
-</ul>
-<p><span class="math display">\[ \log(Earnings) = 0 + 9.47Married + 9.26NonMarried \]</span> <span class="math display">\[ \log(Earnings) = 9.26 + .21Married + 0NonMarried \]</span> <span class="math display">\[ \log(Earnings) = 3 + 6.47Married + 6.26NonMarried \]</span></p>
-<ul>
-<li>These (and infinitely many other options) all give the exact same predictions! OLS can’t pick between them. There’s no single best way to minimize squared residuals</li>
-<li>So we pick one with convenient properties, setting one of the categories to have a coefficient of 0 (dropping it) and making the coefficient on the other <em>the difference relative to</em> the one we left out</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="more-than-two-categories" class="title-slide slide level1">
-<h1>More than Two Categories</h1>
+<section id="multicollinearity-1" class="slide level2">
+<h2>Multicollinearity</h2>
+<ul>
+<li><p>Mean of married is <span class="math inline">\(9.47\)</span> and of non-married is <span class="math inline">\(9.26\)</span>. <span class="math display">\[ \log(Earnings) = 0 + 9.47Married + 9.26NonMarried \]</span> <span class="math display">\[ \log(Earnings) = 3 + 6.47Married + 6.26NonMarried \]</span></p></li>
+<li><p>These (and infinitely many other options) all give the exact same predictions! OLS can’t pick between them. There’s no single best way to minimize squared residuals</p></li>
+<li><p>So we pick one with convenient properties, setting one of the categories to have a coefficient of 0 (dropping it) and making the coefficient on the other <em>the difference relative to</em> the one we left out</p></li>
+</ul>
+</section>
+<section id="more-than-two-categories" class="slide level2">
+<h2>More than Two Categories</h2>
 <ul>
 <li>That interpretation - dropping one and making the other relative to <em>that</em>, conveniently extends to <em>multi-category variables</em></li>
 <li>Why stop at binary categorical variables? There are plenty of categorical variables with more than two values</li>
@@ -698,104 +616,8 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>(and then dropping one so the coefficients on the others give you the difference with the omitted one)</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="more-than-two-categories-1" class="title-slide slide level1">
-<h1>More than Two Categories</h1>
-<ul>
-<li>Make the mean of group A be 1, of group B be 2, etc.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>tib <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">sample</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="dv">10000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">mutate</span>(<span class="at">Y =</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>) <span class="sc">+</span> (group <span class="sc">==</span> <span class="st">"A"</span>) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>(group <span class="sc">==</span> <span class="st">"B"</span>) <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>(group <span class="sc">==</span> <span class="st">"C"</span>) <span class="sc">+</span> <span class="dv">4</span><span class="sc">*</span>(group <span class="sc">==</span> <span class="st">"D"</span>))</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">feols</span>(Y <span class="sc">~</span> group, <span class="at">data =</span> tib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>OLS estimation, Dep. Var.: Y
-Observations: 10,000 
-Standard-errors: IID 
-            Estimate Std. Error  t value  Pr(&gt;|t|)    
-(Intercept) 1.017604   0.020168  50.4568 &lt; 2.2e-16 ***
-groupB      0.977823   0.028619  34.1664 &lt; 2.2e-16 ***
-groupC      1.999799   0.028542  70.0662 &lt; 2.2e-16 ***
-groupD      3.026120   0.028496 106.1941 &lt; 2.2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-RMSE: 1.0098   Adj. R2: 0.556546</code></pre>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="more-than-two-categories-2" class="title-slide slide level1">
-<h1>More than Two Categories</h1>
-<ul>
-<li>By changing the reference group, the coefficients change because they’re “different from” a different group!</li>
-<li>And notice that, as before, the intercept is the mean of the omitted group (although this changes once you add controls; the intercept is the predicted mean when all right-hand-side variables are 0)</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>tib <span class="ot">&lt;-</span> tib <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">factor</span>(group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'B'</span>,<span class="st">'A'</span>,<span class="st">'C'</span>,<span class="st">'D'</span>)))</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">feols</span>(Y <span class="sc">~</span> group, <span class="at">data =</span> tib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>OLS estimation, Dep. Var.: Y
-Observations: 10,000 
-Standard-errors: IID 
-             Estimate Std. Error  t value  Pr(&gt;|t|)    
-(Intercept)  1.995427   0.020306  98.2681 &lt; 2.2e-16 ***
-groupA      -0.977823   0.028619 -34.1664 &lt; 2.2e-16 ***
-groupC       1.021975   0.028639  35.6843 &lt; 2.2e-16 ***
-groupD       2.048296   0.028594  71.6337 &lt; 2.2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-RMSE: 1.0098   Adj. R2: 0.556546</code></pre>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="more-than-two-categories-3" class="title-slide slide level1">
-<h1>More than Two Categories</h1>
-<ul>
-<li>Some Interpretations: Controlling for number of kids and age, people with a high school degree have log earnings .324 higher than those without a high school degree (earnings 32.4% higher). BA-holders have earnings 84.8% higher than those without a HS degree</li>
-<li>Controlling for kids and age, a graduate degree earns (.976 - .848 =) 12.8% more than someone with a BA (<code>glht()</code> could help!)</li>
-</ul>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-No High School Degree    High School Degree          Some College 
-                  333                  1105                   708 
-    Bachelor's Degree       Graduate Degree 
-                  356                   301 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>OLS estimation, Dep. Var.: log(earnings)
-Observations: 2,803 
-Standard-errors: IID 
-                             Estimate Std. Error  t value   Pr(&gt;|t|)    
-(Intercept)                  8.360245   0.156293 53.49092  &lt; 2.2e-16 ***
-educationHigh School Degree  0.323807   0.067175  4.82036 1.5096e-06 ***
-educationSome College        0.576478   0.071976  8.00934 1.6758e-15 ***
-educationBachelor's Degree   0.848200   0.082697 10.25666  &lt; 2.2e-16 ***
-educationGraduate Degree     0.976291   0.086842 11.24212  &lt; 2.2e-16 ***
-kids                        -0.149679   0.015689 -9.54045  &lt; 2.2e-16 ***
-age                          0.023137   0.003741  6.18453 7.1388e-10 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-RMSE: 1.05675   Adj. R2: 0.123473</code></pre>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="concept-checks" class="title-slide slide level1">
-<h1>Concept Checks</h1>
+<section id="concept-checks" class="slide level2">
+<h2>Concept Checks</h2>
 <ul>
 <li>If <span class="math inline">\(X\)</span> is binary, in sentences interpret the coefficients from the estimated OLS equation <span class="math inline">\(Y = 4 + 3X + 2Z\)</span></li>
 <li>How might a comparison of means come in handy if you wanted to analyze the results of a randomized policy experiment?</li>
@@ -803,58 +625,41 @@ RMSE: 1.05675   Adj. R2: 0.123473</code></pre>
 <li>If in that regression you really wanted to compare Europe to Asia specifically, what might you do so that the regression made this easy?</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="interpreting-ols" class="title-slide slide level1">
-<h1>Interpreting OLS</h1>
+<section id="interpreting-ols" class="slide level2">
+<h2>Interpreting OLS</h2>
 <ul>
-<li>To think more about the right-hand-side, let’s go back to our original interpretation of an OLS coefficient</li>
-</ul>
-<p><span class="math display">\[ Y = \beta_0 + \beta_1X + \varepsilon \]</span></p>
-<ul>
-<li>A one-unit change in <span class="math inline">\(X\)</span> is associated with a <span class="math inline">\(\beta_1\)</span>-unit change in <span class="math inline">\(Y\)</span></li>
-<li>This logic still works with binary variables since “a one-unit change in <span class="math inline">\(X\)</span>” means “changing <span class="math inline">\(X\)</span> from No to Yes”</li>
-<li>We can also think of this as <span class="math inline">\(\partial Y/\partial X = \beta_1\)</span> in calculus terms</li>
-<li>Notice that this assumes that a one-unit change in <span class="math inline">\(X\)</span> <em>always has the same effect</em> on <span class="math inline">\(\beta_1\)</span> no matter what else is going on</li>
-<li>What if that’s not true?</li>
+<li><p>To think more about the right-hand-side, let’s go back to our original interpretation of an OLS coefficient <span class="math display">\[ Y = \beta_0 + \beta_1X + \varepsilon \]</span></p></li>
+<li><p>A one-unit change in <span class="math inline">\(X\)</span> is associated with a <span class="math inline">\(\beta_1\)</span>-unit change in <span class="math inline">\(Y\)</span></p></li>
+<li><p>This logic still works with binary variables since “a one-unit change in <span class="math inline">\(X\)</span>” means “changing <span class="math inline">\(X\)</span> from No to Yes”</p></li>
+<li><p>Notice that this assumes that a one-unit change in <span class="math inline">\(X\)</span> <em>always has the same effect</em> on <span class="math inline">\(\beta_1\)</span> no matter what else is going on</p></li>
+<li><p>What if that’s not true?</p></li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="functional-form" class="title-slide slide level1">
-<h1>Functional Form</h1>
+<section id="functional-form" class="slide level2">
+<h2>Functional Form</h2>
 <ul>
 <li>We talked before about times when a <em>linear model</em> like standard OLS might not be sufficient</li>
 <li>However, as long as those <em>non</em>-linearities are on the right hand side, we can fix the problem easily but just having <span class="math inline">\(X\)</span> enter non-linearly! Run it through a <em>transformation</em>!</li>
 <li>The most common transformations by far are <em>polynomials</em> and <em>logarithms</em></li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="functional-form-1" class="title-slide slide level1">
-<h1>Functional Form</h1>
+<section id="functional-form-1" class="slide level2">
+<h2>Functional Form</h2>
 <ul>
 <li>Why do this? Because sometimes a straight line is clearly not going to do the trick!</li>
 </ul>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid r-stretch" width="768"></section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="polynomials" class="title-slide slide level1">
-<h1>Polynomials</h1>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="polynomials" class="slide level2">
+<h2>Polynomials</h2>
 <ul>
 <li><span class="math inline">\(\beta_1X\)</span> is a “first order polynomial” - there’s one term</li>
 <li><span class="math inline">\(\beta_1X + \beta_2X^2\)</span> is a “second order polynomial” or a “quadratic” - two terms (note both included, it’s not just <span class="math inline">\(X^2\)</span>)</li>
 <li><span class="math inline">\(\beta_1X + \beta_2X^2 + \beta_3X^3\)</span> is a third-order or cubic, etc.</li>
 </ul>
+</section>
+<section id="polynomials-1" class="slide level2">
+<h2>Polynomials</h2>
 <p>What do they do?</p>
 <ul>
 <li>The more polynomial terms, the more flexible the line can be. With enough terms you can mimic <em>any</em> shape of relationship</li>
@@ -862,69 +667,37 @@ RMSE: 1.05675   Adj. R2: 0.123473</code></pre>
 <li>Keep it minimal - quadratics are almost always enough, unless you have reason to believe there’s a true more-complex relationship. You can try adding higher-order terms and see if they make a difference</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="polynomials-1" class="title-slide slide level1">
-<h1>Polynomials</h1>
+<section id="polynomials-2" class="slide level2">
+<h2>Polynomials</h2>
 <ul>
 <li>The true relationship is quadratic</li>
 </ul>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid r-stretch" width="768"></section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="polynomials-2" class="title-slide slide level1">
-<h1>Polynomials</h1>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="polynomials-3" class="slide level2">
+<h2>Polynomials</h2>
 <ul>
 <li>Higher-order terms don’t do anything for us here (because a quadratic is sufficient!)</li>
 </ul>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid r-stretch" width="768"></section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="polynomials-3" class="title-slide slide level1">
-<h1>Polynomials</h1>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-8-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="polynomials-4" class="slide level2">
+<h2>Polynomials</h2>
 <ul>
 <li>Interpret polynomials using the derivative</li>
 <li><span class="math inline">\(\partial Y/\partial X\)</span> will be different depending on the value of <span class="math inline">\(X\)</span> (as it should! Notice in the graph that the slope changes for different values of <span class="math inline">\(X\)</span>)</li>
 </ul>
 <p><span class="math display">\[ Y = \beta_1X + \beta_2X^2 \]</span> <span class="math display">\[ \partial Y/\partial X = \beta_1 + 2\beta_2X \]</span></p>
 <p>So at <span class="math inline">\(X = 0\)</span>, the effect of a one-unit change in <span class="math inline">\(X\)</span> is <span class="math inline">\(\beta_1\)</span>. At <span class="math inline">\(X = 1\)</span>, it’s <span class="math inline">\(\beta_1 + \beta_2\)</span>. At <span class="math inline">\(X = 5\)</span> it’s <span class="math inline">\(\beta_1 + 5\beta_2\)</span>.</p>
+</section>
+<section id="polynomials-5" class="slide level2">
+<h2>Polynomials</h2>
 <ul>
 <li><strong>IMPORTANT</strong>: when you have a polynomial, <em>the coefficients on each individual term mean very little on their own</em>. You have to consider them alongisde the other coefficients from the polynomial! <strong>Never</strong> interpret <span class="math inline">\(\beta_1\)</span> here without thinking about <span class="math inline">\(\beta_2\)</span> alongside. Also, the significance of the individual terms doesn’t really matter - consider doing an F-test of all of them at once.</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="polynomials-in-r" class="title-slide slide level1">
-<h1>Polynomials in R</h1>
-<ul>
-<li>We can add an <code>I()</code> function to our regression to do a calculation on a variable before including it. So <code>I(X^2)</code> adds a squared term</li>
-<li>There’s also a <code>poly()</code> function but avoid it - it does something slightly different</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Linear</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">feols</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> df)</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="co"># Quadratic</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="fu">feols</span>(Y <span class="sc">~</span> X <span class="sc">+</span> <span class="fu">I</span>(X<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> df)</span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="co"># Cubic</span></span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="fu">feols</span>(Y <span class="sc">~</span> X <span class="sc">+</span> <span class="fu">I</span>(X<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(X<span class="sc">^</span><span class="dv">3</span>), <span class="at">data =</span> df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="concept-check" class="title-slide slide level1">
-<h1>Concept Check</h1>
+<section id="concept-check" class="slide level2">
+<h2>Concept Check</h2>
 <ul>
 <li>What’s the effect of a one-unit change in <span class="math inline">\(X\)</span> at <span class="math inline">\(X = 0\)</span>, <span class="math inline">\(X = 1\)</span>, and <span class="math inline">\(X = 2\)</span> for each of these?</li>
 </ul>
@@ -947,12 +720,8 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="logarithms" class="title-slide slide level1">
-<h1>Logarithms</h1>
+<section id="logarithms" class="slide level2">
+<h2>Logarithms</h2>
 <ul>
 <li>Another common transformation, both for dependent and independent variables, is to take the logarithm</li>
 <li>This has the effect of pulling in extreme values from strongly right-skewed data and making linear relationships pop out</li>
@@ -960,46 +729,27 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>It also gives the coefficients a nice percentage-based interpretation</li>
 </ul>
 </section>
-<section class="slide level2">
+<section id="logarithms-1" class="slide level2">
+<h2>Logarithms</h2>
 
-</section></section>
-<section>
-<section id="logarithms-1" class="title-slide slide level1">
-<h1>Logarithms</h1>
-
-<img data-src="slides_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid r-stretch" width="768"></section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="or-if-you-prefer" class="title-slide slide level1">
-<h1>Or if you prefer…</h1>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-10-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="or-if-you-prefer" class="slide level2">
+<h2>Or if you prefer…</h2>
 <ul>
 <li>Notice the change in axes</li>
 </ul>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid r-stretch" width="768"></section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="logarithms-2" class="title-slide slide level1">
-<h1>Logarithms</h1>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-11-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="logarithms-2" class="slide level2">
+<h2>Logarithms</h2>
 <ul>
 <li>How can we interpret them?</li>
 <li>The key is to remember that <span class="math inline">\(\log(X) + a \approx \log((1+a)X)\)</span>, meaning that a <span class="math inline">\(a\)</span>-unit change in <span class="math inline">\(log(X)\)</span> is similar to a <span class="math inline">\(a\times100%\)</span> change in <span class="math inline">\(X\)</span></li>
 <li>So, walk through our “one-unit change in the variable” logic from before, but whenever we hit a log, change that into a percentage!</li>
-<li>Note this <em>only works for a small <span class="math inline">\(a\)</span></em>! With natural logs, the approximation breaks down above <span class="math inline">\(a = .1\)</span> or so</li>
-<li>Can interpret exactly instead: a <span class="math inline">\(a\)</span>-unit change in <span class="math inline">\(\log(X)\)</span> is really a <span class="math inline">\((\log(1+a)-1)%\)</span> change in <span class="math inline">\(X\)</span></li>
-<li>Or you can change the base - a 1-unit change in <span class="math inline">\(\log_{1+a}(X)\)</span> is exactly a <span class="math inline">\(a\)</span>% change in <span class="math inline">\(X\)</span>.</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="logarithms-3" class="title-slide slide level1">
-<h1>Logarithms</h1>
+<section id="logarithms-3" class="slide level2">
+<h2>Logarithms</h2>
 <ul>
 <li><span class="math inline">\(Y = \beta_0 + \beta_1\log(X)\)</span> A one-unit change in <span class="math inline">\(\log(X)\)</span>, or a 100% change in <span class="math inline">\(X\)</span>, is associated with a <span class="math inline">\(\beta_1\)</span>-unit change in <span class="math inline">\(Y\)</span></li>
 <li><span class="math inline">\(\log(Y) = \beta_0 + \beta_1X\)</span> a one-unit change in <span class="math inline">\(X\)</span> is associated with a <span class="math inline">\(\beta_1\times 100\)</span>% change in <span class="math inline">\(Y\)</span></li>
@@ -1007,26 +757,17 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>(Try also with changes smaller than one unit - that’s usually more reasonable)</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="logarithms-4" class="title-slide slide level1">
-<h1>Logarithms</h1>
+<section id="logarithms-4" class="slide level2">
+<h2>Logarithms</h2>
 <p>Downsides:</p>
 <ul>
 <li>Logarithms require that all data be positive. No negatives or zeroes!</li>
 <li>Fairly rare that a variable with negative values wants a log anyway</li>
-<li>But zeroes are common! A common practice is to just do <span class="math inline">\(log(X+1)\)</span> or <span class="math inline">\(asinh(X)=\ln(X+\sqrt{X^2+1})\)</span> but these are pretty arbitrary</li>
-<li>On the left-hand side at least, better to deal with 0s is Poisson regression</li>
+<li>But zeroes are common! A common practice is to just do <span class="math inline">\(log(X+1)\)</span> but this is pretty arbitrary</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="functional-form-2" class="title-slide slide level1">
-<h1>Functional Form</h1>
+<section id="functional-form-2" class="slide level2">
+<h2>Functional Form</h2>
 <ul>
 <li>In general, you want the shape of your function to match the shape of the relationship in the data (or, even better, the true relationship)</li>
 <li>Polynomials and logs can usually get you there!</li>
@@ -1034,12 +775,8 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>Use polynomials if it doesn’t look straight! <strong>Check that scatterplot and see how not-straight it is!</strong></li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="concept-checks-1" class="title-slide slide level1">
-<h1>Concept Checks</h1>
+<section id="concept-checks-1" class="slide level2">
+<h2>Concept Checks</h2>
 <ul>
 <li>Which of the following variables would you likely want to log before using them? Income, height, wealth, company size, home square footage</li>
 <li>In each of the following estimated OLS lines, interpret the coefficient by filling in “A [blank] change in X is associated with a [blank] change in Y”:</li>
@@ -1047,49 +784,37 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p><span class="math display">\[ Y = 1 + 2\log(X) \]</span> <span class="math display">\[ \log(Y) = 3 + 2\log(X) \]</span></p>
 <p><span class="math display">\[ \log(Y) = 4 + 3X \]</span></p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="interactions" class="title-slide slide level1">
-<h1>Interactions</h1>
+<section id="interactions" class="slide level2">
+<h2>Interactions</h2>
 <ul>
 <li>For both polynomials and logarithms, the effect of a one-unit change in <span class="math inline">\(X\)</span> differs depending on its current value (for logarithms, a 1-unit change in <span class="math inline">\(X\)</span> is different percentage changes in <span class="math inline">\(X\)</span> depending on current value)</li>
 <li>But why stop there? Maybe the effect of <span class="math inline">\(X\)</span> differs depending on the current value of <em>other variables!</em></li>
 <li>Enter interaction terms!</li>
 </ul>
-<p><span class="math display">\[ Y = \beta_0 + \beta_1X + \beta_2Z + \beta_3X\times Z + \varepsilon \]</span> - Interaction terms are <em>a little tough</em> but also <strong>extremely important</strong>. Expect to come back to these slides, as you’re almost certainly going to use interaction terms in both of your major projects this term</p>
+<p><span class="math display">\[ Y = \beta_0 + \beta_1X + \beta_2Z + \beta_3X\times Z + \varepsilon \]</span> - Interaction terms are <em>a little tough</em> but also <strong>extremely important</strong>.</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="interactions-1" class="title-slide slide level1">
-<h1>Interactions</h1>
+<section id="interactions-1" class="slide level2">
+<h2>Interactions</h2>
+<p>Expect to come back to these slides, as you’re almost certainly going to use interaction terms in both our assessment and the dissertation</p>
+</section>
+<section id="interactions-2" class="slide level2">
+<h2>Interactions</h2>
 <ul>
 <li>Change in the value of a <em>control</em> can shift a regression line up and down</li>
 <li>Using the model <span class="math inline">\(Y = \beta_0 + \beta_1X + \beta_2Z\)</span>, estimated as <span class="math inline">\(Y = .01 + 1.2X + .95Z\)</span>:</li>
 </ul>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid r-stretch" width="768"></section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="interactions-2" class="title-slide slide level1">
-<h1>Interactions</h1>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="interactions-3" class="slide level2">
+<h2>Interactions</h2>
 <ul>
 <li>But an interaction can both shift the line up and down AND change its slope</li>
 <li>Using the model <span class="math inline">\(Y = \beta_0 + \beta_1X + \beta_2Z + \beta_3X\times Z\)</span>, estimated as <span class="math inline">\(Y = .035 + 1.14X + .94Z + 1.02X\times Z\)</span>:</li>
 </ul>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid r-stretch" width="768"></section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="interactions-3" class="title-slide slide level1">
-<h1>Interactions</h1>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="interactions-4" class="slide level2">
+<h2>Interactions</h2>
 <ul>
 <li>How can we interpret an interaction?</li>
 <li>The idea is that the interaction shows how <em>the effect of one variable changes as the value of the other changes</em></li>
@@ -1100,26 +825,17 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>The effect of <span class="math inline">\(X\)</span> is <span class="math inline">\(\beta_1\)</span> when <span class="math inline">\(Z = 0\)</span>, or <span class="math inline">\(\beta_1 + \beta_3\)</span> when <span class="math inline">\(Z = 1\)</span>, or <span class="math inline">\(\beta_1 + 3\beta_3\)</span> if <span class="math inline">\(Z = 3\)</span>!</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="interactions-4" class="title-slide slide level1">
-<h1>Interactions</h1>
+<section id="interactions-5" class="slide level2">
+<h2>Interactions</h2>
 <ul>
 <li>Often we are doing interactions with binary variables to see how an effect differs across groups</li>
-<li>In these cases, we combine what we know about binary variables with what we know about interactions!</li>
 <li>Now, instead of the intercept giving the baseline and the binary coefficient giving the difference, the coefficient on <span class="math inline">\(X\)</span> is the baseline effect of <span class="math inline">\(X\)</span> and the interaction is the difference in the effect of <span class="math inline">\(X\)</span></li>
 <li>The interaction coefficient becomes “the difference in the effect of <span class="math inline">\(X\)</span> between the <span class="math inline">\(Z\)</span> =”No” and <span class="math inline">\(Z\)</span> = “Yes” groups”</li>
 <li>(What if it’s continuous? Mathematically the same but the thinking changes - the interaction term is the difference in the effect of <span class="math inline">\(X\)</span> you get when increasing <span class="math inline">\(Z\)</span> by one unit)</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="interactions-5" class="title-slide slide level1">
-<h1>Interactions</h1>
+<section id="interactions-6" class="slide level2">
+<h2>Interactions</h2>
 <ul>
 <li>Marriage for those without a college degree raises earnings by 24%. A college degree reduces the marriage premium by 25%. Marriage for those with a college degree reduces earnings by .24 - .25 = -1%</li>
 </ul>
@@ -1142,148 +858,25 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="notes-on-interactions" class="title-slide slide level1">
-<h1>Notes on Interactions</h1>
+<section id="notes-on-interactions" class="slide level2">
+<h2>Notes on Interactions</h2>
 <ul>
 <li>Like with polynomials, the coefficients on their own now have little meaning and must be evaluated alongside each other. <span class="math inline">\(\beta_1\)</span> by itself is just “the effect of <span class="math inline">\(X\)</span> when <span class="math inline">\(Z = 0\)</span>”, not “the effect of <span class="math inline">\(X\)</span>”</li>
 <li>Yes, you <em>do</em> almost always want to include both variables in un-interacted form and interacted form. Otherwise the interpretation gets very thorny</li>
+</ul>
+</section>
+<section id="notes-on-interactions-1" class="slide level2">
+<h2>Notes on Interactions</h2>
+<ul>
 <li>Interaction effects are <em>poorly powered</em>. You need a <em>lot</em> of data to be able to tell whether an effect is different in two groups. If <span class="math inline">\(N\)</span> observations is adequate power to see if the effect itself is different from zero, you need a sample of roughly <span class="math inline">\(16\times N\)</span> to see if the difference in effects is nonzero. Sixteen times!!</li>
 <li>It’s tempting to try interacting your effect with everything to see if it’s bigger/smaller/nonzero in some groups, but because it’s poorly powered, this is a bad idea! You’ll get a lot of false positives</li>
 </ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="in-r" class="title-slide slide level1">
-<h1>In R!</h1>
-<ul>
-<li>Binary variables in R (on the right-hand-side) you can just treat as normal variables</li>
-<li>Categorical variables too (although if it’s numeric you may need to run it through <code>factor()</code> first, or <code>i()</code> in <code>feols()</code>)</li>
-<li>In <code>feols()</code> you can specify which group gets dropped using <code>i()</code> and setting <code>ref</code> in it</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># drops married = FALSE</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">feols</span>(<span class="fu">log</span>(earnings) <span class="sc">~</span> married, <span class="at">data =</span> PSID)</span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="co"># drops married = TRUE</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="fu">feols</span>(<span class="fu">log</span>(earnings) <span class="sc">~</span> <span class="fu">i</span>(married, <span class="at">ref =</span> <span class="st">'TRUE'</span>), <span class="at">data =</span> PSID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="binary-variables" class="title-slide slide level1">
-<h1>Binary variables</h1>
-<ul>
-<li>You can also use <code>I()</code> to specify binary variables in-model, or <code>case_when()</code> to create categorical variables</li>
-<li><code>case_when</code> works in steps - the first one that applies to you, you get, so that <code>TRUE</code> at the end catches “everyone else”</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>PSID <span class="ot">&lt;-</span> PSID <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">mutate</span>(<span class="at">education  =</span> <span class="fu">case_when</span>(</span>
-<span id="cb16-3"><a href="#cb16-3"></a>    educatn <span class="sc">&lt;</span> <span class="dv">12</span> <span class="sc">~</span> <span class="st">'No High School Degree'</span>,</span>
-<span id="cb16-4"><a href="#cb16-4"></a>    educatn <span class="sc">==</span> <span class="dv">12</span> <span class="sc">~</span> <span class="st">'High School Degree'</span>,</span>
-<span id="cb16-5"><a href="#cb16-5"></a>    educatn <span class="sc">&lt;</span> <span class="dv">16</span> <span class="sc">~</span> <span class="st">'Some College'</span>,</span>
-<span id="cb16-6"><a href="#cb16-6"></a>    educatn <span class="sc">==</span> <span class="dv">16</span> <span class="sc">~</span> <span class="st">'Bachelor</span><span class="sc">\'</span><span class="st">s Degree'</span>,</span>
-<span id="cb16-7"><a href="#cb16-7"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">'Graduate Degree'</span></span>
-<span id="cb16-8"><a href="#cb16-8"></a>  ))</span>
-<span id="cb16-9"><a href="#cb16-9"></a><span class="fu">feols</span>(<span class="fu">log</span>(earnings) <span class="sc">~</span> education <span class="sc">+</span> <span class="fu">I</span>(kids <span class="sc">&gt;</span> <span class="dv">0</span>), <span class="at">data =</span> PSID) <span class="sc">|&gt;</span> <span class="fu">etable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="binary-variables-1" class="title-slide slide level1">
-<h1>Binary Variables</h1>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>                            feols(log(earning..
-Dependent Var.:                   log(earnings)
-                                               
-Constant                      10.06*** (0.0701)
-educationGraduateDegree        0.1673* (0.0842)
-educationHighSchoolDegree   -0.5433*** (0.0658)
-educationNoHighSchoolDegree -0.9404*** (0.0826)
-educationSomeCollege        -0.2893*** (0.0699)
-I(kids&gt;0)TRUE               -0.2922*** (0.0548)
-___________________________ ___________________
-S.E. type                                   IID
-Observations                              2,803
-R2                                      0.09907
-Adj. R2                                 0.09746
----
-Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="polynomials-and-logarithms" class="title-slide slide level1">
-<h1>Polynomials and Logarithms</h1>
-<ul>
-<li>As previously discussed, <span class="math inline">\(I()\)</span> will let us do functions like <span class="math inline">\(X^2\)</span></li>
-<li>We can also do <code>log()</code> straight in the regression.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X <span class="sc">+</span> <span class="fu">I</span>(X<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(X<span class="sc">^</span><span class="dv">3</span>), <span class="at">data =</span> df)</span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">lm</span>(<span class="fu">log</span>(Y) <span class="sc">~</span> <span class="fu">log</span>(X), <span class="at">data =</span> df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="interactions-6" class="title-slide slide level1">
-<h1>Interactions</h1>
-<ul>
-<li><code>X*Z</code> will include <code>X</code>, <code>Z</code>, and also their interaction</li>
-<li>If necessary, <code>X:Z</code> is the interaction only, but you rarely need this. However, it’s handy for referring to the interaction term in <code>linearHypothesis</code>!</li>
-<li>In <code>feols()</code> the <code>i()</code> function is a very powerful way of doing interactions</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">feols</span>(Y <span class="sc">~</span> X<span class="sc">*</span>Z, <span class="at">data =</span> df)</span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">feols</span>(Y <span class="sc">~</span> X <span class="sc">+</span> X<span class="sc">:</span>Z, <span class="at">data =</span> df)</span>
-<span id="cb19-3"><a href="#cb19-3"></a><span class="fu">feols</span>(Y <span class="sc">~</span> <span class="fu">i</span>(Z, X), <span class="at">data =</span> df)</span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="fu">feols</span>(Y <span class="sc">~</span> <span class="fu">i</span>(Z, X), <span class="at">data =</span> df) <span class="sc">|&gt;</span> <span class="fu">iplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section id="tests" class="title-slide slide level1">
-<h1>Tests</h1>
-<ul>
-<li><code>wald()</code> can be handy for testing groups of binary variables for a categorical</li>
-<li>Also good for testing all the polynomial terms, or testing if the effect of <span class="math inline">\(X\)</span> is significant at a certain value of <span class="math inline">\(Z\)</span></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Is the education effect zero overall?</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a>m1 <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="fu">log</span>(earnings)<span class="sc">~</span>educatn, <span class="at">data =</span> PSID)</span>
-<span id="cb20-3"><a href="#cb20-3"></a><span class="fu">wald</span>(m1, <span class="st">'educatn'</span>)</span>
-<span id="cb20-4"><a href="#cb20-4"></a></span>
-<span id="cb20-5"><a href="#cb20-5"></a><span class="co"># Does X have any effect?</span></span>
-<span id="cb20-6"><a href="#cb20-6"></a>m2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y <span class="sc">~</span> X <span class="sc">+</span> <span class="fu">I</span>(X<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(X<span class="sc">^</span><span class="dv">3</span>), <span class="at">data =</span> df)</span>
-<span id="cb20-7"><a href="#cb20-7"></a><span class="fu">wald</span>(m2, <span class="st">'X'</span>) <span class="co"># Gets all coefficients with an 'X' anywhere in the name - check this is right!</span></span>
-<span id="cb20-8"><a href="#cb20-8"></a></span>
-<span id="cb20-9"><a href="#cb20-9"></a><span class="co"># Is the effect of X significant when Z = 5?</span></span>
-<span id="cb20-10"><a href="#cb20-10"></a><span class="fu">library</span>(multcomp)</span>
-<span id="cb20-11"><a href="#cb20-11"></a>m3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X<span class="sc">*</span>Z, <span class="at">data =</span> df)</span>
-<span id="cb20-12"><a href="#cb20-12"></a><span class="fu">glht</span>(m3, <span class="st">'X + 5*X:Z= 0'</span>) <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 
 
 <img src="../../../figures/logos/MY_INSTITUTION.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>PB4A7- Quantitative Applications for Behavioural Science</p>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -1495,6 +1088,44 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
