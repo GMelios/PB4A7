@@ -423,6 +423,10 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <li><a href="#/check-in" id="/toc-check-in">Check-in</a></li>
 <li><a href="#/the-right-hand-side" id="/toc-the-right-hand-side">The Right Hand Side</a></li>
 <li><a href="#/binary-data" id="/toc-binary-data">Binary Data</a></li>
+<li><a href="#/more-than-two-categories" id="/toc-more-than-two-categories">More than Two Categories</a></li>
+<li><a href="#/interpreting-ols" id="/toc-interpreting-ols">Interpreting OLS</a></li>
+<li><a href="#/polynomials" id="/toc-polynomials">Polynomials</a></li>
+<li><a href="#/logarithms" id="/toc-logarithms">Logarithms</a></li>
 </ul>
 </nav>
 </section>
@@ -446,9 +450,117 @@ pre[class] {
 <h1>Check-in</h1>
 <ul>
 <li>Where are we at?</li>
-<li>Next week we start causal methodologies. The format will be very similar to lectures up to now - extra papers</li>
+<li>Next week reading week!!! After that, we will start the causal methods. The format will be very similar to lectures up to now - extra papers</li>
 <li>This lecture will cover the last “intro” material</li>
 <li>This is a pretty packed lecture, but it’s structured to be easy to come back to and review, there will be plenty of practice next time, and this might end up broken across both days</li>
+</ul>
+</section>
+<section id="bias-and-the-error-term" class="slide level2">
+<h2>Bias and the Error Term</h2>
+<ul>
+<li>All of the nice stuff we’ve gotten so far makes some assumptions about our true model</li>
+</ul>
+<p><span class="math display">\[ Y = \beta_0 + \beta_1X + \varepsilon \]</span></p>
+<ul>
+<li>In particular, we’ve made some assumptions about the error term <span class="math inline">\(\varepsilon\)</span></li>
+<li>So what is that error term exactly, and what are we assuming about it?</li>
+</ul>
+</section>
+<section id="the-error-term" class="slide level2">
+<h2>The Error Term</h2>
+<ul>
+<li>The error term contains everything that isn’t in our model</li>
+<li>If <span class="math inline">\(Y\)</span> were a pure function of <span class="math inline">\(X\)</span>, for example if <span class="math inline">\(Y\)</span> was “height in feet” and <span class="math inline">\(X\)</span> was “height in inches”, we wouldn’t have an error term, because a straight line fully describes the relationship perfectly with no variation</li>
+<li>But in most cases, the line is a simplification - we’re leaving other stuff out! That’s in the error term</li>
+</ul>
+</section>
+<section id="the-error-term-1" class="slide level2">
+<h2>The Error Term</h2>
+<ul>
+<li>Consider this data generating process:</li>
+</ul>
+<p><span class="math display">\[ ClassGrade = \beta_0 + \beta_1 StudyTime + \varepsilon \]</span></p>
+<ul>
+<li>Surely StudyTime isn’t the <em>only</em> thing that determines your ClassGrade</li>
+<li>Everything else is in the error term!</li>
+<li>ProfessorLeniency, InterestInSubject, Intelligence, and so on and so on…</li>
+</ul>
+</section>
+<section id="the-error-term-2" class="slide level2">
+<h2>The Error Term</h2>
+<ul>
+<li>Isn’t that really bad? We’re leaving out a bunch of important stuff!</li>
+<li>If you want to <em>predict <span class="math inline">\(Y\)</span> as accurately as possible</em> then we’re probably going to do a bad job of it</li>
+<li>But if our real interest is *figuring out the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, then it’s fine to leave stuff out, as long as whatever’s left in the error term obeys a few important assumptions</li>
+</ul>
+</section>
+<section id="error-term-assumptions" class="slide level2">
+<h2>Error Term Assumptions</h2>
+<ul>
+<li>The most important assumption about the error term is that it is <em>unrelated to <span class="math inline">\(X\)</span></em></li>
+<li>If <span class="math inline">\(X\)</span> and <span class="math inline">\(\varepsilon\)</span> are correlated, <span class="math inline">\(\hat{\beta}_1\)</span> will be <em>biased</em> - its distribution no longer has the true <span class="math inline">\(\beta_1\)</span> as its mean</li>
+<li>In these cases we can say ” <span class="math inline">\(X\)</span> is <strong>endogenous</strong>” or “we have <strong>omitted variable bias</strong>”</li>
+<li>No amount of additional sample size will fix that problem!</li>
+<li>(what will fix the problem? We’ll get to that one later)</li>
+</ul>
+</section>
+<section id="omitted-variable-bias" class="slide level2">
+<h2>Omitted Variable Bias</h2>
+<ul>
+<li>We can intuitively think about whether omitted variable bias is likely to make our estimates too high or too low</li>
+<li>The sign of the bias will be the sign of the relationship between the omitted variable and <span class="math inline">\(X\)</span>, <strong>times</strong> the sign of the relationship between the omitted variable bias and <span class="math inline">\(Y\)</span></li>
+<li>InterestInSubject is positively related to both StudyTime and ClassGrade, and <span class="math inline">\(+\times+ = +\)</span>, so our estimates are positively biased / too high</li>
+<li>More precisely we have that the mean of the <span class="math inline">\(\hat{\beta}_1\)</span> sampling distribution is <span class="math display">\[\beta_1 + corr(X,\varepsilon)\frac{\sigma_\varepsilon}{\sigma_X}\]</span></li>
+</ul>
+</section>
+<section id="thinking-through-this-bias" class="slide level2">
+<h2>Thinking Through this Bias</h2>
+<ul>
+<li>If <span class="math inline">\(Z\)</span> hangs around <span class="math inline">\(X\)</span>, but <span class="math inline">\(Y\)</span> doesn’t know about it, then the coefficient on <span class="math inline">\(X\)</span> will get all the credit for <span class="math inline">\(Z\)</span></li>
+<li>This is a good way to keep that “direction of bias” problem in mind</li>
+<li>And you do want to keep it in mind! This is important for understanding general correlations you see in the wild, too</li>
+<li>And helps keep in line some things - for example, <strong>if <span class="math inline">\(Z\)</span> is unrelated to <span class="math inline">\(X\)</span>, it won’t bias you!!</strong></li>
+</ul>
+</section>
+<section id="thinking-through-this-bias-1" class="slide level2">
+<h2>Thinking Through this Bias</h2>
+<ul>
+<li>That means that when you’re thinking about the controls you <strong>need</strong>, that <strong>only</strong> includes things related to <span class="math inline">\(X\)</span></li>
+<li>Adding controls for things related to <span class="math inline">\(Y\)</span> not <span class="math inline">\(X\)</span> can make the model predict better and reduce standard errors, but won’t remove omitted variable bias</li>
+</ul>
+</section>
+<section id="less-serious-error-concerns" class="slide level2">
+<h2>Less Serious Error Concerns</h2>
+<ul>
+<li>Omitted variable bias can, well, bias us, which is very bad</li>
+<li>There are some other assumptions that can fail that may also pose a problem to us but less so</li>
+<li>We’ve assumed so far not just that <span class="math inline">\(\varepsilon\)</span> is unrelated to <span class="math inline">\(X\)</span>, but also that the <em>variance</em> of <span class="math inline">\(\varepsilon\)</span> is unrelated to <span class="math inline">\(X\)</span>, and that the <span class="math inline">\(\varepsilon\)</span>s are unrelated to each other</li>
+<li>If these assumptions fail, our standard errors will be wrong, but we won’t be biased, and also there are ways to fix the standard errors</li>
+<li>We will cover these only briefly, they’ll come back later</li>
+</ul>
+</section>
+<section id="heteroskedasticity" class="slide level2">
+<h2>Heteroskedasticity</h2>
+<ul>
+<li>If the variance of the error term is different for different values of <span class="math inline">\(X\)</span>, then we have “heteroskedasticity”</li>
+<li>Notice in the below graph how the spread of the points around the line (the variance of the error term) is bigger on the right than the left</li>
+</ul>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="heteroskedasticity-1" class="slide level2">
+<h2>Heteroskedasticity</h2>
+<ul>
+<li>We can correct for this using <em>heteroskedasticity-robust standard errors</em> which sort of “squash down” the big variances and then re-estimate the standard errors</li>
+<li>We can do this in <code>feols</code> with <code>vcov = 'hetero'</code> in R or with “robust” in STATA</li>
+</ul>
+</section>
+<section id="correlated-errors" class="slide level2">
+<h2>Correlated Errors</h2>
+<ul>
+<li>If the error terms are <em>correlated with each other</em>, then our standard errors will also be wrong</li>
+<li>How could this happen? For example, maybe you’ve surveyed a bunch of people in different towns - the error terms within a town might be <em>clustered</em></li>
+<li>Or maybe you have time series data. If a term in the error term is “sticky” or has “momentum” it will likely be a similar error term a few time periods in a row, beign correlated across time, or <em>autocorrelated</em></li>
+<li>Again, this doesn’t bias <span class="math inline">\(\hat{\beta}_1\)</span> but it can affect standard errors!</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -479,6 +591,10 @@ pre[class] {
 <section>
 <section id="binary-data" class="title-slide slide level1">
 <h1>Binary Data</h1>
+
+</section>
+<section id="binary-data-1" class="slide level2">
+<h2>Binary Data</h2>
 <ul>
 <li>A variable is binary if it only has two values - 0 or 1 (or “No” or “Yes”, etc.)</li>
 <li>Binary variables are super common in econometrics!</li>
@@ -522,7 +638,7 @@ pre[class] {
 <section id="comparison-of-means-2" class="slide level2">
 <h2>Comparison of Means</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="comparison-of-means-3" class="slide level2">
 <h2>Comparison of Means</h2>
 <ul>
@@ -606,7 +722,15 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li><p>So we pick one with convenient properties, setting one of the categories to have a coefficient of 0 (dropping it) and making the coefficient on the other <em>the difference relative to</em> the one we left out</p></li>
 </ul>
 </section>
-<section id="more-than-two-categories" class="slide level2">
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="more-than-two-categories" class="title-slide slide level1">
+<h1>More than Two Categories</h1>
+
+</section>
+<section id="more-than-two-categories-1" class="slide level2">
 <h2>More than Two Categories</h2>
 <ul>
 <li>That interpretation - dropping one and making the other relative to <em>that</em>, conveniently extends to <em>multi-category variables</em></li>
@@ -625,7 +749,15 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>If in that regression you really wanted to compare Europe to Asia specifically, what might you do so that the regression made this easy?</li>
 </ul>
 </section>
-<section id="interpreting-ols" class="slide level2">
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="interpreting-ols" class="title-slide slide level1">
+<h1>Interpreting OLS</h1>
+
+</section>
+<section id="interpreting-ols-1" class="slide level2">
 <h2>Interpreting OLS</h2>
 <ul>
 <li><p>To think more about the right-hand-side, let’s go back to our original interpretation of an OLS coefficient <span class="math display">\[ Y = \beta_0 + \beta_1X + \varepsilon \]</span></p></li>
@@ -649,8 +781,16 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>Why do this? Because sometimes a straight line is clearly not going to do the trick!</li>
 </ul>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="img-fluid r-stretch" width="768"></section>
-<section id="polynomials" class="slide level2">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" class="img-fluid r-stretch" width="768"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="polynomials" class="title-slide slide level1">
+<h1>Polynomials</h1>
+
+</section>
+<section id="polynomials-1" class="slide level2">
 <h2>Polynomials</h2>
 <ul>
 <li><span class="math inline">\(\beta_1X\)</span> is a “first order polynomial” - there’s one term</li>
@@ -658,7 +798,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li><span class="math inline">\(\beta_1X + \beta_2X^2 + \beta_3X^3\)</span> is a third-order or cubic, etc.</li>
 </ul>
 </section>
-<section id="polynomials-1" class="slide level2">
+<section id="polynomials-2" class="slide level2">
 <h2>Polynomials</h2>
 <p>What do they do?</p>
 <ul>
@@ -667,21 +807,21 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>Keep it minimal - quadratics are almost always enough, unless you have reason to believe there’s a true more-complex relationship. You can try adding higher-order terms and see if they make a difference</li>
 </ul>
 </section>
-<section id="polynomials-2" class="slide level2">
+<section id="polynomials-3" class="slide level2">
 <h2>Polynomials</h2>
 <ul>
 <li>The true relationship is quadratic</li>
 </ul>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" class="img-fluid r-stretch" width="768"></section>
-<section id="polynomials-3" class="slide level2">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-8-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="polynomials-4" class="slide level2">
 <h2>Polynomials</h2>
 <ul>
 <li>Higher-order terms don’t do anything for us here (because a quadratic is sufficient!)</li>
 </ul>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-8-1.png" class="img-fluid r-stretch" width="768"></section>
-<section id="polynomials-4" class="slide level2">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-9-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="polynomials-5" class="slide level2">
 <h2>Polynomials</h2>
 <ul>
 <li>Interpret polynomials using the derivative</li>
@@ -690,7 +830,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p><span class="math display">\[ Y = \beta_1X + \beta_2X^2 \]</span> <span class="math display">\[ \partial Y/\partial X = \beta_1 + 2\beta_2X \]</span></p>
 <p>So at <span class="math inline">\(X = 0\)</span>, the effect of a one-unit change in <span class="math inline">\(X\)</span> is <span class="math inline">\(\beta_1\)</span>. At <span class="math inline">\(X = 1\)</span>, it’s <span class="math inline">\(\beta_1 + \beta_2\)</span>. At <span class="math inline">\(X = 5\)</span> it’s <span class="math inline">\(\beta_1 + 5\beta_2\)</span>.</p>
 </section>
-<section id="polynomials-5" class="slide level2">
+<section id="polynomials-6" class="slide level2">
 <h2>Polynomials</h2>
 <ul>
 <li><strong>IMPORTANT</strong>: when you have a polynomial, <em>the coefficients on each individual term mean very little on their own</em>. You have to consider them alongisde the other coefficients from the polynomial! <strong>Never</strong> interpret <span class="math inline">\(\beta_1\)</span> here without thinking about <span class="math inline">\(\beta_2\)</span> alongside. Also, the significance of the individual terms doesn’t really matter - consider doing an F-test of all of them at once.</li>
@@ -720,7 +860,15 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 </section>
-<section id="logarithms" class="slide level2">
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="logarithms" class="title-slide slide level1">
+<h1>Logarithms</h1>
+
+</section>
+<section id="logarithms-1" class="slide level2">
 <h2>Logarithms</h2>
 <ul>
 <li>Another common transformation, both for dependent and independent variables, is to take the logarithm</li>
@@ -729,18 +877,18 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>It also gives the coefficients a nice percentage-based interpretation</li>
 </ul>
 </section>
-<section id="logarithms-1" class="slide level2">
+<section id="logarithms-2" class="slide level2">
 <h2>Logarithms</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-10-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-11-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="or-if-you-prefer" class="slide level2">
 <h2>Or if you prefer…</h2>
 <ul>
 <li>Notice the change in axes</li>
 </ul>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-11-1.png" class="img-fluid r-stretch" width="768"></section>
-<section id="logarithms-2" class="slide level2">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="logarithms-3" class="slide level2">
 <h2>Logarithms</h2>
 <ul>
 <li>How can we interpret them?</li>
@@ -748,7 +896,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>So, walk through our “one-unit change in the variable” logic from before, but whenever we hit a log, change that into a percentage!</li>
 </ul>
 </section>
-<section id="logarithms-3" class="slide level2">
+<section id="logarithms-4" class="slide level2">
 <h2>Logarithms</h2>
 <ul>
 <li><span class="math inline">\(Y = \beta_0 + \beta_1\log(X)\)</span> A one-unit change in <span class="math inline">\(\log(X)\)</span>, or a 100% change in <span class="math inline">\(X\)</span>, is associated with a <span class="math inline">\(\beta_1\)</span>-unit change in <span class="math inline">\(Y\)</span></li>
@@ -757,7 +905,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>(Try also with changes smaller than one unit - that’s usually more reasonable)</li>
 </ul>
 </section>
-<section id="logarithms-4" class="slide level2">
+<section id="logarithms-5" class="slide level2">
 <h2>Logarithms</h2>
 <p>Downsides:</p>
 <ul>
@@ -804,7 +952,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>Using the model <span class="math inline">\(Y = \beta_0 + \beta_1X + \beta_2Z\)</span>, estimated as <span class="math inline">\(Y = .01 + 1.2X + .95Z\)</span>:</li>
 </ul>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="interactions-3" class="slide level2">
 <h2>Interactions</h2>
 <ul>
@@ -812,7 +960,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>Using the model <span class="math inline">\(Y = \beta_0 + \beta_1X + \beta_2Z + \beta_3X\times Z\)</span>, estimated as <span class="math inline">\(Y = .035 + 1.14X + .94Z + 1.02X\times Z\)</span>:</li>
 </ul>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-14-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="interactions-4" class="slide level2">
 <h2>Interactions</h2>
 <ul>

@@ -415,7 +415,7 @@ Dr.&nbsp;<a href="#/">George Melios</a>
     </div>
 </div>
 
-  <p class="date">Updated 2023-09-21</p>
+  <p class="date">Updated 2023-10-23</p>
 </section><section id="TOC">
 <nav role="doc-toc"> 
 <h2 id="toc-title">What we will cover today:</h2>
@@ -680,7 +680,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="graphically" class="title-slide slide level1">
 <h1>Graphically</h1>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-7-1.gif" class="img-fluid r-stretch"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.gif" class="img-fluid r-stretch"></section>
 <section class="slide level2">
 
 </section></section>
@@ -783,7 +783,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="drawing-a-diagram-1" class="title-slide slide level1">
 <h1>Drawing a Diagram</h1>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-8-1.png" class="img-fluid r-stretch" width="768"></section>
 <section class="slide level2">
 
 </section></section>
@@ -820,7 +820,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h1>Preschool and Adult Earnings</h1>
 <p>Does going to preschool improve your earnings as an adult?</p>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-9-1.png" class="img-fluid r-stretch" width="768"></section>
 <section class="slide level2">
 
 </section></section>
@@ -912,7 +912,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>Here’s the diagram we can draw from that information. What paths are there from <code>X</code> to <code>Y</code>?</li>
 </ul>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="img-fluid r-stretch" width="768"></section>
 <section class="slide level2">
 
 </section></section>
@@ -1182,6 +1182,44 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

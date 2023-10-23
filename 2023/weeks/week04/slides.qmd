@@ -244,12 +244,12 @@ p <- ggplot(dffull,aes(y=Y,x=X,color=as.factor(Z)))+geom_point()+
   guides(color=guide_legend(title="W"))+
   scale_color_colorblind()+
   labs(title = 'The Relationship between Y and X, Controlling for  Z \n{next_state}')+
-  transition_states(time,transition_length=c(12,32,12,32,12,12),state_length=c(160,100,75,100,75,160),wrap=FALSE)+
+transition_states(time, transition_length=c(24,64,24,64,24,24), state_length=c(320,200,150,200,150,320), wrap=FALSE)+
   theme_metro() +
   ease_aes('sine-in-out')+
   exit_fade()+enter_fade()
 
-animate(p,nframes=200)
+animate(p,nframes=400)
 ```
 
 ---

@@ -85,9 +85,129 @@ pre[class] {
 # Check-in
 
 - Where are we at?
-- Next week we start causal methodologies. The format will be very similar to lectures up to now - extra papers
+- Next week reading week!!! After that, we will start the causal methods. The format will be very similar to lectures up to now - extra papers
 - This lecture will cover the last "intro" material
 - This is a pretty packed lecture, but it's structured to be easy to come back to and review, there will be plenty of practice next time, and this might end up broken across both days
+
+---
+
+
+## Bias and the Error Term
+
+- All of the nice stuff we've gotten so far makes some assumptions about our true model
+
+$$ Y = \beta_0 + \beta_1X + \varepsilon $$
+
+- In particular, we've made some assumptions about the error term $\varepsilon$
+- So what is that error term exactly, and what are we assuming about it?
+
+---
+
+## The Error Term
+
+- The error term contains everything that isn't in our model
+- If $Y$ were a pure function of $X$, for example if $Y$ was "height in feet" and $X$ was "height in inches", we wouldn't have an error term, because a straight line fully describes the relationship perfectly with no variation
+- But in most cases, the line is a simplification - we're leaving other stuff out! That's in the error term
+
+---
+
+## The Error Term
+
+- Consider this data generating process:
+
+$$ ClassGrade = \beta_0 + \beta_1 StudyTime + \varepsilon $$
+
+- Surely StudyTime isn't the *only* thing that determines your ClassGrade
+- Everything else is in the error term!
+- ProfessorLeniency, InterestInSubject, Intelligence, and so on and so on...
+
+---
+
+## The Error Term
+
+- Isn't that really bad? We're leaving out a bunch of important stuff!
+- If you want to *predict $Y$ as accurately as possible* then we're probably going to do a bad job of it
+- But if our real interest is *figuring out the relationship between $X$ and $Y$, then it's fine to leave stuff out, as long as whatever's left in the error term obeys a few important assumptions
+
+---
+
+## Error Term Assumptions
+
+- The most important assumption about the error term is that it is *unrelated to $X$*
+- If $X$ and $\varepsilon$ are correlated, $\hat{\beta}_1$ will be *biased* - its distribution no longer has the true $\beta_1$ as its mean
+- In these cases we can say " $X$ is **endogenous**" or "we have **omitted variable bias**"
+- No amount of additional sample size will fix that problem!
+- (what will fix the problem? We'll get to that one later)
+
+---
+
+## Omitted Variable Bias
+
+- We can intuitively think about whether omitted variable bias is likely to make our estimates too high or too low
+- The sign of the bias will be the sign of the relationship between the omitted variable and $X$, **times** the sign of the relationship between the omitted variable bias and $Y$
+- InterestInSubject is positively related to both StudyTime and ClassGrade, and $+\times+ = +$, so our estimates are positively biased / too high
+- More precisely we have that the mean of the $\hat{\beta}_1$ sampling distribution is
+$$\beta_1 + corr(X,\varepsilon)\frac{\sigma_\varepsilon}{\sigma_X}$$
+
+---
+
+## Thinking Through this Bias
+
+- If $Z$ hangs around $X$, but $Y$ doesn't know about it, then the coefficient on $X$ will get all the credit for $Z$
+- This is a good way to keep that "direction of bias" problem in mind
+- And you do want to keep it in mind! This is important for understanding general correlations you see in the wild, too
+- And helps keep in line some things - for example, **if $Z$ is unrelated to $X$, it won't bias you!!**
+
+---
+
+## Thinking Through this Bias
+
+- That means that when you're thinking about the controls you **need**, that **only** includes things related to $X$
+- Adding controls for things related to $Y$ not $X$ can make the model predict better and reduce standard errors, but won't remove omitted variable bias
+
+---
+
+## Less Serious Error Concerns
+
+- Omitted variable bias can, well, bias us, which is very bad
+- There are some other assumptions that can fail that may also pose a problem to us but less so
+- We've assumed so far not just that $\varepsilon$ is unrelated to $X$, but also that the *variance* of $\varepsilon$ is unrelated to $X$, and that the $\varepsilon$s are unrelated to each other
+- If these assumptions fail, our standard errors will be wrong, but we won't be biased, and also there are ways to fix the standard errors
+- We will cover these only briefly, they'll come back later
+
+---
+
+## Heteroskedasticity
+
+- If the variance of the error term is different for different values of $X$, then we have "heteroskedasticity"
+- Notice in the below graph how the spread of the points around the line (the variance of the error term) is bigger on the right than the left
+
+```{r, dev = 'CairoPNG'}
+set.seed(1022)
+tb <- tibble(X = runif(200)) %>%
+  mutate(Y = .75*X + rnorm(200,sd=2*X)) 
+tb %>%
+  ggplot(aes(x = X, y = Y)) + 
+  geom_point() +
+  geom_smooth(method = 'lm', se = FALSE) + 
+  theme_metro()
+```
+
+---
+
+## Heteroskedasticity
+
+- We can correct for this using *heteroskedasticity-robust standard errors* which sort of "squash down" the big variances and then re-estimate the standard errors
+- We can do this in `feols` with `vcov = 'hetero'` in R or with "robust" in STATA
+
+---
+
+## Correlated Errors
+
+- If the error terms are *correlated with each other*, then our standard errors will also be wrong
+- How could this happen? For example, maybe you've surveyed a bunch of people in different towns - the error terms within a town might be *clustered*
+- Or maybe you have time series data. If a term in the error term is "sticky" or has "momentum" it will likely be a similar error term a few time periods in a row, beign correlated across time, or *autocorrelated*
+- Again, this doesn't bias $\hat{\beta}_1$ but it can affect standard errors!
 
 ---
 
@@ -111,6 +231,8 @@ We will look at three features of the right-hand side
 ---
 
 # Binary Data
+
+## Binary Data
 
 - A variable is binary if it only has two values - 0 or 1 (or "No" or "Yes", etc.)
 - Binary variables are super common in econometrics!
@@ -234,6 +356,8 @@ $$ \log(Earnings) = 3 + 6.47Married + 6.26NonMarried $$
 
 ---
 
+# More than Two Categories
+
 ## More than Two Categories
 
 - That interpretation - dropping one and making the other relative to *that*, conveniently extends to *multi-category variables*
@@ -254,7 +378,10 @@ $$ \log(Earnings) = 3 + 6.47Married + 6.26NonMarried $$
 
 ---
 
+# Interpreting OLS
+
 ## Interpreting OLS
+
 
 - To think more about the right-hand-side, let's go back to our original interpretation of an OLS coefficient
 $$ Y = \beta_0 + \beta_1X + \varepsilon $$
@@ -291,6 +418,8 @@ ggplot(df, aes(x = X, y = Y)) +
 ```
 
 ---
+
+# Polynomials
 
 ## Polynomials
 
@@ -374,6 +503,8 @@ etable(feols(Y~X, data = df),
 ```
 
 ---
+
+# Logarithms
 
 ## Logarithms
 
