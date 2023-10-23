@@ -642,25 +642,10 @@ pre[class] {
 <section id="comparison-of-means-3" class="slide level2">
 <h2>Comparison of Means</h2>
 <ul>
-<li><p>The <em>difference between the means</em> follows a t-distribution under the null that they’re identical</p></li>
-<li><p>So of course we can do a hypothesis test of whether they’re different</p></li>
-<li><p>But why bother trotting out a specific test when we can just do a regression?</p></li>
-<li><p>(In fact, a lot of specific tests can be replaced with basic regression, see <a href="https://lindeloev.github.io/tests-as-linear/">this explainer</a>)</p></li>
+<li>The <em>difference between the means</em> follows a t-distribution under the null that they’re identical</li>
+<li>So of course we can do a hypothesis test of whether they’re different. But why bother trotting out a specific test when we can just do a regression?</li>
+<li>(In fact, a lot of specific tests can be replaced with basic regression, see <a href="https://lindeloev.github.io/tests-as-linear/">this explainer</a>)</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">feols</span>(<span class="fu">log</span>(earnings) <span class="sc">~</span> married, <span class="at">data =</span> PSID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>OLS estimation, Dep. Var.: log(earnings)
-Observations: 2,830 
-Standard-errors: IID 
-            Estimate Std. Error   t value   Pr(&gt;|t|)    
-(Intercept) 9.255160   0.052891 174.98636  &lt; 2.2e-16 ***
-marriedTRUE 0.212731   0.057760   3.68305 0.00023478 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-RMSE: 1.13028   Adj. R2: 0.004422</code></pre>
-</div>
-</div>
 </section>
 <section id="comparison-of-means-4" class="slide level2">
 <h2>Comparison of Means</h2>
@@ -668,7 +653,6 @@ RMSE: 1.13028   Adj. R2: 0.004422</code></pre>
 <ul>
 <li>The intercept gives the mean for the <em>non-married</em> group</li>
 <li>The coefficient on <em>marriedTRUE</em> gives the married minus non-married difference</li>
-<li>The t-stat and p-value on that coefficient are exactly the same as that <code>t.test</code> (except the t is reversed; same deal)</li>
 <li>i.e.&nbsp;<em>the coefficient on a binary variable in a regression gives the difference in means</em></li>
 <li>If we’d defined it the other way, with “not married” as the independent variable, the intercept would be the mean for the <em>married</em> group (i.e.&nbsp;“not married = 0”), and the coefficient would be the exact same but times <span class="math inline">\(-1\)</span> (same difference, just opposite direction!)</li>
 </ul>
@@ -781,7 +765,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>Why do this? Because sometimes a straight line is clearly not going to do the trick!</li>
 </ul>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="img-fluid r-stretch" width="768"></section>
 <section class="slide level2">
 
 </section></section>
@@ -813,14 +797,14 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>The true relationship is quadratic</li>
 </ul>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-8-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="polynomials-4" class="slide level2">
 <h2>Polynomials</h2>
 <ul>
 <li>Higher-order terms don’t do anything for us here (because a quadratic is sufficient!)</li>
 </ul>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-9-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-8-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="polynomials-5" class="slide level2">
 <h2>Polynomials</h2>
 <ul>
@@ -880,14 +864,14 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="logarithms-2" class="slide level2">
 <h2>Logarithms</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-11-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-10-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="or-if-you-prefer" class="slide level2">
 <h2>Or if you prefer…</h2>
 <ul>
 <li>Notice the change in axes</li>
 </ul>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-11-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="logarithms-3" class="slide level2">
 <h2>Logarithms</h2>
 <ul>
@@ -952,7 +936,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>Using the model <span class="math inline">\(Y = \beta_0 + \beta_1X + \beta_2Z\)</span>, estimated as <span class="math inline">\(Y = .01 + 1.2X + .95Z\)</span>:</li>
 </ul>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="interactions-3" class="slide level2">
 <h2>Interactions</h2>
 <ul>
@@ -960,7 +944,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>Using the model <span class="math inline">\(Y = \beta_0 + \beta_1X + \beta_2Z + \beta_3X\times Z\)</span>, estimated as <span class="math inline">\(Y = .035 + 1.14X + .94Z + 1.02X\times Z\)</span>:</li>
 </ul>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-14-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="interactions-4" class="slide level2">
 <h2>Interactions</h2>
 <ul>

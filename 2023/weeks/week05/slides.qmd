@@ -290,14 +290,8 @@ ggplot(aes(x = married, y = earnings)) +
 ## Comparison of Means
 
 - The *difference between the means* follows a t-distribution under the null that they're identical
-- So of course we can do a hypothesis test of whether they're different
-
-- But why bother trotting out a specific test when we can just do a regression?
+- So of course we can do a hypothesis test of whether they're different. But why bother trotting out a specific test when we can just do a regression?
 - (In fact, a lot of specific tests can be replaced with basic regression, see [this explainer](https://lindeloev.github.io/tests-as-linear/))
-
-```{r, echo = TRUE}
-feols(log(earnings) ~ married, data = PSID)
-```
 
 ---
 
@@ -308,7 +302,6 @@ Notice:
 
 - The intercept gives the mean for the *non-married* group
 - The coefficient on *marriedTRUE* gives the married minus non-married difference
-- The t-stat and p-value on that coefficient are exactly the same as that `t.test` (except the t is reversed; same deal)
 - i.e. *the coefficient on a binary variable in a regression gives the difference in means*
 - If we'd defined it the other way, with "not married" as the independent variable, the intercept would be the mean for the *married* group (i.e. "not married = 0"), and the coefficient would be the exact same but times $-1$ (same difference, just opposite direction!)
 
