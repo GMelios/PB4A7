@@ -1,8 +1,8 @@
 ---
-title: "🗓️ Week 08 -  Regression Discontinuity Design"
+title: "🗓️ Week 10 Difference in Differences"
 ---
 
-In this week, we will look into the quasi-experimental Regression Discontinuity Design. 
+In this week, we will look into the quasi-experimental Difference in Differences. 
 
 ## 👨‍🏫 Lecture Slides 
 

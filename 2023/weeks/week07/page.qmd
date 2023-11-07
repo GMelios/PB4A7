@@ -1,8 +1,8 @@
 ---
-title: "🗓️ Week 07 - Counterfactual world"
+title: "🗓️ Week 07 - Within Variations"
 ---
 
-In this week, we will focus on the mathematical aspect of counterfactuals.
+In this week, we will focus on how we analyse within variation and include fixed effects.
 
 ## 👨‍🏫 Lecture Slides 
 
