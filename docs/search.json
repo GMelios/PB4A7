@@ -3938,7 +3938,7 @@
     "href": "2023/weeks/week07/slides.html#the-model",
     "title": "🗓️ Week 7 Within variation",
     "section": "The Model",
-    "text": "The Model\nThe \\(it\\) subscript says this variable varies over individual \\(i\\) and time \\(t\\)\n\\[Y_{it} = \\beta_0 + \\beta_1 X_{it} + \\varepsilon_{it}\\]\n\nWhat if there are individual-level components in the error term causing omitted variable bias?\n\\(X_{it}\\) is related to LocalStuff which is not in the model and thus in the error term!\nRegular ol’ omitted variable bias. If we don’t adjust for the individual effect, we get a biased \\(\\hat{\\beta}_1\\)\n(this bias is called “pooling bias” although it’s really just a form of omitted variable bias)\nWe really have this then:\n\n\\[Y_{it} = \\beta_0 + \\beta_1 X_{it} + (\\alpha_i + \\varepsilon_{it})\\]"
+    "text": "The Model\nThe \\(it\\) subscript says this variable varies over individual \\(i\\) and time \\(t\\)\n\\[Y_{it} = \\beta_0 + \\beta_1 X_{it} + \\varepsilon_{it}\\]\n\n\\(X_{it}\\) is related to LocalStuff which is not in the model and thus in the error term!\nRegular ol’ omitted variable bias. If we don’t adjust for the individual effect, we get a biased \\(\\hat{\\beta}_1\\)\n(this bias is called “pooling bias” although it’s really just a form of omitted variable bias)\nWe really have this then: \\[Y_{it} = \\beta_0 + \\beta_1 X_{it} + (\\alpha_i + \\varepsilon_{it})\\]"
   },
   {
     "objectID": "2023/weeks/week07/slides.html#de-meaning",

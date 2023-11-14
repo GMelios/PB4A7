@@ -701,13 +701,11 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <p>The <span class="math inline">\(it\)</span> subscript says this variable varies over individual <span class="math inline">\(i\)</span> and time <span class="math inline">\(t\)</span></p>
 <p><span class="math display">\[Y_{it} = \beta_0 + \beta_1 X_{it} + \varepsilon_{it}\]</span></p>
 <ul>
-<li>What if there are individual-level components in the error term causing omitted variable bias?</li>
 <li><span class="math inline">\(X_{it}\)</span> is related to LocalStuff which is not in the model and thus in the error term!</li>
 <li>Regular ol’ omitted variable bias. If we don’t adjust for the individual effect, we get a biased <span class="math inline">\(\hat{\beta}_1\)</span></li>
 <li>(this bias is called “pooling bias” although it’s really just a form of omitted variable bias)</li>
-<li>We really have this then:</li>
+<li>We really have this then: <span class="math display">\[Y_{it} = \beta_0 + \beta_1 X_{it} + (\alpha_i + \varepsilon_{it})\]</span></li>
 </ul>
-<p><span class="math display">\[Y_{it} = \beta_0 + \beta_1 X_{it} + (\alpha_i + \varepsilon_{it})\]</span></p>
 </section>
 <section id="de-meaning" class="slide level2">
 <h2>De-meaning</h2>

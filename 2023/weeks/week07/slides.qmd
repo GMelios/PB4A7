@@ -416,12 +416,10 @@ The $it$ subscript says this variable varies over individual $i$ and time $t$
 
 $$Y_{it} = \beta_0 + \beta_1 X_{it} + \varepsilon_{it}$$
 
-- What if there are individual-level components in the error term causing omitted variable bias? 
 - $X_{it}$ is related to LocalStuff which is not in the model and thus in the error term!
 - Regular ol' omitted variable bias. If we don't adjust for the individual effect, we get a biased $\hat{\beta}_1$ 
 - (this bias is called "pooling bias" although it's really just a form of omitted variable bias)
 - We really have this then:
-
 $$Y_{it} = \beta_0 + \beta_1 X_{it} + (\alpha_i + \varepsilon_{it})$$
 
 ---
