@@ -3820,5 +3820,215 @@
     "title": "Binary Variables and Functional Form",
     "section": "Logarithms",
     "text": "Logarithms\nDownsides:\n\nLogarithms require that all data be positive. No negatives or zeroes!\nFairly rare that a variable with negative values wants a log anyway\nBut zeroes are common! A common practice is to just do \\(log(X+1)\\) but this is pretty arbitrary"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#a-pickle",
+    "href": "2023/weeks/week07/slides.html#a-pickle",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "A Pickle",
+    "text": "A Pickle\n\nSo obviously this is a problem, and it’s not one we can reason or trick our way out of\nIf we don’t have the variable we need to control for, we don’t have it\n… or do we?"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#the-rest-of-the-term",
+    "href": "2023/weeks/week07/slides.html#the-rest-of-the-term",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "The Rest of the Term",
+    "text": "The Rest of the Term\n\nMuch of the rest of the term is going to be focused on finding ways to control for stuff that we can’t measure\nSeems impossible! But it is possible, at least in some circumstances\nToday, we will be talking about within variation and between variation, and the ability to control for all between variation using fixed effects"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#panel-data-1",
+    "href": "2023/weeks/week07/slides.html#panel-data-1",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Panel Data",
+    "text": "Panel Data\n\nHere’s what (a few rows from) a panel data set looks like - a variable for individual (county), a variable for time (year), and then the data\n\n\n\n\n\n\nCounty\nYear\nCrimeRate\nProbofArrest\n\n\n\n\n1\n81\n0.0398849\n0.289696\n\n\n1\n82\n0.0383449\n0.338111\n\n\n1\n83\n0.0303048\n0.330449\n\n\n1\n84\n0.0347259\n0.362525\n\n\n1\n85\n0.0365730\n0.325395\n\n\n1\n86\n0.0347524\n0.326062\n\n\n1\n87\n0.0356036\n0.298270\n\n\n3\n81\n0.0163921\n0.202899\n\n\n3\n82\n0.0190651\n0.162218\n\n\n\n 9 rows out of 630. \"Prob. of Arrest\" is estimated probability of being arrested when you commit a crime"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#between-and-within-1",
+    "href": "2023/weeks/week07/slides.html#between-and-within-1",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nIf we look at the overall variation, just pretending this is all together, we get this"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#between-and-within-2",
+    "href": "2023/weeks/week07/slides.html#between-and-within-2",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nBETWEEN variation is what we get if we look at the relationship between the means of each county"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#between-and-within-3",
+    "href": "2023/weeks/week07/slides.html#between-and-within-3",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nAnd I mean it! Only look at those means! The individual year-to-year variation within county doesn’t matter."
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#between-and-within-4",
+    "href": "2023/weeks/week07/slides.html#between-and-within-4",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nWithin variation goes the other way - it treats those orange crosses as their own individualized sets of axes and looks at variation within county from year-to-year only!\nWe basically slide the crosses over on top of each other and then analyze that data"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#between-and-within-5",
+    "href": "2023/weeks/week07/slides.html#between-and-within-5",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nWe can clearly see that between counties there’s a strong positive relationship\nBut if you look within a given county, the relationship isn’t that strong, and actually seems to be negative\nWhich would make sense - if you think your chances of getting arrested are high, that should be a deterrent to crime\nBut what are we actually doing here? Let’s think about the causal diagram / data-generating process!\nWhat goes into the probability of arrest and the crime rate? Lots of stuff!"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#the-crime-rate",
+    "href": "2023/weeks/week07/slides.html#the-crime-rate",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "The Crime Rate",
+    "text": "The Crime Rate\n\n“LocalStuff” is just all the things unique to that area\n“LawAndOrder” is how committed local politicians are to “Law and Order Politics”"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#between-and-within-6",
+    "href": "2023/weeks/week07/slides.html#between-and-within-6",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nFor each of these variables we can ask if they vary between groups and/or within groups\nLocalStuff is all the stuff unique to that county - geography, landmarks, the quality of the schools, almost by definition this only varies between groups. It’s not like the things that make your county unique are different each year (or at least not very different)\nWhether the county has LawAndOrder and how many CivilRights you’re allowed might change a bit year to year, but in general, political climates like that change pretty slowly. At a bit of a stretch we can call that something that only varies between groups too\nPolice budgets (and thus number of police on the streets) and Poverty (which varies with the economy) vary both between counties, but also within counties from year to year\nVariables with between variation only (by our assumption): LocalStuff, LawAndOrder, CivilRights\nVariables with both between and within variation: Police, Poverty"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#between-and-within-7",
+    "href": "2023/weeks/week07/slides.html#between-and-within-7",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nLet’s simplify our graph!\nSome of the variables only vary between counties\nSo, we can replace those variables on the graph with the variable County\nRight? That’s where all the variation is anyway"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#the-crime-rate-1",
+    "href": "2023/weeks/week07/slides.html#the-crime-rate-1",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "The Crime Rate",
+    "text": "The Crime Rate\n\n“LocalStuff” is just all the things unique to that area\n“LawAndOrder” is how committed local politicians are to “Law and Order Politics”"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#between-and-within-8",
+    "href": "2023/weeks/week07/slides.html#between-and-within-8",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nNow the task of identifying ProbArrest \\(\\rightarrow\\) CrimeRate becomes much simpler!\nIf we control for County, that will close a lot of back doors for us\n(based on the diagram, all we need to control for is County and Poverty!)\nConveniently, we can control for County just like it was any other variable!\nAnd when we do, we automatically control for all variables that only have between variation, whatever they are, even if we can’t measure them directly or didn’t think about them\nAll that’s left is the within variation"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#concept-checks",
+    "href": "2023/weeks/week07/slides.html#concept-checks",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nFor each of these variables, would we expect them to have within variation, between variation, or both?\n(Individual = person) How a child’s height changes as they age.\n(Individual = person) In a data set tracking many people over many years, the variation in the number of children a person has in a given year.\n(Individual = city) Overall, Paris, France has more restaurants than Paris, Texas.\n(Individual = genre) The average pop music album sells more copies than the average jazz album\n(Individual = genre) Miles Davis’ Kind of Blue sold very well for a jazz album.\n(Individual = genre) Michael Jackson’s Thriller, a pop album, sold many more copies than Kind of Blue, a jazz album."
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#removing-between-variation",
+    "href": "2023/weeks/week07/slides.html#removing-between-variation",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Removing Between Variation",
+    "text": "Removing Between Variation\n\nOkay so that’s the concept\nRemove all the between variation so that all that’s left is within variation\nAnd in the process control for any variables that are made up only of between variation\nHow can we actually do this? And what’s really going on?\nLet’s first talk about the regression model itself that this implies\nThen let’s actually do the thing. There are two main ways: de-meaning and binary variables (they give the same result, for balanced panels anyway)"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#estimation-vs.-design",
+    "href": "2023/weeks/week07/slides.html#estimation-vs.-design",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Estimation vs. Design",
+    "text": "Estimation vs. Design\n\nTo be clear, this is exactly 0% different from what we’ve done before in terms of controlling for stuff\nAnd in fact we’re about to do the exact same thing we did before by just adding a categorical control variable for county or whatever\n(and in fact the “within” thing holds with other categorical controls - a categorical control for education isolates variation “within education levels”)\nThe difference is the reason we’re doing it. It’s fixed effects because a categorical control for individual controls for a lot of stuff, and we think closes a lot of back doors for us, not just one, and not just ones we can measure"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#the-model",
+    "href": "2023/weeks/week07/slides.html#the-model",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "The Model",
+    "text": "The Model\nThe \\(it\\) subscript says this variable varies over individual \\(i\\) and time \\(t\\)\n\\[Y_{it} = \\beta_0 + \\beta_1 X_{it} + \\varepsilon_{it}\\]\n\nWhat if there are individual-level components in the error term causing omitted variable bias?\n\\(X_{it}\\) is related to LocalStuff which is not in the model and thus in the error term!\nRegular ol’ omitted variable bias. If we don’t adjust for the individual effect, we get a biased \\(\\hat{\\beta}_1\\)\n(this bias is called “pooling bias” although it’s really just a form of omitted variable bias)\nWe really have this then:\n\n\\[Y_{it} = \\beta_0 + \\beta_1 X_{it} + (\\alpha_i + \\varepsilon_{it})\\]"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#de-meaning",
+    "href": "2023/weeks/week07/slides.html#de-meaning",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "De-meaning",
+    "text": "De-meaning\n\nLet’s do de-meaning first, since it’s most closely and obviously related to the “removing between variation” explanation we’ve been going for\nThe process here is simple!\n\n\nFor each variable \\(X_{it}\\), \\(Y_{it}\\), etc., get the mean value of that variable for each individual \\(\\bar{X}_i, \\bar{Y}_i\\)\nSubtract out that mean to get residuals \\((X_{it} - \\bar{X}_i), (Y_{it} - \\bar{Y}_i)\\)\nWork with those residuals\n\n\nThat’s it!"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#how-does-this-work",
+    "href": "2023/weeks/week07/slides.html#how-does-this-work",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "How does this work?",
+    "text": "How does this work?\n\nThat \\(\\alpha_i\\) term gets absorbed\nThe residuals are, by construction, no longer related to the \\(\\alpha_i\\), so it no longer goes in the residuals!\n\n\\[(Y_{it} - \\bar{Y}_i) = \\beta_0 + \\beta_1(X_{it} - \\bar{X}_i) + \\varepsilon_{it}\\]"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#lets-do-it",
+    "href": "2023/weeks/week07/slides.html#lets-do-it",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Let’s do it!",
+    "text": "Let’s do it!\n\nWe can use group_by to get means-within-groups and subtract them out\n\n\ndata(crime4, package = 'wooldridge')\ncrime4 &lt;- crime4 %&gt;%\n  ## Filter to the data points from our graph\n  filter(county %in% c(1,3,7, 23),\n         prbarr &lt; .5) %&gt;%\n  group_by(county) %&gt;%\n  mutate(mean_crime = mean(crmrte),\n         mean_prob = mean(prbarr)) %&gt;%\n  mutate(demeaned_crime = crmrte - mean_crime,\n         demeaned_prob = prbarr - mean_prob)"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#and-regress",
+    "href": "2023/weeks/week07/slides.html#and-regress",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "And Regress!",
+    "text": "And Regress!\n\norig_data &lt;- feols(crmrte ~ prbarr, data = crime4)\nde_mean &lt;- feols(demeaned_crime ~ demeaned_prob, data = crime4)\netable(orig_data, de_mean)\n\n                        orig_data           de_mean\nDependent Var.:            crmrte    demeaned_crime\n                                                   \nConstant         0.0118* (0.0050) 1.41e-18 (0.0004)\nprbarr          0.0486** (0.0167)                  \ndemeaned_prob                     -0.0305* (0.0117)\n_______________ _________________ _________________\nS.E. type                     IID               IID\nObservations                   27                27\nR2                        0.25308           0.21445\nAdj. R2                   0.22321           0.18303\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#interpreting-a-within-relationship",
+    "href": "2023/weeks/week07/slides.html#interpreting-a-within-relationship",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Interpreting a Within Relationship",
+    "text": "Interpreting a Within Relationship\n\nHow can we interpret that slope of -0.03?\nThis is all within variation so our interpretation must be within-county\nSo, “comparing a county in year A where its arrest probability is 1 (100 percentage points) higher than it is in year B, we expect the number of crimes per person to drop by .03”\nOr if we think we’ve causally identified it (and want to work on a more realistic scale), “raising the arrest probability by 1 percentage point in a county reduces the number of crimes per person in that county by .0003”.\nWe’re basically “controlling for county” (and will do that explicitly in a moment)\nSo your interpretation should think of it in that way - holding county constant i.e. comparing two observations with the same value of county i.e. comparing a county to itself at a different point in time"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#concept-checks-1",
+    "href": "2023/weeks/week07/slides.html#concept-checks-1",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nWhy does subtracting the within-individual mean of each variable “control for individual”?\nIn a sentence, interpret the slope coefficient in the estimated model \\((Y_{it} - \\bar{Y}_i) = 2 + 3(X_{it} - \\bar{X}_i)\\) where \\(Y\\) is “blood pressure”, \\(X\\) is “stress at work”, and \\(i\\) is an individual person"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#the-least-squares-dummy-variable-approach",
+    "href": "2023/weeks/week07/slides.html#the-least-squares-dummy-variable-approach",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "The Least Squares Dummy Variable Approach",
+    "text": "The Least Squares Dummy Variable Approach\n\nDe-meaning the data isn’t the only way to do it!\nYou can also use the least squares dummy variable (another word for “binary variable”) method\nWe just treat “individual” like the categorical variable it is and add it as a control! Again, the regression approach is exactly the same as with any categorical control, but the research design reason for doing it is different"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#lets-do-it-1",
+    "href": "2023/weeks/week07/slides.html#lets-do-it-1",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Let’s do it!",
+    "text": "Let’s do it!\n\nlsdv &lt;- feols(crmrte ~ prbarr + factor(county), data = crime4)\netable(orig_data, de_mean, lsdv, keep = c('prbarr', 'demeaned_prob'))\n\n                        orig_data           de_mean              lsdv\nDependent Var.:            crmrte    demeaned_crime            crmrte\n                                                                     \nprbarr          0.0486** (0.0167)                   -0.0305* (0.0124)\ndemeaned_prob                     -0.0305* (0.0117)                  \n_______________ _________________ _________________ _________________\nS.E. type                     IID               IID               IID\nObservations                   27                27                27\nR2                        0.25308           0.21445           0.94114\nAdj. R2                   0.22321           0.18303           0.93044\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#the-same",
+    "href": "2023/weeks/week07/slides.html#the-same",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "The same!",
+    "text": "The same!\n\nThe result is the same, as it should be\nExcept for that \\(R^2\\) - What is that “within R2”?\nBecause de-meaning takes out the part explained by the fixed effects ( \\(\\alpha_i\\) ) before running the regression, while LSDV does it in the regression\nSo the .94 is the portion of crmrte explained by prbarr and county, whereas the .21 is the “within - \\(R^2\\)” - the portion of the within variation that’s explained by prbarr\nNeither is wrong (and the .94 isn’t “better”), they’re just measuring different things"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#why-lsdv",
+    "href": "2023/weeks/week07/slides.html#why-lsdv",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Why LSDV?",
+    "text": "Why LSDV?\n\nA benefit of the LSDV approach is that it calculates the fixed effects \\(\\alpha_i\\) for you\nWe left those out of the table with the coefs argument of export_summs (we rarely want them) but here they are:\n\n\n\nOLS estimation, Dep. Var.: crmrte\nObservations: 27 \nStandard-errors: IID \n                  Estimate Std. Error   t value   Pr(&gt;|t|)    \n(Intercept)       0.045631   0.004116  11.08640 1.7906e-10 ***\nprbarr           -0.030491   0.012442  -2.45068 2.2674e-02 *  \nfactor(county)3  -0.025308   0.002165 -11.68996 6.5614e-11 ***\nfactor(county)7  -0.009870   0.001418  -6.96313 5.4542e-07 ***\nfactor(county)23 -0.008587   0.001258  -6.82651 7.3887e-07 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\nRMSE: 0.001933   Adj. R2: 0.930441\n\n\n\nInterpretation is exactly the same as with a categorical variable - we have an omitted county, and these show the difference relative to that omitted county"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#why-lsdv-1",
+    "href": "2023/weeks/week07/slides.html#why-lsdv-1",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Why LSDV?",
+    "text": "Why LSDV?\n\nThis also makes clear another element of what’s happening! Just like with a categorical var, the line is moving up and down to meet the counties\nGraphically, de-meaning moves all the points together in the middle to draw a line, while LSDV moves the line up and down to meet the points"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#why-not-lsdv",
+    "href": "2023/weeks/week07/slides.html#why-not-lsdv",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Why Not LSDV?",
+    "text": "Why Not LSDV?\n\nLSDV is computationally expensive\nIf there are a lot of individuals, or big data, or if you have many sets of fixed effects (yes you can do more than just individual - we’ll get to that next time!), it can be very slow\nMost professionally made fixed-effects commands use de-meaning, but then adjust the standard errors properly\n(They also leave the fixed effects coefficients off the regression table by default)"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#concept-checks-2",
+    "href": "2023/weeks/week07/slides.html#concept-checks-2",
+    "title": "🗓️ Week 7 Within variation",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nWhy can’t we use individual-person fixed effects to study the impact of race on traffic stops?\nThe within \\(R^2\\) from is .3, and the overall \\(R^2\\) is .5. Interpret these two numbers in sentences\nIn a sentence, interpret the slope coefficient in the estimated model \\((Y_{it} - \\bar{Y}_i) = 1 + .5(X_{it} - \\bar{X}_i)\\) where \\(Y\\) is “school funding per child” and \\(X\\) is “population growth”, and \\(i\\) is city\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
   }
 ]
