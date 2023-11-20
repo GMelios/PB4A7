@@ -1,8 +1,8 @@
 ---
-title: "🗓️ Week 10 Difference in Differences"
+title: "🗓️ Week 10 Instrumental Variables"
 ---
 
-In this week, we will look into the quasi-experimental Difference in Differences. 
+In this week, we will focus on estimating causal parameteres through Instrumental Variables. First, we will approach the concept of instruments through Direct Acyclical Graphs (DAGs) and then through the LATE effect (Local Average Treatment Effect).
 
 ## 👨‍🏫 Lecture Slides 
 

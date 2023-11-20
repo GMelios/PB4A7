@@ -1,8 +1,8 @@
 ---
-title: "🗓️ Week 07 - Within Variations"
+title: "🗓️ Week 07 - Revision / Non Linearity"
 ---
 
-In this week, we will focus on how we analyse within variation and include fixed effects.
+In this week, we revisited slides from Week 5 and focused on Non-linearity and transformations.  on how we analyse within variation and include fixed effects.
 
 ## 👨‍🏫 Lecture Slides 
 

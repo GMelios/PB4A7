@@ -1,10 +1,10 @@
 ---
 subtitle: "PB4A7- Quantitative Applications for Behavioural Science"
-title: "<font style='font-size:1em;'>🗓️ Week 7<br/> Within variation</font>"
+title: "<font style='font-size:1em;'>🗓️ Week 5<br/> Functional Forms</font>"
 author: Dr. [George Melios](#)
 institute: '[London School of Economics and Political Science](#)'
-date: 18 September 2023
-date-meta: 18 September 2023
+date: 23 October 2023
+date-meta: 23 October 2023
 date-format: "DD MMM YYYY"
 toc: true
 toc-depth: 1
@@ -22,17 +22,31 @@ format:
     css: /css/styles_slides.css
     footer: 'PB4A7- Quantitative Applications for Behavioural Science'
 ---
+---
+title: "Binary Variables and Functional Form"
+subtitle: "i.e. what you actually do most of the time"
+date: "Updated `r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    self_contained: TRUE
+    css: [default, metropolis, metropolis-fonts]
+    lib_dir: libs
+    # Run xaringan::summon_remark() for this
+    #chakra: libs/remark-latest.min.js
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE) 
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, fig.width = 8, fig.height = 6)
 library(tidyverse)
-library(gganimate)
-library(fixest)
-library(magick)
-library(wooldridge)
 library(dagitty)
 library(ggdag)
+library(fixest)
 library(scales)
 library(Cairo)
 theme_metro <- function(x) {
@@ -57,536 +71,642 @@ theme_metro_regtitle <- function(x) {
 }
 ```
 
+```{css, echo=FALSE}
+pre {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+pre[class] {
+  max-height: 100px;
+}
+```
+
 # Check-in
 
-- So far we've been learning about how to set up, run, and interpret an ordinary least squares regression
-- This is a key skill for anyone doing anything with data - even if you never run a regular ol' linear regression again, pretty much everything else in applied stats builds off of it in some way
-- Another thing we've been doing is thinking about how to design and add controls to that regression to *identify* our effect of interest by closing back doors
+- Where are we at?
+- Next week reading week!!! After that, we will start the causal methods. The format will be very similar to lectures up to now - extra papers
+- This lecture will cover the last "intro" material
+- This is a pretty packed lecture, but it's structured to be easy to come back to and review, there will be plenty of practice next time, and this might end up broken across both days
 
 ---
 
-# The Measurement Problem...
 
-- And this has led us to some issues that have already popped up!
-- For this approach to work, we need to not only *figure out* what we need to control for, using our diagram, but we need to *actually control for it*
-- A lot of the time we don't have that data!
-- And thus all the skeptical comments we had about the designs we came up with
+## Bias and the Error Term
 
----
+- All of the nice stuff we've gotten so far makes some assumptions about our true model
 
-## A Pickle
+$$ Y = \beta_0 + \beta_1X + \varepsilon $$
 
-- So obviously this is a problem, and it's not one we can reason or trick our way out of
-- If we don't have the variable we need to control for, we don't have it
-- ... or do we?
+- In particular, we've made some assumptions about the error term $\varepsilon$
+- So what is that error term exactly, and what are we assuming about it?
 
 ---
 
-## The Rest of the Term
+## The Error Term
 
-- Much of the rest of the term is going to be focused on *finding ways to control for stuff that we can't measure*
-- Seems impossible! But it is possible, at least in some circumstances
-- Today, we will be talking about *within variation* and *between variation*, and the ability to control for all *between variation* using *fixed effects*
-
----
-
-# Panel Data
-
-- We are working now in the domain of *panel data*
-- Panel data is when you observe the same individual over multiple time periods
-- "Individual" could be a person, or a company, or a state, or a country, etc. There are $N$ individuals in the panel data
-- "Time period" could be a year, a month, a day, etc.. There are $T$ time periods in the data
-- For now we'll assume we observe each individual the same number of times, i.e. a *balanced* panel (so we have $N\times T$ observations)
-- You can use this stuff with unbalanced panels too, it just gets a little more complex
+- The error term contains everything that isn't in our model
+- If $Y$ were a pure function of $X$, for example if $Y$ was "height in feet" and $X$ was "height in inches", we wouldn't have an error term, because a straight line fully describes the relationship perfectly with no variation
+- But in most cases, the line is a simplification - we're leaving other stuff out! That's in the error term
 
 ---
 
-## Panel Data
+## The Error Term
 
-- Here's what (a few rows from) a panel data set looks like - a variable for individual (county), a variable for time (year), and then the data
+- Consider this data generating process:
+
+$$ ClassGrade = \beta_0 + \beta_1 StudyTime + \varepsilon $$
+
+- Surely StudyTime isn't the *only* thing that determines your ClassGrade
+- Everything else is in the error term!
+- ProfessorLeniency, InterestInSubject, Intelligence, and so on and so on...
+
+---
+
+## The Error Term
+
+- Isn't that really bad? We're leaving out a bunch of important stuff!
+- If you want to *predict $Y$ as accurately as possible* then we're probably going to do a bad job of it
+- But if our real interest is *figuring out the relationship between $X$ and $Y$, then it's fine to leave stuff out, as long as whatever's left in the error term obeys a few important assumptions
+
+---
+
+## Error Term Assumptions
+
+- The most important assumption about the error term is that it is *unrelated to $X$*
+- If $X$ and $\varepsilon$ are correlated, $\hat{\beta}_1$ will be *biased* - its distribution no longer has the true $\beta_1$ as its mean
+- In these cases we can say " $X$ is **endogenous**" or "we have **omitted variable bias**"
+- No amount of additional sample size will fix that problem!
+- (what will fix the problem? We'll get to that one later)
+
+---
+
+## Omitted Variable Bias
+
+- We can intuitively think about whether omitted variable bias is likely to make our estimates too high or too low
+- The sign of the bias will be the sign of the relationship between the omitted variable and $X$, **times** the sign of the relationship between the omitted variable bias and $Y$
+- InterestInSubject is positively related to both StudyTime and ClassGrade, and $+\times+ = +$, so our estimates are positively biased / too high
+- More precisely we have that the mean of the $\hat{\beta}_1$ sampling distribution is
+$$\beta_1 + corr(X,\varepsilon)\frac{\sigma_\varepsilon}{\sigma_X}$$
+
+---
+
+## Thinking Through this Bias
+
+- If $Z$ hangs around $X$, but $Y$ doesn't know about it, then the coefficient on $X$ will get all the credit for $Z$
+- This is a good way to keep that "direction of bias" problem in mind
+- And you do want to keep it in mind! This is important for understanding general correlations you see in the wild, too
+- And helps keep in line some things - for example, **if $Z$ is unrelated to $X$, it won't bias you!!**
+
+---
+
+## Thinking Through this Bias
+
+- That means that when you're thinking about the controls you **need**, that **only** includes things related to $X$
+- Adding controls for things related to $Y$ not $X$ can make the model predict better and reduce standard errors, but won't remove omitted variable bias
+
+---
+
+## Less Serious Error Concerns
+
+- Omitted variable bias can, well, bias us, which is very bad
+- There are some other assumptions that can fail that may also pose a problem to us but less so
+- We've assumed so far not just that $\varepsilon$ is unrelated to $X$, but also that the *variance* of $\varepsilon$ is unrelated to $X$, and that the $\varepsilon$s are unrelated to each other
+- If these assumptions fail, our standard errors will be wrong, but we won't be biased, and also there are ways to fix the standard errors
+- We will cover these only briefly, they'll come back later
+
+---
+
+## Heteroskedasticity
+
+- If the variance of the error term is different for different values of $X$, then we have "heteroskedasticity"
+- Notice in the below graph how the spread of the points around the line (the variance of the error term) is bigger on the right than the left
 
 ```{r, dev = 'CairoPNG'}
-data(crime4)
-crime4 %>%
-  select(county, year, crmrte, prbarr) %>%
-  rename(County = county,
-         Year = year,
-         CrimeRate = crmrte,
-         ProbofArrest = prbarr) %>%
-  slice(1:9) %>%
-  knitr::kable(note = '...') %>%
-  kableExtra::add_footnote('9 rows out of 630. "Prob. of Arrest" is estimated probability of being arrested when you commit a crime', notation = 'none')
+set.seed(1022)
+tb <- tibble(X = runif(200)) %>%
+  mutate(Y = .75*X + rnorm(200,sd=2*X)) 
+tb %>%
+  ggplot(aes(x = X, y = Y)) + 
+  geom_point() +
+  geom_smooth(method = 'lm', se = FALSE) + 
+  theme_metro()
 ```
 
 ---
 
-# Between and Within
+## Heteroskedasticity
 
-- Let's pick a few counties and graph this out
-
-```{r, dev = 'CairoPNG'}
-crime4 %>% 
-  filter(county %in% c(1,3,7, 23),
-         prbarr < .5) %>%
-  group_by(county) %>%
-  mutate(label = case_when(
-    crmrte == max(crmrte) ~ paste('County',county),
-    TRUE ~ NA_character_
-  )) %>%
-  ggplot(aes(x =  prbarr, y = crmrte, color = factor(county), label = label)) + 
-  geom_point() + 
-  geom_text(hjust = -.1, size = 14/.pt) + 
-  theme_metro_regtitle() + 
-  labs(x = 'Probability of Arrest', 
-       y = 'Crime Rate',
-       caption = 'One outlier eliminated in County 7.') + 
-  ##scale_x_continuous(limits = c(.15, 2.5)) + 
-  guides(color = FALSE, label = FALSE) + 
-  scale_color_manual(values = c('black','blue','red','purple'))
-```
+- We can correct for this using *heteroskedasticity-robust standard errors* which sort of "squash down" the big variances and then re-estimate the standard errors
+- We can do this in `feols` with `vcov = 'hetero'` in R or with "robust" in STATA
 
 ---
 
-## Between and Within
+## Correlated Errors
 
-- If we look at the overall variation, just pretending this is all together, we get this
-
-```{r, dev = 'CairoPNG'}
-crime4 %>% 
-  filter(county %in% c(1,3,7, 23),
-         prbarr < .5) %>%
-  group_by(county) %>%
-  mutate(label = case_when(
-    crmrte == max(crmrte) ~ paste('County',county),
-    TRUE ~ NA_character_
-  )) %>%
-  ggplot(aes(x =  prbarr, y = crmrte, color = factor(county), label = label)) + 
-  geom_point() + 
-  geom_text(hjust = -.1, size = 14/.pt) + 
-  theme_metro_regtitle() + 
-  labs(x = 'Probability of Arrest', 
-       y = 'Crime Rate',
-       caption = 'One outlier eliminated in County 7.') + 
-  ##scale_x_continuous(limits = c(.15, 2.5)) + 
-  guides(color = FALSE, label = FALSE) + 
-  scale_color_manual(values = c('black','blue','red','purple')) + 
-  geom_smooth(method = 'lm', aes(color = NULL, label = NULL), se = FALSE)
-```
-
+- If the error terms are *correlated with each other*, then our standard errors will also be wrong
+- How could this happen? For example, maybe you've surveyed a bunch of people in different towns - the error terms within a town might be *clustered*
+- Or maybe you have time series data. If a term in the error term is "sticky" or has "momentum" it will likely be a similar error term a few time periods in a row, beign correlated across time, or *autocorrelated*
+- Again, this doesn't bias $\hat{\beta}_1$ but it can affect standard errors!
 
 ---
 
+# The Right Hand Side
 
-## Between and Within
-
-- BETWEEN variation is what we get if we look at the relationship between the *means of each county*
-
-```{r, dev = 'CairoPNG'}
-crime4 %>% 
-  filter(county %in% c(1,3,7, 23),
-         prbarr < .5) %>%
-  group_by(county) %>%
-  mutate(label = case_when(
-    crmrte == max(crmrte) ~ paste('County',county),
-    TRUE ~ NA_character_
-  ),
-  mcrm = mean(crmrte),
-  mpr = mean(prbarr)) %>%
-  ggplot(aes(x =  prbarr, y = crmrte, color = factor(county), label = label)) + 
-  geom_point() + 
-  geom_text(hjust = -.1, size = 14/.pt) + 
-  theme_metro_regtitle() + 
-  labs(x = 'Probability of Arrest', 
-       y = 'Crime Rate',
-       caption = 'One outlier eliminated in County 7.') + 
-  ##scale_x_continuous(limits = c(.15, 2.5)) + 
-  guides(color = FALSE, label = FALSE) + 
-  scale_color_manual(values = c('black','blue','red','purple')) + 
-  geom_point(aes(x = mpr, y = mcrm), size = 20, shape = 3, color = 'darkorange') + 
-  annotate(geom = 'text', x = .3, y = .02, label = 'Means Within Each County', color = 'darkorange', size = 14/.pt)
-```
+- Today we'll be focusing on the *right hand side* of a regression
+- Economists generally refer to a regression as having a "left-hand-side" of the dependent variable $Y$, and a "right-hand-side" of all the independent stuff, like $\beta_0 + \beta_1X + \beta_2Z + \varepsilon$.
+- So far, we've just tossed stuff on the right-hand side and called it our treatment variable or a control variable without thinking too much harder about it
+- Today we will think harder about it!
 
 ---
 
-## Between and Within
+## The Right Hand Side
 
-- And I mean it! Only look at those means! The individual year-to-year variation within county doesn't matter.
+We will look at three features of the right-hand side
 
-```{r, dev = 'CairoPNG'}
-crime4 %>% 
-  filter(county %in% c(1,3,7, 23),
-         prbarr < .5) %>%
-  group_by(county) %>%
-  mutate(label = case_when(
-    crmrte == max(crmrte) ~ paste('County',county),
-    TRUE ~ NA_character_
-  ),
-  mcrm = mean(crmrte),
-  mpr = mean(prbarr)) %>%
-  ggplot(aes(x =  prbarr, y = crmrte, color = factor(county), label = label)) + 
-  #geom_point() + 
-  #geom_text(hjust = -.1, size = 14/.pt) + 
-  theme_metro_regtitle() + 
-  labs(x = 'Probability of Arrest', 
-       y = 'Crime Rate',
-       caption = 'One outlier eliminated in County 7.') + 
-  #scale_x_continuous(limits = c(.15, 2.5)) + 
-  guides(color = FALSE, label = FALSE) + 
-  scale_color_manual(values = c('black','blue','red','purple')) + 
-  geom_point(aes(x = mpr, y = mcrm), size = 20, shape = 3, color = 'darkorange') + 
-  geom_smooth(aes(color = NULL), method = 'lm', se = FALSE)+
-  annotate(geom = 'text', x = .3, y = .02, label = 'OLS Fit on These Four Points', color = 'blue', size = 14/.pt)
-```
+- What if the variable is *categorical* or *binary*? (binary variables)
+- What if the variable has a *nonlinear effect* on $Y$ (polynomials and logarithms)
+- What if the effect of one variable *depends on the value of another variable?* (interaction terms)
 
 ---
 
-## Between and Within
+# Binary Data
 
-- Within variation goes the other way - it treats those orange crosses as their own individualized sets of axes and looks at variation *within* county from year-to-year only!
-- We basically slide the crosses over on top of each other and then analyze *that* data
+## Binary Data
 
-```{r, echo=FALSE, fig.width=5, fig.height=4.5}
-cranim <- crime4 %>% 
-  filter(county %in% c(1,3,7, 23),
-         prbarr < .5) %>%
-  mutate(allcrm = mean(crmrte),
-         allmpr = mean(prbarr)) %>%
-  group_by(county) %>%
-  mutate(label = case_when(
-    crmrte == max(crmrte) ~ paste('County',county),
-    TRUE ~ NA_character_
-  ),
-  mcrm = mean(crmrte),
-  mpr = mean(prbarr),
-  stage = '1. Raw Data')
-cranim <- cranim %>%
-  bind_rows(cranim %>% 
-              mutate(crmrte = crmrte - mcrm + allcrm,
-                     prbarr = prbarr - mpr + allmpr,
-                     mcrm = allcrm,
-                     mpr = allmpr,
-                     stage = '2. Remove all between variation'))
-
-p <- ggplot(cranim, aes(x =  prbarr, y = crmrte, color = factor(county), label = label)) + 
-  geom_point() + 
-  geom_text(hjust = -.1, size = 14/.pt)  + 
-  labs(x = 'Probability of Arrest', 
-       y = 'Crime Rate',
-       caption = 'One outlier eliminated in County 7.') + 
-  #scale_x_continuous(limits = c(.15, 2.5)) + 
-  guides(color = FALSE, label = FALSE) + 
-  scale_color_manual(values = c('black','blue','red','purple')) + 
-  geom_smooth(aes(color = NULL), method = 'lm', se = FALSE)+
-  geom_point(aes(x = mpr, y = mcrm), size = 20, shape = 3, color = 'darkorange') + 
-  transition_states(stage) + 
-  theme_metro_regtitle()
-
-animate(p, nframes = 80)
-
-```
+- A variable is binary if it only has two values - 0 or 1 (or "No" or "Yes", etc.)
+- Binary variables are super common in econometrics!
+- Did you get the treatment? Yes / No
+- Do you live in the US? Yes / No
+- Is a floating exchange rate in effect? Yes / No
 
 ---
 
-## Between and Within
+## Comparison of Means
 
-- We can clearly see that *between counties* there's a strong positive relationship
-- But if you look *within* a given county, the relationship isn't that strong, and actually seems to be negative
-- Which would make sense - if you think your chances of getting arrested are high, that should be a deterrent to crime
-- But what are we actually doing here? Let's think about the causal diagram / data-generating process!
-- What goes into the probability of arrest and the crime rate? Lots of stuff!
-
----
-
-## The Crime Rate
-
-- "LocalStuff" is just all the things unique to that area
-- "LawAndOrder" is how committed local politicians are to "Law and Order Politics"
-
-```{r, dev = 'CairoPNG'}
-dag <- dagify(CrimeRate ~ ProbArrest + Poverty + CivilRights + LocalStuff,
-              ProbArrest ~ Police + LawAndOrder + CivilRights + Poverty + LocalStuff,
-              Police ~ LawAndOrder,
-              CivilRights ~ LawAndOrder,
-              Poverty ~ LocalStuff,
-              coords=list(
-                x=c(ProbArrest = 1, CrimeRate = 4, Poverty = 2.5, Police = 1.5, LawAndOrder = 1, CivilRights = 2.5, LocalStuff = 4),
-                y=c(ProbArrest = 1, CrimeRate = 1, Poverty = 2, Police = 1.5, LawAndOrder = 2, CivilRights = 1.25, LocalStuff = 2)
-              )) %>% tidy_dagitty()
-ggdag_classic(dag,node_size=10) + 
-  theme_void_metro() + 
-  expand_limits(x=c(.5,4.5))
-
-```
-
+- When a binary variable is an independent variable, what we are often interested in doing is *comparing means*
+- Is mean income higher inside the US or outside?
+- Is mean height higher for kids who got a nutrition supplement or those who didn't?
+- Is mean GDP growth higher with or without a floating exchange rate?
 
 ---
 
-## Between and Within
+## Comparison of Means
 
-- For each of these variables we can ask if they vary *between groups* and/or *within groups*
-- LocalStuff is all the stuff unique to that county - geography, landmarks, the quality of the schools, almost by definition this only varies *between groups*. It's not like the things that make your county unique are different each year (or at least not very different)
-- Whether the county has LawAndOrder and how many CivilRights you're allowed might change a bit year to year, but in general, political climates like that change pretty slowly. At a bit of a stretch we can call that something that only varies between groups too
-- Police budgets (and thus number of police on the streets) and Poverty (which varies with the economy) vary both between counties, but also *within* counties from year to year
-- Variables with between variation only (by our assumption): LocalStuff, LawAndOrder, CivilRights
-- Variables with both between and within variation: Police, Poverty
-
----
-
-## Between and Within
-
-- Let's simplify our graph!
-- Some of the variables only vary *between counties*
-- So, we can replace those variables on the graph with the variable County
-- Right? That's where all the variation is anyway
-
----
-
-## The Crime Rate
-
-- "LocalStuff" is just all the things unique to that area
-- "LawAndOrder" is how committed local politicians are to "Law and Order Politics"
-
-```{r, dev = 'CairoPNG'}
-dag <- dagify(CrimeRate ~ ProbArrest + Poverty + County,
-              ProbArrest ~ Police + County + Poverty,
-              Police ~ County,
-              Poverty ~ County,
-              coords=list(
-                x=c(ProbArrest = 1, CrimeRate = 4, Poverty = 1, Police = 1.5, County = 3),
-                y=c(ProbArrest = 1, CrimeRate = 1, Poverty = 2, Police = 1.5, County = 2)
-              )) %>% tidy_dagitty()
-ggdag_classic(dag,node_size=10) + 
-  theme_void_metro() + 
-  expand_limits(x=c(.5,4.5))
-
-```
-
----
-
-## Between and Within
-
-- Now the task of identifying ProbArrest $\rightarrow$ CrimeRate becomes much simpler!
-- If we control for County, that will close a lot of back doors for us
-- (based on the diagram, all we need to control for is County and Poverty!)
-- Conveniently, we can control for County just like it was any other variable!
-- And when we do, we automatically *control for all variables that only have between variation*, whatever they are, even if we can't measure them directly or didn't think about them
-- *All that's left is the within variation*
-
-
----
-
-## Concept Checks
-
-- For each of these variables, would we expect them to have within variation, between variation, or both?
-- (Individual = person) How a child's height changes as they age.
-- (Individual = person) In a data set tracking many people over many years, the variation in the number of children a person has in a given year.
-- (Individual = city) Overall, Paris, France has more restaurants than Paris, Texas.
-- (Individual = genre) The average pop music album sells more copies than the average jazz album
-- (Individual = genre) Miles Davis' *Kind of Blue* sold very well *for a jazz album*.
-- (Individual = genre) Michael Jackson's *Thriller*, a pop album, sold many more copies than *Kind of Blue*, a jazz album.
-
----
-
-## Removing Between Variation
-
-- Okay so that's the concept
-- Remove all the between variation so that all that's left is within variation
-- And in the process control for any variables that are made up only of between variation
-- How can we actually do this? And what's really going on?
-- Let's first talk about the regression model itself that this implies
-- Then let's actually do the thing. There are two main ways: *de-meaning* and *binary variables* (they give the same result, for balanced panels anyway)
-
----
-
-## Estimation vs. Design
-
-- To be clear, this is *exactly 0% different* from what we've done before in terms of controlling for stuff
-- And in fact we're about to do the *exact same thing we did before* by just adding a categorical control variable for `county` or whatever
-- (and in fact the "within" thing holds with other categorical controls - a categorical control for education isolates variation "within education levels")
-- The difference is the *reason we're doing it*. It's fixed effects because *a categorical control for individual controls for a lot of stuff*, and we think closes a *lot* of back doors for us, not just one, and not just ones we can measure
-
-
----
-
-
-## The Model
-
-
-The $it$ subscript says this variable varies over individual $i$ and time $t$
-
-$$Y_{it} = \beta_0 + \beta_1 X_{it} + \varepsilon_{it}$$
-
-- $X_{it}$ is related to LocalStuff which is not in the model and thus in the error term!
-- Regular ol' omitted variable bias. If we don't adjust for the individual effect, we get a biased $\hat{\beta}_1$ 
-- (this bias is called "pooling bias" although it's really just a form of omitted variable bias)
-- We really have this then:
-$$Y_{it} = \beta_0 + \beta_1 X_{it} + (\alpha_i + \varepsilon_{it})$$
-
----
-
-## De-meaning
-
-- Let's do de-meaning first, since it's most closely and obviously related to the "removing between variation" explanation we've been going for
-- The process here is simple!
-
-1. For each variable $X_{it}$, $Y_{it}$, etc., get the mean value of that variable for each individual $\bar{X}_i, \bar{Y}_i$
-2. Subtract out that mean to get residuals $(X_{it} - \bar{X}_i), (Y_{it} - \bar{Y}_i)$
-3. Work with those residuals
-
-- That's it!
-
----
-
-## How does this work?
-
-- That $\alpha_i$ term gets absorbed
-- The residuals are, by construction, no longer related to the $\alpha_i$, so it no longer goes in the residuals!
-
-$$(Y_{it} - \bar{Y}_i) = \beta_0 + \beta_1(X_{it} - \bar{X}_i) + \varepsilon_{it}$$
-
----
-
-## Let's do it!
-
-- We can use `group_by` to get means-within-groups and subtract them out
+- Let's compare log earnings in 1993 between married people 30 or older vs. never-married people 30 or older
+- Seems to be a slight favor to the married men
 
 ```{r, echo = TRUE}
-data(crime4, package = 'wooldridge')
-crime4 <- crime4 %>%
-  ## Filter to the data points from our graph
-  filter(county %in% c(1,3,7, 23),
-         prbarr < .5) %>%
-  group_by(county) %>%
-  mutate(mean_crime = mean(crmrte),
-         mean_prob = mean(prbarr)) %>%
-  mutate(demeaned_crime = crmrte - mean_crime,
-         demeaned_prob = prbarr - mean_prob)
+data(PSID, package = 'Ecdat')
+PSID <- PSID %>%
+  filter(age >= 30, married %in% c('married','never married'), earnings > 0) %>%
+  mutate(married  = married == 'married')
+PSID %>%
+  group_by(married) %>%
+  summarize(log_earnings = mean(log(earnings)))
 ```
 
 ---
 
-## And Regress!
-
-```{r, echo = TRUE}
-orig_data <- feols(crmrte ~ prbarr, data = crime4)
-de_mean <- feols(demeaned_crime ~ demeaned_prob, data = crime4)
-etable(orig_data, de_mean)
-```
-
----
-
-## Interpreting a Within Relationship
-
-- How can we interpret that slope of `-0.03`?
-- This is all *within variation* so our interpretation must be *within-county*
-- So, "comparing a county in year A where its arrest probability is 1 (100 percentage points) higher than it is in year B, we expect the number of crimes per person to drop by .03"
-- Or if we think we've causally identified it (and want to work on a more realistic scale), "raising the arrest probability by 1 percentage point in a county reduces the number of crimes per person in that county by .0003".
-- We're basically "controlling for county" (and will do that explicitly in a moment)
-- So your interpretation should think of it in that way - *holding county constant* i.e. *comparing two observations with the same value of county* i.e. *comparing a county to itself at a different point in time*
-
----
-
-## Concept Checks
-
-- Why does subtracting the within-individual mean of each variable "control for individual"?
-- In a sentence, interpret the slope coefficient in the estimated model $(Y_{it} - \bar{Y}_i) = 2 + 3(X_{it} - \bar{X}_i)$ where $Y$ is "blood pressure", $X$ is "stress at work", and $i$ is an individual person
-
----
-
-## The Least Squares Dummy Variable Approach
-
-- De-meaning the data isn't the only way to do it!
-- You can also use the least squares dummy variable (another word for "binary variable") method
-- We just treat "individual" like the categorical variable it is and add it as a control! Again, the regression approach is exactly the same as with any categorical control, but the *research design* reason for doing it is different
-
----
-
-## Let's do it!
-
-```{r, echo = TRUE}
-lsdv <- feols(crmrte ~ prbarr + factor(county), data = crime4)
-etable(orig_data, de_mean, lsdv, keep = c('prbarr', 'demeaned_prob'))
-```
-
----
-
-## The same!
-
-- The result is the same, as it should be
-- Except for that $R^2$ - What is that "within R2"?
-- Because de-meaning takes out the part explained by the fixed effects ( $\alpha_i$ ) *before* running the regression, while LSDV does it *in* the regression
-- So the .94 is the portion of `crmrte` explained by `prbarr` *and* `county`, whereas the .21 is the "within - $R^2$ " - the portion of *the within variation* that's explained by `prbarr`
-- Neither is wrong (and the .94 isn't "better"), they're just measuring different things
-
----
-
-## Why LSDV?
-
-- A benefit of the LSDV approach is that it calculates the fixed effects $\alpha_i$ for you
-- We left those out of the table with the `coefs` argument of `export_summs` (we rarely want them) but here they are:
+## Comparison of Means
 
 ```{r}
-lsdv
-```
-
-- Interpretation is exactly the same as with a categorical variable - we have an omitted county, and these show the difference relative to that omitted county
-
----
-
-## Why LSDV?
-
-- This also makes clear another element of what's happening! Just like with a categorical var, the line is moving *up and down* to meet the counties
-- Graphically, de-meaning moves all the points together in the middle to draw a line, while LSDV moves the line up and down to meet the points
-
-```{r, dev = 'CairoPNG'}
-crime4 %>%
-  ungroup() %>%
-  mutate(pred = predict(lsdv)) %>%
-  group_by(county) %>%
-  mutate(label = case_when(
-    crmrte == max(crmrte) ~ paste('County',county),
-    TRUE ~ NA_character_
-  )) %>%
-  ggplot(aes(x =  prbarr, y = crmrte, color = factor(county), label = label)) + 
-  geom_point() + 
-  geom_text(hjust = -.1, size = 14/.pt) + 
-  geom_line(aes(y = pred, group = county), color = 'blue') +
-  theme_metro_regtitle() + 
-  labs(x = 'Probability of Arrest', 
-       y = 'Crime Rate',
-       caption = 'One outlier eliminated in County 7.') + 
-  ##scale_x_continuous(limits = c(.15, 2.5)) + 
-  guides(color = FALSE, label = FALSE) + 
-  scale_color_manual(values = c('black','blue','red','purple'))
+PSID %>%
+  group_by(married) %>%
+  mutate(mean_earnings = exp(mean(log(earnings), na.rm = TRUE))) %>%
+ggplot(aes(x = married, y = earnings)) + 
+  geom_jitter() + 
+  scale_x_discrete(labels = c('Not Married', 'Married')) + 
+  scale_y_log10(labels = scales::dollar) + 
+  labs(x = "Marital Status", y = "Log Labor Income") + 
+  geom_point(aes(x = married, y = mean_earnings), size = 6, color = 'red') + 
+  geom_segment(aes(x = FALSE, y = PSID %>% filter(!married) %>% pull(earnings) %>% log() %>% mean() %>% exp(),
+                   xend = TRUE, yend = PSID %>% filter(married) %>% pull(earnings) %>% log() %>% mean() %>% exp()), size = 2, color = 'red') + 
+  theme_metro_regtitle()
 ```
 
 ---
 
-## Why Not LSDV?
+## Comparison of Means
 
-- LSDV is computationally expensive
-- If there are a lot of individuals, or big data, or if you have many sets of fixed effects (yes you can do more than just individual - we'll get to that next time!), it can be very slow
-- Most professionally made fixed-effects commands use de-meaning, but then adjust the standard errors properly
-- (They also leave the fixed effects coefficients off the regression table by default)
+- The *difference between the means* follows a t-distribution under the null that they're identical
+- So of course we can do a hypothesis test of whether they're different. But why bother trotting out a specific test when we can just do a regression?
+- (In fact, a lot of specific tests can be replaced with basic regression, see [this explainer](https://lindeloev.github.io/tests-as-linear/))
 
 ---
 
-# Limits to Fixed Effects
 
-- Okay! At this point we have the concept behind fixed effects, can execute them, and know what they're good for
-- What aren't they good for?
+## Comparison of Means
 
-1. They don't control for anything that has within variation
-2. They control away *everything* that's between-only, so we can't see the effect of anything that's between-only ("effect of geography on crime rate?" Nope!)
-3. Anything with only a *little* within variation will have most of its variation washed out too ("effect of population density on crime rate?" probably not)
-4. The estimate pays the most attention to individuals with *lots of variation in treatment*
+Notice:
 
-- 2 and 3 can be addressed by using "random effects" instead but we aren't covering that in this class (see the The Effect chapter on Fixed Effects for more)
+- The intercept gives the mean for the *non-married* group
+- The coefficient on *marriedTRUE* gives the married minus non-married difference
+- i.e. *the coefficient on a binary variable in a regression gives the difference in means*
+- If we'd defined it the other way, with "not married" as the independent variable, the intercept would be the mean for the *married* group (i.e. "not married = 0"), and the coefficient would be the exact same but times $-1$ (same difference, just opposite direction!)
+
+
+---
+
+## Comparison of Means
+
+Why does OLS give us a comparison of means when you give it a binary variable?
+
+- The only $X$ values are 0 (FALSE) and 1 (TRUE)
+- Because of this, OLS no longer really fits a *line*, it's more of two separate means
+- And when you're estimating to minimize the sum of squared errors separately for each group, can't do any better than to predict the mean!
+- So you get the mean of each group as each group's prediction
+
+
+---
+
+## Binary with Controls
+
+- Obviously this is handy for including binary controls, but why do this for binary treatments? Because we can add controls!
+
+```{r}
+PSID <- filter(PSID, kids < 98)
+etable(feols(log(earnings) ~ married + kids + age , data = PSID))
+```
+
+---
+
+## Multicollinearity
+
+- Why is just one side of it on the regression? Why aren't "married" and "not married" BOTH included?
+- Because regression couldn't give an answer!
+
+---
+
+## Multicollinearity
+
+- Mean of married is $9.47$ and of non-married is $9.26$. 
+$$ \log(Earnings) = 0 + 9.47Married + 9.26NonMarried $$
+$$ \log(Earnings) = 3 + 6.47Married + 6.26NonMarried $$
+
+- These (and infinitely many other options) all give the exact same predictions! OLS can't pick between them. There's no single best way to minimize squared residuals
+- So we pick one with convenient properties, setting one of the categories to have a coefficient of 0 (dropping it) and making the coefficient on the other *the difference relative to* the one we left out
+
+---
+
+# More than Two Categories
+
+## More than Two Categories
+
+- That interpretation - dropping one and making the other relative to *that*, conveniently extends to *multi-category variables*
+- Why stop at binary categorical variables? There are plenty of categorical variables with more than two values
+- What is your education level? What is your religious denomination? What continent are you on?
+- We can put these in a regression by turning *each value* into its own binary variable
+- (and then dropping one so the coefficients on the others give you the difference with the omitted one)
+
 
 ---
 
 ## Concept Checks
 
-- Why can't we use individual-person fixed effects to study the impact of race on traffic stops?
-- The within $R^2$ from is .3, and the overall $R^2$ is .5. Interpret these two numbers in sentences
-- In a sentence, interpret the slope coefficient in the estimated model $(Y_{it} - \bar{Y}_i) = 1 + .5(X_{it} - \bar{X}_i)$ where $Y$ is "school funding per child" and $X$ is "population growth", and $i$ is city
+- If $X$ is binary, in sentences interpret the coefficients from the estimated OLS equation $Y = 4 + 3X + 2Z$
+- How might a comparison of means come in handy if you wanted to analyze the results of a randomized policy experiment?
+- If you had a data set of people from every continent and added "continent" as a control, how many coefficients would this add to your model?
+- If in that regression you really wanted to compare Europe to Asia specifically, what might you do so that the regression made this easy?
+
+---
+
+# Interpreting OLS
+
+## Interpreting OLS
+
+
+- To think more about the right-hand-side, let's go back to our original interpretation of an OLS coefficient
+$$ Y = \beta_0 + \beta_1X + \varepsilon $$
+
+- A one-unit change in $X$ is associated with a $\beta_1$-unit change in $Y$
+- This logic still works with binary variables since "a one-unit change in $X$" means "changing $X$ from No to Yes"
+- Notice that this assumes that a one-unit change in $X$ *always has the same effect* on $\beta_1$ no matter what else is going on
+- What if that's not true?
+
+---
+
+## Functional Form
+
+- We talked before about times when a *linear model* like standard OLS might not be sufficient
+- However, as long as those *non*-linearities are on the right hand side, we can fix the problem easily but just having $X$ enter non-linearly! Run it through a *transformation*!
+- The most common transformations by far are *polynomials* and *logarithms*
+
+---
+
+## Functional Form
+
+- Why do this? Because sometimes a straight line is clearly not going to do the trick!
+
+```{r}
+set.seed(500)
+df <- tibble(X = 5*runif(200)) %>%
+  mutate(Y = X - 2*X^2 + 2*rnorm(200))
+ggplot(df, aes(x = X, y = Y)) + 
+  geom_point() + 
+  geom_smooth(method = 'lm', se = FALSE) + 
+  theme_metro() + 
+  annotate(geom = 'text', x = 2.5, y = -20, label = 'Straight Line', color = 'blue', size = 15/.pt)
+
+```
+
+---
+
+# Polynomials
+
+## Polynomials
+
+- $\beta_1X$ is a "first order polynomial" - there's one term
+- $\beta_1X + \beta_2X^2$ is a "second order polynomial" or a "quadratic" - two terms (note both included, it's not just $X^2$)
+- $\beta_1X + \beta_2X^2 + \beta_3X^3$ is a third-order or cubic, etc.
+
+---
+
+## Polynomials
+
+What do they do?
+
+- The more polynomial terms, the more flexible the line can be. With enough terms you can mimic *any* shape of relationship
+- Of course, if you just add a whole buncha terms, it gets very noisy, and prediction out-of-sample gets very bad
+- Keep it minimal - quadratics are almost always enough, unless you have reason to believe there's a true more-complex relationship. You can try adding higher-order terms and see if they make a difference
+
+---
+
+## Polynomials
+
+- The true relationship is quadratic
+
+```{r}
+ggplot(df, aes(x = X, y = Y)) + 
+  geom_point() + 
+  geom_smooth(method = 'lm', se = FALSE) + 
+  geom_line(aes(x = X, y = predict(lm(Y~X+I(X^2), data = df))), color = 'red', size = 1) + 
+  theme_metro() + 
+  annotate(geom = 'text', x = 2.5, y = -20, label = 'Straight Line', color = 'blue', size = 15/.pt) + 
+  annotate(geom = 'text', x = 3, y = -9, label = 'Quadratic', color = 'red', size = 15/.pt)
+```
+
+---
+
+## Polynomials
+
+- Higher-order terms don't do anything for us here (because a quadratic is sufficient!)
+
+```{r}
+ggplot(df, aes(x = X, y = Y)) + 
+  geom_point() + 
+  geom_smooth(method = 'lm', se = FALSE) + 
+  geom_line(aes(x = X, y = predict(lm(Y~X+I(X^2), data = df))), color = 'red', size = 1) + 
+  geom_line(aes(x = X, y = predict(lm(Y~X+I(X^2) + I(X^3), data = df))), color = 'purple', size = 1) + 
+  theme_metro() + 
+  annotate(geom = 'text', x = 2.5, y = -20, label = 'Straight Line', color = 'blue', size = 15/.pt) + 
+  annotate(geom = 'text', x = 3, y = -9, label = 'Quadratic', color = 'red', size = 15/.pt) +
+  annotate(geom = 'text', x = 3.5, y = -12, label = 'Cubic', color = 'purple', size = 15/.pt)
+```
+
+---
+
+## Polynomials
+
+- Interpret polynomials using the derivative
+- $\partial Y/\partial X$ will be different depending on the value of $X$ (as it should! Notice in the graph that the slope changes for different values of $X$)
+
+$$ Y = \beta_1X + \beta_2X^2 $$
+$$ \partial Y/\partial X = \beta_1 + 2\beta_2X $$
+
+So at $X = 0$, the effect of a one-unit change in $X$ is $\beta_1$. At $X = 1$, it's $\beta_1 + \beta_2$. At $X = 5$ it's $\beta_1 + 5\beta_2$.
+
+---
+
+## Polynomials
+
+- **IMPORTANT**: when you have a polynomial, *the coefficients on each individual term mean very little on their own*. You have to consider them alongisde the other coefficients from the polynomial! **Never** interpret $\beta_1$ here without thinking about $\beta_2$ alongside. Also, the significance of the individual terms doesn't really matter - consider doing an F-test of all of them at once.
+
+
+---
+
+## Concept Check
+
+- What's the effect of a one-unit change in $X$ at $X = 0$, $X = 1$, and $X = 2$ for each of these?
+
+```{r}
+etable(feols(Y~X, data = df),
+             feols(Y~X + I(X^2), data = df),
+             feols(Y ~ X + I(X^2) + I(X^3), data = df))
+```
+
+---
+
+# Logarithms
+
+## Logarithms
+
+- Another common transformation, both for dependent and independent variables, is to take the logarithm
+- This has the effect of pulling in extreme values from strongly right-skewed data and making linear relationships pop out
+- Income, for example, is almost always used with a logarithm
+- It also gives the coefficients a nice percentage-based interpretation
+
+
+---
+
+## Logarithms
+
+```{r}
+set.seed(500)
+logdf <- tibble(X = 10*runif(200)) %>%
+  mutate(Y = log(X) + .3*rnorm(200))
+ggplot(logdf, aes(x = X, y = Y)) + geom_point() + 
+  theme_metro() + 
+  geom_line(aes(x = X, y = predict(lm(Y~X, data = logdf))), color = 'blue', size = 1) + 
+  geom_line(aes(x = X, y = predict(lm(Y~log(X), data = logdf))), color = 'red', size = 1) + 
+  annotate(geom = 'text', x = 4.1, y = .5, color = 'blue', label = 'Straight Line', size = 15/.pt) + 
+  annotate(geom = 'text', x = 1.5, y = 1.5, color = 'red', label = 'Y regressed on log(X)', size = 15/.pt) 
+  
+```
+
+---
+
+## Or if you prefer...
+
+- Notice the change in axes
+
+```{r}
+ggplot(logdf, aes(x = log(X), y = Y)) + geom_point() + 
+  theme_metro() + 
+  geom_line(aes(x = log(X), y = predict(lm(Y~X, data = logdf))), color = 'blue', size = 1) + 
+  geom_line(aes(x = log(X), y = predict(lm(Y~log(X), data = logdf))), color = 'red', size = 1) + 
+  annotate(geom = 'text', x = 1.25, y = -.25, color = 'blue', label = '"Straight Line" (Y regressed on X)', size = 15/.pt) + 
+  annotate(geom = 'text', x = -.5, y = 1, color = 'red', label = 'Y regressed on log(X)', size = 15/.pt) 
+  
+```
+
+---
+
+## Logarithms
+
+- How can we interpret them?
+- The key is to remember that $\log(X) + a \approx \log((1+a)X)$, meaning that a $a$-unit change in $log(X)$ is similar to a $a\times100%$ change in $X$
+- So, walk through our "one-unit change in the variable" logic from before, but whenever we hit a log, change that into a percentage!
+
+---
+
+## Logarithms
+
+- $Y = \beta_0 + \beta_1\log(X)$ A one-unit change in $\log(X)$, or a 100% change in $X$, is associated with a $\beta_1$-unit change in $Y$
+- $\log(Y) = \beta_0 + \beta_1X$ a one-unit change in $X$ is associated with a $\beta_1\times 100$% change in $Y$
+- $\log(Y) = \beta_0 + \beta_1\log(X)$ A one-unit change in $\log(X)$, or a or a 100% change in $X$, is associated with a $\beta_1$-unit change in $\log(Y)$, or a $\beta_1\times100$% change in $Y$.
+- (Try also with changes smaller than one unit - that's usually more reasonable)
+
+---
+
+## Logarithms
+
+Downsides:
+
+- Logarithms require that all data be positive. No negatives or zeroes!
+- Fairly rare that a variable with negative values wants a log anyway
+- But zeroes are common! A common practice is to just do $log(X+1)$ but this is pretty arbitrary
+
+
+---
+
+## Functional Form
+
+- In general, you want the shape of your function to match the shape of the relationship in the data (or, even better, the true relationship)
+- Polynomials and logs can usually get you there!
+- Which to use? Use logs for highly skewed data or variables with exponential relationships
+- Use polynomials if it doesn't look straight! **Check that scatterplot and see how not-straight it is!**
+
+---
+
+## Concept Checks
+
+- Which of the following variables would you likely want to log before using them? Income, height, wealth, company size, home square footage
+- In each of the following estimated OLS lines, interpret the coefficient by filling in "A [blank] change in X is associated with a [blank] change in Y":
+
+$$ Y = 1 + 2\log(X) $$
+$$ \log(Y) = 3 + 2\log(X) $$
+
+$$ \log(Y) = 4 + 3X $$
+
+---
+
+## Interactions
+
+- For both polynomials and logarithms, the effect of a one-unit change in $X$ differs depending on its current value (for logarithms, a 1-unit change in $X$ is different percentage changes in $X$ depending on current value)
+- But why stop there? Maybe the effect of $X$ differs depending on the current value of *other variables!*
+- Enter interaction terms!
+
+$$ Y = \beta_0 + \beta_1X + \beta_2Z + \beta_3X\times Z + \varepsilon $$
+- Interaction terms are *a little tough* but also **extremely important**. 
+
+---
+
+## Interactions
+
+Expect to come back to these slides, as you're almost certainly going to use interaction terms in both our assessment and the dissertation
+
+
+---
+
+## Interactions
+
+- Change in the value of a *control* can shift a regression line up and down
+- Using the model $Y = \beta_0 + \beta_1X + \beta_2Z$, estimated as $Y = .01 + 1.2X + .95Z$:
+
+```{r}
+set.seed(500)
+df <- tibble(X = runif(200), Z = 5*runif(200)) %>%
+  mutate(Y = X + Z + rnorm(200))
+m <- lm(Y~X+Z, data = df)
+mc <- coef(m)[1] %>% unname()
+mx <- coef(m)[2] %>% unname()
+mz <- coef(m)[3] %>% unname()
+ggplot(df, aes(x = X, y = Y)) + 
+  geom_point() +
+  theme_metro() + 
+  scale_x_continuous(limits = c(0,1.1)) +
+  geom_line(aes(x = X, y = mc + mx*X + mz), color = 'red', size = 1) + 
+  geom_line(aes(x = X, y = mc + mx*X + 3*mz), color = 'red', size = 1) + 
+  geom_line(aes(x = X, y = mc + mx*X + 5*mz), color = 'red', size = 1) + 
+  annotate(geom = 'text', x = 1.01, y = mc + mx*1.05 + mz, color = 'red', label = 'Prediction\nat Z = 1', hjust = 0, size = 15/.pt) +
+  annotate(geom = 'text', x = 1.01, y = mc + mx*1.05 + 3*mz, color = 'red', label = 'Prediction\nat Z = 3', hjust = 0, size = 15/.pt) +
+  annotate(geom = 'text', x = 1.01, y = mc + mx*1.05 + 5*mz, color = 'red', label = 'Prediction\nat Z = 5', hjust = 0, size = 15/.pt)
+
+```
+
+---
+
+## Interactions
+
+- But an interaction can both shift the line up and down AND change its slope
+- Using the model $Y = \beta_0 + \beta_1X + \beta_2Z + \beta_3X\times Z$, estimated as $Y = .035 + 1.14X + .94Z + 1.02X\times Z$:
+
+```{r}
+set.seed(500)
+df <- tibble(X = runif(200), Z = 5*runif(200)) %>%
+  mutate(Y = X+Z+X*Z + rnorm(200))
+m <- lm(Y~X*Z, data = df)
+mc <- coef(m)[1] %>% unname()
+mx <- coef(m)[2] %>% unname()
+mz <- coef(m)[3] %>% unname()
+mxz <- coef(m)[4] %>% unname()
+ggplot(df, aes(x = X, y = Y)) + 
+  geom_point() +
+  theme_metro() + 
+  scale_x_continuous(limits = c(0,1.2)) +
+  geom_line(aes(x = X, y = mc + mx*X + mz + mxz*X), color = 'red', size = 1) + 
+  geom_line(aes(x = X, y = mc + mx*X + 3*mz + 3*mxz*X), color = 'red', size = 1) + 
+  geom_line(aes(x = X, y = mc + mx*X + 5*mz + 5*mxz*X), color = 'red', size = 1) + 
+  annotate(geom = 'text', x = 1.01, y = mc + mx*1.05 + mz + mxz*1.05, color = 'red', label = 'Prediction\nat Z = 1', hjust = 0, size = 15/.pt) +
+  annotate(geom = 'text', x = 1.01, y = mc + mx*1.05 + 3*mz  + 3*mxz*1.05, color = 'red', label = 'Prediction\nat Z = 3', hjust = 0, size = 15/.pt) +
+  annotate(geom = 'text', x = 1.01, y = mc + mx*1.05 + 5*mz + 5*mxz*1.05, color = 'red', label = 'Prediction\nat Z = 5', hjust = 0, size = 15/.pt)
+
+```
+
+---
+
+## Interactions
+
+- How can we interpret an interaction?
+- The idea is that the interaction shows how *the effect of one variable changes as the value of the other changes*
+- The derivative helps!
+
+$$ Y = \beta_0 + \beta_1X + \beta_2Z + \beta_3X\times Z $$
+$$ \partial Y/\partial X = \beta_1 + \beta_3 Z $$
+
+- The effect of $X$ is $\beta_1$ when $Z = 0$, or $\beta_1 + \beta_3$ when $Z = 1$, or $\beta_1 + 3\beta_3$ if $Z = 3$!
+
+---
+
+## Interactions
+
+- Often we are doing interactions with binary variables to see how an effect differs across groups
+- Now, instead of the intercept giving the baseline and the binary coefficient giving the difference, the coefficient on $X$ is the baseline effect of $X$ and the interaction is the difference in the effect of $X$
+- The interaction coefficient becomes "the difference in the effect of $X$ between the $Z$ = "No" and $Z$ = "Yes" groups"
+- (What if it's continuous? Mathematically the same but the thinking changes - the interaction term is the difference in the effect of $X$ you get when increasing $Z$ by one unit)
+
+---
+
+## Interactions
+
+- Marriage for those without a college degree raises earnings by 24%. A college degree reduces the marriage premium by 25%. Marriage for those with a college degree reduces earnings by .24 - .25 = -1%
+
+```{r}
+PSID <- PSID %>%
+  mutate(college = educatn >= 16)
+etable(feols(log(earnings) ~ married*college, data = PSID))
+```
+
+---
+
+## Notes on Interactions
+
+- Like with polynomials, the coefficients on their own now have little meaning and must be evaluated alongside each other. $\beta_1$ by itself is just "the effect of $X$ when $Z = 0$", not "the effect of $X$"
+- Yes, you *do* almost always want to include both variables in un-interacted form and interacted form. Otherwise the interpretation gets very thorny
+
+---
+
+## Notes on Interactions
+- Interaction effects are *poorly powered*. You need a *lot* of data to be able to tell whether an effect is different in two groups. If $N$ observations is adequate power to see if the effect itself is different from zero, you need a sample of roughly $16\times N$ to see if the difference in effects is nonzero. Sixteen times!!
+- It's tempting to try interacting your effect with everything to see if it's bigger/smaller/nonzero in some groups, but because it's poorly powered, this is a bad idea! You'll get a lot of false positives

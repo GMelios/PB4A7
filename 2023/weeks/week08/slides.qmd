@@ -1,5 +1,6 @@
 ---
-title: "<font style='font-size:1em;'>🗓️ Week 8<br/> Regression Discontinuity Designs</font>"
+subtitle: "PB4A7- Quantitative Applications for Behavioural Science"
+title: "<font style='font-size:1em;'>🗓️ Week 8 <br/> Within variation</font>"
 author: Dr. [George Melios](#)
 institute: '[London School of Economics and Political Science](#)'
 date: 18 September 2023
@@ -7,7 +8,7 @@ date-meta: 18 September 2023
 date-format: "DD MMM YYYY"
 toc: true
 toc-depth: 1
-toc-title: "The burpees of causal inference"
+toc-title: "What we will cover today:"
 center-title-slide: false
 from: markdown+emoji
 format:
@@ -27,15 +28,11 @@ options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, fig.width = 8, fig.height = 6)
 library(tidyverse)
 library(gganimate)
-library(estimatr)
-library(magick)
-library(dagitty)
-library(directlabels)
-library(ggdag)
-library(ggthemes)
 library(fixest)
-library(jtools)
-library(rdrobust)
+library(magick)
+library(wooldridge)
+library(dagitty)
+library(ggdag)
 library(scales)
 library(Cairo)
 theme_metro <- function(x) {
@@ -60,536 +57,536 @@ theme_metro_regtitle <- function(x) {
 }
 ```
 
-```{css, echo=FALSE}
-pre {
-  max-height: 350px;
-  overflow-y: auto;
-}
+# Check-in
 
-pre[class] {
-  max-height: 100px;
-}
-```
-
-
-## Check-in
-
-- We're thinking through ways that we can identify the effect of interest without having to control for everything
-- One way is by focusing on *within variation* - if all the endogeneity can be controlled for or only varies between-individuals, we can just focus on within variation to identify it
-- Pro: control for a bunch of stuff
-- Con: washes out a lot of variation! Result can be noisier if there's not much within-variation to work with
-- Also, this requires no endogenous variation over time
-- That might be a tricky assumption! Often there are plenty of back doors that shift over time
+- So far we've been learning about how to set up, run, and interpret an ordinary least squares regression
+- This is a key skill for anyone doing anything with data - even if you never run a regular ol' linear regression again, pretty much everything else in applied stats builds off of it in some way
+- Another thing we've been doing is thinking about how to design and add controls to that regression to *identify* our effect of interest by closing back doors
 
 ---
 
-# Regression Discontinuity
+# The Measurement Problem...
 
-- Today we are going to talk about Regression discontinuity design (RDD)
-- RDD is currently the darling of the econometric world for estimating causal effects without running an experiment
-- It doesn't apply everywhere, but when it does, it's very easy to buy the identification assumptions
-- Not that it doesn't have its own issues, of course, but it's pretty good!
-
----
-
-## Regression Discontinuity
-
-The basic idea is this:
-
-- We look for a treatment that is assigned on the basis of being above/below a *cutoff value* of a continuous variable
-- For example, if you get above a certain test score they let you into a "gifted and talented" program
-- Or if you are just on one side of a time zone line, your day starts one hour earlier/later
-- Or if a candidate gets 50.1% of the vote they're in, 40.9% and they're out
-- Or if you're 65 years old you get Medicaid, if you're 64.99 years old you don't
-
-We call these continuous variables "Running variables" because we *run along them* until we hit the cutoff
+- And this has led us to some issues that have already popped up!
+- For this approach to work, we need to not only *figure out* what we need to control for, using our diagram, but we need to *actually control for it*
+- A lot of the time we don't have that data!
+- And thus all the skeptical comments we had about the designs we came up with
 
 ---
 
-## Regression Discontinuity
+## A Pickle
 
-- But wait, hold on, if treatment is driven by running variables, won't we have a back door going through those very same running variables?? Yes! 
-- And we can't just control for RunningVar because that's where all the variation in treatment comes from. Uh oh!
+- So obviously this is a problem, and it's not one we can reason or trick our way out of
+- If we don't have the variable we need to control for, we don't have it
+- ... or do we?
 
 ---
+
+## The Rest of the Term
+
+- Much of the rest of the term is going to be focused on *finding ways to control for stuff that we can't measure*
+- Seems impossible! But it is possible, at least in some circumstances
+- Today, we will be talking about *within variation* and *between variation*, and the ability to control for all *between variation* using *fixed effects*
+
+---
+
+# Panel Data
+
+- We are working now in the domain of *panel data*
+- Panel data is when you observe the same individual over multiple time periods
+- "Individual" could be a person, or a company, or a state, or a country, etc. There are $N$ individuals in the panel data
+- "Time period" could be a year, a month, a day, etc.. There are $T$ time periods in the data
+- For now we'll assume we observe each individual the same number of times, i.e. a *balanced* panel (so we have $N\times T$ observations)
+- You can use this stuff with unbalanced panels too, it just gets a little more complex
+
+---
+
+## Panel Data
+
+- Here's what (a few rows from) a panel data set looks like - a variable for individual (county), a variable for time (year), and then the data
 
 ```{r, dev = 'CairoPNG'}
-dag <- dagify(Treatment ~ RunningVar,
-              Outcome ~ Treatment + RunningVar,
-              coords=list(
-                x=c(Treatment = 1, RunningVar = 2, Outcome = 3),
-                y=c(Treatment = 1, RunningVar = 2, Outcome = 1)
-              )) %>% tidy_dagitty()
-ggdag_classic(dag,node_size=10) + 
-  theme_void_metro() + 
-  expand_limits(x=c(.5,3.5))
+data(crime4)
+crime4 %>%
+  select(county, year, crmrte, prbarr) %>%
+  rename(County = county,
+         Year = year,
+         CrimeRate = crmrte,
+         ProbofArrest = prbarr) %>%
+  slice(1:9) %>%
+  knitr::kable(note = '...') %>%
+  kableExtra::add_footnote('9 rows out of 630. "Prob. of Arrest" is estimated probability of being arrested when you commit a crime', notation = 'none')
 ```
 
 ---
 
-## Regression Discontinuity
+# Between and Within
 
-- The key here is realizing that the running variable affects treatment *only when you go across the cutoff*
-- So really the diagram looks like this!
-
----
+- Let's pick a few counties and graph this out
 
 ```{r, dev = 'CairoPNG'}
-dag <- dagify(Treatment ~ Cutoff,
-              Cutoff ~ RunningVar,
-              Outcome ~ Treatment + RunningVar,
-              coords=list(
-                x=c(Treatment = 1, Cutoff = 1, RunningVar = 2, Outcome = 3),
-                y=c(Treatment = 1, Cutoff = 2, RunningVar = 2, Outcome = 1)
-              )) %>% tidy_dagitty()
-ggdag_classic(dag,node_size=10) + 
-  theme_void_metro() + 
-  expand_limits(x=c(.5,3.5))
+crime4 %>% 
+  filter(county %in% c(1,3,7, 23),
+         prbarr < .5) %>%
+  group_by(county) %>%
+  mutate(label = case_when(
+    crmrte == max(crmrte) ~ paste('County',county),
+    TRUE ~ NA_character_
+  )) %>%
+  ggplot(aes(x =  prbarr, y = crmrte, color = factor(county), label = label)) + 
+  geom_point() + 
+  geom_text(hjust = -.1, size = 14/.pt) + 
+  theme_metro_regtitle() + 
+  labs(x = 'Probability of Arrest', 
+       y = 'Crime Rate',
+       caption = 'One outlier eliminated in County 7.') + 
+  ##scale_x_continuous(limits = c(.15, 2.5)) + 
+  guides(color = FALSE, label = FALSE) + 
+  scale_color_manual(values = c('black','blue','red','purple'))
 ```
 
 ---
 
-## Regression Discontinuity
+## Between and Within
 
-- So what does this mean?
-- If we can control for the running variable *everywhere except the cutoff*, then...
-- We will be controlling for the running variable, closing that back door
-- But leaving variation at the cutoff open, allowing for variation in treatment
-- We focus on just the variation around the treatment, narrowing the range of the running variable we use so sharply that it's basically controlled for. Then the effect of cutoff on treatment is like an experiment!
+- If we look at the overall variation, just pretending this is all together, we get this
 
----
+```{r, dev = 'CairoPNG'}
+crime4 %>% 
+  filter(county %in% c(1,3,7, 23),
+         prbarr < .5) %>%
+  group_by(county) %>%
+  mutate(label = case_when(
+    crmrte == max(crmrte) ~ paste('County',county),
+    TRUE ~ NA_character_
+  )) %>%
+  ggplot(aes(x =  prbarr, y = crmrte, color = factor(county), label = label)) + 
+  geom_point() + 
+  geom_text(hjust = -.1, size = 14/.pt) + 
+  theme_metro_regtitle() + 
+  labs(x = 'Probability of Arrest', 
+       y = 'Crime Rate',
+       caption = 'One outlier eliminated in County 7.') + 
+  ##scale_x_continuous(limits = c(.15, 2.5)) + 
+  guides(color = FALSE, label = FALSE) + 
+  scale_color_manual(values = c('black','blue','red','purple')) + 
+  geom_smooth(method = 'lm', aes(color = NULL, label = NULL), se = FALSE)
+```
 
-## Regression Discontinuity
-
-- Basically, the idea is that *right around the cutoff*, treatment is randomly assigned
-- If you have a test score of 89.9 (not high enough for gifted-and-talented), you're basically the same as someone who has a test score of 90.0 (just barely high enough)
-- So if we just focus around the cutoff, we close any back doors because it's basically random which side of the line you're on
-- But we get variation in treatment!
-- This specifically gives us the effect of treatment *for people who are right around the cutoff* a.k.a. a "local average treatment effect" (we still won't know the effect of being put in gifted-and-talented for someone who gets a 30)
-
----
-
-## Regression Discontinuity
-
-- A very basic idea of this, before we even get to regression, is to create a *binned chart* 
-- And see how the bin values jump at the cutoff
-- A binned chart chops the Y-axis up into bins
-- Then takes the average Y value within that bin. That's it!
-- Then, we look at how those X bins relate to the Y binned values. 
-- If it looks like a pretty normal, continuous relationship... then JUMPS UP at the cutoff X-axis value, that tells us that the treatment itself must be doing something!
 
 ---
 
-## Regression Discontinuity
+
+## Between and Within
+
+- BETWEEN variation is what we get if we look at the relationship between the *means of each county*
+
+```{r, dev = 'CairoPNG'}
+crime4 %>% 
+  filter(county %in% c(1,3,7, 23),
+         prbarr < .5) %>%
+  group_by(county) %>%
+  mutate(label = case_when(
+    crmrte == max(crmrte) ~ paste('County',county),
+    TRUE ~ NA_character_
+  ),
+  mcrm = mean(crmrte),
+  mpr = mean(prbarr)) %>%
+  ggplot(aes(x =  prbarr, y = crmrte, color = factor(county), label = label)) + 
+  geom_point() + 
+  geom_text(hjust = -.1, size = 14/.pt) + 
+  theme_metro_regtitle() + 
+  labs(x = 'Probability of Arrest', 
+       y = 'Crime Rate',
+       caption = 'One outlier eliminated in County 7.') + 
+  ##scale_x_continuous(limits = c(.15, 2.5)) + 
+  guides(color = FALSE, label = FALSE) + 
+  scale_color_manual(values = c('black','blue','red','purple')) + 
+  geom_point(aes(x = mpr, y = mcrm), size = 20, shape = 3, color = 'darkorange') + 
+  annotate(geom = 'text', x = .3, y = .02, label = 'Means Within Each County', color = 'darkorange', size = 14/.pt)
+```
+
+---
+
+## Between and Within
+
+- And I mean it! Only look at those means! The individual year-to-year variation within county doesn't matter.
+
+```{r, dev = 'CairoPNG'}
+crime4 %>% 
+  filter(county %in% c(1,3,7, 23),
+         prbarr < .5) %>%
+  group_by(county) %>%
+  mutate(label = case_when(
+    crmrte == max(crmrte) ~ paste('County',county),
+    TRUE ~ NA_character_
+  ),
+  mcrm = mean(crmrte),
+  mpr = mean(prbarr)) %>%
+  ggplot(aes(x =  prbarr, y = crmrte, color = factor(county), label = label)) + 
+  #geom_point() + 
+  #geom_text(hjust = -.1, size = 14/.pt) + 
+  theme_metro_regtitle() + 
+  labs(x = 'Probability of Arrest', 
+       y = 'Crime Rate',
+       caption = 'One outlier eliminated in County 7.') + 
+  #scale_x_continuous(limits = c(.15, 2.5)) + 
+  guides(color = FALSE, label = FALSE) + 
+  scale_color_manual(values = c('black','blue','red','purple')) + 
+  geom_point(aes(x = mpr, y = mcrm), size = 20, shape = 3, color = 'darkorange') + 
+  geom_smooth(aes(color = NULL), method = 'lm', se = FALSE)+
+  annotate(geom = 'text', x = .3, y = .02, label = 'OLS Fit on These Four Points', color = 'blue', size = 14/.pt)
+```
+
+---
+
+## Between and Within
+
+- Within variation goes the other way - it treats those orange crosses as their own individualized sets of axes and looks at variation *within* county from year-to-year only!
+- We basically slide the crosses over on top of each other and then analyze *that* data
 
 ```{r, echo=FALSE, fig.width=5, fig.height=4.5}
-df <- data.frame(xaxisTime=runif(300)*20) %>%
-  mutate(Y = .2*xaxisTime+3*(xaxisTime>10)-.1*xaxisTime*(xaxisTime>10)+rnorm(300),
-         state="1",
-         groupX=floor(xaxisTime)+.5,
-         groupLine=floor(xaxisTime),
-         cutLine=rep(c(9,11),150)) %>%
-  group_by(groupX) %>%
-  mutate(mean_Y=mean(Y)) %>%
-  ungroup() %>%
-  arrange(groupX)
+cranim <- crime4 %>% 
+  filter(county %in% c(1,3,7, 23),
+         prbarr < .5) %>%
+  mutate(allcrm = mean(crmrte),
+         allmpr = mean(prbarr)) %>%
+  group_by(county) %>%
+  mutate(label = case_when(
+    crmrte == max(crmrte) ~ paste('County',county),
+    TRUE ~ NA_character_
+  ),
+  mcrm = mean(crmrte),
+  mpr = mean(prbarr),
+  stage = '1. Raw Data')
+cranim <- cranim %>%
+  bind_rows(cranim %>% 
+              mutate(crmrte = crmrte - mcrm + allcrm,
+                     prbarr = prbarr - mpr + allmpr,
+                     mcrm = allcrm,
+                     mpr = allmpr,
+                     stage = '2. Remove all between variation'))
 
-
-dffull <- rbind(
-  #Step 1: Raw data only
-  df %>% mutate(groupLine=NA,cutLine=NA,mean_Y=NA,state='1. Start with raw data.'),
-  #Step 2: Add Y-lines
-  df %>% mutate(cutLine=NA,state='2. Figure out how Y is explained by Running Variable.'),
-  #Step 3: Collapse to means
-  df %>% mutate(Y = mean_Y,state="3. Keep only what's explained by the Running Variable."),
-  #Step 4: Zoom in on just the cutoff
-  df %>% mutate(mean_Y = ifelse(xaxisTime > 9 & xaxisTime < 11,mean_Y,NA),Y=ifelse(xaxisTime > 9 & xaxisTime < 11,mean_Y,NA),groupLine=NA,state="4. Focus just on what happens around the cutoff."),
-  #Step 5: Show the effect
-  df %>% mutate(mean_Y = ifelse(xaxisTime > 9 & xaxisTime < 11,mean_Y,NA),Y=ifelse(xaxisTime > 9 & xaxisTime < 11,mean_Y,NA),groupLine=NA,state="5. The jump at the cutoff is the effect of treatment."))
-
-
-p <- ggplot(dffull,aes(y=Y,x=xaxisTime))+geom_point()+
-  geom_vline(aes(xintercept=10),linetype='dashed')+
-  geom_point(aes(y=mean_Y,x=groupX),color="red",size=2)+
-  geom_vline(aes(xintercept=groupLine))+
-  geom_vline(aes(xintercept=cutLine))+
-  geom_segment(aes(x=10,xend=10,
-                   y=ifelse(state=='5. The jump at the cutoff is the effect of treatment.',
-                            filter(df,groupLine==9)$mean_Y[1],NA),
-                   yend=filter(df,groupLine==10)$mean_Y[1]),size=1.5,color='blue')+
-  scale_color_colorblind()+
-  theme_metro_regtitle() +
-  scale_x_continuous(
-    breaks = c(5, 15),
-    label = c("Untreated", "Treated")
-  )+xlab("Running Variable")+
-  labs(title = 'The Effect of Treatment on Y using Regression Discontinuity \n{next_state}')+
-  transition_states(state,transition_length=c(6,16,6,16,6),state_length=c(50,22,12,22,50),wrap=FALSE)+
-  ease_aes('sine-in-out')+
-  exit_fade()+enter_fade()
-
-animate(p,nframes=175)
-```
-
----
-
-## Concept Checks
-
-- Why is it important that we look as norrowly as possible around the cutoff? What does this get us over comparing the entire treated and untreated groups?
-- Can you think of an example of a treatment that is assigned at least partially on a cutoff?
-- Why can't we just control for the running variable as we normally would to solve the endogeneity problem?
-
----
-
-## Fitting Lines in RDD
-
-- Looking purely just at the cutoff and making no use of the space *away* from the cutoff throws out a lot of useful information
-- We know that the running variable is related to outcome, so we can probably improve our *prediction* of what the value on either side of the cutoff should be if we *use data away from the cutoff to help with prediction* than if we *just use data near the cutoff*, which is what that animation does
-- We can do this with good ol' OLS.
-- The bin plot we did can help us pick a functional form for the slope
-
----
-
-## Fitting Lines in RDD
-
-- To be clear, producing the line(s) below is our goal. How can we do it?
-- The true model I've made is an RDD effect of .7, with a slope of 1 to the left of the cutoff and a slope of 1.5 to the right
-
----
-
-```{r, echo = FALSE}
-set.seed(2000)
-df <- tibble(X = runif(1000)) %>%
-  mutate(treated = X > .5) %>%
-  mutate(X_centered = X - .5) %>%
-  mutate(Y = X_centered + .7*treated + .5*X_centered*treated + rnorm(1000,0,.3))
-  
-
-ggplot(df, aes(x = X, y = Y, group = treated)) + 
+p <- ggplot(cranim, aes(x =  prbarr, y = crmrte, color = factor(county), label = label)) + 
   geom_point() + 
-  geom_smooth(method = 'lm', color = 'red', se = FALSE, size = 1.5) + 
-  geom_vline(aes(xintercept = .5), linetype = 'dashed') + 
-  theme_metro() + 
-  geom_segment(aes(x = .5, xend = .5, y = 0, yend = .73), color = 'blue', size = 2) + 
-  annotate(geom = 'label', x = .5, y = .73, label = 'RDD Effect',color = 'blue', size = 16/.pt, hjust = 1.05)
+  geom_text(hjust = -.1, size = 14/.pt)  + 
+  labs(x = 'Probability of Arrest', 
+       y = 'Crime Rate',
+       caption = 'One outlier eliminated in County 7.') + 
+  #scale_x_continuous(limits = c(.15, 2.5)) + 
+  guides(color = FALSE, label = FALSE) + 
+  scale_color_manual(values = c('black','blue','red','purple')) + 
+  geom_smooth(aes(color = NULL), method = 'lm', se = FALSE)+
+  geom_point(aes(x = mpr, y = mcrm), size = 20, shape = 3, color = 'darkorange') + 
+  transition_states(stage) + 
+  theme_metro_regtitle()
+
+animate(p, nframes = 80)
 
 ```
 
 ---
 
-## Regression in RDD
+## Between and Within
 
-- First, we need to *transform our data*
-- We need a "Treated" variable that's `TRUE` when treatment is applied - above or below the cutoff
-- Then, we are going to want a bunch of things to change at the cutoff. This will be easier if the running variable is *centered around the cutoff*. So we'll turn our running variable $X$ into $X - cutoff$ and call that $XCentered$
+- We can clearly see that *between counties* there's a strong positive relationship
+- But if you look *within* a given county, the relationship isn't that strong, and actually seems to be negative
+- Which would make sense - if you think your chances of getting arrested are high, that should be a deterrent to crime
+- But what are we actually doing here? Let's think about the causal diagram / data-generating process!
+- What goes into the probability of arrest and the crime rate? Lots of stuff!
 
-```{r, eval = FALSE}
-cutoff = .5
+---
 
-df <- df %>%
-  mutate(treated = X >= .5,
-         X_centered = X - .5)
+## The Crime Rate
+
+- "LocalStuff" is just all the things unique to that area
+- "LawAndOrder" is how committed local politicians are to "Law and Order Politics"
+
+```{r, dev = 'CairoPNG'}
+dag <- dagify(CrimeRate ~ ProbArrest + Poverty + CivilRights + LocalStuff,
+              ProbArrest ~ Police + LawAndOrder + CivilRights + Poverty + LocalStuff,
+              Police ~ LawAndOrder,
+              CivilRights ~ LawAndOrder,
+              Poverty ~ LocalStuff,
+              coords=list(
+                x=c(ProbArrest = 1, CrimeRate = 4, Poverty = 2.5, Police = 1.5, LawAndOrder = 1, CivilRights = 2.5, LocalStuff = 4),
+                y=c(ProbArrest = 1, CrimeRate = 1, Poverty = 2, Police = 1.5, LawAndOrder = 2, CivilRights = 1.25, LocalStuff = 2)
+              )) %>% tidy_dagitty()
+ggdag_classic(dag,node_size=10) + 
+  theme_void_metro() + 
+  expand_limits(x=c(.5,4.5))
+
+```
+
+
+---
+
+## Between and Within
+
+- For each of these variables we can ask if they vary *between groups* and/or *within groups*
+- LocalStuff is all the stuff unique to that county - geography, landmarks, the quality of the schools, almost by definition this only varies *between groups*. It's not like the things that make your county unique are different each year (or at least not very different)
+- Whether the county has LawAndOrder and how many CivilRights you're allowed might change a bit year to year, but in general, political climates like that change pretty slowly. At a bit of a stretch we can call that something that only varies between groups too
+- Police budgets (and thus number of police on the streets) and Poverty (which varies with the economy) vary both between counties, but also *within* counties from year to year
+- Variables with between variation only (by our assumption): LocalStuff, LawAndOrder, CivilRights
+- Variables with both between and within variation: Police, Poverty
+
+---
+
+## Between and Within
+
+- Let's simplify our graph!
+- Some of the variables only vary *between counties*
+- So, we can replace those variables on the graph with the variable County
+- Right? That's where all the variation is anyway
+
+---
+
+## The Crime Rate
+
+- "LocalStuff" is just all the things unique to that area
+- "LawAndOrder" is how committed local politicians are to "Law and Order Politics"
+
+```{r, dev = 'CairoPNG'}
+dag <- dagify(CrimeRate ~ ProbArrest + Poverty + County,
+              ProbArrest ~ Police + County + Poverty,
+              Police ~ County,
+              Poverty ~ County,
+              coords=list(
+                x=c(ProbArrest = 1, CrimeRate = 4, Poverty = 1, Police = 1.5, County = 3),
+                y=c(ProbArrest = 1, CrimeRate = 1, Poverty = 2, Police = 1.5, County = 2)
+              )) %>% tidy_dagitty()
+ggdag_classic(dag,node_size=10) + 
+  theme_void_metro() + 
+  expand_limits(x=c(.5,4.5))
+
 ```
 
 ---
 
-## Varying Slope
+## Between and Within
 
-- Typically, you will want to let the slope vary to either side
-- In effect, we are fitting an entirely different regression line on each side of the cutoff
-- We can do this by interacting both slope and intercept with $treated$!
-- Coefficient on Treated is how the intercept jumps - that's our RDD effect. Coefficient on the interaction is how the slope changes
+- Now the task of identifying ProbArrest $\rightarrow$ CrimeRate becomes much simpler!
+- If we control for County, that will close a lot of back doors for us
+- (based on the diagram, all we need to control for is County and Poverty!)
+- Conveniently, we can control for County just like it was any other variable!
+- And when we do, we automatically *control for all variables that only have between variation*, whatever they are, even if we can't measure them directly or didn't think about them
+- *All that's left is the within variation*
 
-$$Y = \beta_0 + \beta_1Treated + \beta_2XCentered + \beta_3Treated\times XCentered + \varepsilon$$
-
-```{r}
-feols(Y ~ treated*X_centered, data = df)
-```
-
----
-
-## Varying Slope
-
-(as an aside, sometimes the effect of interest is the interaction term - the change in slope! This answers the question "does the effect of $X$ on $Y$ change at the cutoff? This is called a "regression kink" design. We won't go more into it here, but it is out there!)
-
----
-
-## Polynomial Terms
-
-- We don't need to stop at linear slopes!
-- Just like we brought in our knowledge of binary and interaction terms to understand the linear slope change, we can bring in polynomials too. Add a square maybe!
-- Don't get too wild with cubes, quartics, etc. - polynomials tend to be at their "weirdest" near the edges, and we don't want super-weird predictions right at the cutoff. It could give us a mistaken result!
-- A square term should be enough
-
----
-
-## Polynomial Terms
-
-- How do we do this? Interactions again. Take *any* regression equation...
-
-$$Y = \beta_0 + \beta_1X + \beta_2X^2 + \varepsilon$$
-
-- And just center the $X$ (let's call it $XC$, add on a set of the same terms multiplied by $Treated$ (don't forget $Treated$ by itself - that's $Treated$ times the interaction!)
-
-$$Y = \beta_0 + \beta_1XC + \beta_2XC^2 + \beta_3Treated + \beta_4Treated\times XC + \beta_5Treated\times XC^2 + \varepsilon$$
-
-- The coefficient on $Treated$ remains our "jump at the cutoff" - our RDD estimate!
-
-```{r}
-etable(feols(Y ~ X_centered*treated + I(X_centered^2)*treated, data = df))
-```
 
 ---
 
 ## Concept Checks
 
-- Would the coefficient on $Treated$ still be the regression discontinuity effect estimate if we hadn't centered $X$? Why or why not?
-- Why might we want to use a polynomial term in our RDD model?
-- What relationship are we assuming between the outcome variable and the running variable if we choose not to include $XCentered$ in our model at all (i.e. a "zero-order polynomial")
+- For each of these variables, would we expect them to have within variation, between variation, or both?
+- (Individual = person) How a child's height changes as they age.
+- (Individual = person) In a data set tracking many people over many years, the variation in the number of children a person has in a given year.
+- (Individual = city) Overall, Paris, France has more restaurants than Paris, Texas.
+- (Individual = genre) The average pop music album sells more copies than the average jazz album
+- (Individual = genre) Miles Davis' *Kind of Blue* sold very well *for a jazz album*.
+- (Individual = genre) Michael Jackson's *Thriller*, a pop album, sold many more copies than *Kind of Blue*, a jazz album.
 
 ---
 
-## Assumptions
+## Removing Between Variation
 
-- We knew there must be some assumptions lurking around here
-- Some are more obvious (we should be using the correct functional form)
-- Others are trickier. What are we assuming about the error term and endogeneity here?
-- Specifically, we are assuming that *the only thing jumping at the cutoff is treatment*
-- Sort of like parallel trends, but maybe more believable since we've narrowed in so far
-- For example, if having an income below 150% of the poverty line gets you access to food stamps AND to job training, then we can't really use that cutoff to get the effect of just food stamps
-- Or if the proportion of people who are self-employed jumps up just below 150% (based on *reported* income), that's a back door too!
-- The only thing different about just above/just below should be treatment
+- Okay so that's the concept
+- Remove all the between variation so that all that's left is within variation
+- And in the process control for any variables that are made up only of between variation
+- How can we actually do this? And what's really going on?
+- Let's first talk about the regression model itself that this implies
+- Then let's actually do the thing. There are two main ways: *de-meaning* and *binary variables* (they give the same result, for balanced panels anyway)
 
 ---
 
-## Graphically
+## Estimation vs. Design
 
-```{r,  echo=FALSE, fig.width=5, fig.height=4.5}
-df <- data.frame(X = runif(1000)+1,Treatment=as.factor("Untreated"),time="1") %>%
-  mutate(Y = X + rnorm(1000)/6) 
+- To be clear, this is *exactly 0% different* from what we've done before in terms of controlling for stuff
+- And in fact we're about to do the *exact same thing we did before* by just adding a categorical control variable for `county` or whatever
+- (and in fact the "within" thing holds with other categorical controls - a categorical control for education isolates variation "within education levels")
+- The difference is the *reason we're doing it*. It's fixed effects because *a categorical control for individual controls for a lot of stuff*, and we think closes a *lot* of back doors for us, not just one, and not just ones we can measure
 
-cutoff <- 1.75
-
-#Add step 2 in which X is demeaned, and 3 in which both X and Y are, and 4 which just changes label
-dffull <- rbind(
-  #Step 1: Untreated only
-  df %>% mutate(time="1. If NOBODY got treatment, looks smooth."),
-  #Step 2: Treated only only
-  df %>% mutate(Y= Y + .25,Treatment="Treated",time="2. If EVERYBODY got treatment, looks smooth."),
-  #Step 3: And the jump
-  df %>% mutate(Y=ifelse(X > cutoff,Y+.25,Y),Treatment = ifelse(X>cutoff,"Treated","Untreated"),time='3. Observed! Jump only BECAUSE of treatment')
-)
-
-p <- ggplot(dffull,aes(y=Y,x=X,color=Treatment))+geom_point()+
-  geom_smooth(aes(x=X,y=Y,group=Treatment),method='lm',col='red',se=FALSE)+
-  geom_vline(aes(xintercept=cutoff),col='black',linetype='dashed',size=1.5)+
-  scale_color_colorblind()+
-  theme_metro_regtitle() +
-  labs(title = 'Checking for Smoothness in Potential Outcomes at the Cutoff \n{next_state}',
-       x="Test Score (X)",
-       y="Outcome (Y)")+
-  transition_states(time,transition_length=c(12, 12, 12),state_length=c(100,100,100),wrap=FALSE)+
-  ease_aes('linear')+
-  exit_fade()+enter_fade()
-
-animate(p,nframes=160)
-```
 
 ---
 
-# Other Difficulties
 
-More assumptions, limitations, and diagnostics!
+## The Model
 
-- Windows
-- Granular running variables
-- Manipulated running variables
-- Fuzzy regression discontinuity
 
----
+The $it$ subscript says this variable varies over individual $i$ and time $t$
 
-# Windows
+$$Y_{it} = \beta_0 + \beta_1 X_{it} + \varepsilon_{it}$$
 
-- The basic idea of RDD is that we're interested in *the cutoff*
-- The points away from the cutoff are only useful in helping us predict values at the cutoff
-- Do we really want that full range? Is someone's test score of 30 really going to help us much in predicting $Y$ at a test score of 89?
-- So we might limit our analysis within just a narrow window around the cutoff, just like that initial animation we saw!
-- This makes the exogenous-at-the-jump assumption more plausible, and lets us worry less about functional form (over a narrow range, not too much difference between a linear term and a square), but on the flip side reduces our sample size considerably
+- $X_{it}$ is related to LocalStuff which is not in the model and thus in the error term!
+- Regular ol' omitted variable bias. If we don't adjust for the individual effect, we get a biased $\hat{\beta}_1$ 
+- (this bias is called "pooling bias" although it's really just a form of omitted variable bias)
+- We really have this then:
+$$Y_{it} = \beta_0 + \beta_1 X_{it} + (\alpha_i + \varepsilon_{it})$$
 
 ---
 
-## Windows
+## De-meaning
 
-- Pay attention to the sample sizes, accuracy (true value .7) and standard errors!
+- Let's do de-meaning first, since it's most closely and obviously related to the "removing between variation" explanation we've been going for
+- The process here is simple!
 
-```{r, echo=FALSE}
-set.seed(2000)
-df <- tibble(X = runif(1000)) %>%
-  mutate(treated = X > .5) %>%
-  mutate(X_centered = X - .5) %>%
-  mutate(Y = X_centered + .7*treated + .5*X_centered*treated + rnorm(1000,0,.3))
-```
+1. For each variable $X_{it}$, $Y_{it}$, etc., get the mean value of that variable for each individual $\bar{X}_i, \bar{Y}_i$
+2. Subtract out that mean to get residuals $(X_{it} - \bar{X}_i), (Y_{it} - \bar{Y}_i)$
+3. Work with those residuals
+
+- That's it!
+
+---
+
+## How does this work?
+
+- That $\alpha_i$ term gets absorbed
+- The residuals are, by construction, no longer related to the $\alpha_i$, so it no longer goes in the residuals!
+
+$$(Y_{it} - \bar{Y}_i) = \beta_0 + \beta_1(X_{it} - \bar{X}_i) + \varepsilon_{it}$$
+
+---
+
+## Let's do it!
+
+- We can use `group_by` to get means-within-groups and subtract them out
 
 ```{r, echo = TRUE}
-m1 <- feols(Y~treated*X_centered, data = df)
-m2 <- feols(Y~treated*X_centered, data = df %>% filter(abs(X_centered) < .25))
-m3 <- feols(Y~treated*X_centered, data = df %>% filter(abs(X_centered) < .1))
-m4 <- feols(Y~treated*X_centered, data = df %>% filter(abs(X_centered) < .05))
-m5 <- feols(Y~treated*X_centered, data = df %>% filter(abs(X_centered) < .01))
-etable(m1,m2,m3,m4,m5, keep = 'treatedTRUE')
+data(crime4, package = 'wooldridge')
+crime4 <- crime4 %>%
+  ## Filter to the data points from our graph
+  filter(county %in% c(1,3,7, 23),
+         prbarr < .5) %>%
+  group_by(county) %>%
+  mutate(mean_crime = mean(crmrte),
+         mean_prob = mean(prbarr)) %>%
+  mutate(demeaned_crime = crmrte - mean_crime,
+         demeaned_prob = prbarr - mean_prob)
 ```
 
 ---
 
-# Granular Running Variable
-
-- One assumption we're making is that the running variable varies more or less *continuously*
-- That makes it possible to have, say, a test score of 89 compared to a test score of 90 it's almost certainly the same as except for random chance
-- But what if our data only had test score in big chunks? I don't know you're 89 or 90, I just know you're "80-89" or "90-100"
-- A lot less believable that the only difference between these groups is random chance and we've closed the back doors by focusing on the cutoff
-- Plenty of other things change between 80 and 100! That's not "smooth at the cutoff"
-
----
-
-## Granular Running Variable
-
-- Not a whole lot we can do about this
-- There are some fancy RDD estimators that allow for granular running variables
-- But in general, if this is what you're facing, you might be in trouble
-- Before doing an RDD, think "is it plausible that someone with the highest value just below the cutoff, and someone with the lowest value just above the cutoff are only at different values because of random chance?"
-
----
-
-# Looking for Lumping
-
-- Ok, now let's go back to our continuous running variables
-- What if the running variable is *manipulated*?
-- Imagine you're a teacher grading the gifted-and-talented exam. You see someone with an 89 and think "aww, they're so close! I'll just give them an extra point..."
-- Or, if you live just barely on one side of a time zone line, but decide to move to the other side because you prefer waking up later
-- Suddenly, that treatment is a lot less randomly assigned around the cutoff!
-
----
-
-## Looking for Lumping
-
-- If there's manipulation of the running variable around the cutoff, we can often see it in the presence of *lumping*
-- I.e. if there's a big cluster of observations to one side of the cutoff and a seeming gap missing on the other side
-
----
-
-## Looking for Lumping
-
-- Here's an example from the real world in medical research - statistically, p-values *should* be uniformly distributed
-- But it's hard to get insignificant results published in some journals. So people might "p-hack" until they find some form of analysis that's significant, and also we have heavy selection into publication based on $p < .05$. Can't use that cutoff for an RDD!
-
-
-![p-value graph from Perneger & Combescure, 2017](p_value_distribution.png)
-
----
-
-## Looking for Lumping
-
-- How can we look for this stuff?
-- We can look graphically by just checking for a jump at the cutoff in *number of observations* after binning
+## And Regress!
 
 ```{r, echo = TRUE}
-df_bin_count <- df %>%
-  # Select breaks so that one of hte breakpoints is the cutoff
-  mutate(X_bins = cut(X, breaks = 0:10/10)) %>%
-  group_by(X_bins) %>%
-  count()
+orig_data <- feols(crmrte ~ prbarr, data = crime4)
+de_mean <- feols(demeaned_crime ~ demeaned_prob, data = crime4)
+etable(orig_data, de_mean)
 ```
 
 ---
 
-## Looking for Lumping
+## Interpreting a Within Relationship
 
-- The first one looks pretty good. We have one that looks not-so-good on the right
-
-```{r, echo = FALSE}
-bad_bins <- df_bin_count 
-bad_bins$n <- sample(df_bin_count$n, 10)
-bad_bins$n[5] <- 20
-bad_bins$n[6] <- 160
-bad_bins$Type <- 'Bad'
-
-df_bin_count %>%
-  mutate(Type = 'Good') %>%
-  bind_rows(bad_bins) %>%
-  mutate(Type = factor(Type, levels = c('Good','Bad'))) %>%
-  group_by(Type) %>%
-  mutate(n = n/sum(n)) %>%
-  ggplot(aes(x = X_bins, y = n, fill = Type)) + 
-  guides(fill = FALSE) + 
-  geom_col() + 
-  theme_metro() +
-  theme(axis.text.x = element_text(angle = 90)) + 
-  labs(y = 'Percent', x = "X") + 
-  geom_vline(aes(xintercept = 5.5), linetype = 'dashed') +
-  scale_y_continuous(labels = scales::percent, limits = c(0,.2)) +
-  facet_wrap('Type')
-```
-
+- How can we interpret that slope of `-0.03`?
+- This is all *within variation* so our interpretation must be *within-county*
+- So, "comparing a county in year A where its arrest probability is 1 (100 percentage points) higher than it is in year B, we expect the number of crimes per person to drop by .03"
+- Or if we think we've causally identified it (and want to work on a more realistic scale), "raising the arrest probability by 1 percentage point in a county reduces the number of crimes per person in that county by .0003".
+- We're basically "controlling for county" (and will do that explicitly in a moment)
+- So your interpretation should think of it in that way - *holding county constant* i.e. *comparing two observations with the same value of county* i.e. *comparing a county to itself at a different point in time*
 
 ---
 
-## Looking for Lumping
+## Concept Checks
 
-- Another thing we can do is do a "placebo test"
-- Check if variables *other than treatment or outcome* vary at the cutoff
-- We can do this by re-running our RDD but just swapping out some other variable for our outcome
-- If we get a significant jump, that's bad! That tells us that *other things are changing at the cutoff* which implies some sort of manipulation (or just super lousy luck)
+- Why does subtracting the within-individual mean of each variable "control for individual"?
+- In a sentence, interpret the slope coefficient in the estimated model $(Y_{it} - \bar{Y}_i) = 2 + 3(X_{it} - \bar{X}_i)$ where $Y$ is "blood pressure", $X$ is "stress at work", and $i$ is an individual person
 
 ---
 
-## Regression Discontinuity in R
+## The Least Squares Dummy Variable Approach
 
-- We can specify an RDD model by just telling it the dependent variable $Y$, the running variable $X$, and the cutoff $c$.
-- We can also specify how many polynomials to us with **p**
-- (it applies the polynomials more locally than our linear OLS models do - a bit more flexible without weird corner preditions)
-- It will also pick a window for us with **h**
-- Plenty of other options
-- Including a **fuzzy** option to specify actual treatment outside of the running variable/cutoff combo
+- De-meaning the data isn't the only way to do it!
+- You can also use the least squares dummy variable (another word for "binary variable") method
+- We just treat "individual" like the categorical variable it is and add it as a control! Again, the regression approach is exactly the same as with any categorical control, but the *research design* reason for doing it is different
 
 ---
 
-## rdrobust
-
-- We've gone through all kinds of procedures for doing RDD in R already using regression
-- But often, professional researchers won't do it that way!
-- We'll use packages and formulas that do things like "picking a bandwidth (window)" for us in a smart way, or not relying so strongly on linearity
-- The **rdrobust** package does just that!
-
----
-
-## rdrobust
+## Let's do it!
 
 ```{r, echo = TRUE}
-summary(rdrobust(df$Y, df$X, c = .5))
+lsdv <- feols(crmrte ~ prbarr + factor(county), data = crime4)
+etable(orig_data, de_mean, lsdv, keep = c('prbarr', 'demeaned_prob'))
 ```
 
 ---
 
-## rdrobust
+## The same!
 
-```{r, echo = TRUE}
-summary(rdrobust(df$Y, df$X, c = .5, fuzzy = df$treatment))
+- The result is the same, as it should be
+- Except for that $R^2$ - What is that "within R2"?
+- Because de-meaning takes out the part explained by the fixed effects ( $\alpha_i$ ) *before* running the regression, while LSDV does it *in* the regression
+- So the .94 is the portion of `crmrte` explained by `prbarr` *and* `county`, whereas the .21 is the "within - $R^2$ " - the portion of *the within variation* that's explained by `prbarr`
+- Neither is wrong (and the .94 isn't "better"), they're just measuring different things
+
+---
+
+## Why LSDV?
+
+- A benefit of the LSDV approach is that it calculates the fixed effects $\alpha_i$ for you
+- We left those out of the table with the `coefs` argument of `export_summs` (we rarely want them) but here they are:
+
+```{r}
+lsdv
+```
+
+- Interpretation is exactly the same as with a categorical variable - we have an omitted county, and these show the difference relative to that omitted county
+
+---
+
+## Why LSDV?
+
+- This also makes clear another element of what's happening! Just like with a categorical var, the line is moving *up and down* to meet the counties
+- Graphically, de-meaning moves all the points together in the middle to draw a line, while LSDV moves the line up and down to meet the points
+
+```{r, dev = 'CairoPNG'}
+crime4 %>%
+  ungroup() %>%
+  mutate(pred = predict(lsdv)) %>%
+  group_by(county) %>%
+  mutate(label = case_when(
+    crmrte == max(crmrte) ~ paste('County',county),
+    TRUE ~ NA_character_
+  )) %>%
+  ggplot(aes(x =  prbarr, y = crmrte, color = factor(county), label = label)) + 
+  geom_point() + 
+  geom_text(hjust = -.1, size = 14/.pt) + 
+  geom_line(aes(y = pred, group = county), color = 'blue') +
+  theme_metro_regtitle() + 
+  labs(x = 'Probability of Arrest', 
+       y = 'Crime Rate',
+       caption = 'One outlier eliminated in County 7.') + 
+  ##scale_x_continuous(limits = c(.15, 2.5)) + 
+  guides(color = FALSE, label = FALSE) + 
+  scale_color_manual(values = c('black','blue','red','purple'))
 ```
 
 ---
 
-## rdrobust
+## Why Not LSDV?
 
-- We can even have it automatically make plots of our RDD! Same syntax
-
-```{r, echo = TRUE}
-rdplot(df$Y, df$X, c = .5)
-```
+- LSDV is computationally expensive
+- If there are a lot of individuals, or big data, or if you have many sets of fixed effects (yes you can do more than just individual - we'll get to that next time!), it can be very slow
+- Most professionally made fixed-effects commands use de-meaning, but then adjust the standard errors properly
+- (They also leave the fixed effects coefficients off the regression table by default)
 
 ---
 
-## That's it!
+# Limits to Fixed Effects
 
-- That's what we have for RDD
-- Go explore the regression discontinuity Seminar
-- And the paper to read!
+- Okay! At this point we have the concept behind fixed effects, can execute them, and know what they're good for
+- What aren't they good for?
+
+1. They don't control for anything that has within variation
+2. They control away *everything* that's between-only, so we can't see the effect of anything that's between-only ("effect of geography on crime rate?" Nope!)
+3. Anything with only a *little* within variation will have most of its variation washed out too ("effect of population density on crime rate?" probably not)
+4. The estimate pays the most attention to individuals with *lots of variation in treatment*
+
+- 2 and 3 can be addressed by using "random effects" instead but we aren't covering that in this class (see the The Effect chapter on Fixed Effects for more)
+
+---
+
+## Concept Checks
+
+- Why can't we use individual-person fixed effects to study the impact of race on traffic stops?
+- The within $R^2$ from is .3, and the overall $R^2$ is .5. Interpret these two numbers in sentences
+- In a sentence, interpret the slope coefficient in the estimated model $(Y_{it} - \bar{Y}_i) = 1 + .5(X_{it} - \bar{X}_i)$ where $Y$ is "school funding per child" and $X$ is "population growth", and $i$ is city

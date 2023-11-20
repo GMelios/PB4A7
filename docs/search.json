@@ -93,9 +93,9 @@
   {
     "objectID": "2023/weeks/week08/slides.html",
     "href": "2023/weeks/week08/slides.html",
-    "title": "🗓️ Week 8 Regresssion Discontinuity Designs",
+    "title": "🗓️ Week 8  Within variation",
     "section": "",
-    "text": "Check-in\n\nWe’re thinking through ways that we can identify the effect of interest without having to control for everything\nOne way is by focusing on within variation - if all the endogeneity can be controlled for or only varies between-individuals, we can just focus on within variation to identify it\nPro: control for a bunch of stuff\nCon: washes out a lot of variation! Result can be noisier if there’s not much within-variation to work with\nAlso, this requires no endogenous variation over time\nThat might be a tricky assumption! Often there are plenty of back doors that shift over time\n\n\n\n\nRegression Discontinuity\n\nToday we are going to talk about Regression discontinuity design (RDD)\nRDD is currently the darling of the econometric world for estimating causal effects without running an experiment\nIt doesn’t apply everywhere, but when it does, it’s very easy to buy the identification assumptions\nNot that it doesn’t have its own issues, of course, but it’s pretty good!\n\n\n\n\nRegression Discontinuity\nThe basic idea is this:\n\nWe look for a treatment that is assigned on the basis of being above/below a cutoff value of a continuous variable\nFor example, if you get above a certain test score they let you into a “gifted and talented” program\nOr if you are just on one side of a time zone line, your day starts one hour earlier/later\nOr if a candidate gets 50.1% of the vote they’re in, 40.9% and they’re out\nOr if you’re 65 years old you get Medicaid, if you’re 64.99 years old you don’t\n\nWe call these continuous variables “Running variables” because we run along them until we hit the cutoff\n\n\n\nRegression Discontinuity\n\nBut wait, hold on, if treatment is driven by running variables, won’t we have a back door going through those very same running variables?? Yes!\nAnd we can’t just control for RunningVar because that’s where all the variation in treatment comes from. Uh oh!\n\n\n\n\n\n\n\n\n\nRegression Discontinuity\n\nThe key here is realizing that the running variable affects treatment only when you go across the cutoff\nSo really the diagram looks like this!\n\n\n\n\n\n\n\n\n\nRegression Discontinuity\n\nSo what does this mean?\nIf we can control for the running variable everywhere except the cutoff, then…\nWe will be controlling for the running variable, closing that back door\nBut leaving variation at the cutoff open, allowing for variation in treatment\nWe focus on just the variation around the treatment, narrowing the range of the running variable we use so sharply that it’s basically controlled for. Then the effect of cutoff on treatment is like an experiment!\n\n\n\n\nRegression Discontinuity\n\nBasically, the idea is that right around the cutoff, treatment is randomly assigned\nIf you have a test score of 89.9 (not high enough for gifted-and-talented), you’re basically the same as someone who has a test score of 90.0 (just barely high enough)\nSo if we just focus around the cutoff, we close any back doors because it’s basically random which side of the line you’re on\nBut we get variation in treatment!\nThis specifically gives us the effect of treatment for people who are right around the cutoff a.k.a. a “local average treatment effect” (we still won’t know the effect of being put in gifted-and-talented for someone who gets a 30)\n\n\n\n\nRegression Discontinuity\n\nA very basic idea of this, before we even get to regression, is to create a binned chart\nAnd see how the bin values jump at the cutoff\nA binned chart chops the Y-axis up into bins\nThen takes the average Y value within that bin. That’s it!\nThen, we look at how those X bins relate to the Y binned values.\nIf it looks like a pretty normal, continuous relationship… then JUMPS UP at the cutoff X-axis value, that tells us that the treatment itself must be doing something!\n\n\n\n\nRegression Discontinuity\n\n\n\n\n\n\n\n\nConcept Checks\n\nWhy is it important that we look as norrowly as possible around the cutoff? What does this get us over comparing the entire treated and untreated groups?\nCan you think of an example of a treatment that is assigned at least partially on a cutoff?\nWhy can’t we just control for the running variable as we normally would to solve the endogeneity problem?\n\n\n\n\nFitting Lines in RDD\n\nLooking purely just at the cutoff and making no use of the space away from the cutoff throws out a lot of useful information\nWe know that the running variable is related to outcome, so we can probably improve our prediction of what the value on either side of the cutoff should be if we use data away from the cutoff to help with prediction than if we just use data near the cutoff, which is what that animation does\nWe can do this with good ol’ OLS.\nThe bin plot we did can help us pick a functional form for the slope\n\n\n\n\nFitting Lines in RDD\n\nTo be clear, producing the line(s) below is our goal. How can we do it?\nThe true model I’ve made is an RDD effect of .7, with a slope of 1 to the left of the cutoff and a slope of 1.5 to the right\n\n\n\n\n\n\n\n\n\nRegression in RDD\n\nFirst, we need to transform our data\nWe need a “Treated” variable that’s TRUE when treatment is applied - above or below the cutoff\nThen, we are going to want a bunch of things to change at the cutoff. This will be easier if the running variable is centered around the cutoff. So we’ll turn our running variable \\(X\\) into \\(X - cutoff\\) and call that \\(XCentered\\)\n\n\n\n\nVarying Slope\n\nTypically, you will want to let the slope vary to either side\nIn effect, we are fitting an entirely different regression line on each side of the cutoff\nWe can do this by interacting both slope and intercept with \\(treated\\)!\nCoefficient on Treated is how the intercept jumps - that’s our RDD effect. Coefficient on the interaction is how the slope changes\n\n\\[Y = \\beta_0 + \\beta_1Treated + \\beta_2XCentered + \\beta_3Treated\\times XCentered + \\varepsilon\\]\n\n\nOLS estimation, Dep. Var.: Y\nObservations: 1,000 \nStandard-errors: IID \n                        Estimate Std. Error   t value   Pr(&gt;|t|)    \n(Intercept)            -0.011133   0.025999 -0.428225 0.66857986    \ntreatedTRUE             0.746688   0.037577 19.870777  &lt; 2.2e-16 ***\nX_centered              0.982500   0.090666 10.836522  &lt; 2.2e-16 ***\ntreatedTRUE:X_centered  0.446961   0.129613  3.448417 0.00058748 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\nRMSE: 0.296605   Adj. R2: 0.847229\n\n\n\n\n\nVarying Slope\n(as an aside, sometimes the effect of interest is the interaction term - the change in slope! This answers the question “does the effect of \\(X\\) on \\(Y\\) change at the cutoff? This is called a”regression kink” design. We won’t go more into it here, but it is out there!)\n\n\n\nPolynomial Terms\n\nWe don’t need to stop at linear slopes!\nJust like we brought in our knowledge of binary and interaction terms to understand the linear slope change, we can bring in polynomials too. Add a square maybe!\nDon’t get too wild with cubes, quartics, etc. - polynomials tend to be at their “weirdest” near the edges, and we don’t want super-weird predictions right at the cutoff. It could give us a mistaken result!\nA square term should be enough\n\n\n\n\nPolynomial Terms\n\nHow do we do this? Interactions again. Take any regression equation…\n\n\\[Y = \\beta_0 + \\beta_1X + \\beta_2X^2 + \\varepsilon\\]\n\nAnd just center the \\(X\\) (let’s call it \\(XC\\), add on a set of the same terms multiplied by \\(Treated\\) (don’t forget \\(Treated\\) by itself - that’s \\(Treated\\) times the interaction!)\n\n\\[Y = \\beta_0 + \\beta_1XC + \\beta_2XC^2 + \\beta_3Treated + \\beta_4Treated\\times XC + \\beta_5Treated\\times XC^2 + \\varepsilon\\]\n\nThe coefficient on \\(Treated\\) remains our “jump at the cutoff” - our RDD estimate!\n\n\n\n                              feols(Y ~ X_cent..\nDependent Var.:                                Y\n                                                \nConstant                        -0.0340 (0.0385)\nX_centered                      0.6990. (0.3641)\ntreatedTRUE                   0.7677*** (0.0577)\nX_centered square               -0.5722 (0.7117)\nX_centered x treatedTRUE         0.7509 (0.5359)\ntreatedTRUE x I(X_centered^2)     0.5319 (1.034)\n_____________________________ __________________\nS.E. type                                    IID\nObservations                               1,000\nR2                                       0.84779\nAdj. R2                                  0.84702\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\nConcept Checks\n\nWould the coefficient on \\(Treated\\) still be the regression discontinuity effect estimate if we hadn’t centered \\(X\\)? Why or why not?\nWhy might we want to use a polynomial term in our RDD model?\nWhat relationship are we assuming between the outcome variable and the running variable if we choose not to include \\(XCentered\\) in our model at all (i.e. a “zero-order polynomial”)\n\n\n\n\nAssumptions\n\nWe knew there must be some assumptions lurking around here\nSome are more obvious (we should be using the correct functional form)\nOthers are trickier. What are we assuming about the error term and endogeneity here?\nSpecifically, we are assuming that the only thing jumping at the cutoff is treatment\nSort of like parallel trends, but maybe more believable since we’ve narrowed in so far\nFor example, if having an income below 150% of the poverty line gets you access to food stamps AND to job training, then we can’t really use that cutoff to get the effect of just food stamps\nOr if the proportion of people who are self-employed jumps up just below 150% (based on reported income), that’s a back door too!\nThe only thing different about just above/just below should be treatment\n\n\n\n\nGraphically\n\n\n\n\n\n\n\n\nOther Difficulties\nMore assumptions, limitations, and diagnostics!\n\nWindows\nGranular running variables\nManipulated running variables\nFuzzy regression discontinuity\n\n\n\n\nWindows\n\nThe basic idea of RDD is that we’re interested in the cutoff\nThe points away from the cutoff are only useful in helping us predict values at the cutoff\nDo we really want that full range? Is someone’s test score of 30 really going to help us much in predicting \\(Y\\) at a test score of 89?\nSo we might limit our analysis within just a narrow window around the cutoff, just like that initial animation we saw!\nThis makes the exogenous-at-the-jump assumption more plausible, and lets us worry less about functional form (over a narrow range, not too much difference between a linear term and a square), but on the flip side reduces our sample size considerably\n\n\n\n\nWindows\n\nPay attention to the sample sizes, accuracy (true value .7) and standard errors!\n\n\nm1 &lt;- feols(Y~treated*X_centered, data = df)\nm2 &lt;- feols(Y~treated*X_centered, data = df %&gt;% filter(abs(X_centered) &lt; .25))\nm3 &lt;- feols(Y~treated*X_centered, data = df %&gt;% filter(abs(X_centered) &lt; .1))\nm4 &lt;- feols(Y~treated*X_centered, data = df %&gt;% filter(abs(X_centered) &lt; .05))\nm5 &lt;- feols(Y~treated*X_centered, data = df %&gt;% filter(abs(X_centered) &lt; .01))\netable(m1,m2,m3,m4,m5, keep = 'treatedTRUE')\n\n                                         m1                 m2\nDependent Var.:                           Y                  Y\n                                                              \ntreatedTRUE              0.7467*** (0.0376) 0.7723*** (0.0566)\ntreatedTRUE x X_centered 0.4470*** (0.1296)   0.6671. (0.4022)\n________________________ __________________ __________________\nS.E. type                               IID                IID\nObservations                          1,000                492\nR2                                  0.84769            0.74687\nAdj. R2                             0.84723            0.74531\n\n                                         m3                 m4              m5\nDependent Var.:                           Y                  Y               Y\n                                                                              \ntreatedTRUE              0.7086*** (0.0900) 0.6104*** (0.1467) 0.5585 (0.4269)\ntreatedTRUE x X_centered     -1.307 (1.482)      6.280 (4.789)   41.21 (72.21)\n________________________ __________________ __________________ _______________\nS.E. type                               IID                IID             IID\nObservations                            206                 93              15\nR2                                  0.69322            0.59825         0.48853\nAdj. R2                             0.68867            0.58470         0.34904\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\nGranular Running Variable\n\nOne assumption we’re making is that the running variable varies more or less continuously\nThat makes it possible to have, say, a test score of 89 compared to a test score of 90 it’s almost certainly the same as except for random chance\nBut what if our data only had test score in big chunks? I don’t know you’re 89 or 90, I just know you’re “80-89” or “90-100”\nA lot less believable that the only difference between these groups is random chance and we’ve closed the back doors by focusing on the cutoff\nPlenty of other things change between 80 and 100! That’s not “smooth at the cutoff”\n\n\n\n\nGranular Running Variable\n\nNot a whole lot we can do about this\nThere are some fancy RDD estimators that allow for granular running variables\nBut in general, if this is what you’re facing, you might be in trouble\nBefore doing an RDD, think “is it plausible that someone with the highest value just below the cutoff, and someone with the lowest value just above the cutoff are only at different values because of random chance?”\n\n\n\n\nLooking for Lumping\n\nOk, now let’s go back to our continuous running variables\nWhat if the running variable is manipulated?\nImagine you’re a teacher grading the gifted-and-talented exam. You see someone with an 89 and think “aww, they’re so close! I’ll just give them an extra point…”\nOr, if you live just barely on one side of a time zone line, but decide to move to the other side because you prefer waking up later\nSuddenly, that treatment is a lot less randomly assigned around the cutoff!\n\n\n\n\nLooking for Lumping\n\nIf there’s manipulation of the running variable around the cutoff, we can often see it in the presence of lumping\nI.e. if there’s a big cluster of observations to one side of the cutoff and a seeming gap missing on the other side\n\n\n\n\nLooking for Lumping\n\nHere’s an example from the real world in medical research - statistically, p-values should be uniformly distributed\nBut it’s hard to get insignificant results published in some journals. So people might “p-hack” until they find some form of analysis that’s significant, and also we have heavy selection into publication based on \\(p &lt; .05\\). Can’t use that cutoff for an RDD!\n\n\n\n\np-value graph from Perneger & Combescure, 2017\n\n\n\n\n\nLooking for Lumping\n\nHow can we look for this stuff?\nWe can look graphically by just checking for a jump at the cutoff in number of observations after binning\n\n\ndf_bin_count &lt;- df %&gt;%\n  # Select breaks so that one of hte breakpoints is the cutoff\n  mutate(X_bins = cut(X, breaks = 0:10/10)) %&gt;%\n  group_by(X_bins) %&gt;%\n  count()\n\n\n\n\nLooking for Lumping\n\nThe first one looks pretty good. We have one that looks not-so-good on the right\n\n\n\n\n\n\n\n\n\nLooking for Lumping\n\nAnother thing we can do is do a “placebo test”\nCheck if variables other than treatment or outcome vary at the cutoff\nWe can do this by re-running our RDD but just swapping out some other variable for our outcome\nIf we get a significant jump, that’s bad! That tells us that other things are changing at the cutoff which implies some sort of manipulation (or just super lousy luck)\n\n\n\n\nFuzzy Regression Discontinuity\n\nSo far, we’ve assumed that you’re either on one side of the cutoff and untreated, or the other and treated\nWhat if it isn’t so simple? What if the cutoff just increases your chances of treatment?\nFor example, maybe about 10% of kids with too-low test scores get into gifted-and-talented, and 80% of kids with high-enough scores do\nFor whatever reason!\nThis is a “fuzzy regression discontinuity”\nNow, our RDD will understate the true effect, since it’s being calculated on the assumption that we added treatment to 100% of people at the cutoff, when really it’s 70%. So we’ll get roughly only about 70% of the effect\n\n\n\n\nFuzzy Regression Discontinuity\n\nWe can account for this with a model designed to take this into account\nSpecifically, we can use something called two-stage least squares (instrumental variables) to handle these sorts of situations\n(you can go see the instrumental variables module if you like for more detail)\nBasically, two-stage least squares estimates how much the chances of treatment go up at the cutoff, and scales the estimate by that change\nSo it would take whatever result we got on the previous slide and divide it by .7 to get the true effect\n\n\n\n\nFuzzy Regression Discontinuity\n\nNotice that the y-axis here isn’t the outcome, it’s “percentage treated”\n\n\n\n\n\n\n\n\n\nFuzzy Regression Discontinuity\n\nWe can perform this using the instrumental-variables features of feols, giving it two treatment-response functions\nThe first is an RDD specification where we use “treatment” - i.e. whether you were actually treated\nThe second uses the same RDD specification, but replaces “treatment” with “above the cutoff”\nfeols(outcome ~ controls  | XC*treated ~ XC*assigned_to_treatment)\n\n\n\n\nFuzzy Regression Discontinuity\n\n(the true effect of treatment is .4 - okay, it’s not perfect)\n\n\npredict_treatment &lt;- feols(treatment ~ X_center*above_cut, data = df)\nwithout_fuzzy &lt;-feols(Y ~ X_center*treatment, data = df)\nfuzzy_rdd &lt;- feols(Y ~ 1 | X_center*treatment ~ X_center*above_cut, data = df)\netable(predict_treatment, without_fuzzy, fuzzy_rdd)\n\n                          predict_treatment      without_fuzzy\nDependent Var.:                   treatment                  Y\n                                                              \nConstant                   0.0605. (0.0354) 0.4263*** (0.0359)\nX_center                    0.0044 (0.1215)  0.4099** (0.1250)\nabove_cutTRUE            0.3053*** (0.0484)                   \nX_center x above_cutTRUE   -0.0392 (0.1687)                   \ntreatmentTRUE                               0.3414*** (0.0937)\nX_center x treatmentTRUE                       0.2199 (0.3315)\nX_center:treatmentTRUE                                        \n________________________ __________________ __________________\nS.E. type                               IID                IID\nObservations                          1,000              1,000\nR2                                  0.13289            0.04967\nAdj. R2                             0.13028            0.04681\n\n                                  fuzzy_rdd\nDependent Var.:                           Y\n                                           \nConstant                 0.4429*** (0.1149)\nX_center                    0.5802 (0.4089)\nabove_cutTRUE                              \nX_center x above_cutTRUE                   \ntreatmentTRUE               0.4458 (0.4158)\nX_center x treatmentTRUE                   \nX_center:treatmentTRUE      -0.8367 (1.610)\n________________________ __________________\nS.E. type                               IID\nObservations                          1,000\nR2                                  0.03968\nAdj. R2                             0.03679\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\nRegression Discontinuity in R\n\nWe’ve gone through all kinds of procedures for doing RDD in R already using regression\nBut often, professional researchers won’t do it that way!\nWe’ll use packages and formulas that do things like “picking a bandwidth (window)” for us in a smart way, or not relying so strongly on linearity\nThe rdrobust package does just that!\nLet’s look at help(rdrobust, packge = 'rdrobust')\n\n\n\n\nRegression Discontinuity in R\n\nWe can specify an RDD model by just telling it the dependent variable \\(Y\\), the running variable \\(X\\), and the cutoff \\(c\\).\nWe can also specify how many polynomials to us with p\n(it applies the polynomials more locally than our linear OLS models do - a bit more flexible without weird corner preditions)\nIt will also pick a window for us with h\nPlenty of other options\nIncluding a fuzzy option to specify actual treatment outside of the running variable/cutoff combo\n\n\n\n\nrdrobust\n\nsummary(rdrobust(df$Y, df$X, c = .5))\n\nSharp RD estimates using local polynomial regression.\n\nNumber of Obs.                 1000\nBW type                       mserd\nKernel                   Triangular\nVCE method                       NN\n\nNumber of Obs.                  488          512\nEff. Number of Obs.             120          156\nOrder est. (p)                    1            1\nOrder bias  (q)                   2            2\nBW est. (h)                   0.142        0.142\nBW bias (b)                   0.213        0.213\nrho (h/b)                     0.668        0.668\nUnique Obs.                     488          512\n\n=============================================================================\n        Method     Coef. Std. Err.         z     P&gt;|z|      [ 95% C.I. ]       \n=============================================================================\n  Conventional     0.124     0.258     0.481     0.631    [-0.382 , 0.630]     \n        Robust         -         -     0.522     0.602    [-0.448 , 0.774]     \n=============================================================================\n\n\n\n\n\nrdrobust\n\nsummary(rdrobust(df$Y, df$X, c = .5, fuzzy = df$treatment))\n\nFuzzy RD estimates using local polynomial regression.\n\nNumber of Obs.                 1000\nBW type                       mserd\nKernel                   Triangular\nVCE method                       NN\n\nNumber of Obs.                  488          512\nEff. Number of Obs.             119          156\nOrder est. (p)                    1            1\nOrder bias  (q)                   2            2\nBW est. (h)                   0.141        0.141\nBW bias (b)                   0.206        0.206\nrho (h/b)                     0.687        0.687\nUnique Obs.                     488          512\n\nFirst-stage estimates.\n\n=============================================================================\n        Method     Coef. Std. Err.         z     P&gt;|z|      [ 95% C.I. ]       \n=============================================================================\n  Conventional     0.211     0.103     2.057     0.040     [0.010 , 0.412]     \n        Robust         -         -     1.382     0.167    [-0.072 , 0.416]     \n=============================================================================\n\nTreatment effect estimates.\n\n=============================================================================\n        Method     Coef. Std. Err.         z     P&gt;|z|      [ 95% C.I. ]       \n=============================================================================\n  Conventional     0.594     1.182     0.503     0.615    [-1.722 , 2.910]     \n        Robust         -         -     0.621     0.535    [-1.921 , 3.702]     \n=============================================================================\n\n\n\n\n\nrdrobust\n\nWe can even have it automatically make plots of our RDD! Same syntax\n\n\nrdplot(df$Y, df$X, c = .5)\n\n\n\n\n\n\n\nThat’s it!\n\nThat’s what we have for RDD\nGo explore the regression discontinuity Swirl\nAnd the homework\nAnd the paper to read!"
+    "text": "So far we’ve been learning about how to set up, run, and interpret an ordinary least squares regression\nThis is a key skill for anyone doing anything with data - even if you never run a regular ol’ linear regression again, pretty much everything else in applied stats builds off of it in some way\nAnother thing we’ve been doing is thinking about how to design and add controls to that regression to identify our effect of interest by closing back doors"
   },
   {
     "objectID": "2023/weeks/week08/slides.html#your-lecturer",
@@ -429,84 +429,84 @@
   {
     "objectID": "2023/weeks/week07/page.html",
     "href": "2023/weeks/week07/page.html",
-    "title": "🗓️ Week 07 - Within Variations",
+    "title": "🗓️ Week 07 - Revision / Non Linearity",
     "section": "",
-    "text": "In this week, we will focus on how we analyse within variation and include fixed effects."
+    "text": "In this week, we revisited slides from Week 5 and focused on Non-linearity and transformations. on how we analyse within variation and include fixed effects."
   },
   {
     "objectID": "2023/weeks/week07/page.html#lecture-slides",
     "href": "2023/weeks/week07/page.html#lecture-slides",
-    "title": "🗓️ Week 07 - Within Variations",
+    "title": "🗓️ Week 07 - Revision / Non Linearity",
     "section": "👨‍🏫 Lecture Slides",
     "text": "👨‍🏫 Lecture Slides\nEither click on the slide area below or click here to view it in fullscreen. Use your keypad to navigate the slides.\n\n\n\n\n🎥 Looking for lecture recordings? You can only find those on Moodle."
   },
   {
     "objectID": "2023/weeks/week07/page.html#recommended-reading",
     "href": "2023/weeks/week07/page.html#recommended-reading",
-    "title": "🗓️ Week 07 - Within Variations",
+    "title": "🗓️ Week 07 - Revision / Non Linearity",
     "section": "📚 Recommended Reading",
     "text": "📚 Recommended Reading\n\nCheck the end of slides for the list of references cited in the lecture."
   },
   {
     "objectID": "2023/weeks/week07/page.html#communication",
     "href": "2023/weeks/week07/page.html#communication",
-    "title": "🗓️ Week 07 - Within Variations",
+    "title": "🗓️ Week 07 - Revision / Non Linearity",
     "section": "📟 Communication",
     "text": "📟 Communication\n\nIf you feel like it, introduce yourself in the #introductions channel on Discord"
   },
   {
     "objectID": "2023/weeks/week08/page.html",
     "href": "2023/weeks/week08/page.html",
-    "title": "🗓️ Week 08 - Regression Discontinuity Design",
+    "title": "🗓️ Week 08 - Panel data / Within Variation",
     "section": "",
-    "text": "In this week, we will look into the quasi-experimental Regression Discontinuity Design."
+    "text": "In this week, we will look into how we analyse within variation and include fixed effects."
   },
   {
     "objectID": "2023/weeks/week08/page.html#lecture-slides",
     "href": "2023/weeks/week08/page.html#lecture-slides",
-    "title": "🗓️ Week 08 - Regression Discontinuity Design",
+    "title": "🗓️ Week 08 - Panel data / Within Variation",
     "section": "👨‍🏫 Lecture Slides",
     "text": "👨‍🏫 Lecture Slides\nEither click on the slide area below or click here to view it in fullscreen. Use your keypad to navigate the slides.\n\n\n\n\n🎥 Looking for lecture recordings? You can only find those on Moodle."
   },
   {
     "objectID": "2023/weeks/week08/page.html#recommended-reading",
     "href": "2023/weeks/week08/page.html#recommended-reading",
-    "title": "🗓️ Week 08 - Regression Discontinuity Design",
+    "title": "🗓️ Week 08 - Panel data / Within Variation",
     "section": "📚 Recommended Reading",
     "text": "📚 Recommended Reading\n\nCheck the end of slides for the list of references cited in the lecture."
   },
   {
     "objectID": "2023/weeks/week08/page.html#communication",
     "href": "2023/weeks/week08/page.html#communication",
-    "title": "🗓️ Week 08 - Regression Discontinuity Design",
+    "title": "🗓️ Week 08 - Panel data / Within Variation",
     "section": "📟 Communication",
     "text": "📟 Communication\n\nIf you feel like it, introduce yourself in the #introductions channel on Discord"
   },
   {
     "objectID": "2023/weeks/week09/page.html",
     "href": "2023/weeks/week09/page.html",
-    "title": "🗓️ Week 09 - Instrumental Variables",
+    "title": "🗓️ Week 09 - Regression Discontinuity Design",
     "section": "",
-    "text": "In this week, we will focus on estimating causal parameteres through Instrumental Variables. First, we will approach the concept of instruments through Direct Acyclical Graphs (DAGs) and then through the LATE effect (Local Average Treatment Effect)."
+    "text": "In this week, we will look into the quasi-experimental Regression Discontinuity Design."
   },
   {
     "objectID": "2023/weeks/week09/page.html#lecture-slides",
     "href": "2023/weeks/week09/page.html#lecture-slides",
-    "title": "🗓️ Week 09 - Instrumental Variables",
+    "title": "🗓️ Week 09 - Regression Discontinuity Design",
     "section": "👨‍🏫 Lecture Slides",
     "text": "👨‍🏫 Lecture Slides\nEither click on the slide area below or click here to view it in fullscreen. Use your keypad to navigate the slides.\n\n\n\n\n🎥 Looking for lecture recordings? You can only find those on Moodle."
   },
   {
     "objectID": "2023/weeks/week09/page.html#recommended-reading",
     "href": "2023/weeks/week09/page.html#recommended-reading",
-    "title": "🗓️ Week 09 - Instrumental Variables",
+    "title": "🗓️ Week 09 - Regression Discontinuity Design",
     "section": "📚 Recommended Reading",
     "text": "📚 Recommended Reading\n\nCheck the end of slides for the list of references cited in the lecture."
   },
   {
     "objectID": "2023/weeks/week09/page.html#communication",
     "href": "2023/weeks/week09/page.html#communication",
-    "title": "🗓️ Week 09 - Instrumental Variables",
+    "title": "🗓️ Week 09 - Regression Discontinuity Design",
     "section": "📟 Communication",
     "text": "📟 Communication\n\nIf you feel like it, introduce yourself in the #introductions channel on Discord"
   },
@@ -884,9 +884,9 @@
   {
     "objectID": "2023/weeks/week08/slides.html#concept-checks",
     "href": "2023/weeks/week08/slides.html#concept-checks",
-    "title": "🗓️ Week 8 Regression Discontinuity Designs",
+    "title": "🗓️ Week 8  Within variation",
     "section": "Concept Checks",
-    "text": "Concept Checks\n\nWhy is it important that we look as norrowly as possible around the cutoff? What does this get us over comparing the entire treated and untreated groups?\nCan you think of an example of a treatment that is assigned at least partially on a cutoff?\nWhy can’t we just control for the running variable as we normally would to solve the endogeneity problem?"
+    "text": "Concept Checks\n\nFor each of these variables, would we expect them to have within variation, between variation, or both?\n(Individual = person) How a child’s height changes as they age.\n(Individual = person) In a data set tracking many people over many years, the variation in the number of children a person has in a given year.\n(Individual = city) Overall, Paris, France has more restaurants than Paris, Texas.\n(Individual = genre) The average pop music album sells more copies than the average jazz album\n(Individual = genre) Miles Davis’ Kind of Blue sold very well for a jazz album.\n(Individual = genre) Michael Jackson’s Thriller, a pop album, sold many more copies than Kind of Blue, a jazz album."
   },
   {
     "objectID": "2023/weeks/week08/slides.html#fitting-lines-in-rdd",
@@ -940,9 +940,9 @@
   {
     "objectID": "2023/weeks/week08/slides.html#concept-checks-1",
     "href": "2023/weeks/week08/slides.html#concept-checks-1",
-    "title": "🗓️ Week 8 Regression Discontinuity Designs",
+    "title": "🗓️ Week 8  Within variation",
     "section": "Concept Checks",
-    "text": "Concept Checks\n\nWould the coefficient on \\(Treated\\) still be the regression discontinuity effect estimate if we hadn’t centered \\(X\\)? Why or why not?\nWhy might we want to use a polynomial term in our RDD model?\nWhat relationship are we assuming between the outcome variable and the running variable if we choose not to include \\(XCentered\\) in our model at all (i.e. a “zero-order polynomial”)"
+    "text": "Concept Checks\n\nWhy does subtracting the within-individual mean of each variable “control for individual”?\nIn a sentence, interpret the slope coefficient in the estimated model \\((Y_{it} - \\bar{Y}_i) = 2 + 3(X_{it} - \\bar{X}_i)\\) where \\(Y\\) is “blood pressure”, \\(X\\) is “stress at work”, and \\(i\\) is an individual person"
   },
   {
     "objectID": "2023/weeks/week08/slides.html#assumptions",
@@ -1816,43 +1816,43 @@
     "objectID": "2023/weeks/week07/slides_sem.html#background-1",
     "href": "2023/weeks/week07/slides_sem.html#background-1",
     "title": "💻 Seminar 1  Hidden Curriculum",
-    "section": "",
-    "text": "Think about the following:\n\nfor most of the history of science, and really all the social sciences, there was practically no data – only theories about data\nToday we are drowning in data (remember the memes)\nOrdinary people have more data than they know what to do with\n\nSmart watches, sleep data, calories, screen time bla bla bla\n\n\nAs such, in causal inference (or any quantitative work) it’s hard to separate the question from the actual work (programming)"
+    "section": "Background",
+    "text": "Background\n\nThink about the following:\n\nfor most of the history of science, and really all the social sciences, there was practically no data – only theories about data\nToday we are drowning in data (remember the memes)\nOrdinary people have more data than they know what to do with\n\nSmart watches, sleep data, calories, screen time bla bla bla\n\n\nAs such, in causal inference (or any quantitative work) it’s hard to separate the question from the actual work (programming)"
   },
   {
     "objectID": "2023/weeks/week07/slides_sem.html#code-and-software",
     "href": "2023/weeks/week07/slides_sem.html#code-and-software",
     "title": "💻 Seminar 1  Hidden Curriculum",
-    "section": "",
-    "text": "For causal Inference we need:\n\nData\nSoftware for data (Stata for example)\nUnderstanding of statistics\nProgramming skills\n\nWhich softare?\n\nR, Stata, Python, SAS, SPSS\n\nToday we are going to see Language agnostic programming principnes that are usually not covered in econ classes"
+    "section": "Code and Software",
+    "text": "Code and Software\n\nFor causal Inference we need:\n\nData\nSoftware for data (Stata for example)\nUnderstanding of statistics\nProgramming skills\n\nWhich softare?\n\nR, Stata, Python, SAS, SPSS\n\nToday we are going to see Language agnostic programming principnes that are usually not covered in econ classes"
   },
   {
     "objectID": "2023/weeks/week07/slides_sem.html#making-mistakes",
     "href": "2023/weeks/week07/slides_sem.html#making-mistakes",
     "title": "💻 Seminar 1  Hidden Curriculum",
-    "section": "",
-    "text": "Once upon a time there were 2 young researchers that spent 8 months trying to disprove an important work in political psychology (i.e. liberals are less biased than conservatives)\nAfter about 10 conference presentations, half a dozen talks\nThey decided to send an email to the people they were trying to disprove and send the paper for publication"
+    "section": "Making mistakes",
+    "text": "Making mistakes\n\nOnce upon a time there were 2 young researchers that spent 8 months trying to disprove an important work in political psychology (i.e. liberals are less biased than conservatives)\nAfter about 10 conference presentations, half a dozen talks\nThey decided to send an email to the people they were trying to disprove and send the paper for publication"
   },
   {
     "objectID": "2023/weeks/week07/slides_sem.html#making-mistakes-1",
     "href": "2023/weeks/week07/slides_sem.html#making-mistakes-1",
     "title": "💻 Seminar 1  Hidden Curriculum",
-    "section": "",
-    "text": "The original (super famous) academics came back suggesting that their analysis doesn’t produce the same results\nDigging in their directories, the youngsters found countless versions of codes and data - hundreds of files with randome names\nAnd once the code was running again, they found a critical coding error (one comma missing) that corrected (destroyed) their results\nThe youngsters were devastated. Took them another 2 years to pick up the courage, redo the work and actually disprove the original paper"
+    "section": "Making mistakes",
+    "text": "Making mistakes\n\nThe original (super famous) academics came back suggesting that their analysis doesn’t produce the same results\nDigging in their directories, the youngsters found countless versions of codes and data - hundreds of files with randome names\nAnd once the code was running again, they found a critical coding error (one comma missing) that corrected (destroyed) their results\nThe youngsters were devastated. Took them another 2 years to pick up the courage, redo the work and actually disprove the original paper"
   },
   {
     "objectID": "2023/weeks/week07/slides_sem.html#anna-karenina-principle",
     "href": "2023/weeks/week07/slides_sem.html#anna-karenina-principle",
     "title": "💻 Seminar 1  Hidden Curriculum",
-    "section": "",
-    "text": "Happy families are all alike; every unhappy family is unhappy in its own way - Leo Tolstoy, Anna Karenina\nGood empirical work is all alike; every bad empirical work is bad in its own way - Scott Cunningham, Causal Mixtape"
+    "section": "Anna Karenina Principle",
+    "text": "Anna Karenina Principle\nHappy families are all alike; every unhappy family is unhappy in its own way - Leo Tolstoy, Anna Karenina\nGood empirical work is all alike; every bad empirical work is bad in its own way - Scott Cunningham, Causal Mixtape"
   },
   {
     "objectID": "2023/weeks/week07/slides_sem.html#what-do-we-learn",
     "href": "2023/weeks/week07/slides_sem.html#what-do-we-learn",
     "title": "💻 Seminar 1  Hidden Curriculum",
-    "section": "",
-    "text": "Most mistakes are not due to insufficient knowledge of coding\nThe cose of most errors is due to poorly designed empirical workflow\nThis is why we ll spend a whole seminar on this"
+    "section": "What do we learn?",
+    "text": "What do we learn?\n\nMost mistakes are not due to insufficient knowledge of coding\nThe cose of most errors is due to poorly designed empirical workflow\nThis is why we ll spend a whole seminar on this"
   },
   {
     "objectID": "2023/weeks/week07/slides_sem.html#workflow-1",
@@ -1970,43 +1970,43 @@
     "objectID": "2023/weeks/week06/slides_sem.html#background-1",
     "href": "2023/weeks/week06/slides_sem.html#background-1",
     "title": "💻 Seminar 1  Hidden Curriculum",
-    "section": "",
-    "text": "Think about the following:\n\nfor most of the history of science, and really all the social sciences, there was practically no data – only theories about data\nToday we are drowning in data (remember the memes)\nOrdinary people have more data than they know what to do with\n\nSmart watches, sleep data, calories, screen time bla bla bla\n\n\nAs such, in causal inference (or any quantitative work) it’s hard to separate the question from the actual work (programming)"
+    "section": "Background",
+    "text": "Background\n\nThink about the following:\n\nfor most of the history of science, and really all the social sciences, there was practically no data – only theories about data\nToday we are drowning in data (remember the memes)\nOrdinary people have more data than they know what to do with\n\nSmart watches, sleep data, calories, screen time bla bla bla\n\n\nAs such, in causal inference (or any quantitative work) it’s hard to separate the question from the actual work (programming)"
   },
   {
     "objectID": "2023/weeks/week06/slides_sem.html#code-and-software",
     "href": "2023/weeks/week06/slides_sem.html#code-and-software",
     "title": "💻 Seminar 1  Hidden Curriculum",
-    "section": "",
-    "text": "For causal Inference we need:\n\nData\nSoftware for data (Stata for example)\nUnderstanding of statistics\nProgramming skills\n\nWhich softare?\n\nR, Stata, Python, SAS, SPSS\n\nToday we are going to see Language agnostic programming principnes that are usually not covered in econ classes"
+    "section": "Code and Software",
+    "text": "Code and Software\n\nFor causal Inference we need:\n\nData\nSoftware for data (Stata for example)\nUnderstanding of statistics\nProgramming skills\n\nWhich softare?\n\nR, Stata, Python, SAS, SPSS\n\nToday we are going to see Language agnostic programming principnes that are usually not covered in econ classes"
   },
   {
     "objectID": "2023/weeks/week06/slides_sem.html#making-mistakes",
     "href": "2023/weeks/week06/slides_sem.html#making-mistakes",
     "title": "💻 Seminar 1  Hidden Curriculum",
-    "section": "",
-    "text": "Once upon a time there were 2 young researchers that spent 8 months trying to disprove an important work in political psychology (i.e. liberals are less biased than conservatives)\nAfter about 10 conference presentations, half a dozen talks\nThey decided to send an email to the people they were trying to disprove and send the paper for publication"
+    "section": "Making mistakes",
+    "text": "Making mistakes\n\nOnce upon a time there were 2 young researchers that spent 8 months trying to disprove an important work in political psychology (i.e. liberals are less biased than conservatives)\nAfter about 10 conference presentations, half a dozen talks\nThey decided to send an email to the people they were trying to disprove and send the paper for publication"
   },
   {
     "objectID": "2023/weeks/week06/slides_sem.html#making-mistakes-1",
     "href": "2023/weeks/week06/slides_sem.html#making-mistakes-1",
     "title": "💻 Seminar 1  Hidden Curriculum",
-    "section": "",
-    "text": "The original (super famous) academics came back suggesting that their analysis doesn’t produce the same results\nDigging in their directories, the youngsters found countless versions of codes and data - hundreds of files with randome names\nAnd once the code was running again, they found a critical coding error (one comma missing) that corrected (destroyed) their results\nThe youngsters were devastated. Took them another 2 years to pick up the courage, redo the work and actually disprove the original paper"
+    "section": "Making mistakes",
+    "text": "Making mistakes\n\nThe original (super famous) academics came back suggesting that their analysis doesn’t produce the same results\nDigging in their directories, the youngsters found countless versions of codes and data - hundreds of files with randome names\nAnd once the code was running again, they found a critical coding error (one comma missing) that corrected (destroyed) their results\nThe youngsters were devastated. Took them another 2 years to pick up the courage, redo the work and actually disprove the original paper"
   },
   {
     "objectID": "2023/weeks/week06/slides_sem.html#anna-karenina-principle",
     "href": "2023/weeks/week06/slides_sem.html#anna-karenina-principle",
     "title": "💻 Seminar 1  Hidden Curriculum",
-    "section": "",
-    "text": "Happy families are all alike; every unhappy family is unhappy in its own way - Leo Tolstoy, Anna Karenina\nGood empirical work is all alike; every bad empirical work is bad in its own way - Scott Cunningham, Causal Mixtape"
+    "section": "Anna Karenina Principle",
+    "text": "Anna Karenina Principle\nHappy families are all alike; every unhappy family is unhappy in its own way - Leo Tolstoy, Anna Karenina\nGood empirical work is all alike; every bad empirical work is bad in its own way - Scott Cunningham, Causal Mixtape"
   },
   {
     "objectID": "2023/weeks/week06/slides_sem.html#what-do-we-learn",
     "href": "2023/weeks/week06/slides_sem.html#what-do-we-learn",
     "title": "💻 Seminar 1  Hidden Curriculum",
-    "section": "",
-    "text": "Most mistakes are not due to insufficient knowledge of coding\nThe cose of most errors is due to poorly designed empirical workflow\nThis is why we ll spend a whole seminar on this"
+    "section": "What do we learn?",
+    "text": "What do we learn?\n\nMost mistakes are not due to insufficient knowledge of coding\nThe cose of most errors is due to poorly designed empirical workflow\nThis is why we ll spend a whole seminar on this"
   },
   {
     "objectID": "2023/weeks/week06/slides_sem.html#workflow-1",
@@ -3700,7 +3700,7 @@
     "href": "2023/weeks/week05/slides.html#notes-on-interactions-1",
     "title": "Binary Variables and Functional Form",
     "section": "Notes on Interactions",
-    "text": "Notes on Interactions\n\nInteraction effects are poorly powered. You need a lot of data to be able to tell whether an effect is different in two groups. If \\(N\\) observations is adequate power to see if the effect itself is different from zero, you need a sample of roughly \\(16\\times N\\) to see if the difference in effects is nonzero. Sixteen times!!\nIt’s tempting to try interacting your effect with everything to see if it’s bigger/smaller/nonzero in some groups, but because it’s poorly powered, this is a bad idea! You’ll get a lot of false positives\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
+    "text": "Notes on Interactions\n\nInteraction effects are poorly powered. You need a lot of data to be able to tell whether an effect is different in two groups. If \\(N\\) observations is adequate power to see if the effect itself is different from zero, you need a sample of roughly \\(16\\times N\\) to see if the difference in effects is nonzero. Sixteen times!!\nIt’s tempting to try interacting your effect with everything to see if it’s bigger/smaller/nonzero in some groups, but because it’s poorly powered, this is a bad idea! You’ll get a lot of false positives"
   },
   {
     "objectID": "2023/weeks/week05/slides.html#bias-and-the-error-term",
@@ -3915,9 +3915,9 @@
   {
     "objectID": "2023/weeks/week07/slides.html#concept-checks",
     "href": "2023/weeks/week07/slides.html#concept-checks",
-    "title": "🗓️ Week 7 Within variation",
+    "title": "Binary Variables and Functional Form",
     "section": "Concept Checks",
-    "text": "Concept Checks\n\nFor each of these variables, would we expect them to have within variation, between variation, or both?\n(Individual = person) How a child’s height changes as they age.\n(Individual = person) In a data set tracking many people over many years, the variation in the number of children a person has in a given year.\n(Individual = city) Overall, Paris, France has more restaurants than Paris, Texas.\n(Individual = genre) The average pop music album sells more copies than the average jazz album\n(Individual = genre) Miles Davis’ Kind of Blue sold very well for a jazz album.\n(Individual = genre) Michael Jackson’s Thriller, a pop album, sold many more copies than Kind of Blue, a jazz album."
+    "text": "Concept Checks\n\nIf \\(X\\) is binary, in sentences interpret the coefficients from the estimated OLS equation \\(Y = 4 + 3X + 2Z\\)\nHow might a comparison of means come in handy if you wanted to analyze the results of a randomized policy experiment?\nIf you had a data set of people from every continent and added “continent” as a control, how many coefficients would this add to your model?\nIf in that regression you really wanted to compare Europe to Asia specifically, what might you do so that the regression made this easy?"
   },
   {
     "objectID": "2023/weeks/week07/slides.html#removing-between-variation",
@@ -3978,9 +3978,9 @@
   {
     "objectID": "2023/weeks/week07/slides.html#concept-checks-1",
     "href": "2023/weeks/week07/slides.html#concept-checks-1",
-    "title": "🗓️ Week 7 Within variation",
+    "title": "Binary Variables and Functional Form",
     "section": "Concept Checks",
-    "text": "Concept Checks\n\nWhy does subtracting the within-individual mean of each variable “control for individual”?\nIn a sentence, interpret the slope coefficient in the estimated model \\((Y_{it} - \\bar{Y}_i) = 2 + 3(X_{it} - \\bar{X}_i)\\) where \\(Y\\) is “blood pressure”, \\(X\\) is “stress at work”, and \\(i\\) is an individual person"
+    "text": "Concept Checks\n\nWhich of the following variables would you likely want to log before using them? Income, height, wealth, company size, home square footage\nIn each of the following estimated OLS lines, interpret the coefficient by filling in “A [blank] change in X is associated with a [blank] change in Y”:\n\n\\[ Y = 1 + 2\\log(X) \\] \\[ \\log(Y) = 3 + 2\\log(X) \\]\n\\[ \\log(Y) = 4 + 3X \\]"
   },
   {
     "objectID": "2023/weeks/week07/slides.html#the-least-squares-dummy-variable-approach",
@@ -4030,5 +4030,768 @@
     "title": "🗓️ Week 7 Within variation",
     "section": "Concept Checks",
     "text": "Concept Checks\n\nWhy can’t we use individual-person fixed effects to study the impact of race on traffic stops?\nThe within \\(R^2\\) from is .3, and the overall \\(R^2\\) is .5. Interpret these two numbers in sentences\nIn a sentence, interpret the slope coefficient in the estimated model \\((Y_{it} - \\bar{Y}_i) = 1 + .5(X_{it} - \\bar{X}_i)\\) where \\(Y\\) is “school funding per child” and \\(X\\) is “population growth”, and \\(i\\) is city\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html",
+    "href": "2023/weeks/week08/slides11.html",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "",
+    "text": "So far we’ve been learning about how to set up, run, and interpret an ordinary least squares regression\nThis is a key skill for anyone doing anything with data - even if you never run a regular ol’ linear regression again, pretty much everything else in applied stats builds off of it in some way\nAnother thing we’ve been doing is thinking about how to design and add controls to that regression to identify our effect of interest by closing back doors"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#a-pickle",
+    "href": "2023/weeks/week08/slides11.html#a-pickle",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "A Pickle",
+    "text": "A Pickle\n\nSo obviously this is a problem, and it’s not one we can reason or trick our way out of\nIf we don’t have the variable we need to control for, we don’t have it\n… or do we?"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#the-rest-of-the-term",
+    "href": "2023/weeks/week08/slides11.html#the-rest-of-the-term",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "The Rest of the Term",
+    "text": "The Rest of the Term\n\nMuch of the rest of the term is going to be focused on finding ways to control for stuff that we can’t measure\nSeems impossible! But it is possible, at least in some circumstances\nToday, we will be talking about within variation and between variation, and the ability to control for all between variation using fixed effects"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#panel-data-1",
+    "href": "2023/weeks/week08/slides11.html#panel-data-1",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Panel Data",
+    "text": "Panel Data\n\nHere’s what (a few rows from) a panel data set looks like - a variable for individual (county), a variable for time (year), and then the data\n\n\n\n\n\n\nCounty\nYear\nCrimeRate\nProbofArrest\n\n\n\n\n1\n81\n0.0398849\n0.289696\n\n\n1\n82\n0.0383449\n0.338111\n\n\n1\n83\n0.0303048\n0.330449\n\n\n1\n84\n0.0347259\n0.362525\n\n\n1\n85\n0.0365730\n0.325395\n\n\n1\n86\n0.0347524\n0.326062\n\n\n1\n87\n0.0356036\n0.298270\n\n\n3\n81\n0.0163921\n0.202899\n\n\n3\n82\n0.0190651\n0.162218\n\n\n\n 9 rows out of 630. \"Prob. of Arrest\" is estimated probability of being arrested when you commit a crime"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#between-and-within-1",
+    "href": "2023/weeks/week08/slides11.html#between-and-within-1",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nIf we look at the overall variation, just pretending this is all together, we get this"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#between-and-within-2",
+    "href": "2023/weeks/week08/slides11.html#between-and-within-2",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nBETWEEN variation is what we get if we look at the relationship between the means of each county"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#between-and-within-3",
+    "href": "2023/weeks/week08/slides11.html#between-and-within-3",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nAnd I mean it! Only look at those means! The individual year-to-year variation within county doesn’t matter."
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#between-and-within-4",
+    "href": "2023/weeks/week08/slides11.html#between-and-within-4",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nWithin variation goes the other way - it treats those orange crosses as their own individualized sets of axes and looks at variation within county from year-to-year only!\nWe basically slide the crosses over on top of each other and then analyze that data"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#between-and-within-5",
+    "href": "2023/weeks/week08/slides11.html#between-and-within-5",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nWe can clearly see that between counties there’s a strong positive relationship\nBut if you look within a given county, the relationship isn’t that strong, and actually seems to be negative\nWhich would make sense - if you think your chances of getting arrested are high, that should be a deterrent to crime\nBut what are we actually doing here? Let’s think about the causal diagram / data-generating process!\nWhat goes into the probability of arrest and the crime rate? Lots of stuff!"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#the-crime-rate",
+    "href": "2023/weeks/week08/slides11.html#the-crime-rate",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "The Crime Rate",
+    "text": "The Crime Rate\n\n“LocalStuff” is just all the things unique to that area\n“LawAndOrder” is how committed local politicians are to “Law and Order Politics”"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#between-and-within-6",
+    "href": "2023/weeks/week08/slides11.html#between-and-within-6",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nFor each of these variables we can ask if they vary between groups and/or within groups\nLocalStuff is all the stuff unique to that county - geography, landmarks, the quality of the schools, almost by definition this only varies between groups. It’s not like the things that make your county unique are different each year (or at least not very different)\nWhether the county has LawAndOrder and how many CivilRights you’re allowed might change a bit year to year, but in general, political climates like that change pretty slowly. At a bit of a stretch we can call that something that only varies between groups too\nPolice budgets (and thus number of police on the streets) and Poverty (which varies with the economy) vary both between counties, but also within counties from year to year\nVariables with between variation only (by our assumption): LocalStuff, LawAndOrder, CivilRights\nVariables with both between and within variation: Police, Poverty"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#between-and-within-7",
+    "href": "2023/weeks/week08/slides11.html#between-and-within-7",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nLet’s simplify our graph!\nSome of the variables only vary between counties\nSo, we can replace those variables on the graph with the variable County\nRight? That’s where all the variation is anyway"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#the-crime-rate-1",
+    "href": "2023/weeks/week08/slides11.html#the-crime-rate-1",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "The Crime Rate",
+    "text": "The Crime Rate\n\n“LocalStuff” is just all the things unique to that area\n“LawAndOrder” is how committed local politicians are to “Law and Order Politics”"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#between-and-within-8",
+    "href": "2023/weeks/week08/slides11.html#between-and-within-8",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nNow the task of identifying ProbArrest \\(\\rightarrow\\) CrimeRate becomes much simpler!\nIf we control for County, that will close a lot of back doors for us\n(based on the diagram, all we need to control for is County and Poverty!)\nConveniently, we can control for County just like it was any other variable!\nAnd when we do, we automatically control for all variables that only have between variation, whatever they are, even if we can’t measure them directly or didn’t think about them\nAll that’s left is the within variation"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#concept-checks",
+    "href": "2023/weeks/week08/slides11.html#concept-checks",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nFor each of these variables, would we expect them to have within variation, between variation, or both?\n(Individual = person) How a child’s height changes as they age.\n(Individual = person) In a data set tracking many people over many years, the variation in the number of children a person has in a given year.\n(Individual = city) Overall, Paris, France has more restaurants than Paris, Texas.\n(Individual = genre) The average pop music album sells more copies than the average jazz album\n(Individual = genre) Miles Davis’ Kind of Blue sold very well for a jazz album.\n(Individual = genre) Michael Jackson’s Thriller, a pop album, sold many more copies than Kind of Blue, a jazz album."
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#removing-between-variation",
+    "href": "2023/weeks/week08/slides11.html#removing-between-variation",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Removing Between Variation",
+    "text": "Removing Between Variation\n\nOkay so that’s the concept\nRemove all the between variation so that all that’s left is within variation\nAnd in the process control for any variables that are made up only of between variation\nHow can we actually do this? And what’s really going on?\nLet’s first talk about the regression model itself that this implies\nThen let’s actually do the thing. There are two main ways: de-meaning and binary variables (they give the same result, for balanced panels anyway)"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#estimation-vs.-design",
+    "href": "2023/weeks/week08/slides11.html#estimation-vs.-design",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Estimation vs. Design",
+    "text": "Estimation vs. Design\n\nTo be clear, this is exactly 0% different from what we’ve done before in terms of controlling for stuff\nAnd in fact we’re about to do the exact same thing we did before by just adding a categorical control variable for county or whatever\n(and in fact the “within” thing holds with other categorical controls - a categorical control for education isolates variation “within education levels”)\nThe difference is the reason we’re doing it. It’s fixed effects because a categorical control for individual controls for a lot of stuff, and we think closes a lot of back doors for us, not just one, and not just ones we can measure"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#the-model",
+    "href": "2023/weeks/week08/slides11.html#the-model",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "The Model",
+    "text": "The Model\nThe \\(it\\) subscript says this variable varies over individual \\(i\\) and time \\(t\\)\n\\[Y_{it} = \\beta_0 + \\beta_1 X_{it} + \\varepsilon_{it}\\]\n\n\\(X_{it}\\) is related to LocalStuff which is not in the model and thus in the error term!\nRegular ol’ omitted variable bias. If we don’t adjust for the individual effect, we get a biased \\(\\hat{\\beta}_1\\)\n(this bias is called “pooling bias” although it’s really just a form of omitted variable bias)\nWe really have this then: \\[Y_{it} = \\beta_0 + \\beta_1 X_{it} + (\\alpha_i + \\varepsilon_{it})\\]"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#de-meaning",
+    "href": "2023/weeks/week08/slides11.html#de-meaning",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "De-meaning",
+    "text": "De-meaning\n\nLet’s do de-meaning first, since it’s most closely and obviously related to the “removing between variation” explanation we’ve been going for\nThe process here is simple!\n\n\nFor each variable \\(X_{it}\\), \\(Y_{it}\\), etc., get the mean value of that variable for each individual \\(\\bar{X}_i, \\bar{Y}_i\\)\nSubtract out that mean to get residuals \\((X_{it} - \\bar{X}_i), (Y_{it} - \\bar{Y}_i)\\)\nWork with those residuals\n\n\nThat’s it!"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#how-does-this-work",
+    "href": "2023/weeks/week08/slides11.html#how-does-this-work",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "How does this work?",
+    "text": "How does this work?\n\nThat \\(\\alpha_i\\) term gets absorbed\nThe residuals are, by construction, no longer related to the \\(\\alpha_i\\), so it no longer goes in the residuals!\n\n\\[(Y_{it} - \\bar{Y}_i) = \\beta_0 + \\beta_1(X_{it} - \\bar{X}_i) + \\varepsilon_{it}\\]"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#lets-do-it",
+    "href": "2023/weeks/week08/slides11.html#lets-do-it",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Let’s do it!",
+    "text": "Let’s do it!\n\nWe can use group_by to get means-within-groups and subtract them out\n\n\ndata(crime4, package = 'wooldridge')\ncrime4 &lt;- crime4 %&gt;%\n  ## Filter to the data points from our graph\n  filter(county %in% c(1,3,7, 23),\n         prbarr &lt; .5) %&gt;%\n  group_by(county) %&gt;%\n  mutate(mean_crime = mean(crmrte),\n         mean_prob = mean(prbarr)) %&gt;%\n  mutate(demeaned_crime = crmrte - mean_crime,\n         demeaned_prob = prbarr - mean_prob)"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#and-regress",
+    "href": "2023/weeks/week08/slides11.html#and-regress",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "And Regress!",
+    "text": "And Regress!\n\norig_data &lt;- feols(crmrte ~ prbarr, data = crime4)\nde_mean &lt;- feols(demeaned_crime ~ demeaned_prob, data = crime4)\netable(orig_data, de_mean)\n\n                        orig_data           de_mean\nDependent Var.:            crmrte    demeaned_crime\n                                                   \nConstant         0.0118* (0.0050) 1.41e-18 (0.0004)\nprbarr          0.0486** (0.0167)                  \ndemeaned_prob                     -0.0305* (0.0117)\n_______________ _________________ _________________\nS.E. type                     IID               IID\nObservations                   27                27\nR2                        0.25308           0.21445\nAdj. R2                   0.22321           0.18303\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#interpreting-a-within-relationship",
+    "href": "2023/weeks/week08/slides11.html#interpreting-a-within-relationship",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Interpreting a Within Relationship",
+    "text": "Interpreting a Within Relationship\n\nHow can we interpret that slope of -0.03?\nThis is all within variation so our interpretation must be within-county\nSo, “comparing a county in year A where its arrest probability is 1 (100 percentage points) higher than it is in year B, we expect the number of crimes per person to drop by .03”\nOr if we think we’ve causally identified it (and want to work on a more realistic scale), “raising the arrest probability by 1 percentage point in a county reduces the number of crimes per person in that county by .0003”.\nWe’re basically “controlling for county” (and will do that explicitly in a moment)\nSo your interpretation should think of it in that way - holding county constant i.e. comparing two observations with the same value of county i.e. comparing a county to itself at a different point in time"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#concept-checks-1",
+    "href": "2023/weeks/week08/slides11.html#concept-checks-1",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nWhy does subtracting the within-individual mean of each variable “control for individual”?\nIn a sentence, interpret the slope coefficient in the estimated model \\((Y_{it} - \\bar{Y}_i) = 2 + 3(X_{it} - \\bar{X}_i)\\) where \\(Y\\) is “blood pressure”, \\(X\\) is “stress at work”, and \\(i\\) is an individual person"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#the-least-squares-dummy-variable-approach",
+    "href": "2023/weeks/week08/slides11.html#the-least-squares-dummy-variable-approach",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "The Least Squares Dummy Variable Approach",
+    "text": "The Least Squares Dummy Variable Approach\n\nDe-meaning the data isn’t the only way to do it!\nYou can also use the least squares dummy variable (another word for “binary variable”) method\nWe just treat “individual” like the categorical variable it is and add it as a control! Again, the regression approach is exactly the same as with any categorical control, but the research design reason for doing it is different"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#lets-do-it-1",
+    "href": "2023/weeks/week08/slides11.html#lets-do-it-1",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Let’s do it!",
+    "text": "Let’s do it!\n\nlsdv &lt;- feols(crmrte ~ prbarr + factor(county), data = crime4)\netable(orig_data, de_mean, lsdv, keep = c('prbarr', 'demeaned_prob'))\n\n                        orig_data           de_mean              lsdv\nDependent Var.:            crmrte    demeaned_crime            crmrte\n                                                                     \nprbarr          0.0486** (0.0167)                   -0.0305* (0.0124)\ndemeaned_prob                     -0.0305* (0.0117)                  \n_______________ _________________ _________________ _________________\nS.E. type                     IID               IID               IID\nObservations                   27                27                27\nR2                        0.25308           0.21445           0.94114\nAdj. R2                   0.22321           0.18303           0.93044\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#the-same",
+    "href": "2023/weeks/week08/slides11.html#the-same",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "The same!",
+    "text": "The same!\n\nThe result is the same, as it should be\nExcept for that \\(R^2\\) - What is that “within R2”?\nBecause de-meaning takes out the part explained by the fixed effects ( \\(\\alpha_i\\) ) before running the regression, while LSDV does it in the regression\nSo the .94 is the portion of crmrte explained by prbarr and county, whereas the .21 is the “within - \\(R^2\\)” - the portion of the within variation that’s explained by prbarr\nNeither is wrong (and the .94 isn’t “better”), they’re just measuring different things"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#why-lsdv",
+    "href": "2023/weeks/week08/slides11.html#why-lsdv",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Why LSDV?",
+    "text": "Why LSDV?\n\nA benefit of the LSDV approach is that it calculates the fixed effects \\(\\alpha_i\\) for you\nWe left those out of the table with the coefs argument of export_summs (we rarely want them) but here they are:\n\n\n\nOLS estimation, Dep. Var.: crmrte\nObservations: 27 \nStandard-errors: IID \n                  Estimate Std. Error   t value   Pr(&gt;|t|)    \n(Intercept)       0.045631   0.004116  11.08640 1.7906e-10 ***\nprbarr           -0.030491   0.012442  -2.45068 2.2674e-02 *  \nfactor(county)3  -0.025308   0.002165 -11.68996 6.5614e-11 ***\nfactor(county)7  -0.009870   0.001418  -6.96313 5.4542e-07 ***\nfactor(county)23 -0.008587   0.001258  -6.82651 7.3887e-07 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\nRMSE: 0.001933   Adj. R2: 0.930441\n\n\n\nInterpretation is exactly the same as with a categorical variable - we have an omitted county, and these show the difference relative to that omitted county"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#why-lsdv-1",
+    "href": "2023/weeks/week08/slides11.html#why-lsdv-1",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Why LSDV?",
+    "text": "Why LSDV?\n\nThis also makes clear another element of what’s happening! Just like with a categorical var, the line is moving up and down to meet the counties\nGraphically, de-meaning moves all the points together in the middle to draw a line, while LSDV moves the line up and down to meet the points"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#why-not-lsdv",
+    "href": "2023/weeks/week08/slides11.html#why-not-lsdv",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Why Not LSDV?",
+    "text": "Why Not LSDV?\n\nLSDV is computationally expensive\nIf there are a lot of individuals, or big data, or if you have many sets of fixed effects (yes you can do more than just individual - we’ll get to that next time!), it can be very slow\nMost professionally made fixed-effects commands use de-meaning, but then adjust the standard errors properly\n(They also leave the fixed effects coefficients off the regression table by default)"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides11.html#concept-checks-2",
+    "href": "2023/weeks/week08/slides11.html#concept-checks-2",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nWhy can’t we use individual-person fixed effects to study the impact of race on traffic stops?\nThe within \\(R^2\\) from is .3, and the overall \\(R^2\\) is .5. Interpret these two numbers in sentences\nIn a sentence, interpret the slope coefficient in the estimated model \\((Y_{it} - \\bar{Y}_i) = 1 + .5(X_{it} - \\bar{X}_i)\\) where \\(Y\\) is “school funding per child” and \\(X\\) is “population growth”, and \\(i\\) is city"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#a-pickle",
+    "href": "2023/weeks/week08/slides.html#a-pickle",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "A Pickle",
+    "text": "A Pickle\n\nSo obviously this is a problem, and it’s not one we can reason or trick our way out of\nIf we don’t have the variable we need to control for, we don’t have it\n… or do we?"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#the-rest-of-the-term",
+    "href": "2023/weeks/week08/slides.html#the-rest-of-the-term",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "The Rest of the Term",
+    "text": "The Rest of the Term\n\nMuch of the rest of the term is going to be focused on finding ways to control for stuff that we can’t measure\nSeems impossible! But it is possible, at least in some circumstances\nToday, we will be talking about within variation and between variation, and the ability to control for all between variation using fixed effects"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#panel-data-1",
+    "href": "2023/weeks/week08/slides.html#panel-data-1",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Panel Data",
+    "text": "Panel Data\n\nHere’s what (a few rows from) a panel data set looks like - a variable for individual (county), a variable for time (year), and then the data\n\n\n\n\n\n\nCounty\nYear\nCrimeRate\nProbofArrest\n\n\n\n\n1\n81\n0.0398849\n0.289696\n\n\n1\n82\n0.0383449\n0.338111\n\n\n1\n83\n0.0303048\n0.330449\n\n\n1\n84\n0.0347259\n0.362525\n\n\n1\n85\n0.0365730\n0.325395\n\n\n1\n86\n0.0347524\n0.326062\n\n\n1\n87\n0.0356036\n0.298270\n\n\n3\n81\n0.0163921\n0.202899\n\n\n3\n82\n0.0190651\n0.162218\n\n\n\n 9 rows out of 630. \"Prob. of Arrest\" is estimated probability of being arrested when you commit a crime"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#between-and-within-1",
+    "href": "2023/weeks/week08/slides.html#between-and-within-1",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nIf we look at the overall variation, just pretending this is all together, we get this"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#between-and-within-2",
+    "href": "2023/weeks/week08/slides.html#between-and-within-2",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nBETWEEN variation is what we get if we look at the relationship between the means of each county"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#between-and-within-3",
+    "href": "2023/weeks/week08/slides.html#between-and-within-3",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nAnd I mean it! Only look at those means! The individual year-to-year variation within county doesn’t matter."
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#between-and-within-4",
+    "href": "2023/weeks/week08/slides.html#between-and-within-4",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nWithin variation goes the other way - it treats those orange crosses as their own individualized sets of axes and looks at variation within county from year-to-year only!\nWe basically slide the crosses over on top of each other and then analyze that data"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#between-and-within-5",
+    "href": "2023/weeks/week08/slides.html#between-and-within-5",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nWe can clearly see that between counties there’s a strong positive relationship\nBut if you look within a given county, the relationship isn’t that strong, and actually seems to be negative\nWhich would make sense - if you think your chances of getting arrested are high, that should be a deterrent to crime\nBut what are we actually doing here? Let’s think about the causal diagram / data-generating process!\nWhat goes into the probability of arrest and the crime rate? Lots of stuff!"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#the-crime-rate",
+    "href": "2023/weeks/week08/slides.html#the-crime-rate",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "The Crime Rate",
+    "text": "The Crime Rate\n\n“LocalStuff” is just all the things unique to that area\n“LawAndOrder” is how committed local politicians are to “Law and Order Politics”"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#between-and-within-6",
+    "href": "2023/weeks/week08/slides.html#between-and-within-6",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nFor each of these variables we can ask if they vary between groups and/or within groups\nLocalStuff is all the stuff unique to that county - geography, landmarks, the quality of the schools, almost by definition this only varies between groups. It’s not like the things that make your county unique are different each year (or at least not very different)\nWhether the county has LawAndOrder and how many CivilRights you’re allowed might change a bit year to year, but in general, political climates like that change pretty slowly. At a bit of a stretch we can call that something that only varies between groups too\nPolice budgets (and thus number of police on the streets) and Poverty (which varies with the economy) vary both between counties, but also within counties from year to year\nVariables with between variation only (by our assumption): LocalStuff, LawAndOrder, CivilRights\nVariables with both between and within variation: Police, Poverty"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#between-and-within-7",
+    "href": "2023/weeks/week08/slides.html#between-and-within-7",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nLet’s simplify our graph!\nSome of the variables only vary between counties\nSo, we can replace those variables on the graph with the variable County\nRight? That’s where all the variation is anyway"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#the-crime-rate-1",
+    "href": "2023/weeks/week08/slides.html#the-crime-rate-1",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "The Crime Rate",
+    "text": "The Crime Rate\n\n“LocalStuff” is just all the things unique to that area\n“LawAndOrder” is how committed local politicians are to “Law and Order Politics”"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#between-and-within-8",
+    "href": "2023/weeks/week08/slides.html#between-and-within-8",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Between and Within",
+    "text": "Between and Within\n\nNow the task of identifying ProbArrest \\(\\rightarrow\\) CrimeRate becomes much simpler!\nIf we control for County, that will close a lot of back doors for us\n(based on the diagram, all we need to control for is County and Poverty!)\nConveniently, we can control for County just like it was any other variable!\nAnd when we do, we automatically control for all variables that only have between variation, whatever they are, even if we can’t measure them directly or didn’t think about them\nAll that’s left is the within variation"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#removing-between-variation",
+    "href": "2023/weeks/week08/slides.html#removing-between-variation",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Removing Between Variation",
+    "text": "Removing Between Variation\n\nOkay so that’s the concept\nRemove all the between variation so that all that’s left is within variation\nAnd in the process control for any variables that are made up only of between variation\nHow can we actually do this? And what’s really going on?\nLet’s first talk about the regression model itself that this implies\nThen let’s actually do the thing. There are two main ways: de-meaning and binary variables (they give the same result, for balanced panels anyway)"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#estimation-vs.-design",
+    "href": "2023/weeks/week08/slides.html#estimation-vs.-design",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Estimation vs. Design",
+    "text": "Estimation vs. Design\n\nTo be clear, this is exactly 0% different from what we’ve done before in terms of controlling for stuff\nAnd in fact we’re about to do the exact same thing we did before by just adding a categorical control variable for county or whatever\n(and in fact the “within” thing holds with other categorical controls - a categorical control for education isolates variation “within education levels”)\nThe difference is the reason we’re doing it. It’s fixed effects because a categorical control for individual controls for a lot of stuff, and we think closes a lot of back doors for us, not just one, and not just ones we can measure"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#the-model",
+    "href": "2023/weeks/week08/slides.html#the-model",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "The Model",
+    "text": "The Model\nThe \\(it\\) subscript says this variable varies over individual \\(i\\) and time \\(t\\)\n\\[Y_{it} = \\beta_0 + \\beta_1 X_{it} + \\varepsilon_{it}\\]\n\n\\(X_{it}\\) is related to LocalStuff which is not in the model and thus in the error term!\nRegular ol’ omitted variable bias. If we don’t adjust for the individual effect, we get a biased \\(\\hat{\\beta}_1\\)\n(this bias is called “pooling bias” although it’s really just a form of omitted variable bias)\nWe really have this then: \\[Y_{it} = \\beta_0 + \\beta_1 X_{it} + (\\alpha_i + \\varepsilon_{it})\\]"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#de-meaning",
+    "href": "2023/weeks/week08/slides.html#de-meaning",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "De-meaning",
+    "text": "De-meaning\n\nLet’s do de-meaning first, since it’s most closely and obviously related to the “removing between variation” explanation we’ve been going for\nThe process here is simple!\n\n\nFor each variable \\(X_{it}\\), \\(Y_{it}\\), etc., get the mean value of that variable for each individual \\(\\bar{X}_i, \\bar{Y}_i\\)\nSubtract out that mean to get residuals \\((X_{it} - \\bar{X}_i), (Y_{it} - \\bar{Y}_i)\\)\nWork with those residuals\n\n\nThat’s it!"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#how-does-this-work",
+    "href": "2023/weeks/week08/slides.html#how-does-this-work",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "How does this work?",
+    "text": "How does this work?\n\nThat \\(\\alpha_i\\) term gets absorbed\nThe residuals are, by construction, no longer related to the \\(\\alpha_i\\), so it no longer goes in the residuals!\n\n\\[(Y_{it} - \\bar{Y}_i) = \\beta_0 + \\beta_1(X_{it} - \\bar{X}_i) + \\varepsilon_{it}\\]"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#lets-do-it",
+    "href": "2023/weeks/week08/slides.html#lets-do-it",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Let’s do it!",
+    "text": "Let’s do it!\n\nWe can use group_by to get means-within-groups and subtract them out\n\n\ndata(crime4, package = 'wooldridge')\ncrime4 &lt;- crime4 %&gt;%\n  ## Filter to the data points from our graph\n  filter(county %in% c(1,3,7, 23),\n         prbarr &lt; .5) %&gt;%\n  group_by(county) %&gt;%\n  mutate(mean_crime = mean(crmrte),\n         mean_prob = mean(prbarr)) %&gt;%\n  mutate(demeaned_crime = crmrte - mean_crime,\n         demeaned_prob = prbarr - mean_prob)"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#and-regress",
+    "href": "2023/weeks/week08/slides.html#and-regress",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "And Regress!",
+    "text": "And Regress!\n\norig_data &lt;- feols(crmrte ~ prbarr, data = crime4)\nde_mean &lt;- feols(demeaned_crime ~ demeaned_prob, data = crime4)\netable(orig_data, de_mean)\n\n                        orig_data           de_mean\nDependent Var.:            crmrte    demeaned_crime\n                                                   \nConstant         0.0118* (0.0050) 1.41e-18 (0.0004)\nprbarr          0.0486** (0.0167)                  \ndemeaned_prob                     -0.0305* (0.0117)\n_______________ _________________ _________________\nS.E. type                     IID               IID\nObservations                   27                27\nR2                        0.25308           0.21445\nAdj. R2                   0.22321           0.18303\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#interpreting-a-within-relationship",
+    "href": "2023/weeks/week08/slides.html#interpreting-a-within-relationship",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Interpreting a Within Relationship",
+    "text": "Interpreting a Within Relationship\n\nHow can we interpret that slope of -0.03?\nThis is all within variation so our interpretation must be within-county\nSo, “comparing a county in year A where its arrest probability is 1 (100 percentage points) higher than it is in year B, we expect the number of crimes per person to drop by .03”\nOr if we think we’ve causally identified it (and want to work on a more realistic scale), “raising the arrest probability by 1 percentage point in a county reduces the number of crimes per person in that county by .0003”.\nWe’re basically “controlling for county” (and will do that explicitly in a moment)\nSo your interpretation should think of it in that way - holding county constant i.e. comparing two observations with the same value of county i.e. comparing a county to itself at a different point in time"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#the-least-squares-dummy-variable-approach",
+    "href": "2023/weeks/week08/slides.html#the-least-squares-dummy-variable-approach",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "The Least Squares Dummy Variable Approach",
+    "text": "The Least Squares Dummy Variable Approach\n\nDe-meaning the data isn’t the only way to do it!\nYou can also use the least squares dummy variable (another word for “binary variable”) method\nWe just treat “individual” like the categorical variable it is and add it as a control! Again, the regression approach is exactly the same as with any categorical control, but the research design reason for doing it is different"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#lets-do-it-1",
+    "href": "2023/weeks/week08/slides.html#lets-do-it-1",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Let’s do it!",
+    "text": "Let’s do it!\n\nlsdv &lt;- feols(crmrte ~ prbarr + factor(county), data = crime4)\netable(orig_data, de_mean, lsdv, keep = c('prbarr', 'demeaned_prob'))\n\n                        orig_data           de_mean              lsdv\nDependent Var.:            crmrte    demeaned_crime            crmrte\n                                                                     \nprbarr          0.0486** (0.0167)                   -0.0305* (0.0124)\ndemeaned_prob                     -0.0305* (0.0117)                  \n_______________ _________________ _________________ _________________\nS.E. type                     IID               IID               IID\nObservations                   27                27                27\nR2                        0.25308           0.21445           0.94114\nAdj. R2                   0.22321           0.18303           0.93044\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#the-same",
+    "href": "2023/weeks/week08/slides.html#the-same",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "The same!",
+    "text": "The same!\n\nThe result is the same, as it should be\nExcept for that \\(R^2\\) - What is that “within R2”?\nBecause de-meaning takes out the part explained by the fixed effects ( \\(\\alpha_i\\) ) before running the regression, while LSDV does it in the regression\nSo the .94 is the portion of crmrte explained by prbarr and county, whereas the .21 is the “within - \\(R^2\\)” - the portion of the within variation that’s explained by prbarr\nNeither is wrong (and the .94 isn’t “better”), they’re just measuring different things"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#why-lsdv",
+    "href": "2023/weeks/week08/slides.html#why-lsdv",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Why LSDV?",
+    "text": "Why LSDV?\n\nA benefit of the LSDV approach is that it calculates the fixed effects \\(\\alpha_i\\) for you\nWe left those out of the table with the coefs argument of export_summs (we rarely want them) but here they are:\n\n\n\nOLS estimation, Dep. Var.: crmrte\nObservations: 27 \nStandard-errors: IID \n                  Estimate Std. Error   t value   Pr(&gt;|t|)    \n(Intercept)       0.045631   0.004116  11.08640 1.7906e-10 ***\nprbarr           -0.030491   0.012442  -2.45068 2.2674e-02 *  \nfactor(county)3  -0.025308   0.002165 -11.68996 6.5614e-11 ***\nfactor(county)7  -0.009870   0.001418  -6.96313 5.4542e-07 ***\nfactor(county)23 -0.008587   0.001258  -6.82651 7.3887e-07 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\nRMSE: 0.001933   Adj. R2: 0.930441\n\n\n\nInterpretation is exactly the same as with a categorical variable - we have an omitted county, and these show the difference relative to that omitted county"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#why-lsdv-1",
+    "href": "2023/weeks/week08/slides.html#why-lsdv-1",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Why LSDV?",
+    "text": "Why LSDV?\n\nThis also makes clear another element of what’s happening! Just like with a categorical var, the line is moving up and down to meet the counties\nGraphically, de-meaning moves all the points together in the middle to draw a line, while LSDV moves the line up and down to meet the points"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#why-not-lsdv",
+    "href": "2023/weeks/week08/slides.html#why-not-lsdv",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Why Not LSDV?",
+    "text": "Why Not LSDV?\n\nLSDV is computationally expensive\nIf there are a lot of individuals, or big data, or if you have many sets of fixed effects (yes you can do more than just individual - we’ll get to that next time!), it can be very slow\nMost professionally made fixed-effects commands use de-meaning, but then adjust the standard errors properly\n(They also leave the fixed effects coefficients off the regression table by default)"
+  },
+  {
+    "objectID": "2023/weeks/week08/slides.html#concept-checks-2",
+    "href": "2023/weeks/week08/slides.html#concept-checks-2",
+    "title": "🗓️ Week 8  Within variation",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nWhy can’t we use individual-person fixed effects to study the impact of race on traffic stops?\nThe within \\(R^2\\) from is .3, and the overall \\(R^2\\) is .5. Interpret these two numbers in sentences\nIn a sentence, interpret the slope coefficient in the estimated model \\((Y_{it} - \\bar{Y}_i) = 1 + .5(X_{it} - \\bar{X}_i)\\) where \\(Y\\) is “school funding per child” and \\(X\\) is “population growth”, and \\(i\\) is city"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#bias-and-the-error-term",
+    "href": "2023/weeks/week07/slides.html#bias-and-the-error-term",
+    "title": "Binary Variables and Functional Form",
+    "section": "Bias and the Error Term",
+    "text": "Bias and the Error Term\n\nAll of the nice stuff we’ve gotten so far makes some assumptions about our true model\n\n\\[ Y = \\beta_0 + \\beta_1X + \\varepsilon \\]\n\nIn particular, we’ve made some assumptions about the error term \\(\\varepsilon\\)\nSo what is that error term exactly, and what are we assuming about it?"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#the-error-term",
+    "href": "2023/weeks/week07/slides.html#the-error-term",
+    "title": "Binary Variables and Functional Form",
+    "section": "The Error Term",
+    "text": "The Error Term\n\nThe error term contains everything that isn’t in our model\nIf \\(Y\\) were a pure function of \\(X\\), for example if \\(Y\\) was “height in feet” and \\(X\\) was “height in inches”, we wouldn’t have an error term, because a straight line fully describes the relationship perfectly with no variation\nBut in most cases, the line is a simplification - we’re leaving other stuff out! That’s in the error term"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#the-error-term-1",
+    "href": "2023/weeks/week07/slides.html#the-error-term-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "The Error Term",
+    "text": "The Error Term\n\nConsider this data generating process:\n\n\\[ ClassGrade = \\beta_0 + \\beta_1 StudyTime + \\varepsilon \\]\n\nSurely StudyTime isn’t the only thing that determines your ClassGrade\nEverything else is in the error term!\nProfessorLeniency, InterestInSubject, Intelligence, and so on and so on…"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#the-error-term-2",
+    "href": "2023/weeks/week07/slides.html#the-error-term-2",
+    "title": "Binary Variables and Functional Form",
+    "section": "The Error Term",
+    "text": "The Error Term\n\nIsn’t that really bad? We’re leaving out a bunch of important stuff!\nIf you want to predict \\(Y\\) as accurately as possible then we’re probably going to do a bad job of it\nBut if our real interest is *figuring out the relationship between \\(X\\) and \\(Y\\), then it’s fine to leave stuff out, as long as whatever’s left in the error term obeys a few important assumptions"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#error-term-assumptions",
+    "href": "2023/weeks/week07/slides.html#error-term-assumptions",
+    "title": "Binary Variables and Functional Form",
+    "section": "Error Term Assumptions",
+    "text": "Error Term Assumptions\n\nThe most important assumption about the error term is that it is unrelated to \\(X\\)\nIf \\(X\\) and \\(\\varepsilon\\) are correlated, \\(\\hat{\\beta}_1\\) will be biased - its distribution no longer has the true \\(\\beta_1\\) as its mean\nIn these cases we can say ” \\(X\\) is endogenous” or “we have omitted variable bias”\nNo amount of additional sample size will fix that problem!\n(what will fix the problem? We’ll get to that one later)"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#omitted-variable-bias",
+    "href": "2023/weeks/week07/slides.html#omitted-variable-bias",
+    "title": "Binary Variables and Functional Form",
+    "section": "Omitted Variable Bias",
+    "text": "Omitted Variable Bias\n\nWe can intuitively think about whether omitted variable bias is likely to make our estimates too high or too low\nThe sign of the bias will be the sign of the relationship between the omitted variable and \\(X\\), times the sign of the relationship between the omitted variable bias and \\(Y\\)\nInterestInSubject is positively related to both StudyTime and ClassGrade, and \\(+\\times+ = +\\), so our estimates are positively biased / too high\nMore precisely we have that the mean of the \\(\\hat{\\beta}_1\\) sampling distribution is \\[\\beta_1 + corr(X,\\varepsilon)\\frac{\\sigma_\\varepsilon}{\\sigma_X}\\]"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#thinking-through-this-bias",
+    "href": "2023/weeks/week07/slides.html#thinking-through-this-bias",
+    "title": "Binary Variables and Functional Form",
+    "section": "Thinking Through this Bias",
+    "text": "Thinking Through this Bias\n\nIf \\(Z\\) hangs around \\(X\\), but \\(Y\\) doesn’t know about it, then the coefficient on \\(X\\) will get all the credit for \\(Z\\)\nThis is a good way to keep that “direction of bias” problem in mind\nAnd you do want to keep it in mind! This is important for understanding general correlations you see in the wild, too\nAnd helps keep in line some things - for example, if \\(Z\\) is unrelated to \\(X\\), it won’t bias you!!"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#thinking-through-this-bias-1",
+    "href": "2023/weeks/week07/slides.html#thinking-through-this-bias-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Thinking Through this Bias",
+    "text": "Thinking Through this Bias\n\nThat means that when you’re thinking about the controls you need, that only includes things related to \\(X\\)\nAdding controls for things related to \\(Y\\) not \\(X\\) can make the model predict better and reduce standard errors, but won’t remove omitted variable bias"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#less-serious-error-concerns",
+    "href": "2023/weeks/week07/slides.html#less-serious-error-concerns",
+    "title": "Binary Variables and Functional Form",
+    "section": "Less Serious Error Concerns",
+    "text": "Less Serious Error Concerns\n\nOmitted variable bias can, well, bias us, which is very bad\nThere are some other assumptions that can fail that may also pose a problem to us but less so\nWe’ve assumed so far not just that \\(\\varepsilon\\) is unrelated to \\(X\\), but also that the variance of \\(\\varepsilon\\) is unrelated to \\(X\\), and that the \\(\\varepsilon\\)s are unrelated to each other\nIf these assumptions fail, our standard errors will be wrong, but we won’t be biased, and also there are ways to fix the standard errors\nWe will cover these only briefly, they’ll come back later"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#heteroskedasticity",
+    "href": "2023/weeks/week07/slides.html#heteroskedasticity",
+    "title": "Binary Variables and Functional Form",
+    "section": "Heteroskedasticity",
+    "text": "Heteroskedasticity\n\nIf the variance of the error term is different for different values of \\(X\\), then we have “heteroskedasticity”\nNotice in the below graph how the spread of the points around the line (the variance of the error term) is bigger on the right than the left"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#heteroskedasticity-1",
+    "href": "2023/weeks/week07/slides.html#heteroskedasticity-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Heteroskedasticity",
+    "text": "Heteroskedasticity\n\nWe can correct for this using heteroskedasticity-robust standard errors which sort of “squash down” the big variances and then re-estimate the standard errors\nWe can do this in feols with vcov = 'hetero' in R or with “robust” in STATA"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#correlated-errors",
+    "href": "2023/weeks/week07/slides.html#correlated-errors",
+    "title": "Binary Variables and Functional Form",
+    "section": "Correlated Errors",
+    "text": "Correlated Errors\n\nIf the error terms are correlated with each other, then our standard errors will also be wrong\nHow could this happen? For example, maybe you’ve surveyed a bunch of people in different towns - the error terms within a town might be clustered\nOr maybe you have time series data. If a term in the error term is “sticky” or has “momentum” it will likely be a similar error term a few time periods in a row, beign correlated across time, or autocorrelated\nAgain, this doesn’t bias \\(\\hat{\\beta}_1\\) but it can affect standard errors!"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#the-right-hand-side-1",
+    "href": "2023/weeks/week07/slides.html#the-right-hand-side-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "The Right Hand Side",
+    "text": "The Right Hand Side\nWe will look at three features of the right-hand side\n\nWhat if the variable is categorical or binary? (binary variables)\nWhat if the variable has a nonlinear effect on \\(Y\\) (polynomials and logarithms)\nWhat if the effect of one variable depends on the value of another variable? (interaction terms)"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#binary-data-1",
+    "href": "2023/weeks/week07/slides.html#binary-data-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Binary Data",
+    "text": "Binary Data\n\nA variable is binary if it only has two values - 0 or 1 (or “No” or “Yes”, etc.)\nBinary variables are super common in econometrics!\nDid you get the treatment? Yes / No\nDo you live in the US? Yes / No\nIs a floating exchange rate in effect? Yes / No"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#comparison-of-means",
+    "href": "2023/weeks/week07/slides.html#comparison-of-means",
+    "title": "Binary Variables and Functional Form",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means\n\nWhen a binary variable is an independent variable, what we are often interested in doing is comparing means\nIs mean income higher inside the US or outside?\nIs mean height higher for kids who got a nutrition supplement or those who didn’t?\nIs mean GDP growth higher with or without a floating exchange rate?"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#comparison-of-means-1",
+    "href": "2023/weeks/week07/slides.html#comparison-of-means-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means\n\nLet’s compare log earnings in 1993 between married people 30 or older vs. never-married people 30 or older\nSeems to be a slight favor to the married men\n\n\ndata(PSID, package = 'Ecdat')\nPSID &lt;- PSID %&gt;%\n  filter(age &gt;= 30, married %in% c('married','never married'), earnings &gt; 0) %&gt;%\n  mutate(married  = married == 'married')\nPSID %&gt;%\n  group_by(married) %&gt;%\n  summarize(log_earnings = mean(log(earnings)))\n\n# A tibble: 2 × 2\n  married log_earnings\n  &lt;lgl&gt;          &lt;dbl&gt;\n1 FALSE           9.26\n2 TRUE            9.47"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#comparison-of-means-2",
+    "href": "2023/weeks/week07/slides.html#comparison-of-means-2",
+    "title": "Binary Variables and Functional Form",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#comparison-of-means-3",
+    "href": "2023/weeks/week07/slides.html#comparison-of-means-3",
+    "title": "Binary Variables and Functional Form",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means\n\nThe difference between the means follows a t-distribution under the null that they’re identical\nSo of course we can do a hypothesis test of whether they’re different. But why bother trotting out a specific test when we can just do a regression?\n(In fact, a lot of specific tests can be replaced with basic regression, see this explainer)"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#comparison-of-means-4",
+    "href": "2023/weeks/week07/slides.html#comparison-of-means-4",
+    "title": "Binary Variables and Functional Form",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means\nNotice:\n\nThe intercept gives the mean for the non-married group\nThe coefficient on marriedTRUE gives the married minus non-married difference\ni.e. the coefficient on a binary variable in a regression gives the difference in means\nIf we’d defined it the other way, with “not married” as the independent variable, the intercept would be the mean for the married group (i.e. “not married = 0”), and the coefficient would be the exact same but times \\(-1\\) (same difference, just opposite direction!)"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#comparison-of-means-5",
+    "href": "2023/weeks/week07/slides.html#comparison-of-means-5",
+    "title": "Binary Variables and Functional Form",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means\nWhy does OLS give us a comparison of means when you give it a binary variable?\n\nThe only \\(X\\) values are 0 (FALSE) and 1 (TRUE)\nBecause of this, OLS no longer really fits a line, it’s more of two separate means\nAnd when you’re estimating to minimize the sum of squared errors separately for each group, can’t do any better than to predict the mean!\nSo you get the mean of each group as each group’s prediction"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#binary-with-controls",
+    "href": "2023/weeks/week07/slides.html#binary-with-controls",
+    "title": "Binary Variables and Functional Form",
+    "section": "Binary with Controls",
+    "text": "Binary with Controls\n\nObviously this is handy for including binary controls, but why do this for binary treatments? Because we can add controls!\n\n\n\n                feols(log(earning..\nDependent Var.:       log(earnings)\n                                   \nConstant          8.740*** (0.1478)\nmarriedTRUE      0.3404*** (0.0579)\nkids            -0.2259*** (0.0159)\nage              0.0223*** (0.0038)\n_______________ ___________________\nS.E. type                       IID\nObservations                  2,803\nR2                          0.07609\nAdj. R2                     0.07510\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#multicollinearity",
+    "href": "2023/weeks/week07/slides.html#multicollinearity",
+    "title": "Binary Variables and Functional Form",
+    "section": "Multicollinearity",
+    "text": "Multicollinearity\n\nWhy is just one side of it on the regression? Why aren’t “married” and “not married” BOTH included?\nBecause regression couldn’t give an answer!"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#multicollinearity-1",
+    "href": "2023/weeks/week07/slides.html#multicollinearity-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Multicollinearity",
+    "text": "Multicollinearity\n\nMean of married is \\(9.47\\) and of non-married is \\(9.26\\). \\[ \\log(Earnings) = 0 + 9.47Married + 9.26NonMarried \\] \\[ \\log(Earnings) = 3 + 6.47Married + 6.26NonMarried \\]\nThese (and infinitely many other options) all give the exact same predictions! OLS can’t pick between them. There’s no single best way to minimize squared residuals\nSo we pick one with convenient properties, setting one of the categories to have a coefficient of 0 (dropping it) and making the coefficient on the other the difference relative to the one we left out"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#more-than-two-categories-1",
+    "href": "2023/weeks/week07/slides.html#more-than-two-categories-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "More than Two Categories",
+    "text": "More than Two Categories\n\nThat interpretation - dropping one and making the other relative to that, conveniently extends to multi-category variables\nWhy stop at binary categorical variables? There are plenty of categorical variables with more than two values\nWhat is your education level? What is your religious denomination? What continent are you on?\nWe can put these in a regression by turning each value into its own binary variable\n(and then dropping one so the coefficients on the others give you the difference with the omitted one)"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#interpreting-ols-1",
+    "href": "2023/weeks/week07/slides.html#interpreting-ols-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interpreting OLS",
+    "text": "Interpreting OLS\n\nTo think more about the right-hand-side, let’s go back to our original interpretation of an OLS coefficient \\[ Y = \\beta_0 + \\beta_1X + \\varepsilon \\]\nA one-unit change in \\(X\\) is associated with a \\(\\beta_1\\)-unit change in \\(Y\\)\nThis logic still works with binary variables since “a one-unit change in \\(X\\)” means “changing \\(X\\) from No to Yes”\nNotice that this assumes that a one-unit change in \\(X\\) always has the same effect on \\(\\beta_1\\) no matter what else is going on\nWhat if that’s not true?"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#functional-form",
+    "href": "2023/weeks/week07/slides.html#functional-form",
+    "title": "Binary Variables and Functional Form",
+    "section": "Functional Form",
+    "text": "Functional Form\n\nWe talked before about times when a linear model like standard OLS might not be sufficient\nHowever, as long as those non-linearities are on the right hand side, we can fix the problem easily but just having \\(X\\) enter non-linearly! Run it through a transformation!\nThe most common transformations by far are polynomials and logarithms"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#functional-form-1",
+    "href": "2023/weeks/week07/slides.html#functional-form-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Functional Form",
+    "text": "Functional Form\n\nWhy do this? Because sometimes a straight line is clearly not going to do the trick!"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#polynomials-1",
+    "href": "2023/weeks/week07/slides.html#polynomials-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Polynomials",
+    "text": "Polynomials\n\n\\(\\beta_1X\\) is a “first order polynomial” - there’s one term\n\\(\\beta_1X + \\beta_2X^2\\) is a “second order polynomial” or a “quadratic” - two terms (note both included, it’s not just \\(X^2\\))\n\\(\\beta_1X + \\beta_2X^2 + \\beta_3X^3\\) is a third-order or cubic, etc."
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#polynomials-2",
+    "href": "2023/weeks/week07/slides.html#polynomials-2",
+    "title": "Binary Variables and Functional Form",
+    "section": "Polynomials",
+    "text": "Polynomials\nWhat do they do?\n\nThe more polynomial terms, the more flexible the line can be. With enough terms you can mimic any shape of relationship\nOf course, if you just add a whole buncha terms, it gets very noisy, and prediction out-of-sample gets very bad\nKeep it minimal - quadratics are almost always enough, unless you have reason to believe there’s a true more-complex relationship. You can try adding higher-order terms and see if they make a difference"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#polynomials-3",
+    "href": "2023/weeks/week07/slides.html#polynomials-3",
+    "title": "Binary Variables and Functional Form",
+    "section": "Polynomials",
+    "text": "Polynomials\n\nThe true relationship is quadratic"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#polynomials-4",
+    "href": "2023/weeks/week07/slides.html#polynomials-4",
+    "title": "Binary Variables and Functional Form",
+    "section": "Polynomials",
+    "text": "Polynomials\n\nHigher-order terms don’t do anything for us here (because a quadratic is sufficient!)"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#polynomials-5",
+    "href": "2023/weeks/week07/slides.html#polynomials-5",
+    "title": "Binary Variables and Functional Form",
+    "section": "Polynomials",
+    "text": "Polynomials\n\nInterpret polynomials using the derivative\n\\(\\partial Y/\\partial X\\) will be different depending on the value of \\(X\\) (as it should! Notice in the graph that the slope changes for different values of \\(X\\))\n\n\\[ Y = \\beta_1X + \\beta_2X^2 \\] \\[ \\partial Y/\\partial X = \\beta_1 + 2\\beta_2X \\]\nSo at \\(X = 0\\), the effect of a one-unit change in \\(X\\) is \\(\\beta_1\\). At \\(X = 1\\), it’s \\(\\beta_1 + \\beta_2\\). At \\(X = 5\\) it’s \\(\\beta_1 + 5\\beta_2\\)."
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#polynomials-6",
+    "href": "2023/weeks/week07/slides.html#polynomials-6",
+    "title": "Binary Variables and Functional Form",
+    "section": "Polynomials",
+    "text": "Polynomials\n\nIMPORTANT: when you have a polynomial, the coefficients on each individual term mean very little on their own. You have to consider them alongisde the other coefficients from the polynomial! Never interpret \\(\\beta_1\\) here without thinking about \\(\\beta_2\\) alongside. Also, the significance of the individual terms doesn’t really matter - consider doing an F-test of all of them at once."
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#concept-check",
+    "href": "2023/weeks/week07/slides.html#concept-check",
+    "title": "Binary Variables and Functional Form",
+    "section": "Concept Check",
+    "text": "Concept Check\n\nWhat’s the effect of a one-unit change in \\(X\\) at \\(X = 0\\), \\(X = 1\\), and \\(X = 2\\) for each of these?\n\n\n\n                feols(Y ~ X, dat.. feols(Y ~ X + I(.. feols(Y ~ X + I(...1\nDependent Var.:                  Y                  Y                    Y\n                                                                          \nConstant         7.285*** (0.5660)   -0.1295 (0.3839)      0.0759 (0.5091)\nX               -8.934*** (0.1953)   0.9779* (0.3831)      0.4542 (0.9331)\nX square                           -2.003*** (0.0752)   -1.738*** (0.4368)\nX cube                                                    -0.0354 (0.0574)\n_______________ __________________ __________________   __________________\nS.E. type                      IID                IID                  IID\nObservations                   200                200                  200\nR2                         0.91357            0.98122              0.98126\nAdj. R2                    0.91313            0.98103              0.98097\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#logarithms-1",
+    "href": "2023/weeks/week07/slides.html#logarithms-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Logarithms",
+    "text": "Logarithms\n\nAnother common transformation, both for dependent and independent variables, is to take the logarithm\nThis has the effect of pulling in extreme values from strongly right-skewed data and making linear relationships pop out\nIncome, for example, is almost always used with a logarithm\nIt also gives the coefficients a nice percentage-based interpretation"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#logarithms-2",
+    "href": "2023/weeks/week07/slides.html#logarithms-2",
+    "title": "Binary Variables and Functional Form",
+    "section": "Logarithms",
+    "text": "Logarithms"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#or-if-you-prefer",
+    "href": "2023/weeks/week07/slides.html#or-if-you-prefer",
+    "title": "Binary Variables and Functional Form",
+    "section": "Or if you prefer…",
+    "text": "Or if you prefer…\n\nNotice the change in axes"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#logarithms-3",
+    "href": "2023/weeks/week07/slides.html#logarithms-3",
+    "title": "Binary Variables and Functional Form",
+    "section": "Logarithms",
+    "text": "Logarithms\n\nHow can we interpret them?\nThe key is to remember that \\(\\log(X) + a \\approx \\log((1+a)X)\\), meaning that a \\(a\\)-unit change in \\(log(X)\\) is similar to a \\(a\\times100%\\) change in \\(X\\)\nSo, walk through our “one-unit change in the variable” logic from before, but whenever we hit a log, change that into a percentage!"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#logarithms-4",
+    "href": "2023/weeks/week07/slides.html#logarithms-4",
+    "title": "Binary Variables and Functional Form",
+    "section": "Logarithms",
+    "text": "Logarithms\n\n\\(Y = \\beta_0 + \\beta_1\\log(X)\\) A one-unit change in \\(\\log(X)\\), or a 100% change in \\(X\\), is associated with a \\(\\beta_1\\)-unit change in \\(Y\\)\n\\(\\log(Y) = \\beta_0 + \\beta_1X\\) a one-unit change in \\(X\\) is associated with a \\(\\beta_1\\times 100\\)% change in \\(Y\\)\n\\(\\log(Y) = \\beta_0 + \\beta_1\\log(X)\\) A one-unit change in \\(\\log(X)\\), or a or a 100% change in \\(X\\), is associated with a \\(\\beta_1\\)-unit change in \\(\\log(Y)\\), or a \\(\\beta_1\\times100\\)% change in \\(Y\\).\n(Try also with changes smaller than one unit - that’s usually more reasonable)"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#logarithms-5",
+    "href": "2023/weeks/week07/slides.html#logarithms-5",
+    "title": "Binary Variables and Functional Form",
+    "section": "Logarithms",
+    "text": "Logarithms\nDownsides:\n\nLogarithms require that all data be positive. No negatives or zeroes!\nFairly rare that a variable with negative values wants a log anyway\nBut zeroes are common! A common practice is to just do \\(log(X+1)\\) but this is pretty arbitrary"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#functional-form-2",
+    "href": "2023/weeks/week07/slides.html#functional-form-2",
+    "title": "Binary Variables and Functional Form",
+    "section": "Functional Form",
+    "text": "Functional Form\n\nIn general, you want the shape of your function to match the shape of the relationship in the data (or, even better, the true relationship)\nPolynomials and logs can usually get you there!\nWhich to use? Use logs for highly skewed data or variables with exponential relationships\nUse polynomials if it doesn’t look straight! Check that scatterplot and see how not-straight it is!"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#interactions",
+    "href": "2023/weeks/week07/slides.html#interactions",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interactions",
+    "text": "Interactions\n\nFor both polynomials and logarithms, the effect of a one-unit change in \\(X\\) differs depending on its current value (for logarithms, a 1-unit change in \\(X\\) is different percentage changes in \\(X\\) depending on current value)\nBut why stop there? Maybe the effect of \\(X\\) differs depending on the current value of other variables!\nEnter interaction terms!\n\n\\[ Y = \\beta_0 + \\beta_1X + \\beta_2Z + \\beta_3X\\times Z + \\varepsilon \\] - Interaction terms are a little tough but also extremely important."
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#interactions-1",
+    "href": "2023/weeks/week07/slides.html#interactions-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interactions",
+    "text": "Interactions\nExpect to come back to these slides, as you’re almost certainly going to use interaction terms in both our assessment and the dissertation"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#interactions-2",
+    "href": "2023/weeks/week07/slides.html#interactions-2",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interactions",
+    "text": "Interactions\n\nChange in the value of a control can shift a regression line up and down\nUsing the model \\(Y = \\beta_0 + \\beta_1X + \\beta_2Z\\), estimated as \\(Y = .01 + 1.2X + .95Z\\):"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#interactions-3",
+    "href": "2023/weeks/week07/slides.html#interactions-3",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interactions",
+    "text": "Interactions\n\nBut an interaction can both shift the line up and down AND change its slope\nUsing the model \\(Y = \\beta_0 + \\beta_1X + \\beta_2Z + \\beta_3X\\times Z\\), estimated as \\(Y = .035 + 1.14X + .94Z + 1.02X\\times Z\\):"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#interactions-4",
+    "href": "2023/weeks/week07/slides.html#interactions-4",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interactions",
+    "text": "Interactions\n\nHow can we interpret an interaction?\nThe idea is that the interaction shows how the effect of one variable changes as the value of the other changes\nThe derivative helps!\n\n\\[ Y = \\beta_0 + \\beta_1X + \\beta_2Z + \\beta_3X\\times Z \\] \\[ \\partial Y/\\partial X = \\beta_1 + \\beta_3 Z \\]\n\nThe effect of \\(X\\) is \\(\\beta_1\\) when \\(Z = 0\\), or \\(\\beta_1 + \\beta_3\\) when \\(Z = 1\\), or \\(\\beta_1 + 3\\beta_3\\) if \\(Z = 3\\)!"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#interactions-5",
+    "href": "2023/weeks/week07/slides.html#interactions-5",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interactions",
+    "text": "Interactions\n\nOften we are doing interactions with binary variables to see how an effect differs across groups\nNow, instead of the intercept giving the baseline and the binary coefficient giving the difference, the coefficient on \\(X\\) is the baseline effect of \\(X\\) and the interaction is the difference in the effect of \\(X\\)\nThe interaction coefficient becomes “the difference in the effect of \\(X\\) between the \\(Z\\) =”No” and \\(Z\\) = “Yes” groups”\n(What if it’s continuous? Mathematically the same but the thinking changes - the interaction term is the difference in the effect of \\(X\\) you get when increasing \\(Z\\) by one unit)"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#interactions-6",
+    "href": "2023/weeks/week07/slides.html#interactions-6",
+    "title": "Binary Variables and Functional Form",
+    "section": "Interactions",
+    "text": "Interactions\n\nMarriage for those without a college degree raises earnings by 24%. A college degree reduces the marriage premium by 25%. Marriage for those with a college degree reduces earnings by .24 - .25 = -1%\n\n\n\n                          feols(log(earnin..\nDependent Var.:                log(earnings)\n                                            \nConstant                   9.087*** (0.0583)\nmarriedTRUE               0.2381*** (0.0638)\ncollegeTRUE               0.8543*** (0.1255)\nmarriedTRUE x collegeTRUE  -0.2541. (0.1363)\n_________________________ __________________\nS.E. type                                IID\nObservations                           2,803\nR2                                   0.06253\nAdj. R2                              0.06153\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#notes-on-interactions",
+    "href": "2023/weeks/week07/slides.html#notes-on-interactions",
+    "title": "Binary Variables and Functional Form",
+    "section": "Notes on Interactions",
+    "text": "Notes on Interactions\n\nLike with polynomials, the coefficients on their own now have little meaning and must be evaluated alongside each other. \\(\\beta_1\\) by itself is just “the effect of \\(X\\) when \\(Z = 0\\)”, not “the effect of \\(X\\)”\nYes, you do almost always want to include both variables in un-interacted form and interacted form. Otherwise the interpretation gets very thorny"
+  },
+  {
+    "objectID": "2023/weeks/week07/slides.html#notes-on-interactions-1",
+    "href": "2023/weeks/week07/slides.html#notes-on-interactions-1",
+    "title": "Binary Variables and Functional Form",
+    "section": "Notes on Interactions",
+    "text": "Notes on Interactions\n\nInteraction effects are poorly powered. You need a lot of data to be able to tell whether an effect is different in two groups. If \\(N\\) observations is adequate power to see if the effect itself is different from zero, you need a sample of roughly \\(16\\times N\\) to see if the difference in effects is nonzero. Sixteen times!!\nIt’s tempting to try interacting your effect with everything to see if it’s bigger/smaller/nonzero in some groups, but because it’s poorly powered, this is a bad idea! You’ll get a lot of false positives"
   }
 ]
