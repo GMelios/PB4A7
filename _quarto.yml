@@ -15,6 +15,9 @@ project:
     - "2023/weeks/week07/*.qmd"
     - "2023/weeks/week08/*.qmd"
     - "2023/weeks/week09/*.qmd"
+    - "2023/weeks/week10/*.qmd"
+    - "2023/weeks/week11/*.qmd"
+    - "2023/weeks/week12/*.qmd"
     
 website:
   title: "PB4A7 - Quantitative Applications for Behavioural Science"
@@ -131,19 +134,25 @@ website:
               - href: 2023/weeks/week09/page1.qmd
                 text: 💻 Seminar Material
           - href: 2023/weeks/week10/page.qmd
-            text: Week 08
+            text: Week 10
             contents:
               - href: 2023/weeks/week10/page.qmd
                 text: 👨‍🏫 Lecture Material
               - href: 2023/weeks/week10/page1.qmd
                 text: 💻 Seminar Material
           - href: 2023/weeks/week11/page.qmd
-            text: Week 09
+            text: Week 11
             contents:
-              - href: 2023/weeks/week11/page.qmd
+              - href: 2023/weeks/week12/page.qmd
                 text: 👨‍🏫 Lecture Material
               - href: 2023/weeks/week11/page1.qmd
                 text: 💻 Seminar Material
+          - href: 2023/weeks/week12/page.qmd
+            text: Guest Lecture
+            contents:
+              - href: 2023/weeks/week12/page.qmd
+                text: 👨‍🏫 Lecture Material
+
 
   navbar:
     background: primary

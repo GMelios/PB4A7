@@ -12,8 +12,8 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Dr.&nbsp;George Melios">
-  <meta name="dcterms.date" content="18 September 2023">
-  <title>PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 9 Instrumental Variables</title>
+  <meta name="dcterms.date" content="20 November 2023">
+  <title>PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 9 Regression Discontinuity Designs</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -387,11 +387,9 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 9 Instrumental Variables">
-<meta property="og:description" content="PB4A7- Quantitative Applications for Behavioural Science">
+<meta property="og:title" content="PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 9 Regression Discontinuity Designs">
 <meta property="og:site-name" content="PB4A7 - Quantitative Applications for Behavioural Science">
-<meta name="twitter:title" content="PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 9 Instrumental Variables">
-<meta name="twitter:description" content="PB4A7- Quantitative Applications for Behavioural Science">
+<meta name="twitter:title" content="PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 9 Regression Discontinuity Designs">
 <meta name="twitter:creator" content="@georgemelios">
 <meta name="twitter:site" content="\www.georgemelios.com">
 <meta name="twitter:card" content="summary">
@@ -401,8 +399,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block">
-  <h1 class="title"><font style="font-size:1em;">🗓️ Week 9<br> Instrumental Variables</font></h1>
-  <p class="subtitle">PB4A7- Quantitative Applications for Behavioural Science</p>
+  <h1 class="title"><font style="font-size:1em;">🗓️ Week 9<br> Regression Discontinuity Designs</font></h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -415,573 +412,512 @@ Dr.&nbsp;<a href="#/">George Melios</a>
     </div>
 </div>
 
-  <p class="date">18 Sep 2023</p>
+  <p class="date">20 Nov 2023</p>
 </section><section id="TOC">
 <nav role="doc-toc"> 
-<h2 id="toc-title">What we will cover today:</h2>
+<h2 id="toc-title">The burpees of causal inference</h2>
 <ul>
-<li><a href="#/check-in" id="/toc-check-in">Check-in</a></li>
-<li><a href="#/isolating-front-doors" id="/toc-isolating-front-doors">Isolating Front Doors</a></li>
-<li><a href="#/experiments" id="/toc-experiments">Experiments</a></li>
-<li><a href="#/experiments-1" id="/toc-experiments-1">Experiments</a></li>
-<li><a href="#/natural-experiments" id="/toc-natural-experiments">Natural Experiments</a></li>
-<li><a href="#/intuitively" id="/toc-intuitively">Intuitively</a></li>
-<li><a href="#/graphically" id="/toc-graphically">Graphically</a></li>
-<li><a href="#/concept-checks" id="/toc-concept-checks">Concept Checks</a></li>
-<li><a href="#/relevance-and-validity" id="/toc-relevance-and-validity">Relevance and Validity</a></li>
-<li><a href="#/two-stage-least-squares" id="/toc-two-stage-least-squares">Two Stage Least Squares</a></li>
-<li><a href="#/two-stage-least-squares-1" id="/toc-two-stage-least-squares-1">Two Stage Least Squares</a></li>
-<li><a href="#/concept-checks-1" id="/toc-concept-checks-1">Concept Checks</a></li>
-<li><a href="#/the-good-and-the-bad" id="/toc-the-good-and-the-bad">The Good and the Bad</a></li>
-<li><a href="#/the-local-average-treatment-effect" id="/toc-the-local-average-treatment-effect">The Local Average Treatment Effect</a></li>
-<li><a href="#/the-local-average-treatment-effect-1" id="/toc-the-local-average-treatment-effect-1">The Local Average Treatment Effect</a></li>
-<li><a href="#/monotonicity" id="/toc-monotonicity">Monotonicity</a></li>
-<li><a href="#/small-sample-bias" id="/toc-small-sample-bias">Small-sample Bias</a></li>
-<li><a href="#/weak-instruments" id="/toc-weak-instruments">Weak Instruments</a></li>
-<li><a href="#/weak-instruments-1" id="/toc-weak-instruments-1">Weak Instruments</a></li>
-<li><a href="#/weak-instruments-2" id="/toc-weak-instruments-2">Weak Instruments</a></li>
-<li><a href="#/instruments-and-caution" id="/toc-instruments-and-caution">Instruments and Caution</a></li>
-<li><a href="#/instruments-and-caution-1" id="/toc-instruments-and-caution-1">Instruments and Caution</a></li>
-<li><a href="#/instruments-and-caution-2" id="/toc-instruments-and-caution-2">Instruments and Caution</a></li>
-<li><a href="#/instruments-and-caution-3" id="/toc-instruments-and-caution-3">Instruments and Caution</a></li>
-<li><a href="#/concept-checks-2" id="/toc-concept-checks-2">Concept Checks</a></li>
-<li><a href="#/other-things-about-iv" id="/toc-other-things-about-iv">Other Things about IV</a></li>
-<li><a href="#/multiple-instruments" id="/toc-multiple-instruments">Multiple Instruments</a></li>
-<li><a href="#/multiple-instruments-1" id="/toc-multiple-instruments-1">Multiple Instruments</a></li>
-<li><a href="#/overidentification-tests" id="/toc-overidentification-tests">Overidentification Tests</a></li>
-<li><a href="#/overidentification-tests-1" id="/toc-overidentification-tests-1">Overidentification Tests</a></li>
-<li><a href="#/overidentification-tests-2" id="/toc-overidentification-tests-2">Overidentification Tests</a></li>
-<li><a href="#/thats-it" id="/toc-thats-it">That’s it!</a></li>
+<li><a href="#/regression-discontinuity" id="/toc-regression-discontinuity">Regression Discontinuity</a></li>
+<li><a href="#/other-difficulties" id="/toc-other-difficulties">Other Difficulties</a></li>
+<li><a href="#/windows" id="/toc-windows">Windows</a></li>
+<li><a href="#/granular-running-variable" id="/toc-granular-running-variable">Granular Running Variable</a></li>
+<li><a href="#/looking-for-lumping" id="/toc-looking-for-lumping">Looking for Lumping</a></li>
 </ul>
 </nav>
 </section>
-<section>
-<section id="check-in" class="title-slide slide level1">
-<h1>Check-in</h1>
-<ul>
-<li>We’ve been talking about within variation and RDD, which are ways of controlling for stuff (and so solving endogeneity problems) without having to control for <em>everything</em> on all the back door paths</li>
-<li>They do this by finding a point in time at which only the treatment changes (DID) or finding a situation where nothing important changes over time (fixed effects)</li>
-<li>What if, instead of closing back doors by controlling for stuff (between variation), we instead <em>isolated just the exogenous part of the treatment</em>?</li>
-</ul>
-</section>
 <section class="slide level2">
 
-</section></section>
-<section>
-<section id="isolating-front-doors" class="title-slide slide level1">
-<h1>Isolating Front Doors</h1>
-<p>The idea is this:</p>
-<ul>
-<li>The treatment varies for all sorts of reasons</li>
-<li>Many of those reasons are endogenous. If you get treatment because you’re really rich, that wealth is likely going to be related to whatever outcome</li>
-<li><em>Some reasons are exogenous</em>. If you get treatment because it was accidentally given to you at random, that’s unrelated to outcome</li>
-<li>Those <em>exogenous reasons for treatment</em> we can call <em>instruments</em> and we can perform <em>instrumental variables</em> analysis (IV)</li>
-<li>If we use <em>just the part of treatment driven by the instruments</em>, then <em>that part of treatment is exogenous</em> and we can ignore all the back doors! We’re identified</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="experiments" class="title-slide slide level1">
-<h1>Experiments</h1>
-<ul>
-<li>If this sounds strange or implausible to you, we have an existing example ready to go</li>
-<li>Randomized experiments are conceptually <em>very</em> similar to the use of instruments</li>
-<li>Many endogenous reasons why people might get treatment. But the experiment’s randomization is an exogenous reason</li>
-</ul>
-
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-1-1.png" class="img-fluid r-stretch" width="768"></section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="experiments-1" class="title-slide slide level1">
-<h1>Experiments</h1>
-<ul>
-<li>The <em>only</em> difference between a randomized experiment and an instrument is that in randomized experiments, we control and impose the randomization</li>
-<li>In the case of instruments we must find that exogenous variation in treatment in the world</li>
-</ul>
-
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="img-fluid r-stretch" width="768"></section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="natural-experiments" class="title-slide slide level1">
-<h1>Natural Experiments</h1>
-<ul>
-<li>That’s why these are often referred to as “natural experiments” (although this is a broader term - DID and regression discontinuity are types of natural experiments too)</li>
-<li>That’s our goal though!</li>
-</ul>
-<ol type="1">
-<li>Find a source of exogenous variation in treatment</li>
-<li>Isolate just the part of treatment driven by <em>that exogenous variation</em></li>
-<li>Look at the relationship between <em>that part of treatment</em> and the outcome</li>
-<li>You’ve identified the effect!</li>
-</ol>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="intuitively" class="title-slide slide level1">
-<h1>Intuitively</h1>
-<ul>
-<li>This is sort of like the <em>opposite of controlling for <span class="math inline">\(Z\)</span> </em></li>
-<li>We look for what part of <span class="math inline">\(X1\)</span> is explained by <span class="math inline">\(Z\)</span></li>
-<li>But instead of <em>removing</em> that variation by controlling for <span class="math inline">\(Z\)</span>…</li>
-<li>We <em>keep</em> that variation, and <em>remove all other variation in <span class="math inline">\(X1\)</span> </em></li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="graphically" class="title-slide slide level1">
-<h1>Graphically</h1>
-
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.gif" class="img-fluid r-stretch"></section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="concept-checks" class="title-slide slide level1">
-<h1>Concept Checks</h1>
-<ul>
-<li>Why is it important to partition the sources of variation in treatment into exogenous and endogenous? Why not do that with the outcome instead?</li>
-<li>What does it mean to say that we treat an instrument like the opposite of a control variable, and how do we do that?</li>
-<li>In the animation on the previous slide, why does it draw a straight line between the two points and measure its slope? What does that give us?</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="relevance-and-validity" class="title-slide slide level1">
-<h1>Relevance and Validity</h1>
-<p>For this to work, we need two things to hold:</p>
-<ul>
-<li><strong>Relevance</strong>: the instrument must be a <em>strong predictor</em> of the treatment. It can’t be trivial or unimportant (or else what variation are you really isolating? You’ve got nothing to go on!)</li>
-<li><strong>Validity</strong>: the instrument must actually be <em>exogenous</em>! (Or at least exogenous after adding controls). The endogeniety problem doesn’t <em>go away</em> with IV, it’s just shifted from the treatment variable to the instrument</li>
-</ul>
-<p>Now, let’s keep these assumptions in mind as we move, and think about how we can actually carry this out</p>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="two-stage-least-squares" class="title-slide slide level1">
-<h1>Two Stage Least Squares</h1>
-<p>So our goal is to: (1) use the instrument to predict treatment, and then (2) use that predicted treatment to predict the outcome!</p>
-<p>We need a separate equation for each of those steps</p>
-<p>“First stage”: predict treatment <span class="math inline">\(X_1\)</span> with the instrument <span class="math inline">\(Z\)</span>, perhaps also a control <span class="math inline">\(X_2\)</span>.</p>
-<p><span class="math display">\[X_1 = \gamma_0 + \gamma_1Z + \gamma_2X_2 + \nu\]</span></p>
-<p>Then, use that equation to predict <span class="math inline">\(X_1\)</span>, getting <span class="math inline">\(\hat{X_1}\)</span>. Then, use those predictions to predict <span class="math inline">\(Y\)</span> in the “second stage”</p>
-<p><span class="math display">\[Y = \beta_0 + \beta_1\hat{X_1} + \beta_2X_2 + \varepsilon\]</span></p>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="two-stage-least-squares-1" class="title-slide slide level1">
-<h1>Two Stage Least Squares</h1>
-<ul>
-<li>In general we don’t actually carry out this process ourselves because it will get the standard errors wrong (they need to be adjusted for the fact that <span class="math inline">\(\hat{X}_1\)</span> is estimated)</li>
-<li>But this shows what we’re doing - we’re isolating just the variation in treatment that is explained by the instrument</li>
-<li><span class="math inline">\(\hat{X}_1\)</span> contains <em>only</em> variation driven by <span class="math inline">\(Z\)</span></li>
-<li>So if <span class="math inline">\(Z\)</span> is exogenous after controlling for <span class="math inline">\(X_2\)</span>, then so is <span class="math inline">\(\hat{X}_1\)</span></li>
-<li>And <span class="math inline">\(\hat{\beta}_1\)</span> will be identified</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="concept-checks-1" class="title-slide slide level1">
-<h1>Concept Checks</h1>
-<ul>
-<li>Why do you think that doing 2SLS by hand would make the standard errors be wrong?</li>
-<li>Intuitively, why would using Z-predicted values of X in predicting Y give us the causal effect if Z is a valid instrument?</li>
-<li>Why do we include the control variables in both the first and second stages?</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="the-good-and-the-bad" class="title-slide slide level1">
-<h1>The Good and the Bad</h1>
-<p>What is good and bad about this whole process?</p>
-<p>The Good:</p>
-<ul>
-<li>Causal identification!</li>
-<li>Fairly easy to do</li>
-<li>Intuitive - just like a randomized experiment, but in the wild</li>
-</ul>
-<p>The Bad (we’ll go into these in detail)</p>
-<ul>
-<li>We get a local average treatment effect (LATE)</li>
-<li>Monotonicity</li>
-<li>Small-sample bias</li>
-<li>Instruments can’t be weak</li>
-<li>Good and believable instruments are <em>really hard to find</em></li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="the-local-average-treatment-effect" class="title-slide slide level1">
-<h1>The Local Average Treatment Effect</h1>
-<ul>
-<li>IV only allows variation in the treatment <em>that is driven by the instrument</em> - that’s the whole point</li>
-<li>This also means that we can only see the effect <em>among people for whom the instrument drives their treatment</em></li>
-<li>If a treatment improves <em>your</em> outcome by 2, but <em>my</em> outcome by only 1, and the instrument has a <em>big effect</em> on whether you get treatment, but only a <em>little effect</em> on me, then our IV estimate will be a lot closer to 2 than to 1</li>
-<li>This is a “local average treatment effect” - our estimate is <em>local</em> to people who are affected by the instrument (and even <em>more</em> local to those affected more heavily than others)</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="the-local-average-treatment-effect-1" class="title-slide slide level1">
-<h1>The Local Average Treatment Effect</h1>
-<ul>
-<li>So?</li>
-<li>This does mean that the IV estimate won’t be representative of <em>everyone’s</em> effect</li>
-<li>Or even of <em>the people who actually were treated</em></li>
-<li>It might be less informative about <em>what would happen if we treated more people</em> than if we did an actual experiment</li>
-<li>But we might have to live with that to be able to use the cleaner identification</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="monotonicity" class="title-slide slide level1">
-<h1>Monotonicity</h1>
-<ul>
-<li>Also, think about that - we weight people by how strongly they’re affected by the instrument</li>
-<li>What if someone is affected by the instrument <em>in an opposite direction</em> to everyone else? This would be a violation of <em>monotonicity</em></li>
-<li>Then, they would get a <em>negative weight</em> and our estimate doesn’t make much sense any more!</li>
-<li>So we need to assume that everyone is either <em>unaffected</em> by the instrument, or <em>affected in the exact same direction as everyone else</em></li>
-<li>When might this not be true? For example, say we’re using rainfall as an instrument for agricultural productivity</li>
-<li>Rain might help in dry areas, but make things worse in already-too-wet areas. The instrument would help productivity some places and hurt it in others</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="small-sample-bias" class="title-slide slide level1">
-<h1>Small-sample Bias</h1>
-<ul>
-<li>IV is actually a <em>biased</em> estimator!</li>
-<li>The mean of its sampling distribution is <em>not</em> the population parameter!</li>
-<li>Or rather, it <em>would be</em> the population parameter at infinite sample size, but we don’t have that</li>
-<li>In small samples, the bias of IV is</li>
-</ul>
-<p><span class="math display">\[\frac{corr(Z,\varepsilon)}{corr(Z,X_1)}\frac{\sigma_\varepsilon}{\sigma_{X_1}}\]</span></p>
-<ul>
-<li>If <span class="math inline">\(Z\)</span> is valid, then in infinite samples <span class="math inline">\(corr(Z,\varepsilon)=0\)</span> and this goes away. But in a non-infinite sample, it will be nonzero by chance, inducing some bias. The smaller the sample, the more likely we are to get a large value by random chance</li>
-<li>The bias is smaller the stronger the relationship between <span class="math inline">\(Z\)</span> and <span class="math inline">\(X_1\)</span>, the smaller the sum of squared errors, and the bigger the variation in <span class="math inline">\(X_1\)</span></li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="weak-instruments" class="title-slide slide level1">
-<h1>Weak Instruments</h1>
-<ul>
-<li>This means we probably shouldn’t be using IV in small samples</li>
-<li>This also means that it’s really important that <span class="math inline">\(corr(Z,X_1)\)</span> isn’t small!</li>
-<li>If <span class="math inline">\(Z\)</span> has only a trivial effect on <span class="math inline">\(X_1\)</span>, then it’s not <em>relevant</em> - even if it’s truly exogenous, it doesn’t matter because there’s no variation in <span class="math inline">\(X_1\)</span> we can isolate with it</li>
-<li>And our small-sample bias will be big! (imagine the term in the previous slide if <span class="math inline">\(corr(Z,X_1) = .00001\)</span> !)</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="weak-instruments-1" class="title-slide slide level1">
-<h1>Weak Instruments</h1>
-<ul>
-<li>There are some rules of thumb for how strong an instrument must be to be counted as “not weak”</li>
-<li>A t-statistic above 3, or an F statistic from a joint test of the instruments that is 10 or above</li>
-<li>These rules of thumb aren’t great - selecting a model on the basis of significance naturally biases your results. But people do use them a lot so you should be aware</li>
-<li>What you really want is to know the <em>population</em> effect of <span class="math inline">\(Z\)</span> on <span class="math inline">\(X1\)</span> - you want the F-statistic from <em>that</em> to be 10+. Of course we don’t actually know that.</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="weak-instruments-2" class="title-slide slide level1">
-<h1>Weak Instruments</h1>
-<ul>
-<li>Whatever we feel about the rules-of-thumb, they’re quite common</li>
-<li>So much so that you get it by default when looking at <code>feols()</code> IV output</li>
-</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>iv <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y <span class="sc">~</span> X2 <span class="sc">|</span> X1 <span class="sc">~</span> Z, <span class="at">data =</span> df, <span class="at">se =</span> <span class="st">'hetero'</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>iv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<style type="text/css">
+pre {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+pre[class] {
+  max-height: 100px;
+}
+</style>
+</div>
+</section>
+<section id="check-in" class="slide level2">
+<h2>Check-in</h2>
+<ul>
+<li>We’re thinking through ways that we can identify the effect of interest without having to control for everything</li>
+<li>One way is by focusing on <em>within variation</em> - if all the endogeneity can be controlled for or only varies between-individuals, we can just focus on within variation to identify it</li>
+<li>Pro: control for a bunch of stuff</li>
+<li>Con: washes out a lot of variation! Result can be noisier if there’s not much within-variation to work with</li>
+<li>Also, this requires no endogenous variation over time</li>
+<li>That might be a tricky assumption! Often there are plenty of back doors that shift over time</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section>
+<section>
+<section id="regression-discontinuity" class="title-slide slide level1">
+<h1>Regression Discontinuity</h1>
+<ul>
+<li>Today we are going to talk about Regression discontinuity design (RDD)</li>
+<li>RDD is currently the darling of the econometric world for estimating causal effects without running an experiment</li>
+<li>It doesn’t apply everywhere, but when it does, it’s very easy to buy the identification assumptions</li>
+<li>Not that it doesn’t have its own issues, of course, but it’s pretty good!</li>
+</ul>
+</section>
+<section id="regression-discontinuity-1" class="slide level2">
+<h2>Regression Discontinuity</h2>
+<p>The basic idea is this:</p>
+<ul>
+<li>We look for a treatment that is assigned on the basis of being above/below a <em>cutoff value</em> of a continuous variable</li>
+<li>For example, if you get above a certain test score they let you into a “gifted and talented” program</li>
+<li>Or if you are just on one side of a time zone line, your day starts one hour earlier/later</li>
+<li>Or if a candidate gets 50.1% of the vote they’re in, 40.9% and they’re out</li>
+<li>Or if you’re 65 years old you get Medicaid, if you’re 64.99 years old you don’t</li>
+</ul>
+<p>We call these continuous variables “Running variables” because we <em>run along them</em> until we hit the cutoff</p>
+</section>
+<section id="regression-discontinuity-2" class="slide level2">
+<h2>Regression Discontinuity</h2>
+<ul>
+<li>But wait, hold on, if treatment is driven by running variables, won’t we have a back door going through those very same running variables?? Yes!</li>
+<li>And we can’t just control for RunningVar because that’s where all the variation in treatment comes from. Uh oh!</li>
+</ul>
+</section>
+<section class="slide level2">
+
+
+<img data-src="slides_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="regression-discontinuity-3" class="slide level2">
+<h2>Regression Discontinuity</h2>
+<ul>
+<li>The key here is realizing that the running variable affects treatment <em>only when you go across the cutoff</em></li>
+<li>So really the diagram looks like this!</li>
+</ul>
+</section>
+<section class="slide level2">
+
+
+<img data-src="slides_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="regression-discontinuity-4" class="slide level2">
+<h2>Regression Discontinuity</h2>
+<ul>
+<li>So what does this mean?</li>
+<li>If we can control for the running variable <em>everywhere except the cutoff</em>, then…</li>
+<li>We will be controlling for the running variable, closing that back door</li>
+<li>But leaving variation at the cutoff open, allowing for variation in treatment</li>
+<li>We focus on just the variation around the treatment, narrowing the range of the running variable we use so sharply that it’s basically controlled for. Then the effect of cutoff on treatment is like an experiment!</li>
+</ul>
+</section>
+<section id="regression-discontinuity-5" class="slide level2">
+<h2>Regression Discontinuity</h2>
+<ul>
+<li>Basically, the idea is that <em>right around the cutoff</em>, treatment is randomly assigned</li>
+<li>If you have a test score of 89.9 (not high enough for gifted-and-talented), you’re basically the same as someone who has a test score of 90.0 (just barely high enough)</li>
+<li>So if we just focus around the cutoff, we close any back doors because it’s basically random which side of the line you’re on</li>
+<li>But we get variation in treatment!</li>
+<li>This specifically gives us the effect of treatment <em>for people who are right around the cutoff</em> a.k.a. a “local average treatment effect” (we still won’t know the effect of being put in gifted-and-talented for someone who gets a 30)</li>
+</ul>
+</section>
+<section id="regression-discontinuity-6" class="slide level2">
+<h2>Regression Discontinuity</h2>
+<ul>
+<li>A very basic idea of this, before we even get to regression, is to create a <em>binned chart</em></li>
+<li>And see how the bin values jump at the cutoff</li>
+<li>A binned chart chops the Y-axis up into bins</li>
+<li>Then takes the average Y value within that bin. That’s it!</li>
+<li>Then, we look at how those X bins relate to the Y binned values.</li>
+<li>If it looks like a pretty normal, continuous relationship… then JUMPS UP at the cutoff X-axis value, that tells us that the treatment itself must be doing something!</li>
+</ul>
+</section>
+<section id="regression-discontinuity-7" class="slide level2">
+<h2>Regression Discontinuity</h2>
+
+<img data-src="slides_files/figure-html/unnamed-chunk-4-1.gif" class="img-fluid r-stretch"></section>
+<section id="concept-checks" class="slide level2">
+<h2>Concept Checks</h2>
+<ul>
+<li>Why is it important that we look as norrowly as possible around the cutoff? What does this get us over comparing the entire treated and untreated groups?</li>
+<li>Can you think of an example of a treatment that is assigned at least partially on a cutoff?</li>
+<li>Why can’t we just control for the running variable as we normally would to solve the endogeneity problem?</li>
+</ul>
+</section>
+<section id="fitting-lines-in-rdd" class="slide level2">
+<h2>Fitting Lines in RDD</h2>
+<ul>
+<li>Looking purely just at the cutoff and making no use of the space <em>away</em> from the cutoff throws out a lot of useful information</li>
+<li>We know that the running variable is related to outcome, so we can probably improve our <em>prediction</em> of what the value on either side of the cutoff should be if we <em>use data away from the cutoff to help with prediction</em> than if we <em>just use data near the cutoff</em>, which is what that animation does</li>
+<li>We can do this with good ol’ OLS.</li>
+<li>The bin plot we did can help us pick a functional form for the slope</li>
+</ul>
+</section>
+<section id="fitting-lines-in-rdd-1" class="slide level2">
+<h2>Fitting Lines in RDD</h2>
+<ul>
+<li>To be clear, producing the line(s) below is our goal. How can we do it?</li>
+<li>The true model I’ve made is an RDD effect of .7, with a slope of 1 to the left of the cutoff and a slope of 1.5 to the right</li>
+</ul>
+</section>
+<section class="slide level2">
+
+
+<img data-src="slides_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="regression-in-rdd" class="slide level2">
+<h2>Regression in RDD</h2>
+<ul>
+<li>First, we need to <em>transform our data</em></li>
+<li>We need a “Treated” variable that’s <code>TRUE</code> when treatment is applied - above or below the cutoff</li>
+<li>Then, we are going to want a bunch of things to change at the cutoff. This will be easier if the running variable is <em>centered around the cutoff</em>. So we’ll turn our running variable <span class="math inline">\(X\)</span> into <span class="math inline">\(X - cutoff\)</span> and call that <span class="math inline">\(XCentered\)</span></li>
+</ul>
+</section>
+<section id="varying-slope" class="slide level2">
+<h2>Varying Slope</h2>
+<ul>
+<li>Typically, you will want to let the slope vary to either side</li>
+<li>In effect, we are fitting an entirely different regression line on each side of the cutoff</li>
+<li>We can do this by interacting both slope and intercept with <span class="math inline">\(treated\)</span>!</li>
+<li>Coefficient on Treated is how the intercept jumps - that’s our RDD effect. Coefficient on the interaction is how the slope changes</li>
+</ul>
+<p><span class="math display">\[Y = \beta_0 + \beta_1Treated + \beta_2XCentered + \beta_3Treated\times XCentered + \varepsilon\]</span></p>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>TSLS estimation, Dep. Var.: Y, Endo.: X1, Instr.: Z
-Second stage: Dep. Var.: Y
-Observations: 200 
-Standard-errors: Heteroskedasticity-robust 
-             Estimate Std. Error   t value  Pr(&gt;|t|)    
-(Intercept)  3.697702   0.166064 22.266665 &lt; 2.2e-16 ***
-fit_X1       0.553733   0.392039  1.412446   0.15940    
-X2          -0.022595   0.152040 -0.148612   0.88201    
+<pre><code>OLS estimation, Dep. Var.: Y
+Observations: 1,000 
+Standard-errors: IID 
+                        Estimate Std. Error   t value   Pr(&gt;|t|)    
+(Intercept)            -0.011133   0.025999 -0.428225 0.66857986    
+treatedTRUE             0.746688   0.037577 19.870777  &lt; 2.2e-16 ***
+X_centered              0.982500   0.090666 10.836522  &lt; 2.2e-16 ***
+treatedTRUE:X_centered  0.446961   0.129613  3.448417 0.00058748 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-RMSE: 1.94425   Adj. R2: -0.019456
-F-test (1st stage), X1: stat = 346.4    , p &lt; 2.2e-16 , on 1 and 197 DoF.
-            Wu-Hausman: stat =   3.61357, p = 0.058777, on 1 and 196 DoF.</code></pre>
+RMSE: 0.296605   Adj. R2: 0.847229</code></pre>
 </div>
 </div>
+</section>
+<section id="varying-slope-1" class="slide level2">
+<h2>Varying Slope</h2>
+<p>(as an aside, sometimes the effect of interest is the interaction term - the change in slope! This answers the question “does the effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span> change at the cutoff? This is called a”regression kink” design. We won’t go more into it here, but it is out there!)</p>
+</section>
+<section id="polynomial-terms" class="slide level2">
+<h2>Polynomial Terms</h2>
 <ul>
-<li>346.43 is way above 10! We’re probably fine in this particular regression</li>
+<li>We don’t need to stop at linear slopes!</li>
+<li>Just like we brought in our knowledge of binary and interaction terms to understand the linear slope change, we can bring in polynomials too. Add a square maybe!</li>
+<li>Don’t get too wild with cubes, quartics, etc. - polynomials tend to be at their “weirdest” near the edges, and we don’t want super-weird predictions right at the cutoff. It could give us a mistaken result!</li>
+<li>A square term should be enough</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="instruments-and-caution" class="title-slide slide level1">
-<h1>Instruments and Caution</h1>
+<section id="polynomial-terms-1" class="slide level2">
+<h2>Polynomial Terms</h2>
 <ul>
-<li>Good IVs are <em>really hard to find</em></li>
-<li>Claiming the IV is exogenous (even after adding controls) is the <em>same difficult problem</em> when we’re doing it for the IV as when we’re doing it for the treatment</li>
-<li>We’ve just shifted the claim to a variable it’s more likely to be true for</li>
-<li>And this is social science, where <em>everything is related to everything else</em>. So why isn’t your instrument part of that?</li>
+<li>How do we do this? Interactions again. Take <em>any</em> regression equation…</li>
 </ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="instruments-and-caution-1" class="title-slide slide level1">
-<h1>Instruments and Caution</h1>
+<p><span class="math display">\[Y = \beta_0 + \beta_1X + \beta_2X^2 + \varepsilon\]</span></p>
 <ul>
-<li>Let’s take rainfall as an example</li>
-<li>For a long time, developmental economists would use rainfall as an instrument for agricultural productivity</li>
-<li>Controlling for location, variation the exact amount of rainfall from year to year is basically random, right?</li>
-<li>Making it a good instrument so we can see the effect of agricultural productivity on other stuff</li>
-<li>Except that rainfall also affects all other sorts of stuff (like what kind of transportation people take)</li>
-<li>Also the monotonicity thing we talked about</li>
-<li>And <em>my</em> rainfall is correlated with my <em>neighbor’s</em> rainfall</li>
-<li>Also, wait a minute… other people use rainfall as an instrument for warfare! If it’s relevant for warfare, doesn’t that make it invalid for agriculture (and vice versa)?</li>
-<li>And other things</li>
+<li>And just center the <span class="math inline">\(X\)</span> (let’s call it <span class="math inline">\(XC\)</span>, add on a set of the same terms multiplied by <span class="math inline">\(Treated\)</span> (don’t forget <span class="math inline">\(Treated\)</span> by itself - that’s <span class="math inline">\(Treated\)</span> times the interaction!)</li>
 </ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="instruments-and-caution-2" class="title-slide slide level1">
-<h1>Instruments and Caution</h1>
+<p><span class="math display">\[Y = \beta_0 + \beta_1XC + \beta_2XC^2 + \beta_3Treated + \beta_4Treated\times XC + \beta_5Treated\times XC^2 + \varepsilon\]</span></p>
 <ul>
-<li>So rainfall isn’t seen as a great instrument any more</li>
-<li>In fact, lots of clever instruments that used to be thought of as good aren’t acceptable now due to similar problems - parental education as an instrument for your own, distance-you-live-from-a-college as an instrument on going-to-college, quarter of birth on education…</li>
-<li>No wonder we’re so skeptical of cool-looking instruments now!</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="instruments-and-caution-3" class="title-slide slide level1">
-<h1>Instruments and Caution</h1>
-<ul>
-<li>Acceptable instruments these days fall into one of a few categories:</li>
-</ul>
-<ol type="1">
-<li>Actual literal randomization (like in a randomized experiment with imperfect compliance - see the Experiments module. Or similarly, fuzzy regression discontinuity - see the Regression Discontinuity module)</li>
-<li>Variables that are truly from outside the system and unrelated to anything social-sciency, like mistakes or computer glitches (for example, job interview scores for teachers were added incorrectly, as an instrument for progressing through the interview - Goldhaber, Grout, &amp; Huntington-Klein 2017)</li>
-<li>Variables you’d be really surprised to find out are relevant but just happen to be - and when you look into it there’s a good reason it’s relevant</li>
-</ol>
-<ul>
-<li>If you want to do IV, <strong>learn a lot a lot a lot of context</strong> so you can know <strong>really well</strong> how the IV fits into the data-generating process. You should be an expert on the topic you’re using IV in. Otherwise, how can you know it’s valid?</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="concept-checks-2" class="title-slide slide level1">
-<h1>Concept Checks</h1>
-<ul>
-<li>Give an example where a local average treatment effect might give a very different answer from the average treatment effect</li>
-<li>Why will a violation of monotonicity make our estimate meaningless? Hint: think about the local average treatment effect</li>
-<li>Why would it be a problem for validity if the same instrument can be used for multiple different treatments?</li>
-<li>Why would we be suspicious of any instrument that “makes sense” as a determinant of treatment?</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="other-things-about-iv" class="title-slide slide level1">
-<h1>Other Things about IV</h1>
-<ul>
-<li>Ok, enough of the scare tactics! Just be very aware of these problems</li>
-<li>What other neat things can we do with IV?</li>
-</ul>
-<p>Well,</p>
-<ul>
-<li>We can use <em>multiple</em> instruments, not just one</li>
-<li>(We could have multiple endogenous variables too, but we won’t cover that right now)</li>
-<li>We can use IV to solve <em>measurement issues</em> rather than endogeneity issues</li>
-<li>We can use IV to break <em>simultaneous causality</em></li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="multiple-instruments" class="title-slide slide level1">
-<h1>Multiple Instruments</h1>
-<ul>
-<li>How do we use more than one instrument for a single endogenous variable?</li>
-<li>Easy! Just add it to our prediction equation</li>
-</ul>
-<p><span class="math display">\[X_1 = \gamma_0 + \gamma_1Z_1 + \gamma_2Z_2 + \gamma_3X_2 + \nu\]</span></p>
-<p><span class="math display">\[Y = \beta_0 + \beta_1\hat{X_1} + \beta_2X_2 + \varepsilon\]</span></p>
-<p>or in R, <code>feols(Y ~ X2 | X1 ~ Z1 + Z2 + X2, data = df)</code></p>
-<p>(we can add as many instruments as we want as long as we have valid ones! Some modern methods use <em>hundreds</em> of instruments and use machine learning to pick between them)</p>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="multiple-instruments-1" class="title-slide slide level1">
-<h1>Multiple Instruments</h1>
-<p>Why would we do this?</p>
-<ul>
-<li>It can improve the fit and prediction of <span class="math inline">\(\hat{X}_1\)</span> which can reduce our weak-instrument problems</li>
-<li>It changes what is estimated slightly - we still get a local average treatment effect, but now we get a weighted average of the local average treatment effects for each instrument, perhaps bringing in the effects for more people or weighting people more evenly; maybe that’s a thing we want</li>
-<li>We can perform an overidentification test to get a better sense of validity</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="overidentification-tests" class="title-slide slide level1">
-<h1>Overidentification Tests</h1>
-<ul>
-<li>“Overidentification” just means we have more identifying conditions (validity assumptions) than we actually need. We only need one instrument, but we have two! (or more)</li>
-<li>So we can compare what we get using each instrument individually</li>
-<li>If we assume that <em>at least one of them is valid</em>, and they both produce similar results, then that’s evidence that <em>both</em> are valid</li>
-<li>Like using one clock to set the time on another clock</li>
-<li>If they’re dissimilar, then <em>one</em> of them is likely invalid, but we don’t know which one - we just know they’re different</li>
-<li>(also maybe they’re just producing different local average treatment effects, but let’s not use that copout!)</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="overidentification-tests-1" class="title-slide slide level1">
-<h1>Overidentification Tests</h1>
-<ul>
-<li>We can do this using <code>fitstat()</code> in <strong>fixest</strong></li>
+<li>The coefficient on <span class="math inline">\(Treated\)</span> remains our “jump at the cutoff” - our RDD estimate!</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Create data where Z1 is valid and Z2 is invalid</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">Z1 =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>), <span class="at">Z2 =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">mutate</span>(<span class="at">X =</span> Z1 <span class="sc">+</span> Z2 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>  <span class="co"># True effect is 1</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">mutate</span>(<span class="at">Y =</span> X <span class="sc">+</span> Z2 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>))</span>
-<span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a>iv <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> X <span class="sc">~</span> Z1 <span class="sc">+</span> Z2, <span class="at">data =</span> df, <span class="at">se =</span> <span class="st">'hetero'</span>)</span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="fu">fitstat</span>(iv, <span class="st">'sargan'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Sargan: stat = 267.8, p &lt; 2.2e-16, on 1 DoF.</code></pre>
+<pre><code>                              feols(Y ~ X_cent..
+Dependent Var.:                                Y
+                                                
+Constant                        -0.0340 (0.0385)
+X_centered                      0.6990. (0.3641)
+treatedTRUE                   0.7677*** (0.0577)
+X_centered square               -0.5722 (0.7117)
+X_centered x treatedTRUE         0.7509 (0.5359)
+treatedTRUE x I(X_centered^2)     0.5319 (1.034)
+_____________________________ __________________
+S.E. type                                    IID
+Observations                               1,000
+R2                                       0.84779
+Adj. R2                                  0.84702
+---
+Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
+</section>
+<section id="concept-checks-1" class="slide level2">
+<h2>Concept Checks</h2>
 <ul>
-<li>That’s a small p-value! We can reject that the results are similar for each IV, telling us that one is endogenous (although without seeing the actual data generating process we couldn’t guess if it were <span class="math inline">\(Z1\)</span> or <span class="math inline">\(Z2\)</span> )</li>
+<li>Would the coefficient on <span class="math inline">\(Treated\)</span> still be the regression discontinuity effect estimate if we hadn’t centered <span class="math inline">\(X\)</span>? Why or why not?</li>
+<li>Why might we want to use a polynomial term in our RDD model?</li>
+<li>What relationship are we assuming between the outcome variable and the running variable if we choose not to include <span class="math inline">\(XCentered\)</span> in our model at all (i.e.&nbsp;a “zero-order polynomial”)</li>
+</ul>
+</section>
+<section id="assumptions" class="slide level2">
+<h2>Assumptions</h2>
+<ul>
+<li>We knew there must be some assumptions lurking around here</li>
+<li>Some are more obvious (we should be using the correct functional form)</li>
+<li>Others are trickier. What are we assuming about the error term and endogeneity here?</li>
+<li>Specifically, we are assuming that <em>the only thing jumping at the cutoff is treatment</em></li>
+<li>Sort of like parallel trends, but maybe more believable since we’ve narrowed in so far</li>
+<li>For example, if having an income below 150% of the poverty line gets you access to food stamps AND to job training, then we can’t really use that cutoff to get the effect of just food stamps</li>
+<li>Or if the proportion of people who are self-employed jumps up just below 150% (based on <em>reported</em> income), that’s a back door too!</li>
+<li>The only thing different about just above/just below should be treatment</li>
+</ul>
+</section>
+<section id="graphically" class="slide level2">
+<h2>Graphically</h2>
+
+<img data-src="slides_files/figure-html/unnamed-chunk-9-1.gif" class="img-fluid r-stretch"></section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="other-difficulties" class="title-slide slide level1">
+<h1>Other Difficulties</h1>
+<p>More assumptions, limitations, and diagnostics!</p>
+<ul>
+<li>Windows</li>
+<li>Granular running variables</li>
+<li>Manipulated running variables</li>
+<li>Fuzzy regression discontinuity</li>
 </ul>
 </section>
 <section class="slide level2">
 
 </section></section>
 <section>
-<section id="overidentification-tests-2" class="title-slide slide level1">
-<h1>Overidentification Tests</h1>
+<section id="windows" class="title-slide slide level1">
+<h1>Windows</h1>
 <ul>
-<li>And how different are they? What did the test see that it was comparing? (Notice the first model gives an accurate coefficient of 1)</li>
+<li>The basic idea of RDD is that we’re interested in <em>the cutoff</em></li>
+<li>The points away from the cutoff are only useful in helping us predict values at the cutoff</li>
+<li>Do we really want that full range? Is someone’s test score of 30 really going to help us much in predicting <span class="math inline">\(Y\)</span> at a test score of 89?</li>
+<li>So we might limit our analysis within just a narrow window around the cutoff, just like that initial animation we saw!</li>
+<li>This makes the exogenous-at-the-jump assumption more plausible, and lets us worry less about functional form (over a narrow range, not too much difference between a linear term and a square), but on the flip side reduces our sample size considerably</li>
+</ul>
+</section>
+<section id="windows-1" class="slide level2">
+<h2>Windows</h2>
+<ul>
+<li>Pay attention to the sample sizes, accuracy (true value .7) and standard errors!</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>iv1 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> X <span class="sc">~</span> Z1, <span class="at">data =</span> df)</span>
-<span id="cb5-2"><a href="#cb5-2"></a>iv2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> X <span class="sc">~</span> Z2, <span class="at">data =</span> df)</span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">export_summs</span>(iv1, iv2, <span class="at">statistics =</span> <span class="fu">c</span>(<span class="at">N =</span> <span class="st">'nobs'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<table id="tab:unnamed-chunk-8" class="huxtable" data-quarto-postprocess="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  ">
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Model 1</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Model 2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(Intercept)</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-0.01&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.00&nbsp;&nbsp;&nbsp;&nbsp;</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.04)&nbsp;&nbsp;&nbsp;</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.05)&nbsp;&nbsp;&nbsp;</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">fit_X</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1.08 ***</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1.92 ***</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.04)&nbsp;&nbsp;&nbsp;</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(0.05)&nbsp;&nbsp;&nbsp;</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">N</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.8pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td style="text-align: right; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.8pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-</tr>
-<tr class="odd">
-<td colspan="3" data-quarto-table-cell-role="th" style="text-align: left; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">*** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05.</td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span>treated<span class="sc">*</span>X_centered, <span class="at">data =</span> df)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>m2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span>treated<span class="sc">*</span>X_centered, <span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(X_centered) <span class="sc">&lt;</span> .<span class="dv">25</span>))</span>
+<span id="cb3-3"><a href="#cb3-3"></a>m3 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span>treated<span class="sc">*</span>X_centered, <span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(X_centered) <span class="sc">&lt;</span> .<span class="dv">1</span>))</span>
+<span id="cb3-4"><a href="#cb3-4"></a>m4 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span>treated<span class="sc">*</span>X_centered, <span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(X_centered) <span class="sc">&lt;</span> .<span class="dv">05</span>))</span>
+<span id="cb3-5"><a href="#cb3-5"></a>m5 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span>treated<span class="sc">*</span>X_centered, <span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(X_centered) <span class="sc">&lt;</span> .<span class="dv">01</span>))</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="fu">etable</span>(m1,m2,m3,m4,m5, <span class="at">keep =</span> <span class="st">'treatedTRUE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                         m1                 m2
+Dependent Var.:                           Y                  Y
+                                                              
+treatedTRUE              0.7467*** (0.0376) 0.7723*** (0.0566)
+treatedTRUE x X_centered 0.4470*** (0.1296)   0.6671. (0.4022)
+________________________ __________________ __________________
+S.E. type                               IID                IID
+Observations                          1,000                492
+R2                                  0.84769            0.74687
+Adj. R2                             0.84723            0.74531
 
-
+                                         m3                 m4              m5
+Dependent Var.:                           Y                  Y               Y
+                                                                              
+treatedTRUE              0.7086*** (0.0900) 0.6104*** (0.1467) 0.5585 (0.4269)
+treatedTRUE x X_centered     -1.307 (1.482)      6.280 (4.789)   41.21 (72.21)
+________________________ __________________ __________________ _______________
+S.E. type                               IID                IID             IID
+Observations                            206                 93              15
+R2                                  0.69322            0.59825         0.48853
+Adj. R2                             0.68867            0.58470         0.34904
+---
+Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
 </section></section>
-<section id="thats-it" class="title-slide slide level1">
-<h1>That’s it!</h1>
-<p>Be sure to cover</p>
+<section>
+<section id="granular-running-variable" class="title-slide slide level1">
+<h1>Granular Running Variable</h1>
 <ul>
-<li>The Swirl</li>
-<li>The homework</li>
-<li>The assigned paper</li>
+<li>One assumption we’re making is that the running variable varies more or less <em>continuously</em></li>
+<li>That makes it possible to have, say, a test score of 89 compared to a test score of 90 it’s almost certainly the same as except for random chance</li>
+<li>But what if our data only had test score in big chunks? I don’t know you’re 89 or 90, I just know you’re “80-89” or “90-100”</li>
+<li>A lot less believable that the only difference between these groups is random chance and we’ve closed the back doors by focusing on the cutoff</li>
+<li>Plenty of other things change between 80 and 100! That’s not “smooth at the cutoff”</li>
+</ul>
+</section>
+<section id="granular-running-variable-1" class="slide level2">
+<h2>Granular Running Variable</h2>
+<ul>
+<li>Not a whole lot we can do about this</li>
+<li>There are some fancy RDD estimators that allow for granular running variables</li>
+<li>But in general, if this is what you’re facing, you might be in trouble</li>
+<li>Before doing an RDD, think “is it plausible that someone with the highest value just below the cutoff, and someone with the lowest value just above the cutoff are only at different values because of random chance?”</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="looking-for-lumping" class="title-slide slide level1">
+<h1>Looking for Lumping</h1>
+<ul>
+<li>Ok, now let’s go back to our continuous running variables</li>
+<li>What if the running variable is <em>manipulated</em>?</li>
+<li>Imagine you’re a teacher grading the gifted-and-talented exam. You see someone with an 89 and think “aww, they’re so close! I’ll just give them an extra point…”</li>
+<li>Or, if you live just barely on one side of a time zone line, but decide to move to the other side because you prefer waking up later</li>
+<li>Suddenly, that treatment is a lot less randomly assigned around the cutoff!</li>
+</ul>
+</section>
+<section id="looking-for-lumping-1" class="slide level2">
+<h2>Looking for Lumping</h2>
+<ul>
+<li>If there’s manipulation of the running variable around the cutoff, we can often see it in the presence of <em>lumping</em></li>
+<li>I.e. if there’s a big cluster of observations to one side of the cutoff and a seeming gap missing on the other side</li>
+</ul>
+</section>
+<section id="looking-for-lumping-2" class="slide level2">
+<h2>Looking for Lumping</h2>
+<ul>
+<li>Here’s an example from the real world in medical research - statistically, p-values <em>should</em> be uniformly distributed</li>
+<li>But it’s hard to get insignificant results published in some journals. So people might “p-hack” until they find some form of analysis that’s significant, and also we have heavy selection into publication based on <span class="math inline">\(p &lt; .05\)</span>. Can’t use that cutoff for an RDD!</li>
+</ul>
+
+<img data-src="p_value_distribution.png" class="img-fluid r-stretch quarto-figure-center"><p class="caption">p-value graph from Perneger &amp; Combescure, 2017</p></section>
+<section id="looking-for-lumping-3" class="slide level2">
+<h2>Looking for Lumping</h2>
+<ul>
+<li>How can we look for this stuff?</li>
+<li>We can look graphically by just checking for a jump at the cutoff in <em>number of observations</em> after binning</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>df_bin_count <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="co"># Select breaks so that one of hte breakpoints is the cutoff</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">mutate</span>(<span class="at">X_bins =</span> <span class="fu">cut</span>(X, <span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span><span class="sc">/</span><span class="dv">10</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">group_by</span>(X_bins) <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="looking-for-lumping-4" class="slide level2">
+<h2>Looking for Lumping</h2>
+<ul>
+<li>The first one looks pretty good. We have one that looks not-so-good on the right</li>
+</ul>
+
+<img data-src="slides_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="looking-for-lumping-5" class="slide level2">
+<h2>Looking for Lumping</h2>
+<ul>
+<li>Another thing we can do is do a “placebo test”</li>
+<li>Check if variables <em>other than treatment or outcome</em> vary at the cutoff</li>
+<li>We can do this by re-running our RDD but just swapping out some other variable for our outcome</li>
+<li>If we get a significant jump, that’s bad! That tells us that <em>other things are changing at the cutoff</em> which implies some sort of manipulation (or just super lousy luck)</li>
+</ul>
+</section>
+<section id="regression-discontinuity-in-r" class="slide level2">
+<h2>Regression Discontinuity in R</h2>
+<ul>
+<li>We can specify an RDD model by just telling it the dependent variable <span class="math inline">\(Y\)</span>, the running variable <span class="math inline">\(X\)</span>, and the cutoff <span class="math inline">\(c\)</span>.</li>
+<li>We can also specify how many polynomials to us with <strong>p</strong></li>
+<li>(it applies the polynomials more locally than our linear OLS models do - a bit more flexible without weird corner preditions)</li>
+<li>It will also pick a window for us with <strong>h</strong></li>
+<li>Plenty of other options</li>
+<li>Including a <strong>fuzzy</strong> option to specify actual treatment outside of the running variable/cutoff combo</li>
+</ul>
+</section>
+<section id="rdrobust" class="slide level2">
+<h2>rdrobust</h2>
+<ul>
+<li>We’ve gone through all kinds of procedures for doing RDD in R already using regression</li>
+<li>But often, professional researchers won’t do it that way!</li>
+<li>We’ll use packages and formulas that do things like “picking a bandwidth (window)” for us in a smart way, or not relying so strongly on linearity</li>
+<li>The <strong>rdrobust</strong> package does just that!</li>
+</ul>
+</section>
+<section id="rdrobust-1" class="slide level2">
+<h2>rdrobust</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">summary</span>(<span class="fu">rdrobust</span>(df<span class="sc">$</span>Y, df<span class="sc">$</span>X, <span class="at">c =</span> .<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sharp RD estimates using local polynomial regression.
+
+Number of Obs.                 1000
+BW type                       mserd
+Kernel                   Triangular
+VCE method                       NN
+
+Number of Obs.                  501          499
+Eff. Number of Obs.             185          170
+Order est. (p)                    1            1
+Order bias  (q)                   2            2
+BW est. (h)                   0.174        0.174
+BW bias (b)                   0.293        0.293
+rho (h/b)                     0.594        0.594
+Unique Obs.                     501          499
+
+=============================================================================
+        Method     Coef. Std. Err.         z     P&gt;|z|      [ 95% C.I. ]       
+=============================================================================
+  Conventional     0.707     0.085     8.311     0.000     [0.540 , 0.874]     
+        Robust         -         -     6.762     0.000     [0.484 , 0.878]     
+=============================================================================</code></pre>
+</div>
+</div>
+</section>
+<section id="rdrobust-2" class="slide level2">
+<h2>rdrobust</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">summary</span>(<span class="fu">rdrobust</span>(df<span class="sc">$</span>Y, df<span class="sc">$</span>X, <span class="at">c =</span> .<span class="dv">5</span>, <span class="at">fuzzy =</span> df<span class="sc">$</span>treatment))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sharp RD estimates using local polynomial regression.
+
+Number of Obs.                 1000
+BW type                       mserd
+Kernel                   Triangular
+VCE method                       NN
+
+Number of Obs.                  501          499
+Eff. Number of Obs.             185          170
+Order est. (p)                    1            1
+Order bias  (q)                   2            2
+BW est. (h)                   0.174        0.174
+BW bias (b)                   0.293        0.293
+rho (h/b)                     0.594        0.594
+Unique Obs.                     501          499
+
+=============================================================================
+        Method     Coef. Std. Err.         z     P&gt;|z|      [ 95% C.I. ]       
+=============================================================================
+  Conventional     0.707     0.085     8.311     0.000     [0.540 , 0.874]     
+        Robust         -         -     6.762     0.000     [0.484 , 0.878]     
+=============================================================================</code></pre>
+</div>
+</div>
+</section>
+<section id="rdrobust-3" class="slide level2">
+<h2>rdrobust</h2>
+<ul>
+<li>We can even have it automatically make plots of our RDD! Same syntax</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">rdplot</span>(df<span class="sc">$</span>Y, df<span class="sc">$</span>X, <span class="at">c =</span> .<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid r-stretch" width="768"></section>
+<section id="thats-it" class="slide level2">
+<h2>That’s it!</h2>
+<ul>
+<li>That’s what we have for RDD</li>
+<li>Go explore the regression discontinuity Seminar</li>
+<li>And the paper to read!</li>
 </ul>
 
 
 <img src="../../../figures/logos/MY_INSTITUTION.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>PB4A7- Quantitative Applications for Behavioural Science</p>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -1193,44 +1129,6 @@ F-test (1st stage), X1: stat = 346.4    , p &lt; 2.2e-16 , on 1 and 197 DoF.
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
