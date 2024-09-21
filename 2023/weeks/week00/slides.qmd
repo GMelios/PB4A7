@@ -3,8 +3,8 @@ subtitle: "PB4A7- Quantitative Applications for Behavioural Science"
 title: "<font style='font-size:1em;'>🗓️ Week 0<br/> Presessionals</font>"
 author: Dr. [George Melios](#)
 institute: '[London School of Economics and Political Science](#)'
-date: 18 September 2023
-date-meta: 18 September 2023
+date: 23 September 2024
+date-meta: 23 September 2024
 date-format: "DD MMM YYYY"
 toc: true
 toc-depth: 1
@@ -64,7 +64,7 @@ theme_metro_regtitle <- function(x) {
 
 ::: {.column style="width:50%;font-size:0.85em;margin-left:3%;"}
 - PhD in Economics
-- **Background**: Economics, Political Science, Behavioural Science
+- **Background**: Political Economy, Behavioural Science
 
 
 <span class="tag" style="background-color:var(--quarto-hl-fu-color)">Political Economy</span>
@@ -103,7 +103,6 @@ theme_metro_regtitle <- function(x) {
 
 - Moodle (lecture videos and assignments)
 - [Website](gmelios.github.io/PB4A7)
-- [Discord Channel](https://discord.gg/vGUmwDPx)
 - Office Hours (Book Upfront!!!)
 
 # Welcome to PB4A7
@@ -131,7 +130,7 @@ theme_metro_regtitle <- function(x) {
 - This is an applied econometrics class for behavioural science
 - Econometrics is a field that covers how economists think about statistical analysis
 - Why do we care about econometrics?
-    - Many other social science fields (even epidemiology) pick up econometric tools as well becuase of how useful they tend to be
+    - Many other social science fields (even epidemiology) pick up econometric tools as well because of how useful they tend to be
 
 ---
 
@@ -150,14 +149,14 @@ theme_metro_regtitle <- function(x) {
 - This is a great course (tough one but great)
 - Why?
 - Gives you the ability to think about and answer questions you are interested in
-- And to better understand and judge existing body of literature
+- And to better understand and judge the existing body of literature
     - The classic Tik-Tok, Instagram video that starts with _"A new study says..."?_ You can now have an idea of how robust/serious their inferences are.
 
 ---
 
 ## Why applications and not econometrics? 
 
-- PB4A7 and PB413 are applied courses. You need to know how to use statistics, and why you’re using them – *you will not master the nuts of bolts of statistical theory!*
+- PB4A7 and PB413 are applied courses. You need to know how to use statistics, and why you’re using them – *you will not master the nuts or bolts of statistical theory!*
 
 - For those who want more information
   - Will provide material on the website of the class
@@ -168,12 +167,10 @@ theme_metro_regtitle <- function(x) {
 ## Admin
 
 - Review the syllabus (and other materials on Moodle and the [PB4A7 website](https://gmelios.github.io/PB4A7)). Reading assignments there
-- Our textbook is [The Effect](https://theeffectbook.net), by Huntington-Klein, which is available online for free.
+- Our textbook is [The Effect](https://theeffectbook.net), by Huntington-Klein, available online for free.
 - Also these slides
-- Programming in STATA (we will get to this on Thursday)
+- Programming in STATA (we will get to this on later)
 - Assignment: End of term paper & poster
-
-- *[Join the Class on Discord](https://discord.gg/vGUmwDPx)*
 
 ---
 
@@ -262,7 +259,7 @@ theme_metro_regtitle <- function(x) {
 ## Inference Error and Randomness
 
 - So if we look in a data set and see that $X$ and $Y$ appear to be positively related to each other...
-- Are they actually positively related, or is that just random chance?
+- Are they actually positively related, or is that just a random chance?
 - If they are positively related, maybe we're understating or overstating *how* positively related
 
 ---
@@ -279,7 +276,7 @@ theme_metro_regtitle <- function(x) {
 
 # Identification Error
 
-- What is identification error?
+- What is an identification error?
 - *Identification* is how you link the *result you see* with the *conclusion you draw from it*
 - For example, say you observe that kids who play video games are more aggressive in everyday life (result), and you conclude from that result that video games make kids more aggressive (conclusion)
 - If *seeing that result is actually evidence for that conclusion*, then we are properly *identified*
