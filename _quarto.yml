@@ -50,10 +50,6 @@ website:
         text: "R & Python resources"
         style:
           margin-bottom: "10px"
-      - href: 2023/communication.qmd
-        text: "📟 Communication"
-        style:
-          margin-bottom: "30px !important"
     # - href: 2023/assignments.qmd
       #   text: "✍️ Assignments"
       #   contents:
