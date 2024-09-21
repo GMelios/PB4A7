@@ -147,7 +147,7 @@ theme_metro_regtitle <- function(x) {
 ## Welcome to Econometrics
 
 - This is a great course (tough one but great)
-- Why?
+- Why? 
 - Gives you the ability to think about and answer questions you are interested in
 - And to better understand and judge the existing body of literature
     - The classic Tik-Tok, Instagram video that starts with _"A new study says..."?_ You can now have an idea of how robust/serious their inferences are.
