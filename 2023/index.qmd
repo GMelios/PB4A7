@@ -1,17 +1,8 @@
 ---
 title: "PB4A7 - Quantitative Applications for Behavioural Science"
-subtitle: "Academic Year: 2023/24"
+subtitle: "Academic Year: 2024/25"
 format: html
 ---
-
-::: {.callout-important collapse=false}
-## 📢 Announcements
-
-
-
-- [Join the Class on Discord](https://discord.gg/nHURPx6N) (18/09/2023)
-
-:::
 
 
 # 🧑🏻‍🏫 Our Team
@@ -28,8 +19,8 @@ _Research Fellow_ <br/>
 
 Office Hours: 
 
-- When: Wednesdays 10:00-12:00
-- Where: CON 5.19
+- When: Mondays 11:30 - 12:30
+- Where: Zoom
 - How to book: [Student Hub](https://studenthub.lse.ac.uk/welcome)
 
 ## Teaching Staff
@@ -41,22 +32,22 @@ PhD Candidate at City University <br>
 
 Help Sessions: 
 
-- When: Wednesdays 16:00-17:00
+- When: Tuesdays 11:00-12:00
 - Where: CBG.G.01
 
 :::
 
 # 📍 Lecture
 
-Tuesdays 09:00-10:00 at MAR.1.04
+Wednesdays 13:00-14:00 at MAR.1.10
 
 # 💻 Seminars
 
 ::: {style="display:inline-block;width: 35%;border-style: dotted;border-width: 1px;border-color: &quot;#fefefe&quot;; margin:1%;padding:1.5%;background-color:#fafafa"}
 **Group 01**
 
-- 📆 Tuesdays
-- ⌚ 11:00 - 12:00
+- 📆 Wednesdays
+- ⌚ 14:00 - 15:00
 - 📍 FAW.4.02	
 :::
 
@@ -65,7 +56,7 @@ Tuesdays 09:00-10:00 at MAR.1.04
 
             
 - 📆 Tuesdays
-- ⌚ 12:00 - 13:00
+- ⌚ 15:00 - 16:00
 - 📍 FAW.4.02	
           
 :::
@@ -74,6 +65,6 @@ Tuesdays 09:00-10:00 at MAR.1.04
 **Group 03**
 
 - 📆 Tuesdays
-- ⌚ 13:00 - 14:00
+- ⌚ 16:00 - 17:00
 - 📍 FAW.4.02	
 :::

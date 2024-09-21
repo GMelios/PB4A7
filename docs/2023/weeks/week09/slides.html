@@ -430,13 +430,19 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <div class="cell">
 <style type="text/css">
 pre {
-  max-height: 350px;
-  overflow-y: auto;
+  max-height: auto;
+  overflow-y: scroll;
 }
 
 pre[class] {
-  max-height: 100px;
+  max-height: auto;
 }
+
+body {
+  max-height: auto;
+  overflow-y: scroll;
+}
+
 </style>
 </div>
 </section>
@@ -469,10 +475,11 @@ pre[class] {
 <p>The basic idea is this:</p>
 <ul>
 <li>We look for a treatment that is assigned on the basis of being above/below a <em>cutoff value</em> of a continuous variable</li>
-<li>For example, if you get above a certain test score they let you into a “gifted and talented” program</li>
+<li>For example, if you get above a certain test score they let you into a “gifted and talented” program
+<ul>
 <li>Or if you are just on one side of a time zone line, your day starts one hour earlier/later</li>
 <li>Or if a candidate gets 50.1% of the vote they’re in, 40.9% and they’re out</li>
-<li>Or if you’re 65 years old you get Medicaid, if you’re 64.99 years old you don’t</li>
+</ul></li>
 </ul>
 <p>We call these continuous variables “Running variables” because we <em>run along them</em> until we hit the cutoff</p>
 </section>
@@ -486,7 +493,7 @@ pre[class] {
 <section class="slide level2">
 
 
-<img data-src="slides_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="regression-discontinuity-3" class="slide level2">
 <h2>Regression Discontinuity</h2>
 <ul>
@@ -497,7 +504,7 @@ pre[class] {
 <section class="slide level2">
 
 
-<img data-src="slides_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="regression-discontinuity-4" class="slide level2">
 <h2>Regression Discontinuity</h2>
 <ul>
@@ -513,7 +520,6 @@ pre[class] {
 <ul>
 <li>Basically, the idea is that <em>right around the cutoff</em>, treatment is randomly assigned</li>
 <li>If you have a test score of 89.9 (not high enough for gifted-and-talented), you’re basically the same as someone who has a test score of 90.0 (just barely high enough)</li>
-<li>So if we just focus around the cutoff, we close any back doors because it’s basically random which side of the line you’re on</li>
 <li>But we get variation in treatment!</li>
 <li>This specifically gives us the effect of treatment <em>for people who are right around the cutoff</em> a.k.a. a “local average treatment effect” (we still won’t know the effect of being put in gifted-and-talented for someone who gets a 30)</li>
 </ul>
@@ -532,7 +538,7 @@ pre[class] {
 <section id="regression-discontinuity-7" class="slide level2">
 <h2>Regression Discontinuity</h2>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-4-1.gif" class="img-fluid r-stretch"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.gif" class="img-fluid r-stretch"></section>
 <section id="concept-checks" class="slide level2">
 <h2>Concept Checks</h2>
 <ul>
@@ -560,7 +566,7 @@ pre[class] {
 <section class="slide level2">
 
 
-<img data-src="slides_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="regression-in-rdd" class="slide level2">
 <h2>Regression in RDD</h2>
 <ul>
@@ -578,21 +584,6 @@ pre[class] {
 <li>Coefficient on Treated is how the intercept jumps - that’s our RDD effect. Coefficient on the interaction is how the slope changes</li>
 </ul>
 <p><span class="math display">\[Y = \beta_0 + \beta_1Treated + \beta_2XCentered + \beta_3Treated\times XCentered + \varepsilon\]</span></p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>OLS estimation, Dep. Var.: Y
-Observations: 1,000 
-Standard-errors: IID 
-                        Estimate Std. Error   t value   Pr(&gt;|t|)    
-(Intercept)            -0.011133   0.025999 -0.428225 0.66857986    
-treatedTRUE             0.746688   0.037577 19.870777  &lt; 2.2e-16 ***
-X_centered              0.982500   0.090666 10.836522  &lt; 2.2e-16 ***
-treatedTRUE:X_centered  0.446961   0.129613  3.448417 0.00058748 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-RMSE: 0.296605   Adj. R2: 0.847229</code></pre>
-</div>
-</div>
 </section>
 <section id="varying-slope-1" class="slide level2">
 <h2>Varying Slope</h2>
@@ -610,11 +601,8 @@ RMSE: 0.296605   Adj. R2: 0.847229</code></pre>
 <section id="polynomial-terms-1" class="slide level2">
 <h2>Polynomial Terms</h2>
 <ul>
-<li>How do we do this? Interactions again. Take <em>any</em> regression equation…</li>
-</ul>
-<p><span class="math display">\[Y = \beta_0 + \beta_1X + \beta_2X^2 + \varepsilon\]</span></p>
-<ul>
-<li>And just center the <span class="math inline">\(X\)</span> (let’s call it <span class="math inline">\(XC\)</span>, add on a set of the same terms multiplied by <span class="math inline">\(Treated\)</span> (don’t forget <span class="math inline">\(Treated\)</span> by itself - that’s <span class="math inline">\(Treated\)</span> times the interaction!)</li>
+<li><p>How do we do this? Interactions again. Take <em>any</em> regression equation… <span class="math display">\[Y = \beta_0 + \beta_1X + \beta_2X^2 + \varepsilon\]</span></p></li>
+<li><p>And just center the <span class="math inline">\(X\)</span> (let’s call it <span class="math inline">\(XC\)</span>, add on a set of the same terms multiplied by <span class="math inline">\(Treated\)</span> (don’t forget <span class="math inline">\(Treated\)</span> by itself - that’s <span class="math inline">\(Treated\)</span> times the interaction!)</p></li>
 </ul>
 <p><span class="math display">\[Y = \beta_0 + \beta_1XC + \beta_2XC^2 + \beta_3Treated + \beta_4Treated\times XC + \beta_5Treated\times XC^2 + \varepsilon\]</span></p>
 <ul>
@@ -653,19 +641,17 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h2>Assumptions</h2>
 <ul>
 <li>We knew there must be some assumptions lurking around here</li>
-<li>Some are more obvious (we should be using the correct functional form)</li>
-<li>Others are trickier. What are we assuming about the error term and endogeneity here?</li>
+<li>What are we assuming about the error term and endogeneity here?</li>
 <li>Specifically, we are assuming that <em>the only thing jumping at the cutoff is treatment</em></li>
-<li>Sort of like parallel trends, but maybe more believable since we’ve narrowed in so far</li>
+<li>Sort of like parallel trends (see week 11), but maybe more believable since we’ve narrowed in so far</li>
 <li>For example, if having an income below 150% of the poverty line gets you access to food stamps AND to job training, then we can’t really use that cutoff to get the effect of just food stamps</li>
-<li>Or if the proportion of people who are self-employed jumps up just below 150% (based on <em>reported</em> income), that’s a back door too!</li>
 <li>The only thing different about just above/just below should be treatment</li>
 </ul>
 </section>
 <section id="graphically" class="slide level2">
 <h2>Graphically</h2>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-9-1.gif" class="img-fluid r-stretch"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-8-1.gif" class="img-fluid r-stretch"></section>
 <section class="slide level2">
 
 </section></section>
@@ -700,12 +686,12 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>Pay attention to the sample sizes, accuracy (true value .7) and standard errors!</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span>treated<span class="sc">*</span>X_centered, <span class="at">data =</span> df)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>m2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span>treated<span class="sc">*</span>X_centered, <span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(X_centered) <span class="sc">&lt;</span> .<span class="dv">25</span>))</span>
-<span id="cb3-3"><a href="#cb3-3"></a>m3 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span>treated<span class="sc">*</span>X_centered, <span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(X_centered) <span class="sc">&lt;</span> .<span class="dv">1</span>))</span>
-<span id="cb3-4"><a href="#cb3-4"></a>m4 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span>treated<span class="sc">*</span>X_centered, <span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(X_centered) <span class="sc">&lt;</span> .<span class="dv">05</span>))</span>
-<span id="cb3-5"><a href="#cb3-5"></a>m5 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span>treated<span class="sc">*</span>X_centered, <span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(X_centered) <span class="sc">&lt;</span> .<span class="dv">01</span>))</span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="fu">etable</span>(m1,m2,m3,m4,m5, <span class="at">keep =</span> <span class="st">'treatedTRUE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span>treated<span class="sc">*</span>X_centered, <span class="at">data =</span> df)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>m2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span>treated<span class="sc">*</span>X_centered, <span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(X_centered) <span class="sc">&lt;</span> .<span class="dv">25</span>))</span>
+<span id="cb2-3"><a href="#cb2-3"></a>m3 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span>treated<span class="sc">*</span>X_centered, <span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(X_centered) <span class="sc">&lt;</span> .<span class="dv">1</span>))</span>
+<span id="cb2-4"><a href="#cb2-4"></a>m4 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span>treated<span class="sc">*</span>X_centered, <span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(X_centered) <span class="sc">&lt;</span> .<span class="dv">05</span>))</span>
+<span id="cb2-5"><a href="#cb2-5"></a>m5 <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y<span class="sc">~</span>treated<span class="sc">*</span>X_centered, <span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(X_centered) <span class="sc">&lt;</span> .<span class="dv">01</span>))</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="fu">etable</span>(m1,m2,m3,m4,m5, <span class="at">keep =</span> <span class="st">'treatedTRUE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                         m1                 m2
 Dependent Var.:                           Y                  Y
@@ -792,11 +778,11 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>We can look graphically by just checking for a jump at the cutoff in <em>number of observations</em> after binning</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>df_bin_count <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="co"># Select breaks so that one of hte breakpoints is the cutoff</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">mutate</span>(<span class="at">X_bins =</span> <span class="fu">cut</span>(X, <span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span><span class="sc">/</span><span class="dv">10</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">group_by</span>(X_bins) <span class="sc">%&gt;%</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>df_bin_count <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="co"># Select breaks so that one of hte breakpoints is the cutoff</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">mutate</span>(<span class="at">X_bins =</span> <span class="fu">cut</span>(X, <span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span><span class="sc">/</span><span class="dv">10</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">group_by</span>(X_bins) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="looking-for-lumping-4" class="slide level2">
@@ -805,7 +791,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>The first one looks pretty good. We have one that looks not-so-good on the right</li>
 </ul>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="looking-for-lumping-5" class="slide level2">
 <h2>Looking for Lumping</h2>
 <ul>
@@ -838,7 +824,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="rdrobust-1" class="slide level2">
 <h2>rdrobust</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">summary</span>(<span class="fu">rdrobust</span>(df<span class="sc">$</span>Y, df<span class="sc">$</span>X, <span class="at">c =</span> .<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">summary</span>(<span class="fu">rdrobust</span>(df<span class="sc">$</span>Y, df<span class="sc">$</span>X, <span class="at">c =</span> .<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sharp RD estimates using local polynomial regression.
 
@@ -868,7 +854,7 @@ Unique Obs.                     501          499
 <section id="rdrobust-2" class="slide level2">
 <h2>rdrobust</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">summary</span>(<span class="fu">rdrobust</span>(df<span class="sc">$</span>Y, df<span class="sc">$</span>X, <span class="at">c =</span> .<span class="dv">5</span>, <span class="at">fuzzy =</span> df<span class="sc">$</span>treatment))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">summary</span>(<span class="fu">rdrobust</span>(df<span class="sc">$</span>Y, df<span class="sc">$</span>X, <span class="at">c =</span> .<span class="dv">5</span>, <span class="at">fuzzy =</span> df<span class="sc">$</span>treatment))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sharp RD estimates using local polynomial regression.
 
@@ -901,10 +887,10 @@ Unique Obs.                     501          499
 <li>We can even have it automatically make plots of our RDD! Same syntax</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">rdplot</span>(df<span class="sc">$</span>Y, df<span class="sc">$</span>X, <span class="at">c =</span> .<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">rdplot</span>(df<span class="sc">$</span>Y, df<span class="sc">$</span>X, <span class="at">c =</span> .<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="slides_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-15-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="thats-it" class="slide level2">
 <h2>That’s it!</h2>
 <ul>
@@ -1060,7 +1046,7 @@ Unique Obs.                     501          499
         defaultTiming: null,
 
         // Enable slide navigation via mouse wheel
-        mouseWheel: false,
+        mouseWheel: true,
 
         // The display mode that will be used to show slides
         display: 'block',
@@ -1129,6 +1115,44 @@ Unique Obs.                     501          499
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

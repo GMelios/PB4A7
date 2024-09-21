@@ -15,7 +15,7 @@ format:
     fig-responsive: true
     theme: simple
     slide-number: true
-    mouse-wheel: false
+    mouse-wheel: true
     preview-links: auto
     logo: /figures/logos/MY_INSTITUTION.png
     css: /css/styles_slides.css
@@ -42,7 +42,7 @@ theme_metro <- function(x) {
   theme_classic() + 
   theme(panel.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
         plot.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
-        text = element_text(size = 16),
+        text = element_text(size = 14),
         axis.title.x = element_text(hjust = 1),
         axis.title.y = element_text(hjust = 1, angle = 0))
 }
@@ -50,25 +50,31 @@ theme_void_metro <- function(x) {
   theme_void() + 
   theme(panel.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
         plot.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
-        text = element_text(size = 16))
+        text = element_text(size = 14))
 }
 theme_metro_regtitle <- function(x) {
   theme_classic() + 
   theme(panel.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
         plot.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
-        text = element_text(size = 16))
+        text = element_text(size = 14))
 }
 ```
 
 ```{css, echo=FALSE}
 pre {
-  max-height: 350px;
-  overflow-y: auto;
+  max-height: auto;
+  overflow-y: scroll;
 }
 
 pre[class] {
-  max-height: 100px;
+  max-height: auto;
 }
+
+body {
+  max-height: auto;
+  overflow-y: scroll;
+}
+
 ```
 
 
@@ -98,9 +104,8 @@ The basic idea is this:
 
 - We look for a treatment that is assigned on the basis of being above/below a *cutoff value* of a continuous variable
 - For example, if you get above a certain test score they let you into a "gifted and talented" program
-- Or if you are just on one side of a time zone line, your day starts one hour earlier/later
-- Or if a candidate gets 50.1% of the vote they're in, 40.9% and they're out
-- Or if you're 65 years old you get Medicaid, if you're 64.99 years old you don't
+  - Or if you are just on one side of a time zone line, your day starts one hour earlier/later
+  - Or if a candidate gets 50.1% of the vote they're in, 40.9% and they're out
 
 We call these continuous variables "Running variables" because we *run along them* until we hit the cutoff
 
@@ -163,7 +168,6 @@ ggdag_classic(dag,node_size=10) +
 
 - Basically, the idea is that *right around the cutoff*, treatment is randomly assigned
 - If you have a test score of 89.9 (not high enough for gifted-and-talented), you're basically the same as someone who has a test score of 90.0 (just barely high enough)
-- So if we just focus around the cutoff, we close any back doors because it's basically random which side of the line you're on
 - But we get variation in treatment!
 - This specifically gives us the effect of treatment *for people who are right around the cutoff* a.k.a. a "local average treatment effect" (we still won't know the effect of being put in gifted-and-talented for someone who gets a 30)
 
@@ -302,9 +306,6 @@ df <- df %>%
 
 $$Y = \beta_0 + \beta_1Treated + \beta_2XCentered + \beta_3Treated\times XCentered + \varepsilon$$
 
-```{r}
-feols(Y ~ treated*X_centered, data = df)
-```
 
 ---
 
@@ -326,7 +327,6 @@ feols(Y ~ treated*X_centered, data = df)
 ## Polynomial Terms
 
 - How do we do this? Interactions again. Take *any* regression equation...
-
 $$Y = \beta_0 + \beta_1X + \beta_2X^2 + \varepsilon$$
 
 - And just center the $X$ (let's call it $XC$, add on a set of the same terms multiplied by $Treated$ (don't forget $Treated$ by itself - that's $Treated$ times the interaction!)
@@ -352,12 +352,10 @@ etable(feols(Y ~ X_centered*treated + I(X_centered^2)*treated, data = df))
 ## Assumptions
 
 - We knew there must be some assumptions lurking around here
-- Some are more obvious (we should be using the correct functional form)
-- Others are trickier. What are we assuming about the error term and endogeneity here?
+- What are we assuming about the error term and endogeneity here?
 - Specifically, we are assuming that *the only thing jumping at the cutoff is treatment*
-- Sort of like parallel trends, but maybe more believable since we've narrowed in so far
+- Sort of like parallel trends (see week 11), but maybe more believable since we've narrowed in so far
 - For example, if having an income below 150% of the poverty line gets you access to food stamps AND to job training, then we can't really use that cutoff to get the effect of just food stamps
-- Or if the proportion of people who are self-employed jumps up just below 150% (based on *reported* income), that's a back door too!
 - The only thing different about just above/just below should be treatment
 
 ---
