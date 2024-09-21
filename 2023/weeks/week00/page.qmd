@@ -20,7 +20,3 @@ Use your keypad to navigate the slides.
 ## 📚 Recommended Reading
 
 - Check syllabus for reading suggestions!
-
-## 📟 Communication
-
-- If you feel like it, introduce yourself in the `#introductions` channel on Discord
