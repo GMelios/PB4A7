@@ -3,8 +3,8 @@ subtitle: "PB4A7- Quantitative Applications for Behavioural Science"
 title: "<font style='font-size:1em;'>🗓️ Week 1<br/> Introduction to counterfactuals</font>"
 author: Dr. [George Melios](#)
 institute: '[London School of Economics and Political Science](#)'
-date: 26 September 2023
-date-meta: 26 September 2023
+date: 26 September 2024
+date-meta: 26 September 2024
 date-format: "DD MMM YYYY"
 toc: true
 toc-depth: 1
@@ -59,11 +59,11 @@ theme_metro_regtitle <- function(x) {
 
 ## What you should expect
 
-- **Confidence**: You will feel like you have a good understanding of design-based causal inference by the end such that it doesn’t feel so mysterious or intimidating
+- **Confidence**: You will feel like you have a good understanding of design-based causal inference by the end such that it doesn’t feel mysterious or intimidating
 
 - **Comprehension**: You will have learned a lot both conceptually but also in various specifics, particularly with regards to issues around identification and estimation
 
-- **Competency**: You will have had some experience working together implementing these methods using code in Stata syntax, possession of programs, knowledge of packages
+- **Competency**: You will have had some experience working together implementing these methods using code in Stata syntax
 
 ---
 
@@ -95,7 +95,7 @@ theme_metro_regtitle <- function(x) {
 - But coming up with good ones, is tricky. Good RQ: 
 + - **A question that can be answered / Researchable**: 
   - How can you answer a question which is unanswerable? 
-  - What versus why? Are you trying to determine what causes Y, or why something causes  Y. 
+  - What versus why? Are you trying to determine what causes Y, or why something causes Y. 
 
 
 - **Improve our understanding of the world**: 
@@ -137,7 +137,7 @@ theme_metro_regtitle <- function(x) {
   - What if we increase other types of fines (i.e. driving)?
     - Will people commit less crimes?
 
-Each of these policies is asking what happens to some outcome if we change on factor – the intervention – and hold all other factors constant.
+Each of these policies is asking what happens to some outcome if we make an intervention - keep everything the same but change one factor – 
 
 ---
 
@@ -145,7 +145,7 @@ Each of these policies is asking what happens to some outcome if we change on fa
 
 ## A little throwback
 
-- October 2021’s Nobel Prize in economics went to Card, Angrist and Imbens
+- October 2021’s Nobel Prize in economics went to D. Card, J. Angrist and G. Imbens
 
 - But it’s arguably as much to Princeton’s mid 1980s Industrial Relations group as it’s ground zero for the credibility revolution
 
