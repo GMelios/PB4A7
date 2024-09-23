@@ -183,7 +183,6 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
-# Causality and Prediction
 
 ## Causality and Prediction
 

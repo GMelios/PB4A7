@@ -9,9 +9,9 @@
   {
     "objectID": "2023/weeks/week01/slides.html",
     "href": "2023/weeks/week01/slides.html",
-    "title": "🗓️ Week 01 Introduction",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
     "section": "",
-    "text": "Prof. Octopian Professor of Octopus Issues Head of the Python vs R Debate Society\n\n\n\n\nPhD in Octopi Engineering\nBackground: Engineering of Deep Ocean constructions\nFormer Lead Data Scientist\n\ndeep ocean  engineering  octopus\n\n\n\n\n\n\n\n\n\n\nOctopnuian Arveda  PhD Candidate at OctopusLab, OUN  MSc in Octopus Transportation 📧 \n\n\n\n\n\n\nOctopnuian Arveda  PhD Candidate at OctopusLab, UOS  MSc in Octopus Transportation 📧"
+    "text": "library(directlabels)\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(ggdag)\n\n\nAttaching package: 'ggdag'\n\nThe following object is masked from 'package:stats':\n\n    filter\n\nlibrary(grid)\nlibrary(ggplot2)\ntheme_metro &lt;- function(x) {\n  theme_classic() + \n  theme(panel.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),\n        plot.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),\n        text = element_text(size = 16),\n        axis.title.x = element_text(hjust = 1),\n        axis.title.y = element_text(hjust = 1, angle = 0))\n}\ntheme_metro_regtitle &lt;- function(x) {\n  theme_classic() + \n  theme(panel.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),\n        plot.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),\n        text = element_text(size = 16))\n}"
   },
   {
     "objectID": "2023/weeks/week01/slides.html#your-lecturer",
@@ -32,7 +32,7 @@
     "href": "2023/index.html",
     "title": "PB4A7 - Quantitative Applications for Behavioural Science",
     "section": "",
-    "text": "📢 Announcements\n\n\n\n\n\n\nJoin the Class on Discord (18/09/2023)\n\n\n\n\n\n🧑🏻‍🏫 Our Team\n\nCourse ConvenorTeaching Staff\n\n\n\nDr George Melios  Research Fellow  London School of Economics and Political Science 📧 g.melios at lse dot ac dot uk\nOffice Hours:\n\nWhen: Wednesdays 10:00-12:00\nWhere: CON 5.19\nHow to book: Student Hub\n\n\n\n\nLazaros Chatzilazarou  PhD Candidate at City University  📧 L.A.Chatzilazarou at lse dot ac dot uk\nHelp Sessions:\n\nWhen: Wednesdays 16:00-17:00\nWhere: CBG.G.01\n\n\n\n\n\n\n📍 Lecture\nTuesdays 09:00-10:00 at MAR.1.04\n\n\n💻 Seminars\n\nGroup 01\n\n📆 Tuesdays\n⌚ 11:00 - 12:00\n📍 FAW.4.02\n\n\n\n\nGroup 02\n\n📆 Tuesdays\n⌚ 12:00 - 13:00\n📍 FAW.4.02\n\n\n\nGroup 03\n\n📆 Tuesdays\n⌚ 13:00 - 14:00\n📍 FAW.4.02"
+    "text": "🧑🏻‍🏫 Our Team\n\nCourse ConvenorTeaching Staff\n\n\n\nDr George Melios  Research Fellow  London School of Economics and Political Science 📧 g.melios at lse dot ac dot uk\nOffice Hours:\n\nWhen: Mondays 11:30 - 12:30\nWhere: Zoom\nHow to book: Student Hub\n\n\n\n\nLazaros Chatzilazarou  PhD Candidate at City University  📧 L.A.Chatzilazarou at lse dot ac dot uk\nHelp Sessions:\n\nWhen: Tuesdays 11:00-12:00\nWhere: CBG.G.01\n\n\n\n\n\n\n📍 Lecture\nWednesdays 13:00-14:00 at MAR.1.10\n\n\n💻 Seminars\n\nGroup 01\n\n📆 Wednesdays\n⌚ 14:00 - 15:00\n📍 FAW.4.02\n\n\n\n\nGroup 02\n\n📆 Tuesdays\n⌚ 15:00 - 16:00\n📍 FAW.4.02\n\n\n\nGroup 03\n\n📆 Tuesdays\n⌚ 16:00 - 17:00\n📍 FAW.4.02"
   },
   {
     "objectID": "2023/weeks/week01/page.html",
@@ -242,21 +242,21 @@
     "href": "2023/weeks/week00/slides.html",
     "title": "🗓️ Week 0 Presessionals",
     "section": "",
-    "text": "Dr. Melios Research Fellow\n\n\n\n\nPhD in Economics\nBackground: Economics, Political Science, Behavioural Science\n\nPolitical Economy  Beliefs  Wellbeing"
+    "text": "library(directlabels)\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(ggdag)\n\n\nAttaching package: 'ggdag'\n\nThe following object is masked from 'package:stats':\n\n    filter\n\nlibrary(grid)\nlibrary(ggplot2)\ntheme_metro &lt;- function(x) {\n  theme_classic() + \n  theme(panel.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),\n        plot.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),\n        text = element_text(size = 16),\n        axis.title.x = element_text(hjust = 1),\n        axis.title.y = element_text(hjust = 1, angle = 0))\n}\ntheme_metro_regtitle &lt;- function(x) {\n  theme_classic() + \n  theme(panel.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),\n        plot.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),\n        text = element_text(size = 16))\n}"
   },
   {
     "objectID": "2023/weeks/week00/slides.html#your-lecturer",
     "href": "2023/weeks/week00/slides.html#your-lecturer",
     "title": "🗓️ Week 0 Presessionals",
     "section": "Your lecturer",
-    "text": "Your lecturer\n\n\n\n\nDr.  George Melios Research Fellow www.georgemelios.com\n\n\n\n\n\nPhD in Economics\nBackground: Economics, Political Science, Behavioural Science\n\nPolitical Economy  Beliefs  Wellbeing"
+    "text": "Your lecturer\n\n\n\n\nDr.  George Melios Research Fellow www.georgemelios.com\n\n\n\n\n\nPhD in Economics\nBackground: Political Economy, Behavioural Science\n\nPolitical Economy  Beliefs  Wellbeing"
   },
   {
     "objectID": "2023/weeks/week00/slides.html#what-is-this-class",
     "href": "2023/weeks/week00/slides.html#what-is-this-class",
     "title": "🗓️ Week 0 Presessionals",
     "section": "What is this class",
-    "text": "What is this class\n\nThis is an applied econometrics class for behavioural science\nEconometrics is a field that covers how economists think about statistical analysis\nWhy do we care about econometrics?\n\nMany other social science fields (even epidemiology) pick up econometric tools as well becuase of how useful they tend to be"
+    "text": "What is this class\n\nThis is an applied econometrics class for behavioural science\nEconometrics is a field that covers how economists think about statistical analysis\nWhy do we care about econometrics?\n\nMany other social science fields (even epidemiology) pick up econometric tools as well because of how useful they tend to be"
   },
   {
     "objectID": "2023/weeks/week00/page.html",
@@ -522,14 +522,14 @@
     "href": "2023/communication.html",
     "title": "Announcements",
     "section": "",
-    "text": "📢 Description\n\n\n\n\n\nWe will use this space to make class announcements throughout the semester!\n\n\n\n\n\n\n\n\n\n📢 Discord\n\n\n\n\n\nFirst and important announcement, Join the Class on Discord.\n\n\n\n\nRequirements\nDownload and install STATA or R. Throughout the class, we will rely on STATA for seminars but codes will be provided for R as well."
+    "text": "📢 Description\n\n\n\n\n\nWe will use this space to make class announcements throughout the semester!\n\n\n\n\nRequirements\nDownload and install STATA or R. Throughout the class, we will rely on STATA for seminars but codes will be provided for R as well."
   },
   {
     "objectID": "2023/weeks/week00/slides.html#welcome-to-econometrics",
     "href": "2023/weeks/week00/slides.html#welcome-to-econometrics",
     "title": "🗓️ Week 0 Presessionals",
     "section": "Welcome to Econometrics",
-    "text": "Welcome to Econometrics\n\nThis is a great course (tough one but great)\nWhy?\nGives you the ability to think about and answer questions you are interested in\nAnd to better understand and judge existing body of literature\n\nThe classic Tik-Tok, Instagram video that starts with “A new study says…”? You can now have an idea of how robust/serious their inferences are."
+    "text": "Welcome to Econometrics\n\nThis is a great course (tough one but great)\nWhy?\nGives you the ability to think about and answer questions you are interested in\nAnd to better understand and judge the existing body of literature\n\nThe classic Tik-Tok, Instagram video that starts with “A new study says…”? You can now have an idea of how robust/serious their inferences are."
   },
   {
     "objectID": "2023/weeks/week00/slides.html#welcome-to-econometrics-1",
@@ -557,28 +557,28 @@
     "href": "2023/weeks/week00/slides.html#admin",
     "title": "🗓️ Week 0 Presessionals",
     "section": "Admin",
-    "text": "Admin\n\nReview the syllabus (and other materials on Moodle and the PB4A7 website). Reading assignments there\nOur textbook is The Effect, by Huntington-Klein, which is available online for free.\nAlso these slides\nProgramming in STATA (we will get to this on Thursday)\nAssignment: End of term paper & poster\nJoin the Class on Discord"
+    "text": "Admin\n\nReview the syllabus (and other materials on Moodle and the PB4A7 website). Reading assignments there\nOur textbook is The Effect, by Huntington-Klein, available online for free.\nAlso these slides\nProgramming in STATA (we will get to this on later)\nAssignment: End of term paper & poster"
   },
   {
     "objectID": "2023/weeks/week00/slides.html#causality-and-prediction-1",
     "href": "2023/weeks/week00/slides.html#causality-and-prediction-1",
     "title": "🗓️ Week 0 Presessionals",
     "section": "Causality and Prediction",
-    "text": "Causality and Prediction\n\nGreat! Still, why do we care about this class?\nIn econometrics, we are working with data\nStatisticians also work with data\nSo do data scientists\nThe goals for these groups differ"
+    "text": "Causality and Prediction\n\nData scientists are generally concerned with prediction\nThey want to use the data at hand to predict what comes next\nThey generally don’t care why they’re making the prediction they are\nThis can be really handy for certain tasks - “is this picture a cat or a dog?” “what’s the probability that a customer with qualities X, Y, and Z will end up purchasing our good?” “do you have lymphoma?”"
   },
   {
     "objectID": "2023/weeks/week00/slides.html#causality-and-prediction-2",
     "href": "2023/weeks/week00/slides.html#causality-and-prediction-2",
     "title": "🗓️ Week 0 Presessionals",
     "section": "Causality and Prediction",
-    "text": "Causality and Prediction\n\nData scientists are generally concerned with prediction\nThey want to use the data at hand to predict what comes next\nThey generally don’t care why they’re making the prediction they are\nThis can be really handy for certain tasks - “is this picture a cat or a dog?” “what’s the probability that a customer with qualities X, Y, and Z will end up purchasing our good?” “do you have lymphoma?”"
+    "text": "Causality and Prediction\n\nEconometricians, on the other hand, care almost exclusively about why\nData scientists want to minimize prediction error\nEconometricians want to minimize inference and identification error\nWe want to correctly understand the underlying data generating process"
   },
   {
     "objectID": "2023/weeks/week00/slides.html#inference-error-and-randomness-1",
     "href": "2023/weeks/week00/slides.html#inference-error-and-randomness-1",
     "title": "🗓️ Week 0 Presessionals",
     "section": "Inference Error and Randomness",
-    "text": "Inference Error and Randomness\n\nSo if we look in a data set and see that \\(X\\) and \\(Y\\) appear to be positively related to each other…\nAre they actually positively related, or is that just random chance?\nIf they are positively related, maybe we’re understating or overstating how positively related"
+    "text": "Inference Error and Randomness\n\nSo if we look in a data set and see that \\(X\\) and \\(Y\\) appear to be positively related to each other…\nAre they actually positively related, or is that just a random chance?\nIf they are positively related, maybe we’re understating or overstating how positively related"
   },
   {
     "objectID": "2023/weeks/week00/slides.html#inference-error-and-randomness-2",
@@ -725,7 +725,7 @@
     "href": "2023/weeks/week00/slides.html#why-applications-and-not-econometrics",
     "title": "🗓️ Week 0 Presessionals",
     "section": "Why applications and not econometrics?",
-    "text": "Why applications and not econometrics?\n\nPB4A7 and PB413 are applied courses. You need to know how to use statistics, and why you’re using them – you will not master the nuts of bolts of statistical theory!\nFor those who want more information\n\nWill provide material on the website of the class\nVisit me during the office hours\nWe will discuss additional courses to audit"
+    "text": "Why applications and not econometrics?\n\nPB4A7 and PB413 are applied courses. You need to know how to use statistics, and why you’re using them – you will not master the nuts or bolts of statistical theory!\nFor those who want more information\n\nWill provide material on the website of the class\nVisit me during the office hours\nWe will discuss additional courses to audit"
   },
   {
     "objectID": "2023/weeks/week00/slides.html#data",
@@ -760,7 +760,7 @@
     "href": "2023/weeks/week00/slides.html#housekeeping",
     "title": "🗓️ Week 0 Presessionals",
     "section": "Housekeeping",
-    "text": "Housekeeping\n\nMoodle (lecture videos and assignments)\nWebsite\nDiscord Channel\nOffice Hours (Book Upfront!!!)"
+    "text": "Housekeeping\n\nMoodle (lecture videos and assignments)\nWebsite\nOffice Hours (Book Upfront!!!)"
   },
   {
     "objectID": "2023/Stata.html",
@@ -1040,7 +1040,7 @@
     "href": "2023/weeks/week01/slides.html#what-you-should-expect",
     "title": "🗓️ Week 1 Introduction to counterfactuals",
     "section": "What you should expect",
-    "text": "What you should expect\n\nConfidence: You will feel like you have a good understanding of design-based causal inference by the end such that it doesn’t feel so mysterious or intimidating\nComprehension: You will have learned a lot both conceptually but also in various specifics, particularly with regards to issues around identification and estimation\nCompetency: You will have had some experience working together implementing these methods using code in Stata syntax, possession of programs, knowledge of packages"
+    "text": "What you should expect\n\nConfidence: You will feel like you have a good understanding of design-based causal inference by the end such that it doesn’t feel mysterious or intimidating\nComprehension: You will have learned a lot both conceptually but also in various specifics, particularly with regards to issues around identification and estimation\nCompetency: You will have had some experience working together implementing these methods using code in Stata syntax"
   },
   {
     "objectID": "2023/weeks/week01/slides.html#lectures-plan",
@@ -1082,14 +1082,14 @@
     "href": "2023/weeks/week01/slides.html#causal-inference",
     "title": "🗓️ Week 1 Introduction to counterfactuals",
     "section": "Causal Inference",
-    "text": "Causal Inference\n\nContemplating interventios that change behaviour:\n\nHow would littering parks change if we increase the severity of fines?\n\nIs public shaming more effective?\n\nWhat if we increase other types of fines (i.e. driving)?\n\nWill people commit less crimes?\n\n\n\nEach of these policies is asking what happens to some outcome if we change on factor – the intervention – and hold all other factors constant."
+    "text": "Causal Inference\n\nContemplating interventios that change behaviour:\n\nHow would littering parks change if we increase the severity of fines?\n\nIs public shaming more effective?\n\nWhat if we increase other types of fines (i.e. driving)?\n\nWill people commit less crimes?\n\n\n\nEach of these policies is asking what happens to some outcome if we make an intervention - keep everything the same but change one factor –"
   },
   {
     "objectID": "2023/weeks/week01/slides.html#a-little-throwback",
     "href": "2023/weeks/week01/slides.html#a-little-throwback",
     "title": "🗓️ Week 1 Introduction to counterfactuals",
     "section": "A little throwback",
-    "text": "A little throwback\n\nOctober 2021’s Nobel Prize in economics went to Card, Angrist and Imbens\nBut it’s arguably as much to Princeton’s mid 1980s Industrial Relations group as it’s ground zero for the credibility revolution\nStarts with Orley Ashenfelter, who had been working on job trainings programs\nKEY individuals: Orley Ashenfelter, David Card (Orley’s student), Josh Angrist (Card and Orley’s student), Alan Krueger (hired by Orley), Bob Lalonde (Card and Orley’s student) and then a generation of students (Levine, Currie, Pischke)"
+    "text": "A little throwback\n\nOctober 2021’s Nobel Prize in economics went to D. Card, J. Angrist and G. Imbens\nBut it’s arguably as much to Princeton’s mid 1980s Industrial Relations group as it’s ground zero for the credibility revolution\nStarts with Orley Ashenfelter, who had been working on job trainings programs\nKEY individuals: Orley Ashenfelter, David Card (Orley’s student), Josh Angrist (Card and Orley’s student), Alan Krueger (hired by Orley), Bob Lalonde (Card and Orley’s student) and then a generation of students (Levine, Currie, Pischke)"
   },
   {
     "objectID": "2023/weeks/week01/slides.html#a-little-throwback-1",
@@ -5458,5 +5458,12 @@
     "title": "🗓️ Week 9 Regression Discontinuity Designs",
     "section": "That’s it!",
     "text": "That’s it!\n\nThat’s what we have for RDD\nGo explore the regression discontinuity Seminar\nAnd the paper to read!\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
+  },
+  {
+    "objectID": "2023/weeks/week00/slides.html#causality-and-prediction",
+    "href": "2023/weeks/week00/slides.html#causality-and-prediction",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Causality and Prediction",
+    "text": "Causality and Prediction\n\nGreat! Still, why do we care about this class?\nIn econometrics, we are working with data\nStatisticians also work with data\nSo do data scientists\nThe goals for these groups differ"
   }
 ]
