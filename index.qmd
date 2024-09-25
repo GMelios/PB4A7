@@ -14,7 +14,7 @@ In this course, students will immerse themselves in the world of causal inferenc
 
 **Focus:** Understand the fundamentals of causal inference and its applications in Behavioural Science. Master statistical tools used by psychologists, political scientists, and economists. Recognize and address contemporary issues in behavioural science.
 
-**Download the full syllabus [here](https://github.com/GMelios/PB4A7/blob/main/2023/weeks/PB4A7_Syllabus_2023_24.pdf)**
+**Download the full syllabus [here](https://github.com/GMelios/PB4A7/blob/main/2024/weeks/PB4A7_Syllabus_2024-25.pdf)**
 
 🛠️ **Requirements:** For students who have no prior experience with statistics and/or STATA, the completion of the following Digital Skills class is highly recommended:
 
@@ -31,7 +31,7 @@ In this course, students will immerse themselves in the world of causal inferenc
 
 -----------------
 
-<a href="2023/index.qmd">
+<a href="2024/index.qmd">
     <button class="button-61"> Enter the class</button>
 </a>
 

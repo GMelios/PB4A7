@@ -4,20 +4,20 @@ project:
   output-dir: docs
   render:
     - "index.qmd"
-    - "2023/*.qmd"
-    - "2023/weeks/week00/*.qmd"
-    - "2023/weeks/week01/*.qmd"
-    - "2023/weeks/week02/*.qmd"
-    - "2023/weeks/week03/*.qmd"
-    - "2023/weeks/week04/*.qmd"
-    - "2023/weeks/week05/*.qmd"
-    - "2023/weeks/week06/*.qmd"
-    - "2023/weeks/week07/*.qmd"
-    - "2023/weeks/week08/*.qmd"
-    - "2023/weeks/week09/*.qmd"
-    - "2023/weeks/week10/*.qmd"
-    - "2023/weeks/week11/*.qmd"
-    - "2023/weeks/week12/*.qmd"
+    - "2024/*.qmd"
+    - "2024/weeks/week00/*.qmd"
+    - "2024/weeks/week01/*.qmd"
+    - "2024/weeks/week02/*.qmd"
+    - "2024/weeks/week03/*.qmd"
+    - "2024/weeks/week04/*.qmd"
+    - "2024/weeks/week05/*.qmd"
+    - "2024/weeks/week06/*.qmd"
+    - "2024/weeks/week07/*.qmd"
+    - "2024/weeks/week08/*.qmd"
+    - "2024/weeks/week09/*.qmd"
+    - "2024/weeks/week10/*.qmd"
+    - "2024/weeks/week11/*.qmd"
+    - "2024/weeks/week12/*.qmd"
     
 website:
   title: "PB4A7 - Quantitative Applications for Behavioural Science"
@@ -34,119 +34,119 @@ website:
   sidebar:
     style: docked
     contents:
-      - href: 2023/index.qmd
+      - href: 2024/index.qmd
         text: "🏠 Home"
         style:
           margin-bottom: "10px"
-      - href: 2023/syllabus.qmd
+      - href: 2024/syllabus.qmd
         text: "📓 Syllabus"
         style:
           margin-bottom: "10px"
-      - href: 2023/Stata.qmd
+      - href: 2024/Stata.qmd
         text: "STATA resources"
         style:
           margin-bottom: "10px"
-      - href: 2023/R.qmd
+      - href: 2024/R.qmd
         text: "R & Python resources"
         style:
           margin-bottom: "10px"
-    # - href: 2023/assignments.qmd
+    # - href: 2024/assignments.qmd
       #   text: "✍️ Assignments"
       #   contents:
-      #     - href: 2023/assignments/assignment01.qmd
+      #     - href: 2024/assignments/assignment01.qmd
       #       text: "📝 Assignment 01"
-      #     - href: 2023/assignments/assignment02.qmd
+      #     - href: 2024/assignments/assignment02.qmd
       #       text: "📝 Assignment 02"
-      #     - href: 2023/assignments/group_project.qmd
+      #     - href: 2024/assignments/group_project.qmd
       #       text: "👥 Group Project"
       - section: "🗓️ Weeks"
         contents:
-          - href: 2023/weeks/week00/page.qmd
+          - href: 2024/weeks/week00/page.qmd
             text: Presessionals
             contents:
-              - href: 2023/weeks/week00/page.qmd
+              - href: 2024/weeks/week00/page.qmd
               
-          - href: 2023/weeks/week01/page.qmd
+          - href: 2024/weeks/week01/page.qmd
             text: Week 01
             contents:
-              - href: 2023/weeks/week01/page.qmd
+              - href: 2024/weeks/week01/page.qmd
                 text: 👨‍🏫 Lecture Material
-              - href: 2023/weeks/week01/page1.qmd
+              - href: 2024/weeks/week01/page1.qmd
                 text: 💻 Seminar Material
-          - href: 2023/weeks/week02/page.qmd
+          - href: 2024/weeks/week02/page.qmd
             text: Week 02
             contents:
-              - href: 2023/weeks/week02/page.qmd
+              - href: 2024/weeks/week02/page.qmd
                 text: 👨‍🏫 Lecture Material
-              - href: 2023/weeks/week02/page1.qmd
+              - href: 2024/weeks/week02/page1.qmd
                 text: 💻 Seminar Material
-          - href: 2023/weeks/week03/page.qmd
+          - href: 2024/weeks/week03/page.qmd
             text: Week 03
             contents:
-              - href: 2023/weeks/week03/page.qmd
+              - href: 2024/weeks/week03/page.qmd
                 text: 👨‍🏫 Lecture Material
-              - href: 2023/weeks/week03/page1.qmd
+              - href: 2024/weeks/week03/page1.qmd
                 text: 💻 Seminar Material
-          - href: 2023/weeks/week04/page.qmd
+          - href: 2024/weeks/week04/page.qmd
             text: Week 04
             contents:
-              - href: 2023/weeks/week04/page.qmd
+              - href: 2024/weeks/week04/page.qmd
                 text: 👨‍🏫 Lecture Material
-              - href: 2023/weeks/week04/page1.qmd
+              - href: 2024/weeks/week04/page1.qmd
                 text: 💻 Seminar Material
-          - href: 2023/weeks/week05/page.qmd
+          - href: 2024/weeks/week05/page.qmd
             text: Week 05
             contents:
-              - href: 2023/weeks/week05/page.qmd
+              - href: 2024/weeks/week05/page.qmd
                 text: 👨‍🏫 Lecture Material
-              - href: 2023/weeks/week05/page1.qmd
+              - href: 2024/weeks/week05/page1.qmd
                 text: 💻 Seminar Material
-          - href: 2023/weeks/week06/page.qmd
+          - href: 2024/weeks/week06/page.qmd
             text: Week 06
             contents:
-              - href: 2023/weeks/week06/page.qmd
+              - href: 2024/weeks/week06/page.qmd
                 text: 👨‍🏫 Lecture Material
-              - href: 2023/weeks/week06/page1.qmd
+              - href: 2024/weeks/week06/page1.qmd
                 text: 💻 Seminar Material
-          - href: 2023/weeks/week07/page.qmd
+          - href: 2024/weeks/week07/page.qmd
             text: Week 07
             contents:
-              - href: 2023/weeks/week07/page.qmd
+              - href: 2024/weeks/week07/page.qmd
                 text: 👨‍🏫 Lecture Material
-              - href: 2023/weeks/week07/page1.qmd
+              - href: 2024/weeks/week07/page1.qmd
                 text: 💻 Seminar Material
-          - href: 2023/weeks/week08/page.qmd
+          - href: 2024/weeks/week08/page.qmd
             text: Week 08
             contents:
-              - href: 2023/weeks/week08/page.qmd
+              - href: 2024/weeks/week08/page.qmd
                 text: 👨‍🏫 Lecture Material
-              - href: 2023/weeks/week08/page1.qmd
+              - href: 2024/weeks/week08/page1.qmd
                 text: 💻 Seminar Material
-          - href: 2023/weeks/week09/page.qmd
+          - href: 2024/weeks/week09/page.qmd
             text: Week 09
             contents:
-              - href: 2023/weeks/week09/page.qmd
+              - href: 2024/weeks/week09/page.qmd
                 text: 👨‍🏫 Lecture Material
-              - href: 2023/weeks/week09/page1.qmd
+              - href: 2024/weeks/week09/page1.qmd
                 text: 💻 Seminar Material
-          - href: 2023/weeks/week10/page.qmd
+          - href: 2024/weeks/week10/page.qmd
             text: Week 10
             contents:
-              - href: 2023/weeks/week10/page.qmd
+              - href: 2024/weeks/week10/page.qmd
                 text: 👨‍🏫 Lecture Material
-              - href: 2023/weeks/week10/page1.qmd
+              - href: 2024/weeks/week10/page1.qmd
                 text: 💻 Seminar Material
-          - href: 2023/weeks/week11/page.qmd
+          - href: 2024/weeks/week11/page.qmd
             text: Week 11
             contents:
-              - href: 2023/weeks/week12/page.qmd
+              - href: 2024/weeks/week12/page.qmd
                 text: 👨‍🏫 Lecture Material
-              - href: 2023/weeks/week11/page1.qmd
+              - href: 2024/weeks/week11/page1.qmd
                 text: 💻 Seminar Material
-          - href: 2023/weeks/week12/page.qmd
+          - href: 2024/weeks/week12/page.qmd
             text: Guest Lecture
             contents:
-              - href: 2023/weeks/week12/page.qmd
+              - href: 2024/weeks/week12/page.qmd
                 text: 👨‍🏫 Lecture Material
 
 
@@ -155,7 +155,7 @@ website:
   page-footer:
     background: light
     left: "![](/figures/logos/MY_INSTITUTION.png)"
-    right: "Copyright 2023, London School of Economics & Political Science" 
+    right: "Copyright 2024, London School of Economics & Political Science" 
 
 
 

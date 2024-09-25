@@ -1,0 +1,70 @@
+---
+title: "PB4A7 - Quantitative Applications for Behavioural Science"
+subtitle: "Academic Year: 2024/25"
+format: html
+---
+
+
+# 🧑🏻‍🏫 Our Team
+
+::: {.panel-tabset}
+## Course Convenor
+
+
+![](/figures/people/George.jpeg){fig-align="left" fig-alt="Photo of Dr. George Melios" style="object-fit: cover;width:5em;height:5em;border-radius: 50%;"}  
+**[Dr George Melios](www.georgemelios.com)** <br/>
+_Research Fellow_ <br/>
+[London School of Economics and Political Science](#)</a><br/>
+📧 [g.melios@lse.ac.uk](mailto:g.melios@lse.ac.uk)
+
+Office Hours: 
+
+- When: Mondays 11:30 - 12:30
+- Where: Zoom
+- How to book: [Student Hub](https://studenthub.lse.ac.uk/welcome)
+
+## Teaching Staff
+
+![](/figures/people/Lazaros.jpeg){fig-align="left" fig-alt="Photo of Lazaros Chatzilazarou" style="object-fit: cover;width:5em;height:5em;border-radius: 50%;"}  
+**[Lazaros Chatzilazarou](#)** <br/>
+PhD Candidate at City University <br> 
+📧 [L.A.Chatzilazarou@lse.ac.uk](mailto:L.A.Chatzilazarou@lse.ac.uk)
+
+Help Sessions: 
+
+- When: Tuesdays 11:00-12:00
+- Where: CBG.G.01
+
+:::
+
+# 📍 Lecture
+
+Wednesdays 13:00-14:00 at MAR.1.10
+
+# 💻 Seminars
+
+::: {style="display:inline-block;width: 35%;border-style: dotted;border-width: 1px;border-color: &quot;#fefefe&quot;; margin:1%;padding:1.5%;background-color:#fafafa"}
+**Group 01**
+
+- 📆 Wednesdays
+- ⌚ 14:00 - 15:00
+- 📍 FAW.4.02	
+:::
+
+::: {style="display:inline-block;width: 35%;border-style: dotted;border-width: 1px;border-color: &quot;#fefefe&quot;; margin:1%;padding:1.5%;background-color:#fafafa"}
+**Group 02**
+
+            
+- 📆 Tuesdays
+- ⌚ 15:00 - 16:00
+- 📍 FAW.4.02	
+          
+:::
+
+::: {style="display:inline-block;width: 35%;border-style: dotted;border-width: 1px;border-color: &quot;#fefefe&quot;; margin:1%;padding:1.5%;background-color:#fafafa"}
+**Group 03**
+
+- 📆 Tuesdays
+- ⌚ 16:00 - 17:00
+- 📍 FAW.4.02	
+:::
