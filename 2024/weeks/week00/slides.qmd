@@ -117,7 +117,7 @@ theme_metro_regtitle <- function(x) {
 
 ## What is PB4A7
 <figure>
-    <img src="/2023/weeks/week00/superman.jpg" alt="Superman"
+    <img src="/2024/weeks/week00/superman.jpg" alt="Superman"
     style="width:15em;height:15em;font-size:1em;" 
     class="img-responsive atto_image_button_text-bottom">
 </figure>
@@ -176,7 +176,7 @@ theme_metro_regtitle <- function(x) {
 
 ## Textbook
 <figure>
-    <img src="/2023/weeks/week00/effect.png" alt="Effect"
+    <img src="/2024/weeks/week00/effect.png" alt="Effect"
     style="width:30em;height:15em;font-size:1em;" 
     class="img-responsive atto_image_button_text-bottom">
 </figure> 
@@ -215,7 +215,7 @@ theme_metro_regtitle <- function(x) {
 ## Data
 
 <figure>
-    <img src="/2023/weeks/week00/data1.jpg" alt="data"
+    <img src="/2024/weeks/week00/data1.jpg" alt="data"
     style="width:30em;height:15em;font-size:1em;" 
     class="img-responsive atto_image_button_text-bottom">
 </figure>
@@ -226,7 +226,7 @@ theme_metro_regtitle <- function(x) {
 ## Data
 
 <figure>
-    <img src="/2023/weeks/week00/data2.png" alt="data"
+    <img src="/2024/weeks/week00/data2.png" alt="data"
     style="width:30em;height:15em;font-size:1em;" 
     class="img-responsive atto_image_button_text-bottom">
 </figure>
@@ -236,7 +236,7 @@ theme_metro_regtitle <- function(x) {
 ## Data
 
 <figure>
-    <img src="/2023/weeks/week00/data3.png" alt="data"
+    <img src="/2024/weeks/week00/data3.png" alt="data"
     style="width:30em;height:15em;font-size:1em;" 
     class="img-responsive atto_image_button_text-bottom">
 </figure>

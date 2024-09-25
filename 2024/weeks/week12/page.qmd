@@ -2,7 +2,7 @@
 title: "🗓️ Guest Lecture - Difference in Differences"
 ---
 
-In this extra lecture, we will host Dr. Georgios Kavetsos (Associate Professor in Behavioural Science Queen Mary University) to explore applications of Diff-in-Diff in happiness and policy evaluations
+TBD
 
 ## 👨‍🏫 Lecture Slides 
 
@@ -11,7 +11,3 @@ Slides will be uploaded closer to the event
 🎥 Looking for lecture recordings? You can only find those on Moodle.
 
 ## 📚 Papers to review
-
-- The effect of the Brexit Referendum Result on Subjective Well-being [here](https://academic.oup.com/jrsssa/article/184/2/707/7056308)
-
-- Quantifying the intangible impact of the Olympics using subjective well-being data [here](https://www.sciencedirect.com/science/article/abs/pii/S0047272719300957)

@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr.&nbsp;George Melios">
+<meta name="dcterms.date" content="23 October 2023">
+
+<title>PB4A7 - Quantitative Applications for Behavioural Science - Binary Variables and Functional Form</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../figures/icons/course_favicon.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../../css/custom_style.css">
+<link rel="stylesheet" href="../../../css/syllabus.css">
+<meta property="og:title" content="PB4A7 - Quantitative Applications for Behavioural Science - Binary Variables and Functional Form">
+<meta property="og:description" content="i.e.&nbsp;what you actually do most of the time">
+<meta property="og:image" content="slides_files/figure-html/unnamed-chunk-2-1.png">
+<meta property="og:site-name" content="PB4A7 - Quantitative Applications for Behavioural Science">
+<meta name="twitter:title" content="PB4A7 - Quantitative Applications for Behavioural Science - Binary Variables and Functional Form">
+<meta name="twitter:description" content="i.e.&nbsp;what you actually do most of the time">
+<meta name="twitter:image" content="slides_files/figure-html/unnamed-chunk-2-1.png">
+<meta name="twitter:creator" content="@georgemelios">
+<meta name="twitter:site" content="\www.georgemelios.com">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">PB4A7 - Quantitative Applications for Behavioural Science</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools ms-auto">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Binary Variables and Functional Form</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🏠 Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📓 Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/Stata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">STATA resources</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R &amp; Python resources</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">🗓️ Weeks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2024/weeks/week00/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presessionals</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week00/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2024/weeks/week01/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 01</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week01/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week01/page1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💻 Seminar Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2024/weeks/week02/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 02</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week02/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week02/page1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💻 Seminar Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2024/weeks/week03/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 03</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week03/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week03/page1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💻 Seminar Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2024/weeks/week04/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 04</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week04/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week04/page1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💻 Seminar Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2024/weeks/week05/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 05</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week05/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week05/page1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💻 Seminar Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2024/weeks/week06/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 06</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week06/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week06/page1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💻 Seminar Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2024/weeks/week07/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 07</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week07/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week07/page1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💻 Seminar Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2024/weeks/week08/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 08</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week08/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week08/page1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💻 Seminar Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2024/weeks/week09/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 09</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week09/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week09/page1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💻 Seminar Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2024/weeks/week10/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 10</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week10/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week10/page1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💻 Seminar Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2024/weeks/week11/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 11</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week12/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week11/page1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💻 Seminar Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../2024/weeks/week12/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guest Lecture</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../2024/weeks/week12/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👨‍🏫 Lecture Material</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">What we will cover today:</h2>
+   
+  <ul>
+  <li><a href="#check-in" id="toc-check-in" class="nav-link active" data-scroll-target="#check-in">Check-in</a></li>
+  <li><a href="#the-right-hand-side" id="toc-the-right-hand-side" class="nav-link" data-scroll-target="#the-right-hand-side">The Right Hand Side</a></li>
+  <li><a href="#binary-data" id="toc-binary-data" class="nav-link" data-scroll-target="#binary-data">Binary Data</a></li>
+  <li><a href="#more-than-two-categories" id="toc-more-than-two-categories" class="nav-link" data-scroll-target="#more-than-two-categories">More than Two Categories</a></li>
+  <li><a href="#interpreting-ols" id="toc-interpreting-ols" class="nav-link" data-scroll-target="#interpreting-ols">Interpreting OLS</a></li>
+  <li><a href="#polynomials" id="toc-polynomials" class="nav-link" data-scroll-target="#polynomials">Polynomials</a></li>
+  <li><a href="#logarithms" id="toc-logarithms" class="nav-link" data-scroll-target="#logarithms">Logarithms</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Binary Variables and Functional Form</h1>
+<p class="subtitle lead">i.e.&nbsp;what you actually do most of the time</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Dr.&nbsp;<a href="#">George Melios</a> </p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="#">London School of Economics and Political Science</a>
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Updated 2024-09-25</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+<style type="text/css">
+pre {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+pre[class] {
+  max-height: 100px;
+}
+</style>
+</div>
+<section id="check-in" class="level1">
+<h1>Check-in</h1>
+<ul>
+<li>Where are we at?</li>
+<li>Next week reading week!!! After that, we will start the causal methods. The format will be very similar to lectures up to now - extra papers</li>
+<li>This lecture will cover the last “intro” material</li>
+<li>This is a pretty packed lecture, but it’s structured to be easy to come back to and review, there will be plenty of practice next time, and this might end up broken across both days</li>
+</ul>
+<hr>
+<section id="bias-and-the-error-term" class="level2">
+<h2 class="anchored" data-anchor-id="bias-and-the-error-term">Bias and the Error Term</h2>
+<ul>
+<li>All of the nice stuff we’ve gotten so far makes some assumptions about our true model</li>
+</ul>
+<p><span class="math display">\[ Y = \beta_0 + \beta_1X + \varepsilon \]</span></p>
+<ul>
+<li>In particular, we’ve made some assumptions about the error term <span class="math inline">\(\varepsilon\)</span></li>
+<li>So what is that error term exactly, and what are we assuming about it?</li>
+</ul>
+<hr>
+</section>
+<section id="the-error-term" class="level2">
+<h2 class="anchored" data-anchor-id="the-error-term">The Error Term</h2>
+<ul>
+<li>The error term contains everything that isn’t in our model</li>
+<li>If <span class="math inline">\(Y\)</span> were a pure function of <span class="math inline">\(X\)</span>, for example if <span class="math inline">\(Y\)</span> was “height in feet” and <span class="math inline">\(X\)</span> was “height in inches”, we wouldn’t have an error term, because a straight line fully describes the relationship perfectly with no variation</li>
+<li>But in most cases, the line is a simplification - we’re leaving other stuff out! That’s in the error term</li>
+</ul>
+<hr>
+</section>
+<section id="the-error-term-1" class="level2">
+<h2 class="anchored" data-anchor-id="the-error-term-1">The Error Term</h2>
+<ul>
+<li>Consider this data generating process:</li>
+</ul>
+<p><span class="math display">\[ ClassGrade = \beta_0 + \beta_1 StudyTime + \varepsilon \]</span></p>
+<ul>
+<li>Surely StudyTime isn’t the <em>only</em> thing that determines your ClassGrade</li>
+<li>Everything else is in the error term!</li>
+<li>ProfessorLeniency, InterestInSubject, Intelligence, and so on and so on…</li>
+</ul>
+<hr>
+</section>
+<section id="the-error-term-2" class="level2">
+<h2 class="anchored" data-anchor-id="the-error-term-2">The Error Term</h2>
+<ul>
+<li>Isn’t that really bad? We’re leaving out a bunch of important stuff!</li>
+<li>If you want to <em>predict <span class="math inline">\(Y\)</span> as accurately as possible</em> then we’re probably going to do a bad job of it</li>
+<li>But if our real interest is *figuring out the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, then it’s fine to leave stuff out, as long as whatever’s left in the error term obeys a few important assumptions</li>
+</ul>
+<hr>
+</section>
+<section id="error-term-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="error-term-assumptions">Error Term Assumptions</h2>
+<ul>
+<li>The most important assumption about the error term is that it is <em>unrelated to <span class="math inline">\(X\)</span></em></li>
+<li>If <span class="math inline">\(X\)</span> and <span class="math inline">\(\varepsilon\)</span> are correlated, <span class="math inline">\(\hat{\beta}_1\)</span> will be <em>biased</em> - its distribution no longer has the true <span class="math inline">\(\beta_1\)</span> as its mean</li>
+<li>In these cases we can say ” <span class="math inline">\(X\)</span> is <strong>endogenous</strong>” or “we have <strong>omitted variable bias</strong>”</li>
+<li>No amount of additional sample size will fix that problem!</li>
+<li>(what will fix the problem? We’ll get to that one later)</li>
+</ul>
+<hr>
+</section>
+<section id="omitted-variable-bias" class="level2">
+<h2 class="anchored" data-anchor-id="omitted-variable-bias">Omitted Variable Bias</h2>
+<ul>
+<li>We can intuitively think about whether omitted variable bias is likely to make our estimates too high or too low</li>
+<li>The sign of the bias will be the sign of the relationship between the omitted variable and <span class="math inline">\(X\)</span>, <strong>times</strong> the sign of the relationship between the omitted variable bias and <span class="math inline">\(Y\)</span></li>
+<li>InterestInSubject is positively related to both StudyTime and ClassGrade, and <span class="math inline">\(+\times+ = +\)</span>, so our estimates are positively biased / too high</li>
+<li>More precisely we have that the mean of the <span class="math inline">\(\hat{\beta}_1\)</span> sampling distribution is <span class="math display">\[\beta_1 + corr(X,\varepsilon)\frac{\sigma_\varepsilon}{\sigma_X}\]</span></li>
+</ul>
+<hr>
+</section>
+<section id="thinking-through-this-bias" class="level2">
+<h2 class="anchored" data-anchor-id="thinking-through-this-bias">Thinking Through this Bias</h2>
+<ul>
+<li>If <span class="math inline">\(Z\)</span> hangs around <span class="math inline">\(X\)</span>, but <span class="math inline">\(Y\)</span> doesn’t know about it, then the coefficient on <span class="math inline">\(X\)</span> will get all the credit for <span class="math inline">\(Z\)</span></li>
+<li>This is a good way to keep that “direction of bias” problem in mind</li>
+<li>And you do want to keep it in mind! This is important for understanding general correlations you see in the wild, too</li>
+<li>And helps keep in line some things - for example, <strong>if <span class="math inline">\(Z\)</span> is unrelated to <span class="math inline">\(X\)</span>, it won’t bias you!!</strong></li>
+</ul>
+<hr>
+</section>
+<section id="thinking-through-this-bias-1" class="level2">
+<h2 class="anchored" data-anchor-id="thinking-through-this-bias-1">Thinking Through this Bias</h2>
+<ul>
+<li>That means that when you’re thinking about the controls you <strong>need</strong>, that <strong>only</strong> includes things related to <span class="math inline">\(X\)</span></li>
+<li>Adding controls for things related to <span class="math inline">\(Y\)</span> not <span class="math inline">\(X\)</span> can make the model predict better and reduce standard errors, but won’t remove omitted variable bias</li>
+</ul>
+<hr>
+</section>
+<section id="less-serious-error-concerns" class="level2">
+<h2 class="anchored" data-anchor-id="less-serious-error-concerns">Less Serious Error Concerns</h2>
+<ul>
+<li>Omitted variable bias can, well, bias us, which is very bad</li>
+<li>There are some other assumptions that can fail that may also pose a problem to us but less so</li>
+<li>We’ve assumed so far not just that <span class="math inline">\(\varepsilon\)</span> is unrelated to <span class="math inline">\(X\)</span>, but also that the <em>variance</em> of <span class="math inline">\(\varepsilon\)</span> is unrelated to <span class="math inline">\(X\)</span>, and that the <span class="math inline">\(\varepsilon\)</span>s are unrelated to each other</li>
+<li>If these assumptions fail, our standard errors will be wrong, but we won’t be biased, and also there are ways to fix the standard errors</li>
+<li>We will cover these only briefly, they’ll come back later</li>
+</ul>
+<hr>
+</section>
+<section id="heteroskedasticity" class="level2">
+<h2 class="anchored" data-anchor-id="heteroskedasticity">Heteroskedasticity</h2>
+<ul>
+<li>If the variance of the error term is different for different values of <span class="math inline">\(X\)</span>, then we have “heteroskedasticity”</li>
+<li>Notice in the below graph how the spread of the points around the line (the variance of the error term) is bigger on the right than the left</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="slides_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="heteroskedasticity-1" class="level2">
+<h2 class="anchored" data-anchor-id="heteroskedasticity-1">Heteroskedasticity</h2>
+<ul>
+<li>We can correct for this using <em>heteroskedasticity-robust standard errors</em> which sort of “squash down” the big variances and then re-estimate the standard errors</li>
+<li>We can do this in <code>feols</code> with <code>vcov = 'hetero'</code> in R or with “robust” in STATA</li>
+</ul>
+<hr>
+</section>
+<section id="correlated-errors" class="level2">
+<h2 class="anchored" data-anchor-id="correlated-errors">Correlated Errors</h2>
+<ul>
+<li>If the error terms are <em>correlated with each other</em>, then our standard errors will also be wrong</li>
+<li>How could this happen? For example, maybe you’ve surveyed a bunch of people in different towns - the error terms within a town might be <em>clustered</em></li>
+<li>Or maybe you have time series data. If a term in the error term is “sticky” or has “momentum” it will likely be a similar error term a few time periods in a row, beign correlated across time, or <em>autocorrelated</em></li>
+<li>Again, this doesn’t bias <span class="math inline">\(\hat{\beta}_1\)</span> but it can affect standard errors!</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="the-right-hand-side" class="level1">
+<h1>The Right Hand Side</h1>
+<ul>
+<li>Today we’ll be focusing on the <em>right hand side</em> of a regression</li>
+<li>Economists generally refer to a regression as having a “left-hand-side” of the dependent variable <span class="math inline">\(Y\)</span>, and a “right-hand-side” of all the independent stuff, like <span class="math inline">\(\beta_0 + \beta_1X + \beta_2Z + \varepsilon\)</span>.</li>
+<li>So far, we’ve just tossed stuff on the right-hand side and called it our treatment variable or a control variable without thinking too much harder about it</li>
+<li>Today we will think harder about it!</li>
+</ul>
+<hr>
+<section id="the-right-hand-side-1" class="level2">
+<h2 class="anchored" data-anchor-id="the-right-hand-side-1">The Right Hand Side</h2>
+<p>We will look at three features of the right-hand side</p>
+<ul>
+<li>What if the variable is <em>categorical</em> or <em>binary</em>? (binary variables)</li>
+<li>What if the variable has a <em>nonlinear effect</em> on <span class="math inline">\(Y\)</span> (polynomials and logarithms)</li>
+<li>What if the effect of one variable <em>depends on the value of another variable?</em> (interaction terms)</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="binary-data" class="level1">
+<h1>Binary Data</h1>
+<section id="binary-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="binary-data-1">Binary Data</h2>
+<ul>
+<li>A variable is binary if it only has two values - 0 or 1 (or “No” or “Yes”, etc.)</li>
+<li>Binary variables are super common in econometrics!</li>
+<li>Did you get the treatment? Yes / No</li>
+<li>Do you live in the US? Yes / No</li>
+<li>Is a floating exchange rate in effect? Yes / No</li>
+</ul>
+<hr>
+</section>
+<section id="comparison-of-means" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-of-means">Comparison of Means</h2>
+<ul>
+<li>When a binary variable is an independent variable, what we are often interested in doing is <em>comparing means</em></li>
+<li>Is mean income higher inside the US or outside?</li>
+<li>Is mean height higher for kids who got a nutrition supplement or those who didn’t?</li>
+<li>Is mean GDP growth higher with or without a floating exchange rate?</li>
+</ul>
+<hr>
+</section>
+<section id="comparison-of-means-1" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-of-means-1">Comparison of Means</h2>
+<ul>
+<li>Let’s compare log earnings in 1993 between married people 30 or older vs.&nbsp;never-married people 30 or older</li>
+<li>Seems to be a slight favor to the married men</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(PSID, <span class="at">package =</span> <span class="st">'Ecdat'</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>PSID <span class="ot">&lt;-</span> PSID <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&gt;=</span> <span class="dv">30</span>, married <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'married'</span>,<span class="st">'never married'</span>), earnings <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">married  =</span> married <span class="sc">==</span> <span class="st">'married'</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>PSID <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(married) <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">log_earnings =</span> <span class="fu">mean</span>(<span class="fu">log</span>(earnings)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  married log_earnings
+  &lt;lgl&gt;          &lt;dbl&gt;
+1 FALSE           9.26
+2 TRUE            9.47</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="comparison-of-means-2" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-of-means-2">Comparison of Means</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="slides_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="comparison-of-means-3" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-of-means-3">Comparison of Means</h2>
+<ul>
+<li>The <em>difference between the means</em> follows a t-distribution under the null that they’re identical</li>
+<li>So of course we can do a hypothesis test of whether they’re different. But why bother trotting out a specific test when we can just do a regression?</li>
+<li>(In fact, a lot of specific tests can be replaced with basic regression, see <a href="https://lindeloev.github.io/tests-as-linear/">this explainer</a>)</li>
+</ul>
+<hr>
+</section>
+<section id="comparison-of-means-4" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-of-means-4">Comparison of Means</h2>
+<p>Notice:</p>
+<ul>
+<li>The intercept gives the mean for the <em>non-married</em> group</li>
+<li>The coefficient on <em>marriedTRUE</em> gives the married minus non-married difference</li>
+<li>i.e.&nbsp;<em>the coefficient on a binary variable in a regression gives the difference in means</em></li>
+<li>If we’d defined it the other way, with “not married” as the independent variable, the intercept would be the mean for the <em>married</em> group (i.e.&nbsp;“not married = 0”), and the coefficient would be the exact same but times <span class="math inline">\(-1\)</span> (same difference, just opposite direction!)</li>
+</ul>
+<hr>
+</section>
+<section id="comparison-of-means-5" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-of-means-5">Comparison of Means</h2>
+<p>Why does OLS give us a comparison of means when you give it a binary variable?</p>
+<ul>
+<li>The only <span class="math inline">\(X\)</span> values are 0 (FALSE) and 1 (TRUE)</li>
+<li>Because of this, OLS no longer really fits a <em>line</em>, it’s more of two separate means</li>
+<li>And when you’re estimating to minimize the sum of squared errors separately for each group, can’t do any better than to predict the mean!</li>
+<li>So you get the mean of each group as each group’s prediction</li>
+</ul>
+<hr>
+</section>
+<section id="binary-with-controls" class="level2">
+<h2 class="anchored" data-anchor-id="binary-with-controls">Binary with Controls</h2>
+<ul>
+<li>Obviously this is handy for including binary controls, but why do this for binary treatments? Because we can add controls!</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                feols(log(earning..
+Dependent Var.:       log(earnings)
+                                   
+Constant          8.740*** (0.1478)
+marriedTRUE      0.3404*** (0.0579)
+kids            -0.2259*** (0.0159)
+age              0.0223*** (0.0038)
+_______________ ___________________
+S.E. type                       IID
+Observations                  2,803
+R2                          0.07609
+Adj. R2                     0.07510
+---
+Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="multicollinearity" class="level2">
+<h2 class="anchored" data-anchor-id="multicollinearity">Multicollinearity</h2>
+<ul>
+<li>Why is just one side of it on the regression? Why aren’t “married” and “not married” BOTH included?</li>
+<li>Because regression couldn’t give an answer!</li>
+</ul>
+<hr>
+</section>
+<section id="multicollinearity-1" class="level2">
+<h2 class="anchored" data-anchor-id="multicollinearity-1">Multicollinearity</h2>
+<ul>
+<li><p>Mean of married is <span class="math inline">\(9.47\)</span> and of non-married is <span class="math inline">\(9.26\)</span>. <span class="math display">\[ \log(Earnings) = 0 + 9.47Married + 9.26NonMarried \]</span> <span class="math display">\[ \log(Earnings) = 3 + 6.47Married + 6.26NonMarried \]</span></p></li>
+<li><p>These (and infinitely many other options) all give the exact same predictions! OLS can’t pick between them. There’s no single best way to minimize squared residuals</p></li>
+<li><p>So we pick one with convenient properties, setting one of the categories to have a coefficient of 0 (dropping it) and making the coefficient on the other <em>the difference relative to</em> the one we left out</p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="more-than-two-categories" class="level1">
+<h1>More than Two Categories</h1>
+<section id="more-than-two-categories-1" class="level2">
+<h2 class="anchored" data-anchor-id="more-than-two-categories-1">More than Two Categories</h2>
+<ul>
+<li>That interpretation - dropping one and making the other relative to <em>that</em>, conveniently extends to <em>multi-category variables</em></li>
+<li>Why stop at binary categorical variables? There are plenty of categorical variables with more than two values</li>
+<li>What is your education level? What is your religious denomination? What continent are you on?</li>
+<li>We can put these in a regression by turning <em>each value</em> into its own binary variable</li>
+<li>(and then dropping one so the coefficients on the others give you the difference with the omitted one)</li>
+</ul>
+<hr>
+</section>
+<section id="concept-checks" class="level2">
+<h2 class="anchored" data-anchor-id="concept-checks">Concept Checks</h2>
+<ul>
+<li>If <span class="math inline">\(X\)</span> is binary, in sentences interpret the coefficients from the estimated OLS equation <span class="math inline">\(Y = 4 + 3X + 2Z\)</span></li>
+<li>How might a comparison of means come in handy if you wanted to analyze the results of a randomized policy experiment?</li>
+<li>If you had a data set of people from every continent and added “continent” as a control, how many coefficients would this add to your model?</li>
+<li>If in that regression you really wanted to compare Europe to Asia specifically, what might you do so that the regression made this easy?</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="interpreting-ols" class="level1">
+<h1>Interpreting OLS</h1>
+<section id="interpreting-ols-1" class="level2">
+<h2 class="anchored" data-anchor-id="interpreting-ols-1">Interpreting OLS</h2>
+<ul>
+<li><p>To think more about the right-hand-side, let’s go back to our original interpretation of an OLS coefficient <span class="math display">\[ Y = \beta_0 + \beta_1X + \varepsilon \]</span></p></li>
+<li><p>A one-unit change in <span class="math inline">\(X\)</span> is associated with a <span class="math inline">\(\beta_1\)</span>-unit change in <span class="math inline">\(Y\)</span></p></li>
+<li><p>This logic still works with binary variables since “a one-unit change in <span class="math inline">\(X\)</span>” means “changing <span class="math inline">\(X\)</span> from No to Yes”</p></li>
+<li><p>Notice that this assumes that a one-unit change in <span class="math inline">\(X\)</span> <em>always has the same effect</em> on <span class="math inline">\(\beta_1\)</span> no matter what else is going on</p></li>
+<li><p>What if that’s not true?</p></li>
+</ul>
+<hr>
+</section>
+<section id="functional-form" class="level2">
+<h2 class="anchored" data-anchor-id="functional-form">Functional Form</h2>
+<ul>
+<li>We talked before about times when a <em>linear model</em> like standard OLS might not be sufficient</li>
+<li>However, as long as those <em>non</em>-linearities are on the right hand side, we can fix the problem easily but just having <span class="math inline">\(X\)</span> enter non-linearly! Run it through a <em>transformation</em>!</li>
+<li>The most common transformations by far are <em>polynomials</em> and <em>logarithms</em></li>
+</ul>
+<hr>
+</section>
+<section id="functional-form-1" class="level2">
+<h2 class="anchored" data-anchor-id="functional-form-1">Functional Form</h2>
+<ul>
+<li>Why do this? Because sometimes a straight line is clearly not going to do the trick!</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="slides_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="polynomials" class="level1">
+<h1>Polynomials</h1>
+<section id="polynomials-1" class="level2">
+<h2 class="anchored" data-anchor-id="polynomials-1">Polynomials</h2>
+<ul>
+<li><span class="math inline">\(\beta_1X\)</span> is a “first order polynomial” - there’s one term</li>
+<li><span class="math inline">\(\beta_1X + \beta_2X^2\)</span> is a “second order polynomial” or a “quadratic” - two terms (note both included, it’s not just <span class="math inline">\(X^2\)</span>)</li>
+<li><span class="math inline">\(\beta_1X + \beta_2X^2 + \beta_3X^3\)</span> is a third-order or cubic, etc.</li>
+</ul>
+<hr>
+</section>
+<section id="polynomials-2" class="level2">
+<h2 class="anchored" data-anchor-id="polynomials-2">Polynomials</h2>
+<p>What do they do?</p>
+<ul>
+<li>The more polynomial terms, the more flexible the line can be. With enough terms you can mimic <em>any</em> shape of relationship</li>
+<li>Of course, if you just add a whole buncha terms, it gets very noisy, and prediction out-of-sample gets very bad</li>
+<li>Keep it minimal - quadratics are almost always enough, unless you have reason to believe there’s a true more-complex relationship. You can try adding higher-order terms and see if they make a difference</li>
+</ul>
+<hr>
+</section>
+<section id="polynomials-3" class="level2">
+<h2 class="anchored" data-anchor-id="polynomials-3">Polynomials</h2>
+<ul>
+<li>The true relationship is quadratic</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="slides_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="polynomials-4" class="level2">
+<h2 class="anchored" data-anchor-id="polynomials-4">Polynomials</h2>
+<ul>
+<li>Higher-order terms don’t do anything for us here (because a quadratic is sufficient!)</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="slides_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="polynomials-5" class="level2">
+<h2 class="anchored" data-anchor-id="polynomials-5">Polynomials</h2>
+<ul>
+<li>Interpret polynomials using the derivative</li>
+<li><span class="math inline">\(\partial Y/\partial X\)</span> will be different depending on the value of <span class="math inline">\(X\)</span> (as it should! Notice in the graph that the slope changes for different values of <span class="math inline">\(X\)</span>)</li>
+</ul>
+<p><span class="math display">\[ Y = \beta_1X + \beta_2X^2 \]</span> <span class="math display">\[ \partial Y/\partial X = \beta_1 + 2\beta_2X \]</span></p>
+<p>So at <span class="math inline">\(X = 0\)</span>, the effect of a one-unit change in <span class="math inline">\(X\)</span> is <span class="math inline">\(\beta_1\)</span>. At <span class="math inline">\(X = 1\)</span>, it’s <span class="math inline">\(\beta_1 + \beta_2\)</span>. At <span class="math inline">\(X = 5\)</span> it’s <span class="math inline">\(\beta_1 + 5\beta_2\)</span>.</p>
+<hr>
+</section>
+<section id="polynomials-6" class="level2">
+<h2 class="anchored" data-anchor-id="polynomials-6">Polynomials</h2>
+<ul>
+<li><strong>IMPORTANT</strong>: when you have a polynomial, <em>the coefficients on each individual term mean very little on their own</em>. You have to consider them alongisde the other coefficients from the polynomial! <strong>Never</strong> interpret <span class="math inline">\(\beta_1\)</span> here without thinking about <span class="math inline">\(\beta_2\)</span> alongside. Also, the significance of the individual terms doesn’t really matter - consider doing an F-test of all of them at once.</li>
+</ul>
+<hr>
+</section>
+<section id="concept-check" class="level2">
+<h2 class="anchored" data-anchor-id="concept-check">Concept Check</h2>
+<ul>
+<li>What’s the effect of a one-unit change in <span class="math inline">\(X\)</span> at <span class="math inline">\(X = 0\)</span>, <span class="math inline">\(X = 1\)</span>, and <span class="math inline">\(X = 2\)</span> for each of these?</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                feols(Y ~ X, dat.. feols(Y ~ X + I(.. feols(Y ~ X + I(...1
+Dependent Var.:                  Y                  Y                    Y
+                                                                          
+Constant         7.285*** (0.5660)   -0.1295 (0.3839)      0.0759 (0.5091)
+X               -8.934*** (0.1953)   0.9779* (0.3831)      0.4542 (0.9331)
+X square                           -2.003*** (0.0752)   -1.738*** (0.4368)
+X cube                                                    -0.0354 (0.0574)
+_______________ __________________ __________________   __________________
+S.E. type                      IID                IID                  IID
+Observations                   200                200                  200
+R2                         0.91357            0.98122              0.98126
+Adj. R2                    0.91313            0.98103              0.98097
+---
+Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="logarithms" class="level1">
+<h1>Logarithms</h1>
+<section id="logarithms-1" class="level2">
+<h2 class="anchored" data-anchor-id="logarithms-1">Logarithms</h2>
+<ul>
+<li>Another common transformation, both for dependent and independent variables, is to take the logarithm</li>
+<li>This has the effect of pulling in extreme values from strongly right-skewed data and making linear relationships pop out</li>
+<li>Income, for example, is almost always used with a logarithm</li>
+<li>It also gives the coefficients a nice percentage-based interpretation</li>
+</ul>
+<hr>
+</section>
+<section id="logarithms-2" class="level2">
+<h2 class="anchored" data-anchor-id="logarithms-2">Logarithms</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="slides_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="or-if-you-prefer" class="level2">
+<h2 class="anchored" data-anchor-id="or-if-you-prefer">Or if you prefer…</h2>
+<ul>
+<li>Notice the change in axes</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="slides_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="logarithms-3" class="level2">
+<h2 class="anchored" data-anchor-id="logarithms-3">Logarithms</h2>
+<ul>
+<li>How can we interpret them?</li>
+<li>The key is to remember that <span class="math inline">\(\log(X) + a \approx \log((1+a)X)\)</span>, meaning that a <span class="math inline">\(a\)</span>-unit change in <span class="math inline">\(log(X)\)</span> is similar to a <span class="math inline">\(a\times100%\)</span> change in <span class="math inline">\(X\)</span></li>
+<li>So, walk through our “one-unit change in the variable” logic from before, but whenever we hit a log, change that into a percentage!</li>
+</ul>
+<hr>
+</section>
+<section id="logarithms-4" class="level2">
+<h2 class="anchored" data-anchor-id="logarithms-4">Logarithms</h2>
+<ul>
+<li><span class="math inline">\(Y = \beta_0 + \beta_1\log(X)\)</span> A one-unit change in <span class="math inline">\(\log(X)\)</span>, or a 100% change in <span class="math inline">\(X\)</span>, is associated with a <span class="math inline">\(\beta_1\)</span>-unit change in <span class="math inline">\(Y\)</span></li>
+<li><span class="math inline">\(\log(Y) = \beta_0 + \beta_1X\)</span> a one-unit change in <span class="math inline">\(X\)</span> is associated with a <span class="math inline">\(\beta_1\times 100\)</span>% change in <span class="math inline">\(Y\)</span></li>
+<li><span class="math inline">\(\log(Y) = \beta_0 + \beta_1\log(X)\)</span> A one-unit change in <span class="math inline">\(\log(X)\)</span>, or a or a 100% change in <span class="math inline">\(X\)</span>, is associated with a <span class="math inline">\(\beta_1\)</span>-unit change in <span class="math inline">\(\log(Y)\)</span>, or a <span class="math inline">\(\beta_1\times100\)</span>% change in <span class="math inline">\(Y\)</span>.</li>
+<li>(Try also with changes smaller than one unit - that’s usually more reasonable)</li>
+</ul>
+<hr>
+</section>
+<section id="logarithms-5" class="level2">
+<h2 class="anchored" data-anchor-id="logarithms-5">Logarithms</h2>
+<p>Downsides:</p>
+<ul>
+<li>Logarithms require that all data be positive. No negatives or zeroes!</li>
+<li>Fairly rare that a variable with negative values wants a log anyway</li>
+<li>But zeroes are common! A common practice is to just do <span class="math inline">\(log(X+1)\)</span> but this is pretty arbitrary</li>
+</ul>
+<hr>
+</section>
+<section id="functional-form-2" class="level2">
+<h2 class="anchored" data-anchor-id="functional-form-2">Functional Form</h2>
+<ul>
+<li>In general, you want the shape of your function to match the shape of the relationship in the data (or, even better, the true relationship)</li>
+<li>Polynomials and logs can usually get you there!</li>
+<li>Which to use? Use logs for highly skewed data or variables with exponential relationships</li>
+<li>Use polynomials if it doesn’t look straight! <strong>Check that scatterplot and see how not-straight it is!</strong></li>
+</ul>
+<hr>
+</section>
+<section id="concept-checks-1" class="level2">
+<h2 class="anchored" data-anchor-id="concept-checks-1">Concept Checks</h2>
+<ul>
+<li>Which of the following variables would you likely want to log before using them? Income, height, wealth, company size, home square footage</li>
+<li>In each of the following estimated OLS lines, interpret the coefficient by filling in “A [blank] change in X is associated with a [blank] change in Y”:</li>
+</ul>
+<p><span class="math display">\[ Y = 1 + 2\log(X) \]</span> <span class="math display">\[ \log(Y) = 3 + 2\log(X) \]</span></p>
+<p><span class="math display">\[ \log(Y) = 4 + 3X \]</span></p>
+<hr>
+</section>
+<section id="interactions" class="level2">
+<h2 class="anchored" data-anchor-id="interactions">Interactions</h2>
+<ul>
+<li>For both polynomials and logarithms, the effect of a one-unit change in <span class="math inline">\(X\)</span> differs depending on its current value (for logarithms, a 1-unit change in <span class="math inline">\(X\)</span> is different percentage changes in <span class="math inline">\(X\)</span> depending on current value)</li>
+<li>But why stop there? Maybe the effect of <span class="math inline">\(X\)</span> differs depending on the current value of <em>other variables!</em></li>
+<li>Enter interaction terms!</li>
+</ul>
+<p><span class="math display">\[ Y = \beta_0 + \beta_1X + \beta_2Z + \beta_3X\times Z + \varepsilon \]</span> - Interaction terms are <em>a little tough</em> but also <strong>extremely important</strong>.</p>
+<hr>
+</section>
+<section id="interactions-1" class="level2">
+<h2 class="anchored" data-anchor-id="interactions-1">Interactions</h2>
+<p>Expect to come back to these slides, as you’re almost certainly going to use interaction terms in both our assessment and the dissertation</p>
+<hr>
+</section>
+<section id="interactions-2" class="level2">
+<h2 class="anchored" data-anchor-id="interactions-2">Interactions</h2>
+<ul>
+<li>Change in the value of a <em>control</em> can shift a regression line up and down</li>
+<li>Using the model <span class="math inline">\(Y = \beta_0 + \beta_1X + \beta_2Z\)</span>, estimated as <span class="math inline">\(Y = .01 + 1.2X + .95Z\)</span>:</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="slides_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="interactions-3" class="level2">
+<h2 class="anchored" data-anchor-id="interactions-3">Interactions</h2>
+<ul>
+<li>But an interaction can both shift the line up and down AND change its slope</li>
+<li>Using the model <span class="math inline">\(Y = \beta_0 + \beta_1X + \beta_2Z + \beta_3X\times Z\)</span>, estimated as <span class="math inline">\(Y = .035 + 1.14X + .94Z + 1.02X\times Z\)</span>:</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="slides_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="interactions-4" class="level2">
+<h2 class="anchored" data-anchor-id="interactions-4">Interactions</h2>
+<ul>
+<li>How can we interpret an interaction?</li>
+<li>The idea is that the interaction shows how <em>the effect of one variable changes as the value of the other changes</em></li>
+<li>The derivative helps!</li>
+</ul>
+<p><span class="math display">\[ Y = \beta_0 + \beta_1X + \beta_2Z + \beta_3X\times Z \]</span> <span class="math display">\[ \partial Y/\partial X = \beta_1 + \beta_3 Z \]</span></p>
+<ul>
+<li>The effect of <span class="math inline">\(X\)</span> is <span class="math inline">\(\beta_1\)</span> when <span class="math inline">\(Z = 0\)</span>, or <span class="math inline">\(\beta_1 + \beta_3\)</span> when <span class="math inline">\(Z = 1\)</span>, or <span class="math inline">\(\beta_1 + 3\beta_3\)</span> if <span class="math inline">\(Z = 3\)</span>!</li>
+</ul>
+<hr>
+</section>
+<section id="interactions-5" class="level2">
+<h2 class="anchored" data-anchor-id="interactions-5">Interactions</h2>
+<ul>
+<li>Often we are doing interactions with binary variables to see how an effect differs across groups</li>
+<li>Now, instead of the intercept giving the baseline and the binary coefficient giving the difference, the coefficient on <span class="math inline">\(X\)</span> is the baseline effect of <span class="math inline">\(X\)</span> and the interaction is the difference in the effect of <span class="math inline">\(X\)</span></li>
+<li>The interaction coefficient becomes “the difference in the effect of <span class="math inline">\(X\)</span> between the <span class="math inline">\(Z\)</span> =”No” and <span class="math inline">\(Z\)</span> = “Yes” groups”</li>
+<li>(What if it’s continuous? Mathematically the same but the thinking changes - the interaction term is the difference in the effect of <span class="math inline">\(X\)</span> you get when increasing <span class="math inline">\(Z\)</span> by one unit)</li>
+</ul>
+<hr>
+</section>
+<section id="interactions-6" class="level2">
+<h2 class="anchored" data-anchor-id="interactions-6">Interactions</h2>
+<ul>
+<li>Marriage for those without a college degree raises earnings by 24%. A college degree reduces the marriage premium by 25%. Marriage for those with a college degree reduces earnings by .24 - .25 = -1%</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                          feols(log(earnin..
+Dependent Var.:                log(earnings)
+                                            
+Constant                   9.087*** (0.0583)
+marriedTRUE               0.2381*** (0.0638)
+collegeTRUE               0.8543*** (0.1255)
+marriedTRUE x collegeTRUE  -0.2541. (0.1363)
+_________________________ __________________
+S.E. type                                IID
+Observations                           2,803
+R2                                   0.06253
+Adj. R2                              0.06153
+---
+Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="notes-on-interactions" class="level2">
+<h2 class="anchored" data-anchor-id="notes-on-interactions">Notes on Interactions</h2>
+<ul>
+<li>Like with polynomials, the coefficients on their own now have little meaning and must be evaluated alongside each other. <span class="math inline">\(\beta_1\)</span> by itself is just “the effect of <span class="math inline">\(X\)</span> when <span class="math inline">\(Z = 0\)</span>”, not “the effect of <span class="math inline">\(X\)</span>”</li>
+<li>Yes, you <em>do</em> almost always want to include both variables in un-interacted form and interacted form. Otherwise the interpretation gets very thorny</li>
+</ul>
+<hr>
+</section>
+<section id="notes-on-interactions-1" class="level2">
+<h2 class="anchored" data-anchor-id="notes-on-interactions-1">Notes on Interactions</h2>
+<ul>
+<li>Interaction effects are <em>poorly powered</em>. You need a <em>lot</em> of data to be able to tell whether an effect is different in two groups. If <span class="math inline">\(N\)</span> observations is adequate power to see if the effect itself is different from zero, you need a sample of roughly <span class="math inline">\(16\times N\)</span> to see if the difference in effects is nonzero. Sixteen times!!</li>
+<li>It’s tempting to try interacting your effect with everything to see if it’s bigger/smaller/nonzero in some groups, but because it’s poorly powered, this is a bad idea! You’ll get a lot of false positives</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp("^(?:http:|https:)\/\/(?:lse-dsi\.github\.io\/|localhost)");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><img src="../../../figures/logos/MY_INSTITUTION.png" class="img-fluid"></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">Copyright 2024, London School of Economics &amp; Political Science</div>
+  </div>
+</footer>
+
+
+
+</body></html>

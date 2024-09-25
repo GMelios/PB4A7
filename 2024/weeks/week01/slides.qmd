@@ -110,7 +110,7 @@ theme_metro_regtitle <- function(x) {
 
 
 <figure>
-    <img src="/2023/weeks/week01/RDesign.png" alt="RD"
+    <img src="/2024/weeks/week01/RDesign.png" alt="RD"
     style="width:35em;height:15em;font-size:1em;" 
     class="img-responsive atto_image_button_text-bottom">
 </figure>
@@ -122,7 +122,7 @@ theme_metro_regtitle <- function(x) {
 - From a broad spectrum of methodologies, we will cover:
 
 <figure>
-    <img src="/2023/weeks/week01/Design_update.png" alt="RD"
+    <img src="/2024/weeks/week01/Design_update.png" alt="RD"
     class="img-responsive atto_image_button_text-bottom">
 </figure>
 
@@ -248,7 +248,7 @@ Example: If we want to know whether a vaccine works
 
 
 <figure>
-    <img src="/2023/weeks/week01/vaccines.png" alt="RD"
+    <img src="/2024/weeks/week01/vaccines.png" alt="RD"
     class="img-responsive atto_image_button_text-bottom">
 </figure>
 
@@ -301,7 +301,7 @@ Example: If we want to know whether a vaccine works
 
 
 <figure>
-    <img src="/2023/weeks/week01/onepath.png" alt="RD"
+    <img src="/2024/weeks/week01/onepath.png" alt="RD"
     class="img-responsive atto_image_button_text-bottom">
 </figure>
 
@@ -312,7 +312,7 @@ Example: If we want to know whether a vaccine works
 - But ideally we would like to observe two:
 
 <figure>
-    <img src="/2023/weeks/week01/teopaths.png" alt="RD"
+    <img src="/2024/weeks/week01/teopaths.png" alt="RD"
     class="img-responsive atto_image_button_text-bottom">
 </figure>
 
@@ -347,7 +347,7 @@ Example: If we want to know whether a vaccine works
 - This new problem arises because different people are… **DIFFERENT**!
 
 <figure>
-    <img src="/2023/weeks/week01/people.png" alt="RD"
+    <img src="/2024/weeks/week01/people.png" alt="RD"
     class="img-responsive atto_image_button_text-bottom">
 </figure>
 
@@ -362,7 +362,7 @@ Example: If we want to know whether a vaccine works
 - Let’s consider some other factors which may matter for selection bias.
 
 <figure>
-    <img src="/2023/weeks/week01/differences.png" alt="RD"
+    <img src="/2024/weeks/week01/differences.png" alt="RD"
     class="img-responsive atto_image_button_text-bottom">
 </figure>
 

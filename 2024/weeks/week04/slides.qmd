@@ -3,8 +3,8 @@ subtitle: "PB4A7- Quantitative Applications for Behavioural Science"
 title: "<font style='font-size:1em;'>🗓️ Week 0<br/> Presessionals</font>"
 author: Dr. [George Melios](#)
 institute: '[London School of Economics and Political Science](#)'
-date: 18 September 2023
-date-meta: 18 September 2023
+date: 22 October 2024
+date-meta: 18 October 2024
 date-format: "DD MMM YYYY"
 toc: true
 toc-depth: 1
@@ -267,7 +267,7 @@ animate(p,nframes=400)
 # A Continuous Control
 
 <figure>
-    <img src="/2023/weeks/week04/linear_control.gif" alt="Linear controls"
+    <img src="/2024/weeks/week04/linear_control.gif" alt="Linear controls"
     style="width:15em;height:15em;font-size:1em;" 
     class="img-responsive atto_image_button_text-bottom">
 </figure>

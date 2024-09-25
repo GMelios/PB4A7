@@ -2,8 +2,8 @@
 title: "<font style='font-size:1em;'>💻 Seminar 1 <br/> Hidden Curriculum</font>"
 author: Dr. [George Melios](#)
 institute: '[London School of Economics and Political Science](#)'
-date: 26 September 2023
-date-meta: 26 September 2023
+date: 26 September 2024
+date-meta: 26 September 2024
 date-format: "DD MMM YYYY"
 toc: true
 toc-depth: 1
@@ -167,7 +167,7 @@ _A workflow consists of an orchestrated and repeatable pattern of activity, enab
 - And I repeat **Do Not Touch the Original Data**
 
 <figure>
-    <img src="/2023/weeks/week01/exp.png" alt="RD"
+    <img src="/2024/weeks/week01/exp.png" alt="RD"
     class="img-responsive atto_image_button_text-bottom">
 </figure>
 
@@ -215,7 +215,7 @@ _A workflow consists of an orchestrated and repeatable pattern of activity, enab
 ## Step 2 - Subdirectory organisation
 
 <figure>
-    <img src="/2023/weeks/week01/folders.png" alt="RD"
+    <img src="/2024/weeks/week01/folders.png" alt="RD"
     class="img-responsive atto_image_button_text-bottom">
 </figure>
 
@@ -250,7 +250,7 @@ _A workflow consists of an orchestrated and repeatable pattern of activity, enab
 
 
 <figure>
-    <img src="/2023/weeks/week01/eyeballing.png" alt="RD"
+    <img src="/2024/weeks/week01/eyeballing.png" alt="RD"
     class="img-responsive atto_image_button_text-bottom">
 </figure>
 

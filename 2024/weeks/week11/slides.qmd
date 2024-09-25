@@ -2,8 +2,8 @@
 title: "<font style='font-size:1em;'>🗓️ Week 11<br/> Difference in Differences</font>"
 author: Dr. [George Melios](#)
 institute: '[London School of Economics and Political Science](#)'
-date: 18 September 2023
-date-meta: 18 September 2023
+date: 10 December 2024
+date-meta: 10 December 2024
 date-format: "DD MMM YYYY"
 toc: true
 toc-depth: 1

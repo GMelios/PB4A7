@@ -3,8 +3,8 @@ subtitle: "PB4A7- Quantitative Applications for Behavioural Science"
 title: "<font style='font-size:1em;'>🗓️ Week 5<br/> Functional Forms</font>"
 author: Dr. [George Melios](#)
 institute: '[London School of Economics and Political Science](#)'
-date: 23 October 2023
-date-meta: 23 October 2023
+date: 29 October 2024
+date-meta: 29 October 2024
 date-format: "DD MMM YYYY"
 toc: true
 toc-depth: 1

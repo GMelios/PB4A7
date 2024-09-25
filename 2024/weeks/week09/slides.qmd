@@ -2,8 +2,8 @@
 title: "<font style='font-size:1em;'>🗓️ Week 9<br/> Regression Discontinuity Designs</font>"
 author: Dr. [George Melios](#)
 institute: '[London School of Economics and Political Science](#)'
-date: 20 November 2023
-date-meta: 20 November 2023
+date: 26 November 2024
+date-meta: 26 November 2024
 date-format: "DD MMM YYYY"
 toc: true
 toc-depth: 1
