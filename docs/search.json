@@ -950,5 +950,19 @@
     "title": "🗓️ Week 2 Fitting Lines ",
     "section": "Terminology Sidenote",
     "text": "Terminology Sidenote\n\\[ Y = \\beta_0 + \\beta_1X + \\varepsilon \\]\n\nIn metrics, Greek letters represent “the truth” - in the true process by which the data is generated, a one-unit increase in \\(X\\) is related to a \\(\\beta_1\\) increase in \\(Y\\)\nWhen we put a hat on anything, that is our prediction or estimation of that true thing. \\(\\hat{Y}\\) is our prediction of \\(Y\\), and \\(\\hat{\\beta_1}\\) is our estimate of what we think the true \\(\\beta_1\\) is\nNote “residual” =/= \\(\\varepsilon\\) - residuals are what’s actually left over from our prediction with real data, but the error \\(\\varepsilon\\) is the true difference between our line and \\(Y\\)."
+  },
+  {
+    "objectID": "2024/syllabus.html",
+    "href": "2024/syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Quantitative data collection is an integral component of behavioural science: Testing hypotheses requires designing experiments and analysing the data or performing statistical analyses on secondary data. Whereas another core course in this programme - Experimental Design and Methods for the Behavioural Science - covers best practices in designing and conducting experimental research, Quantitative Applications for Behavioural Science introduces the main statistical background of behavioural research from psychology and economics. The course will cover best practices and state of the art statistical tools that are used by psychologists and economists. All the analyses will be demonstrated on example behavioural science research, and students will learn how to identify, interpret, and evaluate appropriate analyses for different research designs, conduct their own data analysis for each of these designs as well as report the analysis for publication in a journal, and recognise and understand contemporary issues in data science analysis in psychology and economics that need to be considered for best research practices. Emphasis will be on teaching students how the same analyses are presented in psychology and economics journals so students can understand how to integrate research from these two fields that constitute behavioural science."
+  },
+  {
+    "objectID": "2024/syllabus.html#description",
+    "href": "2024/syllabus.html#description",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Quantitative data collection is an integral component of behavioural science: Testing hypotheses requires designing experiments and analysing the data or performing statistical analyses on secondary data. Whereas another core course in this programme - Experimental Design and Methods for the Behavioural Science - covers best practices in designing and conducting experimental research, Quantitative Applications for Behavioural Science introduces the main statistical background of behavioural research from psychology and economics. The course will cover best practices and state of the art statistical tools that are used by psychologists and economists. All the analyses will be demonstrated on example behavioural science research, and students will learn how to identify, interpret, and evaluate appropriate analyses for different research designs, conduct their own data analysis for each of these designs as well as report the analysis for publication in a journal, and recognise and understand contemporary issues in data science analysis in psychology and economics that need to be considered for best research practices. Emphasis will be on teaching students how the same analyses are presented in psychology and economics journals so students can understand how to integrate research from these two fields that constitute behavioural science."
   }
 ]
