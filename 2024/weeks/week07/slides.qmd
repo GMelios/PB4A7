@@ -22,7 +22,7 @@ format:
     css: /css/styles_slides.css
     footer: 'PB4A7- Quantitative Applications for Behavioural Science'
 ---
----
+<!-- ---
 title: "Binary Variables and Functional Form"
 subtitle: "i.e. what you actually do most of the time"
 date: "Updated `r Sys.Date()`"
@@ -37,7 +37,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
----
+--- -->
 
 
 ```{r setup, include=FALSE}

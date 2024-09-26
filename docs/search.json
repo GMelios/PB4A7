@@ -1426,5 +1426,663 @@
     "title": "💻 Seminar 1  Hidden Curriculum",
     "section": "Step 4 - Missing observations",
     "text": "Step 4 - Missing observations\n\nCheck the size of your dataset in Stata using count\nCheck the number of observations per variable in stata using summarize or summ\nUse tabulate also to check if, very oftern, missing observations are recorded with a -9 or -1 or 9999 (some illogical - probably- negative value)"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#your-lecturer",
+    "href": "2024/weeks/week00/slides.html#your-lecturer",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Your lecturer",
+    "text": "Your lecturer\n\n\n\n\nDr.  George Melios Research Fellow www.georgemelios.com\n\n\n\n\n\nPhD in Economics\nBackground: Political Economy, Behavioural Science\n\nPolitical Economy  Beliefs  Wellbeing"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#teaching-assistant",
+    "href": "2024/weeks/week00/slides.html#teaching-assistant",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Teaching Assistant",
+    "text": "Teaching Assistant\n\n\n\n\nDr. Lazaros Chatzilazarou PhD Candidate Website\n\n\n\n\n\nPhD in Economics (exp 2026)\nBackground: Economics\n\nExperimental Economics"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#housekeeping",
+    "href": "2024/weeks/week00/slides.html#housekeeping",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Housekeeping",
+    "text": "Housekeeping\n\nMoodle (lecture videos and assignments)\nWebsite\nOffice Hours (Book Upfront!!!)"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#what-is-pb4a7",
+    "href": "2024/weeks/week00/slides.html#what-is-pb4a7",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "What is PB4A7",
+    "text": "What is PB4A7\n\nNot a maths course!\nNot a pure stats course!\nNot a theoretical econometrics course!\nNot a data science course!"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#what-is-pb4a7-1",
+    "href": "2024/weeks/week00/slides.html#what-is-pb4a7-1",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "What is PB4A7",
+    "text": "What is PB4A7"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#what-is-this-class",
+    "href": "2024/weeks/week00/slides.html#what-is-this-class",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "What is this class",
+    "text": "What is this class\n\nThis is an applied econometrics class for behavioural science\nEconometrics is a field that covers how economists think about statistical analysis\nWhy do we care about econometrics?\n\nMany other social science fields (even epidemiology) pick up econometric tools as well because of how useful they tend to be"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#so-what-is-econometrics",
+    "href": "2024/weeks/week00/slides.html#so-what-is-econometrics",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "So what is econometrics?",
+    "text": "So what is econometrics?\n\nEconometrics focuses on the study of observational data\nObservational data are measurements of things that the researcher does not control\nGiven that we are working with observational data, we still want to understand the causes of things\nThe world is what it is\nFrom next week onwards though, we will explore ways to study it"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#welcome-to-econometrics",
+    "href": "2024/weeks/week00/slides.html#welcome-to-econometrics",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Welcome to Econometrics",
+    "text": "Welcome to Econometrics\n\nThis is a great course (tough one but great)\nWhy?\nGives you the ability to think about and answer questions you are interested in\nAnd to better understand and judge the existing body of literature\n\nThe classic Tik-Tok, Instagram video that starts with “A new study says…”? You can now have an idea of how robust/serious their inferences are."
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#why-applications-and-not-econometrics",
+    "href": "2024/weeks/week00/slides.html#why-applications-and-not-econometrics",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Why applications and not econometrics?",
+    "text": "Why applications and not econometrics?\n\nPB4A7 and PB413 are applied courses. You need to know how to use statistics, and why you’re using them – you will not master the nuts or bolts of statistical theory!\nFor those who want more information\n\nWill provide material on the website of the class\nVisit me during the office hours\nWe will discuss additional courses to audit"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#admin",
+    "href": "2024/weeks/week00/slides.html#admin",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Admin",
+    "text": "Admin\n\nReview the syllabus (and other materials on Moodle and the PB4A7 website). Reading assignments there\nOur textbook is The Effect, by Huntington-Klein, available online for free.\nAlso these slides\nProgramming in STATA (we will get to this on later)\nAssignment: End of term paper & poster"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#textbook",
+    "href": "2024/weeks/week00/slides.html#textbook",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Textbook",
+    "text": "Textbook"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#causality-and-prediction",
+    "href": "2024/weeks/week00/slides.html#causality-and-prediction",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Causality and Prediction",
+    "text": "Causality and Prediction\n\nGreat! Still, why do we care about this class?\nIn econometrics, we are working with data\nStatisticians also work with data\nSo do data scientists\nThe goals for these groups differ"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#causality-and-prediction-1",
+    "href": "2024/weeks/week00/slides.html#causality-and-prediction-1",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Causality and Prediction",
+    "text": "Causality and Prediction\n\nData scientists are generally concerned with prediction\nThey want to use the data at hand to predict what comes next\nThey generally don’t care why they’re making the prediction they are\nThis can be really handy for certain tasks - “is this picture a cat or a dog?” “what’s the probability that a customer with qualities X, Y, and Z will end up purchasing our good?” “do you have lymphoma?”"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#causality-and-prediction-2",
+    "href": "2024/weeks/week00/slides.html#causality-and-prediction-2",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Causality and Prediction",
+    "text": "Causality and Prediction\n\nEconometricians, on the other hand, care almost exclusively about why\nData scientists want to minimize prediction error\nEconometricians want to minimize inference and identification error\nWe want to correctly understand the underlying data generating process"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#data",
+    "href": "2024/weeks/week00/slides.html#data",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Data",
+    "text": "Data"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#data-1",
+    "href": "2024/weeks/week00/slides.html#data-1",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Data",
+    "text": "Data"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#data-2",
+    "href": "2024/weeks/week00/slides.html#data-2",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Data",
+    "text": "Data"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#inference-error-and-randomness-1",
+    "href": "2024/weeks/week00/slides.html#inference-error-and-randomness-1",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Inference Error and Randomness",
+    "text": "Inference Error and Randomness\n\nSo if we look in a data set and see that \\(X\\) and \\(Y\\) appear to be positively related to each other…\nAre they actually positively related, or is that just a random chance?\nIf they are positively related, maybe we’re understating or overstating how positively related"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#inference-error-and-randomness-2",
+    "href": "2024/weeks/week00/slides.html#inference-error-and-randomness-2",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Inference Error and Randomness",
+    "text": "Inference Error and Randomness\n\nIf the true relationship is 0, then in the data we’ll see a positive relationship half the time, and a negative relationship half the time\nEven though the truth is 0!\nHow can we properly make an inference about whether the relationship is 0 or not (or positive, or negative, or how positive or negative), taking into account this randomness?\nThat’s being careful about inference. The statisticians teach us all about this!"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#identification-error-1",
+    "href": "2024/weeks/week00/slides.html#identification-error-1",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Identification Error",
+    "text": "Identification Error\n\nBut if there’s another reason why we might see that result, i.e. if the same result could give us a different conclusion, like kids who are aggressive play more video games or people notice aggression more when kids play video games, then we have made an identification error - our result was not identified!\nIdentification error is when your result in the data doesn’t actually have a clear theoretical (“why” or “because”) interpretation\nFor example, if you observe that people tend to wear more shorts on days they eat more ice cream, and you conclude that eating ice cream makes you put on shorts, you have committed an identification error\nOne day in and all we can do is complain, eesh"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#truth-and-reality-1",
+    "href": "2024/weeks/week03/slides.html#truth-and-reality-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Truth and Reality",
+    "text": "Truth and Reality\n\nToday we’ll be covering hypothesis testing, which is one approach to using reality to get closer to the truth\nIt works by subtraction\nWe test whether certain versions of the truth are likely or unlikely\nAnd if we find that they’re unlikely, we can reject that version of the truth, narrowing down what the actual possibilities are and getting closer and closer to the actual truth"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#truth-and-reality-2",
+    "href": "2024/weeks/week03/slides.html#truth-and-reality-2",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Truth and Reality",
+    "text": "Truth and Reality\n\nWhen we’re talking about the truth here, we’re referring to the true data generating process (DGP)\nFor example, if this is the true DGP:\n\n\\[ Wage_i = \\beta_0 + \\beta_1AdultHeight_i + \\varepsilon_i \\]\nwhere \\(cor(AdultHeight_i,\\varepsilon_i) = 0\\), then…\n\nPerson \\(i\\)’s wage is truly determined by a linear function of your height, plus an unrelated error term \\(\\varepsilon_i\\)\nWhy might someone have a high wage? Either they’re tall, or they have a high error term, or both. No other way!"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#truth-and-reality-3",
+    "href": "2024/weeks/week03/slides.html#truth-and-reality-3",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Truth and Reality",
+    "text": "Truth and Reality\n\nOur ability to estimate that true model depends on our ability to avoid inference and identification error\nIf we assume that’s the true DGP, there’s no endogeneity, and the relationship between \\(Wage\\) and \\(AdultHeight\\) is a straight line, so regular ’ol OLS of \\(Wage\\) on \\(AdultHeight\\) will not give us identification error\nBut we also need to be careful about inference error\nWhen we run that regression, what does our \\(\\hat{\\beta}_1\\) say about the true value \\(\\beta_1\\)?"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#sampling-variation-1",
+    "href": "2024/weeks/week03/slides.html#sampling-variation-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Sampling Variation",
+    "text": "Sampling Variation\n\nNotice that there is plenty of variation around the true value of \\(2\\)\nNow let’s imagine we don’t know that and are trying to answer the question “is the truth \\(\\beta_1 = 2\\)?”\nWe don’t have the full sampling distribution, we just have a single estimate:\n\n\n\n(Intercept)           X \n   2.798554    2.215880 \n\n\n\nAll we see is \\(\\hat{\\beta}_1 =\\) 2.22. So… is \\(\\beta_1 = 2\\)?"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#null-distribution",
+    "href": "2024/weeks/week03/slides.html#null-distribution",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Null Distribution",
+    "text": "Null Distribution\n\nThe “null distribution” is what the sampling distribution of the estimator would be if our null distribution were true\nWe can see that in the sampling distribution we have!\n\\(\\beta_1 = 2\\) is true, and here’s what the sampling distribution looks like! (although it would be smoother with more samples)"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#null-distribution-1",
+    "href": "2024/weeks/week03/slides.html#null-distribution-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Null Distribution",
+    "text": "Null Distribution\n\nSo the key question that a hypothesis test asks is: given this null distribution, how unlikely is it that we get the result we get?\nIf it’s super unlikely that the null is true and we get our result, well…\nWe definitely got our result…\nSo the null must be the part that’s wrong!\nThat’s when we reject the null - we find that the sampling distribution under the null hardly ever produces a result like ours, so that’s probably the wrong sampling distribution and thus the wrong null!"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#null-distribution-2",
+    "href": "2024/weeks/week03/slides.html#null-distribution-2",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Null Distribution",
+    "text": "Null Distribution\n\nHow does this work out with our estimate of 2.22?\nLet’s stick it on the graph"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#hypothesis-test",
+    "href": "2024/weeks/week03/slides.html#hypothesis-test",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\n\nOur test comes down to: how weird would it be to get a result this far from the “truth” or farther?\nWe can figure this out by shading in the parts of the null distribution this far from the null truth or farther\nSo we shade 2.22 and above, and also 2 - abs(2.22 - 2) = 1.78 and below."
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#hypothesis-test-1",
+    "href": "2024/weeks/week03/slides.html#hypothesis-test-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\n\nBased off of this sampling distribution, there’s a 31% + 26% = 57% chance of getting something as weird as we got or weirder (or for a one-tailed test, a 26% chance of getting something that high or higher) if the null of \\(\\beta_1 = 2\\) is true\nThat’s not too unlikely! So, we would fail to reject the null of \\(\\beta_1 = 2\\)\nThis doesn’t mean that we conclude that \\(\\beta_1 = 2\\) is true, it just means we can’t rule it out"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#the-null-distribution",
+    "href": "2024/weeks/week03/slides.html#the-null-distribution",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "The Null Distribution",
+    "text": "The Null Distribution\n\nOf course, we generated this null distribution by just randomly creating a few random samples\nWe also happen to know that if we had infinite samples, the sampling distribution of OLS would be a normal distribution with the mean at the true value and the standard deviation determined by \\(var(X)\\), the variance of the residual, and the sample size. The real null distribution looks like this:"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#the-null-distribution-1",
+    "href": "2024/weeks/week03/slides.html#the-null-distribution-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "The Null Distribution",
+    "text": "The Null Distribution\n\nSo with the estimate we made from the sample we got (2.22), we can’t reject a null \\(\\beta_1 = 2\\)\nWhich is good!! That’s the truth. We don’t want to reject it!\nHow about other nulls? Can we reject those?\nCan we reject a null that \\(\\beta_1 = 0\\)?\n(by default, most null hypotheses are that the parameter is 0)\nLet’s follow the same steps!"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#the-null-distribution-2",
+    "href": "2024/weeks/week03/slides.html#the-null-distribution-2",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "The Null Distribution",
+    "text": "The Null Distribution\n\nNow that’s unlikely. We can reject that the true value is 0."
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#p-values-1",
+    "href": "2024/weeks/week03/slides.html#p-values-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "p-values",
+    "text": "p-values\n\nThe lower the p-value, the less likely it is that we got our result AND the null is true\nAnd since we definitely got our result, a really low p-value says we should reject the null\nHow low does it need to be to reject the null?\nWell…"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#p-values-and-.05",
+    "href": "2024/weeks/week03/slides.html#p-values-and-.05",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "p-values and .05",
+    "text": "p-values and .05\n\nIt’s common practice to decide on a confidence level and a corresponding \\(\\alpha\\), most commonly a 95% confidence level \\(\\rightarrow \\alpha = .05\\), and reject the null if the p-value is lower than \\(\\alpha\\)\nWhy 95%? Completely arbitrary. Someone picked it out of thin air a hundred years ago as a just-for-instance and we still use it 🤷\nHaving a hard-and-fast threshold like this is not a great idea ( \\(p=.04\\) is rejection, but \\(p=.06\\) is not?), but it’s a very hard habit to break\nKey takeaway: get familiar with the concept of rejecting the null when the p-value is lower than .05, because you’ll see it\nBUT don’t get too hung up on black-and-white rejection in general"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#power-1",
+    "href": "2024/weeks/week03/slides.html#power-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Power",
+    "text": "Power\n\nBecause the smaller we make our confidence level, the less likely we are to reject the null in general\nWhich means we’ll also fail to reject it if it’s actually false (a “false negative”)\nWe want a low false-positive rate, but also a low false-negative rate\nThe false negative rate is called “power.” If we will reject the null 80% of the time when it’s actually false, we have 80% power\nAs \\(\\alpha\\) shrinks, false-positive rates decline, but false-negative rates increase\nStrike a balance!\n\n(minor sidenote: “false positive” and “false negative” are sometimes referred to as “Type I Error” and “Type II Error” - these are not great terms because they are hard to remember! If you encounter them, just remember that in “The boy who cried wolf” the townspeople think there’s a wolf when there’s not, then think there’s not a wolf when there is, committing Type I and II error in that order)"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#what-we-just-did",
+    "href": "2024/weeks/week03/slides.html#what-we-just-did",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "What we just did…",
+    "text": "What we just did…\n\nThis is how we thought of it - we picked a null, figured out the null distribution (the sampling distribution of the estimator assuming the null was true), and checked if our estimate was unlikely enough that we could reject the null"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#instead",
+    "href": "2024/weeks/week03/slides.html#instead",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Instead…",
+    "text": "Instead…\n\nBy thinking about standard errors, we instead center the sampling distribution around our estimate. If the null is far away, we reject that null (result should be the same)!"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#confidence-intervals",
+    "href": "2024/weeks/week03/slides.html#confidence-intervals",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\n\nSo what we’re thinking now is not “is our estimate close to the null?” but rather “is that null close to our estimate?”\nWe can go one step further and ask “which nulls are close to our estimate?” and figure out which nulls we can think about rejecting from there\nA confidence interval shows the range of nulls that would not be rejected by our estimate\nEverything outside that range can be rejected"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#confidence-intervals-1",
+    "href": "2024/weeks/week03/slides.html#confidence-intervals-1",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\n\nThis takes the form of\n\n\\[ \\hat{\\beta}_1 \\pm Z(s.e.) \\]\n\nWhere \\(Z\\) is some value from our distribution that gives us the \\(1-\\alpha\\) percentile (for a 95% confidence interval with a normal sampling distribution, \\(Z = 1.96\\))\nand \\(s.e.\\) is the standard error of \\(\\hat{\\beta}_1\\)"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#confidence-intervals-2",
+    "href": "2024/weeks/week03/slides.html#confidence-intervals-2",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\n\nThinking back to our estimate:\n\n\n\n\n\n\nModel 1\n\n(Intercept)2.80 \n\n(0.21)\n\nX2.22 \n\n(0.37)\n\nN100    \n\n\n\n\n\nOur estimate of the coefficient is 2.22, and our estimate of the standard error is 0.37\nSo for a 95% confidence interval, assuming normality, we get 2.22 \\(\\pm\\) 1.96* 0.37, or [1.49,2.94]"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#confidence-intervals-3",
+    "href": "2024/weeks/week03/slides.html#confidence-intervals-3",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\n\nWe can see this graphically as well - we should only reject nulls in those 5% tails for a 95% confidence interval"
+  },
+  {
+    "objectID": "2024/weeks/week03/slides.html#concept-checks-2",
+    "href": "2024/weeks/week03/slides.html#concept-checks-2",
+    "title": "🗓️ Week 3 Hypothesis Testing",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nWhat feature of the sampling distribution of the \\(\\beta\\) does the standard error describe?\nWhy do we get the same reject/don’t reject result if we center the sampling distribution around the null as around our estimate?\nWe perform an estimate of \\(\\hat{\\beta}_1\\) and get a 95% confidence interval of [-1.3, 2.1]. Describe what this means in a sentence.\nIn the above confidence interval, can we reject the null of \\(\\beta_1 = 0\\)?\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#bias-and-the-error-term",
+    "href": "2024/weeks/week05/slides.html#bias-and-the-error-term",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Bias and the Error Term",
+    "text": "Bias and the Error Term\n\nAll of the nice stuff we’ve gotten so far makes some assumptions about our true model\n\n\\[ Y = \\beta_0 + \\beta_1X + \\varepsilon \\]\n\nIn particular, we’ve made some assumptions about the error term \\(\\varepsilon\\)\nSo what is that error term exactly, and what are we assuming about it?"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#the-error-term",
+    "href": "2024/weeks/week05/slides.html#the-error-term",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "The Error Term",
+    "text": "The Error Term\n\nThe error term contains everything that isn’t in our model\nIf \\(Y\\) were a pure function of \\(X\\), for example if \\(Y\\) was “height in feet” and \\(X\\) was “height in inches”, we wouldn’t have an error term, because a straight line fully describes the relationship perfectly with no variation\nBut in most cases, the line is a simplification - we’re leaving other stuff out! That’s in the error term"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#the-error-term-1",
+    "href": "2024/weeks/week05/slides.html#the-error-term-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "The Error Term",
+    "text": "The Error Term\n\nConsider this data generating process:\n\n\\[ ClassGrade = \\beta_0 + \\beta_1 StudyTime + \\varepsilon \\]\n\nSurely StudyTime isn’t the only thing that determines your ClassGrade\nEverything else is in the error term!\nProfessorLeniency, InterestInSubject, Intelligence, and so on and so on…"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#the-error-term-2",
+    "href": "2024/weeks/week05/slides.html#the-error-term-2",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "The Error Term",
+    "text": "The Error Term\n\nIsn’t that really bad? We’re leaving out a bunch of important stuff!\nIf you want to predict \\(Y\\) as accurately as possible then we’re probably going to do a bad job of it\nBut if our real interest is *figuring out the relationship between \\(X\\) and \\(Y\\), then it’s fine to leave stuff out, as long as whatever’s left in the error term obeys a few important assumptions"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#error-term-assumptions",
+    "href": "2024/weeks/week05/slides.html#error-term-assumptions",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Error Term Assumptions",
+    "text": "Error Term Assumptions\n\nThe most important assumption about the error term is that it is unrelated to \\(X\\)\nIf \\(X\\) and \\(\\varepsilon\\) are correlated, \\(\\hat{\\beta}_1\\) will be biased - its distribution no longer has the true \\(\\beta_1\\) as its mean\nIn these cases we can say ” \\(X\\) is endogenous” or “we have omitted variable bias”\nNo amount of additional sample size will fix that problem!\n(what will fix the problem? We’ll get to that one later)"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#omitted-variable-bias",
+    "href": "2024/weeks/week05/slides.html#omitted-variable-bias",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Omitted Variable Bias",
+    "text": "Omitted Variable Bias\n\nWe can intuitively think about whether omitted variable bias is likely to make our estimates too high or too low\nThe sign of the bias will be the sign of the relationship between the omitted variable and \\(X\\), times the sign of the relationship between the omitted variable bias and \\(Y\\)\nInterestInSubject is positively related to both StudyTime and ClassGrade, and \\(+\\times+ = +\\), so our estimates are positively biased / too high\nMore precisely we have that the mean of the \\(\\hat{\\beta}_1\\) sampling distribution is \\[\\beta_1 + corr(X,\\varepsilon)\\frac{\\sigma_\\varepsilon}{\\sigma_X}\\]"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#thinking-through-this-bias",
+    "href": "2024/weeks/week05/slides.html#thinking-through-this-bias",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Thinking Through this Bias",
+    "text": "Thinking Through this Bias\n\nIf \\(Z\\) hangs around \\(X\\), but \\(Y\\) doesn’t know about it, then the coefficient on \\(X\\) will get all the credit for \\(Z\\)\nThis is a good way to keep that “direction of bias” problem in mind\nAnd you do want to keep it in mind! This is important for understanding general correlations you see in the wild, too\nAnd helps keep in line some things - for example, if \\(Z\\) is unrelated to \\(X\\), it won’t bias you!!"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#thinking-through-this-bias-1",
+    "href": "2024/weeks/week05/slides.html#thinking-through-this-bias-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Thinking Through this Bias",
+    "text": "Thinking Through this Bias\n\nThat means that when you’re thinking about the controls you need, that only includes things related to \\(X\\)\nAdding controls for things related to \\(Y\\) not \\(X\\) can make the model predict better and reduce standard errors, but won’t remove omitted variable bias"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#less-serious-error-concerns",
+    "href": "2024/weeks/week05/slides.html#less-serious-error-concerns",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Less Serious Error Concerns",
+    "text": "Less Serious Error Concerns\n\nOmitted variable bias can, well, bias us, which is very bad\nThere are some other assumptions that can fail that may also pose a problem to us but less so\nWe’ve assumed so far not just that \\(\\varepsilon\\) is unrelated to \\(X\\), but also that the variance of \\(\\varepsilon\\) is unrelated to \\(X\\), and that the \\(\\varepsilon\\)s are unrelated to each other\nIf these assumptions fail, our standard errors will be wrong, but we won’t be biased, and also there are ways to fix the standard errors\nWe will cover these only briefly, they’ll come back later"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#heteroskedasticity",
+    "href": "2024/weeks/week05/slides.html#heteroskedasticity",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Heteroskedasticity",
+    "text": "Heteroskedasticity\n\nIf the variance of the error term is different for different values of \\(X\\), then we have “heteroskedasticity”\nNotice in the below graph how the spread of the points around the line (the variance of the error term) is bigger on the right than the left"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#heteroskedasticity-1",
+    "href": "2024/weeks/week05/slides.html#heteroskedasticity-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Heteroskedasticity",
+    "text": "Heteroskedasticity\n\nWe can correct for this using heteroskedasticity-robust standard errors which sort of “squash down” the big variances and then re-estimate the standard errors\nWe can do this in feols with vcov = 'hetero' in R or with “robust” in STATA"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#correlated-errors",
+    "href": "2024/weeks/week05/slides.html#correlated-errors",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Correlated Errors",
+    "text": "Correlated Errors\n\nIf the error terms are correlated with each other, then our standard errors will also be wrong\nHow could this happen? For example, maybe you’ve surveyed a bunch of people in different towns - the error terms within a town might be clustered\nOr maybe you have time series data. If a term in the error term is “sticky” or has “momentum” it will likely be a similar error term a few time periods in a row, beign correlated across time, or autocorrelated\nAgain, this doesn’t bias \\(\\hat{\\beta}_1\\) but it can affect standard errors!"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#the-right-hand-side-1",
+    "href": "2024/weeks/week05/slides.html#the-right-hand-side-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "The Right Hand Side",
+    "text": "The Right Hand Side\nWe will look at three features of the right-hand side\n\nWhat if the variable is categorical or binary? (binary variables)\nWhat if the variable has a nonlinear effect on \\(Y\\) (polynomials and logarithms)\nWhat if the effect of one variable depends on the value of another variable? (interaction terms)"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#binary-data-1",
+    "href": "2024/weeks/week05/slides.html#binary-data-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Binary Data",
+    "text": "Binary Data\n\nA variable is binary if it only has two values - 0 or 1 (or “No” or “Yes”, etc.)\nBinary variables are super common in econometrics!\nDid you get the treatment? Yes / No\nDo you live in the US? Yes / No\nIs a floating exchange rate in effect? Yes / No"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#comparison-of-means",
+    "href": "2024/weeks/week05/slides.html#comparison-of-means",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means\n\nWhen a binary variable is an independent variable, what we are often interested in doing is comparing means\nIs mean income higher inside the US or outside?\nIs mean height higher for kids who got a nutrition supplement or those who didn’t?\nIs mean GDP growth higher with or without a floating exchange rate?"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#comparison-of-means-1",
+    "href": "2024/weeks/week05/slides.html#comparison-of-means-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means\n\nLet’s compare log earnings in 1993 between married people 30 or older vs. never-married people 30 or older\nSeems to be a slight favor to the married men\n\n\ndata(PSID, package = 'Ecdat')\nPSID &lt;- PSID %&gt;%\n  filter(age &gt;= 30, married %in% c('married','never married'), earnings &gt; 0) %&gt;%\n  mutate(married  = married == 'married')\nPSID %&gt;%\n  group_by(married) %&gt;%\n  summarize(log_earnings = mean(log(earnings)))\n\n# A tibble: 2 × 2\n  married log_earnings\n  &lt;lgl&gt;          &lt;dbl&gt;\n1 FALSE           9.26\n2 TRUE            9.47"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#comparison-of-means-2",
+    "href": "2024/weeks/week05/slides.html#comparison-of-means-2",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#comparison-of-means-3",
+    "href": "2024/weeks/week05/slides.html#comparison-of-means-3",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means\n\nThe difference between the means follows a t-distribution under the null that they’re identical\nSo of course we can do a hypothesis test of whether they’re different. But why bother trotting out a specific test when we can just do a regression?\n(In fact, a lot of specific tests can be replaced with basic regression, see this explainer)"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#comparison-of-means-4",
+    "href": "2024/weeks/week05/slides.html#comparison-of-means-4",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means\nNotice:\n\nThe intercept gives the mean for the non-married group\nThe coefficient on marriedTRUE gives the married minus non-married difference\ni.e. the coefficient on a binary variable in a regression gives the difference in means\nIf we’d defined it the other way, with “not married” as the independent variable, the intercept would be the mean for the married group (i.e. “not married = 0”), and the coefficient would be the exact same but times \\(-1\\) (same difference, just opposite direction!)"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#comparison-of-means-5",
+    "href": "2024/weeks/week05/slides.html#comparison-of-means-5",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Comparison of Means",
+    "text": "Comparison of Means\nWhy does OLS give us a comparison of means when you give it a binary variable?\n\nThe only \\(X\\) values are 0 (FALSE) and 1 (TRUE)\nBecause of this, OLS no longer really fits a line, it’s more of two separate means\nAnd when you’re estimating to minimize the sum of squared errors separately for each group, can’t do any better than to predict the mean!\nSo you get the mean of each group as each group’s prediction"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#binary-with-controls",
+    "href": "2024/weeks/week05/slides.html#binary-with-controls",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Binary with Controls",
+    "text": "Binary with Controls\n\nObviously this is handy for including binary controls, but why do this for binary treatments? Because we can add controls!\n\n\n\n                feols(log(earning..\nDependent Var.:       log(earnings)\n                                   \nConstant          8.740*** (0.1478)\nmarriedTRUE      0.3404*** (0.0579)\nkids            -0.2259*** (0.0159)\nage              0.0223*** (0.0038)\n_______________ ___________________\nS.E. type                       IID\nObservations                  2,803\nR2                          0.07609\nAdj. R2                     0.07510\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#multicollinearity",
+    "href": "2024/weeks/week05/slides.html#multicollinearity",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Multicollinearity",
+    "text": "Multicollinearity\n\nWhy is just one side of it on the regression? Why aren’t “married” and “not married” BOTH included?\nBecause regression couldn’t give an answer!"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#multicollinearity-1",
+    "href": "2024/weeks/week05/slides.html#multicollinearity-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Multicollinearity",
+    "text": "Multicollinearity\n\nMean of married is \\(9.47\\) and of non-married is \\(9.26\\). \\[ \\log(Earnings) = 0 + 9.47Married + 9.26NonMarried \\] \\[ \\log(Earnings) = 3 + 6.47Married + 6.26NonMarried \\]\nThese (and infinitely many other options) all give the exact same predictions! OLS can’t pick between them. There’s no single best way to minimize squared residuals\nSo we pick one with convenient properties, setting one of the categories to have a coefficient of 0 (dropping it) and making the coefficient on the other the difference relative to the one we left out"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#more-than-two-categories-1",
+    "href": "2024/weeks/week05/slides.html#more-than-two-categories-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "More than Two Categories",
+    "text": "More than Two Categories\n\nThat interpretation - dropping one and making the other relative to that, conveniently extends to multi-category variables\nWhy stop at binary categorical variables? There are plenty of categorical variables with more than two values\nWhat is your education level? What is your religious denomination? What continent are you on?\nWe can put these in a regression by turning each value into its own binary variable\n(and then dropping one so the coefficients on the others give you the difference with the omitted one)"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#concept-checks",
+    "href": "2024/weeks/week05/slides.html#concept-checks",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nIf \\(X\\) is binary, in sentences interpret the coefficients from the estimated OLS equation \\(Y = 4 + 3X + 2Z\\)\nHow might a comparison of means come in handy if you wanted to analyze the results of a randomized policy experiment?\nIf you had a data set of people from every continent and added “continent” as a control, how many coefficients would this add to your model?\nIf in that regression you really wanted to compare Europe to Asia specifically, what might you do so that the regression made this easy?"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#interpreting-ols-1",
+    "href": "2024/weeks/week05/slides.html#interpreting-ols-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Interpreting OLS",
+    "text": "Interpreting OLS\n\nTo think more about the right-hand-side, let’s go back to our original interpretation of an OLS coefficient \\[ Y = \\beta_0 + \\beta_1X + \\varepsilon \\]\nA one-unit change in \\(X\\) is associated with a \\(\\beta_1\\)-unit change in \\(Y\\)\nThis logic still works with binary variables since “a one-unit change in \\(X\\)” means “changing \\(X\\) from No to Yes”\nNotice that this assumes that a one-unit change in \\(X\\) always has the same effect on \\(\\beta_1\\) no matter what else is going on\nWhat if that’s not true?"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#functional-form",
+    "href": "2024/weeks/week05/slides.html#functional-form",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Functional Form",
+    "text": "Functional Form\n\nWe talked before about times when a linear model like standard OLS might not be sufficient\nHowever, as long as those non-linearities are on the right hand side, we can fix the problem easily but just having \\(X\\) enter non-linearly! Run it through a transformation!\nThe most common transformations by far are polynomials and logarithms"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#functional-form-1",
+    "href": "2024/weeks/week05/slides.html#functional-form-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Functional Form",
+    "text": "Functional Form\n\nWhy do this? Because sometimes a straight line is clearly not going to do the trick!"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#polynomials-1",
+    "href": "2024/weeks/week05/slides.html#polynomials-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Polynomials",
+    "text": "Polynomials\n\n\\(\\beta_1X\\) is a “first order polynomial” - there’s one term\n\\(\\beta_1X + \\beta_2X^2\\) is a “second order polynomial” or a “quadratic” - two terms (note both included, it’s not just \\(X^2\\))\n\\(\\beta_1X + \\beta_2X^2 + \\beta_3X^3\\) is a third-order or cubic, etc."
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#polynomials-2",
+    "href": "2024/weeks/week05/slides.html#polynomials-2",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Polynomials",
+    "text": "Polynomials\nWhat do they do?\n\nThe more polynomial terms, the more flexible the line can be. With enough terms you can mimic any shape of relationship\nOf course, if you just add a whole buncha terms, it gets very noisy, and prediction out-of-sample gets very bad\nKeep it minimal - quadratics are almost always enough, unless you have reason to believe there’s a true more-complex relationship. You can try adding higher-order terms and see if they make a difference"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#polynomials-3",
+    "href": "2024/weeks/week05/slides.html#polynomials-3",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Polynomials",
+    "text": "Polynomials\n\nThe true relationship is quadratic"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#polynomials-4",
+    "href": "2024/weeks/week05/slides.html#polynomials-4",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Polynomials",
+    "text": "Polynomials\n\nHigher-order terms don’t do anything for us here (because a quadratic is sufficient!)"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#polynomials-5",
+    "href": "2024/weeks/week05/slides.html#polynomials-5",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Polynomials",
+    "text": "Polynomials\n\nInterpret polynomials using the derivative\n\\(\\partial Y/\\partial X\\) will be different depending on the value of \\(X\\) (as it should! Notice in the graph that the slope changes for different values of \\(X\\))\n\n\\[ Y = \\beta_1X + \\beta_2X^2 \\] \\[ \\partial Y/\\partial X = \\beta_1 + 2\\beta_2X \\]\nSo at \\(X = 0\\), the effect of a one-unit change in \\(X\\) is \\(\\beta_1\\). At \\(X = 1\\), it’s \\(\\beta_1 + \\beta_2\\). At \\(X = 5\\) it’s \\(\\beta_1 + 5\\beta_2\\)."
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#polynomials-6",
+    "href": "2024/weeks/week05/slides.html#polynomials-6",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Polynomials",
+    "text": "Polynomials\n\nIMPORTANT: when you have a polynomial, the coefficients on each individual term mean very little on their own. You have to consider them alongisde the other coefficients from the polynomial! Never interpret \\(\\beta_1\\) here without thinking about \\(\\beta_2\\) alongside. Also, the significance of the individual terms doesn’t really matter - consider doing an F-test of all of them at once."
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#concept-check",
+    "href": "2024/weeks/week05/slides.html#concept-check",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Concept Check",
+    "text": "Concept Check\n\nWhat’s the effect of a one-unit change in \\(X\\) at \\(X = 0\\), \\(X = 1\\), and \\(X = 2\\) for each of these?\n\n\n\n                feols(Y ~ X, dat.. feols(Y ~ X + I(.. feols(Y ~ X + I(...1\nDependent Var.:                  Y                  Y                    Y\n                                                                          \nConstant         7.285*** (0.5660)   -0.1295 (0.3839)      0.0759 (0.5091)\nX               -8.934*** (0.1953)   0.9779* (0.3831)      0.4542 (0.9331)\nX square                           -2.003*** (0.0752)   -1.738*** (0.4368)\nX cube                                                    -0.0354 (0.0574)\n_______________ __________________ __________________   __________________\nS.E. type                      IID                IID                  IID\nObservations                   200                200                  200\nR2                         0.91357            0.98122              0.98126\nAdj. R2                    0.91313            0.98103              0.98097\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#logarithms-1",
+    "href": "2024/weeks/week05/slides.html#logarithms-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Logarithms",
+    "text": "Logarithms\n\nAnother common transformation, both for dependent and independent variables, is to take the logarithm\nThis has the effect of pulling in extreme values from strongly right-skewed data and making linear relationships pop out\nIncome, for example, is almost always used with a logarithm\nIt also gives the coefficients a nice percentage-based interpretation"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#logarithms-2",
+    "href": "2024/weeks/week05/slides.html#logarithms-2",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Logarithms",
+    "text": "Logarithms"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#or-if-you-prefer",
+    "href": "2024/weeks/week05/slides.html#or-if-you-prefer",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Or if you prefer…",
+    "text": "Or if you prefer…\n\nNotice the change in axes"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#logarithms-3",
+    "href": "2024/weeks/week05/slides.html#logarithms-3",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Logarithms",
+    "text": "Logarithms\n\nHow can we interpret them?\nThe key is to remember that \\(\\log(X) + a \\approx \\log((1+a)X)\\), meaning that a \\(a\\)-unit change in \\(log(X)\\) is similar to a \\(a\\times100%\\) change in \\(X\\)\nSo, walk through our “one-unit change in the variable” logic from before, but whenever we hit a log, change that into a percentage!"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#logarithms-4",
+    "href": "2024/weeks/week05/slides.html#logarithms-4",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Logarithms",
+    "text": "Logarithms\n\n\\(Y = \\beta_0 + \\beta_1\\log(X)\\) A one-unit change in \\(\\log(X)\\), or a 100% change in \\(X\\), is associated with a \\(\\beta_1\\)-unit change in \\(Y\\)\n\\(\\log(Y) = \\beta_0 + \\beta_1X\\) a one-unit change in \\(X\\) is associated with a \\(\\beta_1\\times 100\\)% change in \\(Y\\)\n\\(\\log(Y) = \\beta_0 + \\beta_1\\log(X)\\) A one-unit change in \\(\\log(X)\\), or a or a 100% change in \\(X\\), is associated with a \\(\\beta_1\\)-unit change in \\(\\log(Y)\\), or a \\(\\beta_1\\times100\\)% change in \\(Y\\).\n(Try also with changes smaller than one unit - that’s usually more reasonable)"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#logarithms-5",
+    "href": "2024/weeks/week05/slides.html#logarithms-5",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Logarithms",
+    "text": "Logarithms\nDownsides:\n\nLogarithms require that all data be positive. No negatives or zeroes!\nFairly rare that a variable with negative values wants a log anyway\nBut zeroes are common! A common practice is to just do \\(log(X+1)\\) but this is pretty arbitrary"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#functional-form-2",
+    "href": "2024/weeks/week05/slides.html#functional-form-2",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Functional Form",
+    "text": "Functional Form\n\nIn general, you want the shape of your function to match the shape of the relationship in the data (or, even better, the true relationship)\nPolynomials and logs can usually get you there!\nWhich to use? Use logs for highly skewed data or variables with exponential relationships\nUse polynomials if it doesn’t look straight! Check that scatterplot and see how not-straight it is!"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#concept-checks-1",
+    "href": "2024/weeks/week05/slides.html#concept-checks-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nWhich of the following variables would you likely want to log before using them? Income, height, wealth, company size, home square footage\nIn each of the following estimated OLS lines, interpret the coefficient by filling in “A [blank] change in X is associated with a [blank] change in Y”:\n\n\\[ Y = 1 + 2\\log(X) \\] \\[ \\log(Y) = 3 + 2\\log(X) \\]\n\\[ \\log(Y) = 4 + 3X \\]"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#interactions",
+    "href": "2024/weeks/week05/slides.html#interactions",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Interactions",
+    "text": "Interactions\n\nFor both polynomials and logarithms, the effect of a one-unit change in \\(X\\) differs depending on its current value (for logarithms, a 1-unit change in \\(X\\) is different percentage changes in \\(X\\) depending on current value)\nBut why stop there? Maybe the effect of \\(X\\) differs depending on the current value of other variables!\nEnter interaction terms!\n\n\\[ Y = \\beta_0 + \\beta_1X + \\beta_2Z + \\beta_3X\\times Z + \\varepsilon \\] - Interaction terms are a little tough but also extremely important."
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#interactions-1",
+    "href": "2024/weeks/week05/slides.html#interactions-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Interactions",
+    "text": "Interactions\nExpect to come back to these slides, as you’re almost certainly going to use interaction terms in both our assessment and the dissertation"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#interactions-2",
+    "href": "2024/weeks/week05/slides.html#interactions-2",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Interactions",
+    "text": "Interactions\n\nChange in the value of a control can shift a regression line up and down\nUsing the model \\(Y = \\beta_0 + \\beta_1X + \\beta_2Z\\), estimated as \\(Y = .01 + 1.2X + .95Z\\):"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#interactions-3",
+    "href": "2024/weeks/week05/slides.html#interactions-3",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Interactions",
+    "text": "Interactions\n\nBut an interaction can both shift the line up and down AND change its slope\nUsing the model \\(Y = \\beta_0 + \\beta_1X + \\beta_2Z + \\beta_3X\\times Z\\), estimated as \\(Y = .035 + 1.14X + .94Z + 1.02X\\times Z\\):"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#interactions-4",
+    "href": "2024/weeks/week05/slides.html#interactions-4",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Interactions",
+    "text": "Interactions\n\nHow can we interpret an interaction?\nThe idea is that the interaction shows how the effect of one variable changes as the value of the other changes\nThe derivative helps!\n\n\\[ Y = \\beta_0 + \\beta_1X + \\beta_2Z + \\beta_3X\\times Z \\] \\[ \\partial Y/\\partial X = \\beta_1 + \\beta_3 Z \\]\n\nThe effect of \\(X\\) is \\(\\beta_1\\) when \\(Z = 0\\), or \\(\\beta_1 + \\beta_3\\) when \\(Z = 1\\), or \\(\\beta_1 + 3\\beta_3\\) if \\(Z = 3\\)!"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#interactions-5",
+    "href": "2024/weeks/week05/slides.html#interactions-5",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Interactions",
+    "text": "Interactions\n\nOften we are doing interactions with binary variables to see how an effect differs across groups\nNow, instead of the intercept giving the baseline and the binary coefficient giving the difference, the coefficient on \\(X\\) is the baseline effect of \\(X\\) and the interaction is the difference in the effect of \\(X\\)\nThe interaction coefficient becomes “the difference in the effect of \\(X\\) between the \\(Z\\) =”No” and \\(Z\\) = “Yes” groups”\n(What if it’s continuous? Mathematically the same but the thinking changes - the interaction term is the difference in the effect of \\(X\\) you get when increasing \\(Z\\) by one unit)"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#interactions-6",
+    "href": "2024/weeks/week05/slides.html#interactions-6",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Interactions",
+    "text": "Interactions\n\nMarriage for those without a college degree raises earnings by 24%. A college degree reduces the marriage premium by 25%. Marriage for those with a college degree reduces earnings by .24 - .25 = -1%\n\n\n\n                          feols(log(earnin..\nDependent Var.:                log(earnings)\n                                            \nConstant                   9.087*** (0.0583)\nmarriedTRUE               0.2381*** (0.0638)\ncollegeTRUE               0.8543*** (0.1255)\nmarriedTRUE x collegeTRUE  -0.2541. (0.1363)\n_________________________ __________________\nS.E. type                                IID\nObservations                           2,803\nR2                                   0.06253\nAdj. R2                              0.06153\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#notes-on-interactions",
+    "href": "2024/weeks/week05/slides.html#notes-on-interactions",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Notes on Interactions",
+    "text": "Notes on Interactions\n\nLike with polynomials, the coefficients on their own now have little meaning and must be evaluated alongside each other. \\(\\beta_1\\) by itself is just “the effect of \\(X\\) when \\(Z = 0\\)”, not “the effect of \\(X\\)”\nYes, you do almost always want to include both variables in un-interacted form and interacted form. Otherwise the interpretation gets very thorny"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#notes-on-interactions-1",
+    "href": "2024/weeks/week05/slides.html#notes-on-interactions-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Notes on Interactions",
+    "text": "Notes on Interactions\n\nInteraction effects are poorly powered. You need a lot of data to be able to tell whether an effect is different in two groups. If \\(N\\) observations is adequate power to see if the effect itself is different from zero, you need a sample of roughly \\(16\\times N\\) to see if the difference in effects is nonzero. Sixteen times!!\nIt’s tempting to try interacting your effect with everything to see if it’s bigger/smaller/nonzero in some groups, but because it’s poorly powered, this is a bad idea! You’ll get a lot of false positives\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
   }
 ]
