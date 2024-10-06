@@ -55,7 +55,7 @@ Wednesdays 13:00-14:00 at MAR.1.10
 **Group 02**
 
             
-- 📆 Tuesdays
+- 📆 Wednesdays
 - ⌚ 15:00 - 16:00
 - 📍 FAW.4.02	
           
@@ -64,7 +64,7 @@ Wednesdays 13:00-14:00 at MAR.1.10
 ::: {style="display:inline-block;width: 35%;border-style: dotted;border-width: 1px;border-color: &quot;#fefefe&quot;; margin:1%;padding:1.5%;background-color:#fafafa"}
 **Group 03**
 
-- 📆 Tuesdays
+- 📆 Wednesdays
 - ⌚ 16:00 - 17:00
 - 📍 FAW.4.02	
 :::
