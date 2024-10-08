@@ -42,6 +42,10 @@ website:
         text: "📓 Syllabus"
         style:
           margin-bottom: "10px"
+      - href: 2024/communication.qmd
+        text: "📓 Discord"
+        style:
+          margin-bottom: "10px"
       - href: 2024/Stata.qmd
         text: "STATA resources"
         style:

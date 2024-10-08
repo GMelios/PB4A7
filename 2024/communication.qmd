@@ -7,7 +7,7 @@ editor: visual
 ::: {.callout-important collapse="false"}
 ## 📢 Description
 
-We will use this space to make class announcements throughout the semester!
+Join our [Discord Channel](https://discord.gg/fKA4EN9x) for faster communication !!!
 :::
 
 # Requirements
