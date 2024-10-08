@@ -1,10 +1,10 @@
 ---
-subtitle: "PB4A7- Quantitative Applications for Behavioural Science"
-title: "<font style='font-size:1em;'>🗓️ Week 0<br/> Presessionals</font>"
+title: "Controls"
+subtitle: "Telling endogeneity we've had ENOUGH"
 author: Dr. [George Melios](#)
 institute: '[London School of Economics and Political Science](#)'
 date: 22 October 2024
-date-meta: 18 October 2024
+date-meta: 22 October 2024
 date-format: "DD MMM YYYY"
 toc: true
 toc-depth: 1
@@ -22,22 +22,7 @@ format:
     css: /css/styles_slides.css
     footer: 'PB4A7- Quantitative Applications for Behavioural Science'
 ---
-<!-- ---
-title: "Controls"
-subtitle: "Telling endogeneity we've had ENOUGH"
-date: "Updated `r Sys.Date()`"
-output:
-  xaringan::moon_reader:
-    self_contained: TRUE
-    css: [default, metropolis, metropolis-fonts]
-    lib_dir: libs
-    # Run xaringan::summon_remark() for this
-    #chakra: libs/remark-latest.min.js
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
---- -->
+
 
 
 ```{r setup, include=FALSE}
@@ -76,7 +61,7 @@ theme_metro_regtitle <- function(x) {
 }
 ```
 
-# Linear Regression - Endogeneity
+## Linear Regression - Endogeneity
 
 - Last week was all about handling sampling variation and avoiding inference error
 - This week we're all about endogeneity!
@@ -97,19 +82,19 @@ $$Y = \beta_0 + \beta_1X+\varepsilon$$
 
 ---
 
-# Endogeneity Recap
+## Endogeneity Recap
 
 - For example looking at income and corruption, the model
 
 $$Income = \beta_0 + \beta_1Corruption + \varepsilon$$
 
-- The true $\beta_1$ is probably $0$. But since $Political Stability$ is in $\varepsilon$ and $olitical Stability$ is related to $Corruption$, OLS will mistakenly assign the effect of $olitical Stability$ to the effect of $Corruption$, making it look like there's a positive effect when there isn't one
-- If $olitical Stability$ hangs around $Corruption$, but OLS doesn't know about it, OLS will give $Corruption$ all the credit for $olitical Stability$'s impact on $Income$
-- Here we're mistakenly finding a positive effect when the truth is $0$, but it could be anything - negative effect when truth is $0$, positive effect when the truth is a bigger/smaller positive effect, negative effect when truth is positive, etc. etc.
+- True $\beta_1$ is probably $0$. But since $Political$ $Stability$ is in $\varepsilon$ & $Pol-Stability$ is related to $Corruption$, OLS will mistakenly assign the effect of $Pol-Stability$ to the effect of $Corr$, making it look like there's a positive effect when there isn't one
+
+- Here we're mistakenly finding a positive effect when the truth is $0$, but it could be anything - negative effect when truth is $0$, positive effect when the truth is a bigger/smaller positive effect, etc etc
 
 ---
 
-# To the Rescue
+## To the Rescue
 
 - One way we can solve this problem is through the use of *control variables* 
 - What if $Political Stability$ *weren't* in $\varepsilon$? Then we'd be fine! OLS would know how to separate out its effect from the $Corruption$ effect. How do we take it out? Just put it in the model directly!
@@ -122,7 +107,7 @@ $$Income = \beta_0 + \beta_1Corruption + \beta_2PoliticalStability + \varepsilon
 
 ---
 
-# To the Rescue
+## To the Rescue
 
 - So the task of solving our endogeneity problems in estimating $\beta_1$ using $\hat{\beta}_1$ comes down to us *finding all the elements of $\varepsilon$ that are related to $X$ and adding them to the model*
 - As we add them, they leave $\varepsilon$ and hopefully we end up with a version of $\varepsilon$ that is no longer related to $X$
@@ -131,7 +116,7 @@ $$Income = \beta_0 + \beta_1Corruption + \beta_2PoliticalStability + \varepsilon
 
 ---
 
-# How?
+## How?
 
 - How does this actually work?
 - Controlling for a variable works by *removing variation in $X$ and $Y$ that is explained by the control variable*
@@ -142,7 +127,7 @@ $$Income = \beta_0 + \beta_1Corruption + \beta_2PoliticalStability + \varepsilon
 
 ---
 
-# Example
+## Example
 
 The true effect is $\beta_1 = 3$. Notice $Z$ is binary and is related to $X$ and $Y$ but isn't in the model!
 
@@ -160,7 +145,7 @@ feols(Y~X, data = tib) %>%
 
 ---
 
-# Example
+## Example
 
 To remove what part of $X$ and $Y$ is explained by $Z$, we can get the mean of $X$ and $Y$ by values of $Z$
 
@@ -173,7 +158,7 @@ head(tib)
 
 ---
 
-# Example
+## Example
 
 Now, `Y_mean` and `X_mean` are the mean of `Y` and `X` for the values of `Z`, i.e. the part of `Y` and `X` *explained by `Z`*. So subtract those parts out to get *residuals* `Y_res` and `X_res`!
 
@@ -185,7 +170,7 @@ head(tib)
 
 ---
 
-# Example
+## Example
 
 What do we get now?
 
@@ -197,7 +182,7 @@ feols(Y_res ~ X_res, data = tib) %>%
 
 ---
 
-# Example
+## Example
 
 Compare this to actually including `Z` as a control:
 
@@ -254,7 +239,7 @@ animate(p,nframes=400)
 
 ---
 
-# Controlling
+## Controlling
 
 - We achieve all this just by adding the variable to the OLS equation!
 - We can, of course, include more than one control, or controls that aren't binary
@@ -264,7 +249,7 @@ animate(p,nframes=400)
 
 ---
 
-# A Continuous Control
+## A Continuous Control
 
 <figure>
     <img src="/2024/weeks/week04/linear_control.gif" alt="Linear controls"
@@ -274,7 +259,7 @@ animate(p,nframes=400)
 
 ---
 
-# What do we get?
+## What do we get?
 
 - We can remove some of the relationship between $X$ and $\varepsilon$
 - Potentially all of it, making $\hat{\beta}_1$ us an *unbiased* (i.e. correct on average, but sampling variation doesn't go away!) estimate of $\beta_1$
@@ -283,7 +268,7 @@ animate(p,nframes=400)
 
 ---
 
-# Concept Checks
+## Concept Checks
 
 - Selene is a huge bore at parties, but sometimes brings her girlfriend Donna who is super fun. If you regressed $PartyFunRating$ on $SeleneWasThere$ but not $DonnaWasThere$, what would the coefficient on $SeleneWasThere$ look like and why?
 - Describe the steps necessary to estimate the effect of $Exports$ on $GrowthRate$ while controlling for $AmountofConflict$ (a continuous variable). There are three "explain/regress" steps and two "subtract" steps.
@@ -291,7 +276,8 @@ animate(p,nframes=400)
 
 ---
 
-# Have We Solved It?
+
+## Have We Solved It?
 
 - Including controls for every part of (what used to be) $\varepsilon$ that is related to $X$ clears up any endogeneity problem we had with $X$
 - So... when we add a control, does that do it? How do we know?
@@ -300,7 +286,7 @@ animate(p,nframes=400)
 
 ---
 
-# Causal Diagrams
+## Causal Diagrams
 
 - "What do I have to control for to solve the endogeneity problem" is an important and difficult question!
 - To answer it we need to think about the data-generating process
@@ -311,11 +297,15 @@ animate(p,nframes=400)
 
 ---
 
-# Drawing a Diagram
+## Drawing a Diagram
 
-- Endogeneity is all about the *alternate reasons why* two variables might be related *other than the causal effect you want
+- Endogeneity is all about the *alternate reasons why* two variables might be related *other than the causal effect
 - We can represent *all* the reasons two variables are related with a diagram
 - Put down on paper how you think the world works, and where you think the data came from! This is economic modeling but with less math
+
+---
+
+## Drawing a Diagram
 
 1. List out all the variables relevant to the DGP (including the ones we can't measure or put our finger on!)
 2. Draw arrows between them reflecting what causes what else
@@ -324,7 +314,7 @@ animate(p,nframes=400)
 
 ---
 
-# Drawing a Diagram
+## Drawing a Diagram
 
 ```{r, dev = 'CairoPNG'}
 dag <- dagify(IceCreamEating~ShortsWearing+Temperature,
@@ -341,7 +331,7 @@ ggdag_classic(dag,node_size=20) +
 
 ---
 
-# Drawing a Diagram
+## Drawing a Diagram
 
 - We observe that, in the data, $ShortsWearing$ and $IceCreamEating$ are related. Why?
 - Maybe, we theorize, that wearing shorts causes you to eat ice cream ( $ShortsWearing \rightarrow IceCreamEating$ )
@@ -351,7 +341,7 @@ ggdag_classic(dag,node_size=20) +
 
 ---
 
-# Detailing Paths
+## Detailing Paths
 
 - The goal is to list all the paths that go from the *cause* of our choice to the *outcome* variable (no loops)
 - That way we know what we need to control for to close the paths!
@@ -361,7 +351,7 @@ ggdag_classic(dag,node_size=20) +
 
 ---
 
-# Preschool and Adult Earnings
+## Preschool and Adult Earnings
 
 Does going to preschool improve your earnings as an adult?
 
@@ -381,7 +371,7 @@ ggdag_classic(dag,node_size=10) +
 
 ---
 
-# Paths
+## Paths
 
 1. $Preschool \rightarrow Earnings$
 2. $Preschool \rightarrow Skills \rightarrow Earnings$
@@ -392,7 +382,7 @@ ggdag_classic(dag,node_size=10) +
 
 ---
 
-# Closing Paths
+## Closing Paths
 
 - We want the ways that $Preschool$ causes $Earnings$ - that's the first two, $Preschool \rightarrow Earnings$ and $Preschool \rightarrow Skills \rightarrow Earnings$
 - The rest we want to close! They're *back doors*
@@ -404,7 +394,7 @@ $$Earnings = \beta_0 + \beta_1Preschool + \beta_2Location + \beta_3Background+\v
 
 ---
 
-# And the Bad News...
+## And the Bad News...
 
 - This assumes that *the model we drew was accurate*. Did we leave any important variables or arrows out? Think hard!
 - What other variables might belong on this graph? Would they be on a path that gives an alternate explanation? 
@@ -413,7 +403,7 @@ $$Earnings = \beta_0 + \beta_1Preschool + \beta_2Location + \beta_3Background+\v
 
 ---
 
-# And the Bad News...
+## And the Bad News...
 
 - Regardless, this is the kind of thinking (whether or not you do that thinking *with a causal diagram*) we have to do to figure out how to identify things by controlling for variables
 - There's no way to get around having to make these sorts of assumptions if we want to identify a causal effect
@@ -422,7 +412,7 @@ $$Earnings = \beta_0 + \beta_1Preschool + \beta_2Location + \beta_3Background+\v
 
 ---
 
-# An Example
+## An Example
 
 - Let's back off of those concerns a moment and generate the data ourselves so we know the truth!
 - In the below data generating process, what is the true effect of $X$ on $Y$?
@@ -445,9 +435,9 @@ coef(m1)
 
 ---
   
-# The Diagram
+## The Diagram
   
-- Here's the diagram we can draw from that information. What paths are there from `X` to `Y`?
+- Here is the diagram we can draw from that information. What paths are there from `X` to `Y`?
 
 ```{r, dev = 'CairoPNG'}
 dag <- dagify(Y~X+A+B+D,
@@ -488,7 +478,7 @@ etable(m1,m2,m3)
 
 ---
   
-# Concept Checks
+## Concept Checks
   
 - Why did we only need to control for $C$ *or* $D$ in that last example?
 - Draw a graph with five variables on it: $X$, $Y$, $A$, $B$, $C$. Then draw arrows at them completely at random (except to ensure there's no "loop" where you can follow an arrow path from arrow base to head and end up where you started). Then list every path from $X$ to $Y$ and say what you'd need to control for to identify the effect

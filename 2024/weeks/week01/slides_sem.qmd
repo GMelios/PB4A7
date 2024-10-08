@@ -140,7 +140,7 @@ _A workflow consists of an orchestrated and repeatable pattern of activity, enab
 ## Empirical workflows require scarce time inputs
 
 -  All of us are living at the edge of our resource constraints, and our most scarce resources is time
-- To do anything, we must sacrifice something else because all activities use time – including cleaning and arranging our data
+- To do anything, we must sacrifice something else because all activities use time 
 - Data work is like a marathon:
     - Involves far more time training than running - involves far more time doing tedious and repetitive tasks
 - Since tedious task are repeated, the have the most potential for error 
@@ -164,13 +164,10 @@ _A workflow consists of an orchestrated and repeatable pattern of activity, enab
 
 ## Do Not Touch the Original Data
 
-- And I repeat **Do Not Touch the Original Data**
 
 <figure>
-    <img src="/2024/weeks/week01/exp.png" alt="RD"
-    class="img-responsive atto_image_button_text-bottom">
+    <img src="/2024/weeks/week01/exp.png" alt="RD" height="600px" style="display: block; margin: auto;" class="img-responsive atto_image_button_text-bottom">
 </figure>
-
 ---
 
 ## Do Not Touch the Original Data

@@ -2,8 +2,8 @@
 title: "<font style='font-size:1em;'>🗓️ Week 2<br/> Fitting Lines </font>"
 author: Dr. [George Melios](#)
 institute: '[London School of Economics and Political Science](#)'
-date: 08 October 2024
-date-meta: 08 October 2024
+date: 09 October 2024
+date-meta: 09 October 2024
 date-format: "DD MMM YYYY"
 toc: true
 toc-depth: 1
@@ -75,7 +75,7 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
-# Data Generating Process
+## Data Generating Process
 
 - To avoid identification error, economists think closely about the *data generating process*
 - What is a data generating process?
@@ -178,7 +178,7 @@ ggdag_classic(dag, size = 5) +
 
 ---
 
-# Regressions
+## Regressions
 
 - In statistics, regression is the practice of *line-fitting*
 - We want to *use one variable to predict another*
@@ -515,7 +515,7 @@ $$ Y = \beta_0 + \beta_1X + \varepsilon $$
 - Note  "residual" =/= $\varepsilon$ - residuals are what's actually left over from our prediction with real data, but the *error* $\varepsilon$ is the *true* difference between our line and $Y$.
 ---
 
-# OLS Simulator
+## OLS Simulator
 
 - Take a look at this OLS simulator and play around with it: [https://econometricsbysimulation.shinyapps.io/OLS-App/](https://econometricsbysimulation.shinyapps.io/OLS-App/)
 - Click "Show Residuals" to turn that on
@@ -526,7 +526,7 @@ $$ Y = \beta_0 + \beta_1X + \varepsilon $$
 
 --- 
 
-# Concept Checks
+## Concept Checks
 
 - Why might we want to minimize squared residuals rather than just residuals?
 - What's the difference between a residual and an error?
@@ -538,11 +538,10 @@ And we have the kids Darryl who is 10 years old and 40 inches tall, and Bijetri 
 
 ---
 
-# Recap
+## Recap
 
-- Regression is the practice of fitting a *shape* to data so as to explain the relationship more generally
-- Ordinary least squares fits a *straight line*
-- It picks the straight line that minimizes the *sum of squared residuals*
+- Regression is fitting a *shape* to data to explain the relationship more generally
+- Ordinary least squares fits a *straight line* that minimizes the *sum of squared residuals*
 - That line has an intercept $\beta_0$ (Our prediction $\hat{Y}$ when $X = 0$) and a slope $\beta_1$ (how much higher we predict $Y$ will be when we look at an $X$ one unit higher)
 - The *residual* is the difference between our prediction $\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1X$ and the actual number $Y$
 

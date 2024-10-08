@@ -273,7 +273,7 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
-# Identification Error
+## Identification Error
 
 - What is an identification error?
 - *Identification* is how you link the *result you see* with the *conclusion you draw from it*
@@ -286,6 +286,11 @@ theme_metro_regtitle <- function(x) {
 
 - But if there's another reason why we might see that result, i.e. if the same result could give us a different conclusion, like *kids who are aggressive play more video games* or *people notice aggression more when kids play video games*, then we have made an *identification error* - our result was not identified!
 - Identification error is when your result in the data doesn't actually have a clear theoretical ("why" or "because") interpretation
+
+---
+
+## Identification Error 
+
 - For example, if you observe that people tend to wear more shorts on days they eat more ice cream, and you conclude that eating ice cream makes you put on shorts, you have committed an identification error
 - One day in and all we can do is complain, eesh
 

@@ -406,11 +406,10 @@ Example: If we want to know whether a vaccine works
 
 ## Experiments not always the solution 
 
-- Time consuming and expensive
+- Time consuming and expensive (large samples)
 - May have ethical issues
-- Require large samples for the assumptions to hold
 - Suffer from drop-out and non-compliance
-- Estimated parameters in an experiment may different from the parameters in which the intervention will actually take place.
+- Estimated parameters in an experiment may different from the parameters in the field.
 - Not very easy to observe ‘real’ behaviours or consequential behaviours because of the setting.
 - An interesting paper on the [limits of RCTs](https://www.sciencedirect.com/science/article/pii/S0277953617307359) from Deaton (Nobel laureate) and Cartwright (2017), if you’re interested!
 - **What do we do then?**
@@ -429,7 +428,7 @@ Example: If we want to know whether a vaccine works
 
 ---
 
-# Data Generating Process
+## Data Generating Process
 
 - To avoid identification error, economists think closely about the *data generating process*
 - What is a data generating process?
@@ -494,7 +493,7 @@ ggplot(tibble(x = c(25,35,25,50,60), y = c(35,22,75,54,80)),
 
 ---
 
-# Causality
+## Causality
 
 - A data generating process can be described by a series of *equations* that describe where the data comes from. For example:
 
@@ -594,7 +593,7 @@ knitr::include_graphics('Lecture_1_Relationships.png')
 
 ---
 
-# Endogeneity
+## Endogeneity
 
 - So "correlation isn't causation" isn't quite complete
 - It's more "only certain correlations are causal"
@@ -603,7 +602,7 @@ knitr::include_graphics('Lecture_1_Relationships.png')
 
 ---
 
-# Random Experiments
+## Random Experiments
 
 - One way around this problem is to run a random experiment
 - If we can randomly assign $X$, then we know we're not in graph a, because our graph looks like this!
@@ -623,17 +622,17 @@ ggdag_classic(dag, size = 5) +
 
 ---
 
-# Random Experiments
+## Random Experiments
 
 - For this reason, random experiments are generally considered the "gold standard" 
-- Although they have their own problems, of course (your experimental sample might not represent the population well, there are plenty of statistical mistakes to make, people may act differently knowing they're in an experiment, etc. etc.)
+- They have problems (i.e. experimental sample might not represent the population, people may act differently knowing they're in an experiment, etc.)
 - But regardless, we're looking here at questions for which we *can't* run an experiment, becuase it's impossible or infeasible or immoral
 - So one way we can think about solving this endogeneity problem with econometrics is to use our *observational data* in such a way that it behaves *as though there were an experiment being run*
 - Plenty of ways to do this we'll go over in this course!
 
 ---
 
-# Concept Check
+## Concept Check
 
 - What does it mean to say that $X$ has a causal effect on $Y$?
 - Why might the relationship between $X$ and $Y$ in data not be the same as the causal effect?
@@ -642,7 +641,7 @@ ggdag_classic(dag, size = 5) +
 
 ---
 
-# Spurious Correlations
+## Spurious Correlations
 
 - Let's visit this site all about "spurious" correlations (i.e. correlations that almost certainly do not reveal a true effect of one variable on the other): [https://tylervigen.com/spurious-correlations](https://tylervigen.com/spurious-correlations)
 - Take a look at how easy it is to find variables that are *related* statistically, even though clearly neither causes the other

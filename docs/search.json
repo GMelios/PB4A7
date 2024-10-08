@@ -1180,7 +1180,7 @@
     "href": "2024/weeks/week01/slides.html#experiments-not-always-the-solution",
     "title": "🗓️ Week 1 Introduction to counterfactuals",
     "section": "Experiments not always the solution",
-    "text": "Experiments not always the solution\n\nTime consuming and expensive\nMay have ethical issues\nRequire large samples for the assumptions to hold\nSuffer from drop-out and non-compliance\nEstimated parameters in an experiment may different from the parameters in which the intervention will actually take place.\nNot very easy to observe ‘real’ behaviours or consequential behaviours because of the setting.\nAn interesting paper on the limits of RCTs from Deaton (Nobel laureate) and Cartwright (2017), if you’re interested!\nWhat do we do then?"
+    "text": "Experiments not always the solution\n\nTime consuming and expensive (large samples)\nMay have ethical issues\nSuffer from drop-out and non-compliance\nEstimated parameters in an experiment may different from the parameters in the field.\nNot very easy to observe ‘real’ behaviours or consequential behaviours because of the setting.\nAn interesting paper on the limits of RCTs from Deaton (Nobel laureate) and Cartwright (2017), if you’re interested!\nWhat do we do then?"
   },
   {
     "objectID": "2024/weeks/week01/slides.html#causal-inference-1",
@@ -1348,7 +1348,7 @@
     "href": "2024/weeks/week01/slides_sem.html#empirical-workflows-require-scarce-time-inputs",
     "title": "💻 Seminar 1  Hidden Curriculum",
     "section": "Empirical workflows require scarce time inputs",
-    "text": "Empirical workflows require scarce time inputs\n\nAll of us are living at the edge of our resource constraints, and our most scarce resources is time\nTo do anything, we must sacrifice something else because all activities use time – including cleaning and arranging our data\nData work is like a marathon:\n\nInvolves far more time training than running - involves far more time doing tedious and repetitive tasks\n\nSince tedious task are repeated, the have the most potential for error\nEspecially for dissertations - However long you thing cleaning and organising data will take, multiply by 10"
+    "text": "Empirical workflows require scarce time inputs\n\nAll of us are living at the edge of our resource constraints, and our most scarce resources is time\nTo do anything, we must sacrifice something else because all activities use time\nData work is like a marathon:\n\nInvolves far more time training than running - involves far more time doing tedious and repetitive tasks\n\nSince tedious task are repeated, the have the most potential for error\nEspecially for dissertations - However long you thing cleaning and organising data will take, multiply by 10"
   },
   {
     "objectID": "2024/weeks/week01/slides_sem.html#step-1---read-the-codebook",
@@ -1362,7 +1362,7 @@
     "href": "2024/weeks/week01/slides_sem.html#do-not-touch-the-original-data",
     "title": "💻 Seminar 1  Hidden Curriculum",
     "section": "Do Not Touch the Original Data",
-    "text": "Do Not Touch the Original Data\n\nAnd I repeat Do Not Touch the Original Data"
+    "text": "Do Not Touch the Original Data"
   },
   {
     "objectID": "2024/weeks/week01/slides_sem.html#do-not-touch-the-original-data-1",
@@ -1565,7 +1565,7 @@
     "href": "2024/weeks/week00/slides.html#identification-error-1",
     "title": "🗓️ Week 0 Presessionals",
     "section": "Identification Error",
-    "text": "Identification Error\n\nBut if there’s another reason why we might see that result, i.e. if the same result could give us a different conclusion, like kids who are aggressive play more video games or people notice aggression more when kids play video games, then we have made an identification error - our result was not identified!\nIdentification error is when your result in the data doesn’t actually have a clear theoretical (“why” or “because”) interpretation\nFor example, if you observe that people tend to wear more shorts on days they eat more ice cream, and you conclude that eating ice cream makes you put on shorts, you have committed an identification error\nOne day in and all we can do is complain, eesh"
+    "text": "Identification Error\n\nBut if there’s another reason why we might see that result, i.e. if the same result could give us a different conclusion, like kids who are aggressive play more video games or people notice aggression more when kids play video games, then we have made an identification error - our result was not identified!\nIdentification error is when your result in the data doesn’t actually have a clear theoretical (“why” or “because”) interpretation"
   },
   {
     "objectID": "2024/weeks/week03/slides.html#truth-and-reality-1",
@@ -2447,7 +2447,7 @@
     "href": "2024/weeks/week07/slides.html#notes-on-interactions-1",
     "title": "🗓️ Week 5 Functional Forms",
     "section": "Notes on Interactions",
-    "text": "Notes on Interactions\n\nInteraction effects are poorly powered. You need a lot of data to be able to tell whether an effect is different in two groups. If \\(N\\) observations is adequate power to see if the effect itself is different from zero, you need a sample of roughly \\(16\\times N\\) to see if the difference in effects is nonzero. Sixteen times!!\nIt’s tempting to try interacting your effect with everything to see if it’s bigger/smaller/nonzero in some groups, but because it’s poorly powered, this is a bad idea! You’ll get a lot of false positives"
+    "text": "Notes on Interactions\n\nInteraction effects are poorly powered. You need a lot of data to be able to tell whether an effect is different in two groups. If \\(N\\) observations is adequate power to see if the effect itself is different from zero, you need a sample of roughly \\(16\\times N\\) to see if the difference in effects is nonzero. Sixteen times!!\nIt’s tempting to try interacting your effect with everything to see if it’s bigger/smaller/nonzero in some groups, but because it’s poorly powered, this is a bad idea! You’ll get a lot of false positives\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
   },
   {
     "objectID": "2024/weeks/week04/slides.html",
@@ -2455,5 +2455,474 @@
     "title": "🗓️ Week 0 Presessionals",
     "section": "",
     "text": "Linear Regression - Endogeneity\n\nLast week was all about handling sampling variation and avoiding inference error\nThis week we’re all about endogeneity!\nWhere it pops up and what we can do about it\nAt least as a starter (we’ll revisit this topic many times)\n\n\n\n\nRecap\n\nWe believe that our true model looks like this:\n\n\\[Y = \\beta_0 + \\beta_1X+\\varepsilon\\]\n\nWhere \\(\\varepsilon\\) is everything that determines \\(Y\\) other than \\(X\\)\nIf \\(X\\) is related to some of those things, we have endogeneity\nEstimating the above model by OLS, it will mistake the effect of those other things for the effect of \\(X\\), and our estimate of \\(\\hat{\\beta}_1\\) won’t represent the true \\(\\beta_1\\) no matter how many observations we have\n\n\n\n\nEndogeneity Recap\n\nFor example looking at income and corruption, the model\n\n\\[Income = \\beta_0 + \\beta_1Corruption + \\varepsilon\\]\n\nThe true \\(\\beta_1\\) is probably \\(0\\). But since \\(Political Stability\\) is in \\(\\varepsilon\\) and \\(olitical Stability\\) is related to \\(Corruption\\), OLS will mistakenly assign the effect of \\(olitical Stability\\) to the effect of \\(Corruption\\), making it look like there’s a positive effect when there isn’t one\nIf \\(olitical Stability\\) hangs around \\(Corruption\\), but OLS doesn’t know about it, OLS will give \\(Corruption\\) all the credit for \\(olitical Stability\\)’s impact on \\(Income\\)\nHere we’re mistakenly finding a positive effect when the truth is \\(0\\), but it could be anything - negative effect when truth is \\(0\\), positive effect when the truth is a bigger/smaller positive effect, negative effect when truth is positive, etc. etc.\n\n\n\n\nTo the Rescue\n\nOne way we can solve this problem is through the use of control variables\nWhat if \\(Political Stability\\) weren’t in \\(\\varepsilon\\)? Then we’d be fine! OLS would know how to separate out its effect from the \\(Corruption\\) effect. How do we take it out? Just put it in the model directly!\n\n\\[Income = \\beta_0 + \\beta_1Corruption + \\beta_2PoliticalStability + \\varepsilon\\]\n\nNow we have a multivariate regression model. Our estimate \\(\\hat{\\beta}_1\\) will not be biased by \\(Political Stability\\) because we’ve controlled for it\n\n(probably more accurate to say “covariates” or “variables to adjust for” than “control variables” and “adjust for” rather than “control for” but hey what are you gonna do, “control” is standard)\n\n\n\nTo the Rescue\n\nSo the task of solving our endogeneity problems in estimating \\(\\beta_1\\) using \\(\\hat{\\beta}_1\\) comes down to us finding all the elements of \\(\\varepsilon\\) that are related to \\(X\\) and adding them to the model\nAs we add them, they leave \\(\\varepsilon\\) and hopefully we end up with a version of \\(\\varepsilon\\) that is no longer related to \\(X\\)\nIf \\(cov(X,\\varepsilon) = 0\\) then we have an unbiased estimate!\n(of course, we have no way of checking if that’s true - it’s based on what we think the data generating process looks like)\n\n\n\n\nHow?\n\nHow does this actually work?\nControlling for a variable works by removing variation in \\(X\\) and \\(Y\\) that is explained by the control variable\nSo our estimate of \\(\\hat{\\beta}_1\\) is based on just the variation in \\(X\\) and \\(Y\\) that is unrelated to the control variable\nAny accidentally-assigning-the-value-of-PoliticalStability-to-Corruption can’t happen because we’ve removed the effect of \\(Political Stability\\) on \\(Corruption\\) as well as the effect of \\(Political Stability\\) on \\(Income\\)\nWe’re asking at that point, holding \\(Political Stability\\) constant, i.e. comparing two different countries with the same \\(Polities\\) , how is \\(Corruption\\) related to \\(Income\\)?\n\n\n\n\nExample\nThe true effect is \\(\\beta_1 = 3\\). Notice \\(Z\\) is binary and is related to \\(X\\) and \\(Y\\) but isn’t in the model!\n\ntib &lt;- tibble(Z = 1*(rnorm(1000) &gt; 0)) %&gt;%\n  mutate(X = Z + rnorm(1000)) %&gt;%\n  mutate(Y = 2 + 3*X + 2*Z + rnorm(1000))\nfeols(Y~X, data = tib) %&gt;%\n  etable()\n\n                                .\nDependent Var.:                 Y\n                                 \nConstant        2.756*** (0.0461)\nX               3.421*** (0.0383)\n_______________ _________________\nS.E. type                     IID\nObservations                1,000\nR2                        0.88897\nAdj. R2                   0.88886\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\nExample\nTo remove what part of \\(X\\) and \\(Y\\) is explained by \\(Z\\), we can get the mean of \\(X\\) and \\(Y\\) by values of \\(Z\\)\n\ntib &lt;- tib %&gt;%\n  group_by(Z) %&gt;% \n  mutate(Y_mean = mean(Y), X_mean = mean(X))\nhead(tib)\n\n# A tibble: 6 × 5\n# Groups:   Z [2]\n      Z       X      Y Y_mean  X_mean\n  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;\n1     1  0.855   5.98    6.91  0.967 \n2     1 -1.59   -0.226   6.91  0.967 \n3     1  0.806   6.08    6.91  0.967 \n4     1 -0.0302  2.94    6.91  0.967 \n5     0 -0.490  -0.997   1.95 -0.0121\n6     0 -0.512   0.383   1.95 -0.0121\n\n\n\n\n\nExample\nNow, Y_mean and X_mean are the mean of Y and X for the values of Z, i.e. the part of Y and X explained by Z. So subtract those parts out to get residuals Y_res and X_res!\n\ntib &lt;- tib %&gt;%\n  mutate(Y_res = Y - Y_mean, X_res = X - X_mean)\nhead(tib)\n\n# A tibble: 6 × 7\n# Groups:   Z [2]\n      Z       X      Y Y_mean  X_mean  Y_res  X_res\n  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1     1  0.855   5.98    6.91  0.967  -0.928 -0.113\n2     1 -1.59   -0.226   6.91  0.967  -7.14  -2.55 \n3     1  0.806   6.08    6.91  0.967  -0.827 -0.161\n4     1 -0.0302  2.94    6.91  0.967  -3.98  -0.997\n5     0 -0.490  -0.997   1.95 -0.0121 -2.95  -0.478\n6     0 -0.512   0.383   1.95 -0.0121 -1.57  -0.499\n\n\n\n\n\nExample\nWhat do we get now?\n\nfeols(Y_res ~ X_res, data = tib) %&gt;%\n  etable()\n\n                                .\nDependent Var.:             Y_res\n                                 \nConstant        5.73e-17 (0.0319)\nX_res           3.030*** (0.0319)\n_______________ _________________\nS.E. type                     IID\nObservations                1,000\nR2                        0.90060\nAdj. R2                   0.90050\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\nExample\nCompare this to actually including Z as a control:\n\nfeols(Y ~ X + Z, data = tib) %&gt;%\n  etable()\n\n                                .\nDependent Var.:                 Y\n                                 \nConstant        1.988*** (0.0441)\nX               3.030*** (0.0319)\nZ               1.993*** (0.0712)\n_______________ _________________\nS.E. type                     IID\nObservations                1,000\nR2                        0.93782\nAdj. R2                   0.93769\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\nGraphically\n\n\n\n\n\n\n\n\nControlling\n\nWe achieve all this just by adding the variable to the OLS equation!\nWe can, of course, include more than one control, or controls that aren’t binary\nUse OLS to predict \\(X\\) using all the controls, then take the residual (the part not explained by the controls)\nUse OLS to predict \\(Y\\) using all the controls, then take the residual (the part not explained by the controls)\nNow do OLS of just the \\(Y\\) residuals on just the \\(X\\) residuals\n\n\n\n\nA Continuous Control\n\n\n\n\n\n\nWhat do we get?\n\nWe can remove some of the relationship between \\(X\\) and \\(\\varepsilon\\)\nPotentially all of it, making \\(\\hat{\\beta}_1\\) us an unbiased (i.e. correct on average, but sampling variation doesn’t go away!) estimate of \\(\\beta_1\\)\nMaybe we can also get some estimates of \\(\\beta_2\\), \\(\\beta_3\\)… but be careful, they’re subject to the same identification and endogeneity problems!\nOften in econometrics we focus on getting one parameter, \\(\\hat{\\beta}_1\\), exactly right and don’t focus on parameters we haven’t put much effort into identifying\n\n\n\n\nConcept Checks\n\nSelene is a huge bore at parties, but sometimes brings her girlfriend Donna who is super fun. If you regressed \\(PartyFunRating\\) on \\(SeleneWasThere\\) but not \\(DonnaWasThere\\), what would the coefficient on \\(SeleneWasThere\\) look like and why?\nDescribe the steps necessary to estimate the effect of \\(Exports\\) on \\(GrowthRate\\) while controlling for \\(AmountofConflict\\) (a continuous variable). There are three “explain/regress” steps and two “subtract” steps.\nIf we estimate the same \\(\\hat{\\beta}_1\\) with or without \\(Z\\) added as a control, does that mean we have no endogeneity problem? What does it mean exactly?\n\n\n\n\nHave We Solved It?\n\nIncluding controls for every part of (what used to be) \\(\\varepsilon\\) that is related to \\(X\\) clears up any endogeneity problem we had with \\(X\\)\nSo… when we add a control, does that do it? How do we know?\nInconveniently, the data alone will never tell us if we’ve solved endogeniety\nWe can’t just check \\(X\\) against the remaining \\(\\varepsilon\\) because we never see \\(\\varepsilon\\) - what we have left over after a regression is the real-world residual, not the true-model error\n\n\n\n\nCausal Diagrams\n\n“What do I have to control for to solve the endogeneity problem” is an important and difficult question!\nTo answer it we need to think about the data-generating process\nOne way to do that is to draw a causal diagram\nA causal diagram describes the variables responsible for generating data and how they cause each other\nOnce we have written down our diagram, we’ll know what we need to control for\n(hopefully we have data on everything we need to control for! Often we don’t)\n\n\n\n\nDrawing a Diagram\n\nEndogeneity is all about the alternate reasons why two variables might be related *other than the causal effect you want\nWe can represent all the reasons two variables are related with a diagram\nPut down on paper how you think the world works, and where you think the data came from! This is economic modeling but with less math\n\n\nList out all the variables relevant to the DGP (including the ones we can’t measure or put our finger on!)\nDraw arrows between them reflecting what causes what else\nList all the paths from \\(X\\) to \\(Y\\) - these paths are reasons why \\(X\\) and \\(Y\\) are related!\nControl for at least one variable on each path you want to close (isn’t the effect you want)\n\n\n\n\nDrawing a Diagram\n\n\n\n\n\n\n\n\nDrawing a Diagram\n\nWe observe that, in the data, \\(ShortsWearing\\) and \\(IceCreamEating\\) are related. Why?\nMaybe, we theorize, that wearing shorts causes you to eat ice cream ( \\(ShortsWearing \\rightarrow IceCreamEating\\) )\nHowever, there’s another explanation/path: \\(Temperature\\) causes both ( \\(ShortsWearing \\leftarrow Temperature \\rightarrow IceCreamEating\\) )\nWe need to control for temperature to close this path!\nOnce it’s closed, the only path left is \\(ShortsWearing \\rightarrow IceCreamEating\\), so if we do see a relationship still in the data, we know we’ve identified the causal effect\n\n\n\n\nDetailing Paths\n\nThe goal is to list all the paths that go from the cause of our choice to the outcome variable (no loops)\nThat way we know what we need to control for to close the paths!\nControl for any one variable on the path, and suddenly there’s no variation from that variable any more - the causal chain is broken and the path is closed!\nA path counts no matter which direction the arrows point on it (the arrow direction matters but we’ll get to that next time)\nIf the path isn’t part of what answers our research question, it’s a back door we want to be closed\n\n\n\n\nPreschool and Adult Earnings\nDoes going to preschool improve your earnings as an adult?\n\n\n\n\n\n\n\n\nPaths\n\n\\(Preschool \\rightarrow Earnings\\)\n\\(Preschool \\rightarrow Skills \\rightarrow Earnings\\)\n\\(Preschool \\leftarrow Location \\rightarrow Earnings\\)\n\\(Preschool \\leftarrow Background \\rightarrow Earnings\\)\n\\(Preschool \\leftarrow Background \\rightarrow Skills \\rightarrow Earnings\\)\n\\(Preschool \\rightarrow Skills \\leftarrow Background \\rightarrow Earnings\\)\n\n\n\n\nClosing Paths\n\nWe want the ways that \\(Preschool\\) causes \\(Earnings\\) - that’s the first two, \\(Preschool \\rightarrow Earnings\\) and \\(Preschool \\rightarrow Skills \\rightarrow Earnings\\)\nThe rest we want to close! They’re back doors\n\\(Location\\) is on #3, so if we control for \\(Location\\), 3 is closed\n\\(Background\\) is on the rest, so if we control for \\(Background\\), the rest are closed\nSo if we estimate the below OLS equation, \\(\\hat{\\beta}_1\\) will be unbiased!\n\n\\[Earnings = \\beta_0 + \\beta_1Preschool + \\beta_2Location + \\beta_3Background+\\varepsilon\\]\n\n\n\nAnd the Bad News…\n\nThis assumes that the model we drew was accurate. Did we leave any important variables or arrows out? Think hard!\nWhat other variables might belong on this graph? Would they be on a path that gives an alternate explanation?\nJust because we say that’s the model doesn’t magically make it the actual model! It needs to be right! Use that economic theory and common sense to think about missing parts of the graph\nAlso, can we control for those things? What would it mean to assign a single number for \\(Background\\) to someone? Or if we’re representing \\(Background\\) with multiple variables - race, gender, parental income, etc., how do we know if we’ve fully covered it?\n\n\n\n\nAnd the Bad News…\n\nRegardless, this is the kind of thinking (whether or not you do that thinking with a causal diagram) we have to do to figure out how to identify things by controlling for variables\nThere’s no way to get around having to make these sorts of assumptions if we want to identify a causal effect\nReally! No way at all! Even experiments have assumptions\nThe key is not avoiding assumptions, but making sure they’re reasonable, and verifying those assumptions where you can\n\n\n\n\nAn Example\n\nLet’s back off of those concerns a moment and generate the data ourselves so we know the truth!\nIn the below data generating process, what is the true effect of \\(X\\) on \\(Y\\)?\nLet’s figure out how to draw the causal diagram for this data generating process!\n(note: U1, U2, etc., often stand in as an unobserved common cause for two variables that are correlated but we think neither causes the other)\n\n\ntib2 &lt;- data.frame(U1 = rnorm(1000), A = rnorm(1000), B = rnorm(1000)) %&gt;%\n  mutate(C = U1 + rnorm(1000), D = U1 + rnorm(1000)) %&gt;%\n  mutate(X = A + C + rnorm(1000)) %&gt;%\n  mutate(Y = 4*X + A + B + D + rnorm(1000))\nm1 &lt;- feols(Y~X, data = tib)\ncoef(m1)\n\n(Intercept)           X \n   2.756197    3.420627 \n\n\n\n\n\nThe Diagram\n\nHere’s the diagram we can draw from that information. What paths are there from X to Y?\n\n\n\n\n\n\n\n\n\nThe Paths\n\n\\(X \\rightarrow Y\\)\n\\(X \\leftarrow A \\rightarrow Y\\)\n\\(X \\leftarrow C \\leftarrow U_1 \\rightarrow D \\rightarrow Y\\)\n\nWhat do we need to control for to close all the paths we don’t want? Assume we can’t observe (and so can’t control for) \\(U_1\\)\n\n\n\nThe Adjusted Analysis\n\nRemember, the true \\(\\beta_1\\) was 4\n\n\n\n                               m1                 m2                 m3\nDependent Var.:                 Y                  Y                  Y\n                                                                       \nConstant        2.756*** (0.0461)   -0.0261 (0.0584)    0.0218 (0.0455)\nX               3.421*** (0.0383)  4.004*** (0.0600)  4.003*** (0.0290)\nA                                  1.044*** (0.0846) 0.9848*** (0.0549)\nC                                 0.4827*** (0.0739)                   \nD                                                    0.9827*** (0.0368)\n_______________ _________________ __________________ __________________\nS.E. type                     IID                IID                IID\nObservations                1,000              1,000              1,000\nR2                        0.88897            0.96089            0.97624\nAdj. R2                   0.88886            0.96077            0.97617\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\nConcept Checks\n\nWhy did we only need to control for \\(C\\) or \\(D\\) in that last example?\nDraw a graph with five variables on it: \\(X\\), \\(Y\\), \\(A\\), \\(B\\), \\(C\\). Then draw arrows at them completely at random (except to ensure there’s no “loop” where you can follow an arrow path from arrow base to head and end up where you started). Then list every path from \\(X\\) to \\(Y\\) and say what you’d need to control for to identify the effect\nWhat would you need to control for to estimate the effect of “drinking a glass of wine a day” on “lifespan”? Draw a diagram."
+  },
+  {
+    "objectID": "2024/weeks/week02/slides.html#data-generating-process",
+    "href": "2024/weeks/week02/slides.html#data-generating-process",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Data Generating Process",
+    "text": "Data Generating Process\n\nTo avoid identification error, economists think closely about the data generating process\nWhat is a data generating process?\nThe data generating process is the true set of laws that determine where our data comes from\nFor example, if you hold a rock and drop it, it falls to the floor\nWhat is the data we observe? (Hold the rock & Rock is up) and (Let go & Rock is down)\nWhat is the data generating process? Gravity makes the rock fall down when you drop it"
+  },
+  {
+    "objectID": "2024/weeks/week02/slides.html#regressions",
+    "href": "2024/weeks/week02/slides.html#regressions",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Regressions",
+    "text": "Regressions\n\nIn statistics, regression is the practice of line-fitting\nWe want to use one variable to predict another\nLet’s say using \\(X\\) to predict \\(Y\\)\nWe’d refer to \\(X\\) as the “independent variable”, and \\(Y\\) as the “dependent variable” (dependent on \\(X\\) that is)\nRegression is the idea that we should characterize the relationship between \\(X\\) and \\(Y\\) as a line, and use that line to predict \\(Y\\)"
+  },
+  {
+    "objectID": "2024/weeks/week02/slides.html#ols-simulator",
+    "href": "2024/weeks/week02/slides.html#ols-simulator",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "OLS Simulator",
+    "text": "OLS Simulator\n\nTake a look at this OLS simulator and play around with it: https://econometricsbysimulation.shinyapps.io/OLS-App/\nClick “Show Residuals” to turn that on\nTry different data generating processes and standard deviations\nWhat settings make the residuals small or large? Any guesses why?\nWhat happens if you take the intercept out? What does that make our line do?\nHow close does the line come to the data generating process? Intercept and slope are in the second table below the graph under “Estimate”"
+  },
+  {
+    "objectID": "2024/weeks/week02/slides.html#concept-checks-1",
+    "href": "2024/weeks/week02/slides.html#concept-checks-1",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nWhy might we want to minimize squared residuals rather than just residuals?\nWhat’s the difference between a residual and an error?\nIf I have the below OLS-fitted line from a dataset of children:\n\n\\[ Height (Inches) = 18 + 2*Age\\]\nAnd we have the kids Darryl who is 10 years old and 40 inches tall, and Bijetri who is 9 years old and 37 inches tall, what are each of their: (a) predicted values, (b) residuals, and then what is the sum of their squared residuals?"
+  },
+  {
+    "objectID": "2024/weeks/week02/slides.html#recap",
+    "href": "2024/weeks/week02/slides.html#recap",
+    "title": "🗓️ Week 2 Fitting Lines ",
+    "section": "Recap",
+    "text": "Recap\n\nRegression is fitting a shape to data to explain the relationship more generally\nOrdinary least squares fits a straight line that minimizes the sum of squared residuals\nThat line has an intercept \\(\\beta_0\\) (Our prediction \\(\\hat{Y}\\) when \\(X = 0\\)) and a slope \\(\\beta_1\\) (how much higher we predict \\(Y\\) will be when we look at an \\(X\\) one unit higher)\nThe residual is the difference between our prediction \\(\\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1X\\) and the actual number \\(Y\\)\n\n\\[ Y = \\beta_0 + \\beta_1 X + \\varepsilon \\] \\[ \\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1X \\]"
+  },
+  {
+    "objectID": "2024/weeks/week01/slides.html#data-generating-process",
+    "href": "2024/weeks/week01/slides.html#data-generating-process",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Data Generating Process",
+    "text": "Data Generating Process\n\nTo avoid identification error, economists think closely about the data generating process\nWhat is a data generating process?\nThe data generating process is the true set of laws that determine where our data comes from\nFor example, if you hold a rock and drop it, it falls to the floor\nWhat is the data we observe? (Hold the rock & Rock is up) and (Let go & Rock is down)\nWhat is the data generating process? Gravity makes the rock fall down when you drop it"
+  },
+  {
+    "objectID": "2024/weeks/week01/slides.html#causality",
+    "href": "2024/weeks/week01/slides.html#causality",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Causality",
+    "text": "Causality\n\nA data generating process can be described by a series of equations that describe where the data comes from. For example:\n\n\\[ X = \\gamma_0 + \\gamma_1\\varepsilon + \\nu \\]\n\\[ Y = \\beta_0 + \\beta_1X + \\varepsilon \\]\n\nThis says ” \\(X\\) is caused by \\(\\varepsilon\\) and \\(\\nu\\), and \\(Y\\) is caused by \\(X\\) and \\(\\varepsilon\\)”\nThe truth is that an increase in \\(X\\) causally increases \\(Y\\) by \\(\\beta_1\\)\nThe goal of econometrics is to be able to estimate what \\(\\beta_1\\) is accurately"
+  },
+  {
+    "objectID": "2024/weeks/week01/slides.html#endogeneity",
+    "href": "2024/weeks/week01/slides.html#endogeneity",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Endogeneity",
+    "text": "Endogeneity\n\nSo “correlation isn’t causation” isn’t quite complete\nIt’s more “only certain correlations are causal”\nMany correlations are beset by these problems like endogeneity, i.e. the presence of another variable like \\(\\varepsilon\\) related to both \\(X\\) and \\(Y\\), giving the effect a “back door”\nSo the correlation reflects both the causal effect and also the influence of \\(\\varepsilon\\)"
+  },
+  {
+    "objectID": "2024/weeks/week01/slides.html#random-experiments",
+    "href": "2024/weeks/week01/slides.html#random-experiments",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Random Experiments",
+    "text": "Random Experiments\n\nOne way around this problem is to run a random experiment\nIf we can randomly assign \\(X\\), then we know we’re not in graph a, because our graph looks like this!"
+  },
+  {
+    "objectID": "2024/weeks/week01/slides.html#random-experiments-1",
+    "href": "2024/weeks/week01/slides.html#random-experiments-1",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Random Experiments",
+    "text": "Random Experiments\n\nFor this reason, random experiments are generally considered the “gold standard”\nThey have problems (i.e. experimental sample might not represent the population, people may act differently knowing they’re in an experiment, etc.)\nBut regardless, we’re looking here at questions for which we can’t run an experiment, becuase it’s impossible or infeasible or immoral\nSo one way we can think about solving this endogeneity problem with econometrics is to use our observational data in such a way that it behaves as though there were an experiment being run\nPlenty of ways to do this we’ll go over in this course!"
+  },
+  {
+    "objectID": "2024/weeks/week01/slides.html#concept-check",
+    "href": "2024/weeks/week01/slides.html#concept-check",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Concept Check",
+    "text": "Concept Check\n\nWhat does it mean to say that \\(X\\) has a causal effect on \\(Y\\)?\nWhy might the relationship between \\(X\\) and \\(Y\\) in data not be the same as the causal effect?\nWhat is an example of observational data?\nConsider the question of “Does getting an MBA make you a better manager?” What are \\(X\\) and \\(Y\\) here? What would be in the error term \\(\\varepsilon\\)? Are we likely to have an endogeneity problem here?"
+  },
+  {
+    "objectID": "2024/weeks/week01/slides.html#spurious-correlations",
+    "href": "2024/weeks/week01/slides.html#spurious-correlations",
+    "title": "🗓️ Week 1 Introduction to counterfactuals",
+    "section": "Spurious Correlations",
+    "text": "Spurious Correlations\n\nLet’s visit this site all about “spurious” correlations (i.e. correlations that almost certainly do not reveal a true effect of one variable on the other): https://tylervigen.com/spurious-correlations\nTake a look at how easy it is to find variables that are related statistically, even though clearly neither causes the other\nDo you think this correlation is an example of inferential error (just random chance) or identification error (truly related, but not because one causes the other)? Why?"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#identification-error",
+    "href": "2024/weeks/week00/slides.html#identification-error",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Identification Error",
+    "text": "Identification Error\n\nWhat is an identification error?\nIdentification is how you link the result you see with the conclusion you draw from it\nFor example, say you observe that kids who play video games are more aggressive in everyday life (result), and you conclude from that result that video games make kids more aggressive (conclusion)\nIf seeing that result is actually evidence for that conclusion, then we are properly identified"
+  },
+  {
+    "objectID": "2024/weeks/week00/slides.html#identification-error-2",
+    "href": "2024/weeks/week00/slides.html#identification-error-2",
+    "title": "🗓️ Week 0 Presessionals",
+    "section": "Identification Error",
+    "text": "Identification Error\n\nFor example, if you observe that people tend to wear more shorts on days they eat more ice cream, and you conclude that eating ice cream makes you put on shorts, you have committed an identification error\nOne day in and all we can do is complain, eesh"
+  },
+  {
+    "objectID": "2024/weeks/week04/page.html",
+    "href": "2024/weeks/week04/page.html",
+    "title": "🗓 ️Week 04: Linear Regressions with multiple regressors",
+    "section": "",
+    "text": "In this week, we will build on Linear regressions by expanding our analysis using multiple regressors."
+  },
+  {
+    "objectID": "2024/weeks/week04/page.html#lecture-slides",
+    "href": "2024/weeks/week04/page.html#lecture-slides",
+    "title": "🗓 ️Week 04: Linear Regressions with multiple regressors",
+    "section": "👨‍🏫 Lecture Slides",
+    "text": "👨‍🏫 Lecture Slides\nEither click on the slide area below or click here to view it in fullscreen. Use your keypad to navigate the slides.\n\n\n\n\n🎥 Looking for lecture recordings? You can only find those on Moodle."
+  },
+  {
+    "objectID": "2024/weeks/week04/page.html#recommended-reading",
+    "href": "2024/weeks/week04/page.html#recommended-reading",
+    "title": "🗓 ️Week 04: Linear Regressions with multiple regressors",
+    "section": "📚 Recommended Reading",
+    "text": "📚 Recommended Reading\n\nCheck the end of slides for the list of references cited in the lecture."
+  },
+  {
+    "objectID": "2024/weeks/week04/page.html#communication",
+    "href": "2024/weeks/week04/page.html#communication",
+    "title": "🗓 ️Week 04: Linear Regressions with multiple regressors",
+    "section": "📟 Communication",
+    "text": "📟 Communication\n\nIf you feel like it, introduce yourself in the #introductions channel on Discord"
+  },
+  {
+    "objectID": "2024/weeks/week03/page.html",
+    "href": "2024/weeks/week03/page.html",
+    "title": "🗓️ Week 03 - Linear Regressions",
+    "section": "",
+    "text": "In this week, we start looking how we can use data to describe relationships between two variables and distinguish between alternative scenarios."
+  },
+  {
+    "objectID": "2024/weeks/week03/page.html#lecture-slides",
+    "href": "2024/weeks/week03/page.html#lecture-slides",
+    "title": "🗓️ Week 03 - Linear Regressions",
+    "section": "👨‍🏫 Lecture Slides",
+    "text": "👨‍🏫 Lecture Slides\nEither click on the slide area below or click here to view it in fullscreen. Use your keypad to navigate the slides.\n\n\n\n\n🎥 Looking for lecture recordings? You can only find those on Moodle."
+  },
+  {
+    "objectID": "2024/weeks/week03/page.html#recommended-reading",
+    "href": "2024/weeks/week03/page.html#recommended-reading",
+    "title": "🗓️ Week 03 - Linear Regressions",
+    "section": "📚 Recommended Reading",
+    "text": "📚 Recommended Reading\n\nCheck the end of slides for the list of references cited in the lecture."
+  },
+  {
+    "objectID": "2024/weeks/week03/page.html#communication",
+    "href": "2024/weeks/week03/page.html#communication",
+    "title": "🗓️ Week 03 - Linear Regressions",
+    "section": "📟 Communication",
+    "text": "📟 Communication\n\nIf you feel like it, introduce yourself in the #introductions channel on Discord"
+  },
+  {
+    "objectID": "2024/weeks/week02/page.html",
+    "href": "2024/weeks/week02/page.html",
+    "title": "🗓️ Week 02 - Linear Regression / OLS",
+    "section": "",
+    "text": "In this week, we will explore how we can use formal procedures to examine if two opposing claims or hypothesis are true or not.\nIn this week, we start looking how we can use data to describe relationships between two variables and distinguish between alternative scenarios."
+  },
+  {
+    "objectID": "2024/weeks/week02/page.html#lecture-slides",
+    "href": "2024/weeks/week02/page.html#lecture-slides",
+    "title": "🗓️ Week 02 - Linear Regression / OLS",
+    "section": "👨‍🏫 Lecture Slides",
+    "text": "👨‍🏫 Lecture Slides\nEither click on the slide area below or click here to view it in fullscreen. Use your keypad to navigate the slides.\n\n\n\n\n🎥 Looking for lecture recordings? You can only find those on Moodle."
+  },
+  {
+    "objectID": "2024/weeks/week02/page.html#recommended-reading",
+    "href": "2024/weeks/week02/page.html#recommended-reading",
+    "title": "🗓️ Week 02 - Linear Regression / OLS",
+    "section": "📚 Recommended Reading",
+    "text": "📚 Recommended Reading\n\nCheck the end of slides for the list of references cited in the lecture."
+  },
+  {
+    "objectID": "2024/weeks/week02/page.html#communication",
+    "href": "2024/weeks/week02/page.html#communication",
+    "title": "🗓️ Week 02 - Linear Regression / OLS",
+    "section": "📟 Communication",
+    "text": "📟 Communication\n\nIf you feel like it, introduce yourself in the #introductions channel on Discord"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#linear-regression---endogeneity",
+    "href": "2024/weeks/week04/slides.html#linear-regression---endogeneity",
+    "title": "Controls",
+    "section": "Linear Regression - Endogeneity",
+    "text": "Linear Regression - Endogeneity\n\nLast week was all about handling sampling variation and avoiding inference error\nThis week we’re all about endogeneity!\nWhere it pops up and what we can do about it\nAt least as a starter (we’ll revisit this topic many times)"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#endogeneity-recap",
+    "href": "2024/weeks/week04/slides.html#endogeneity-recap",
+    "title": "Controls",
+    "section": "Endogeneity Recap",
+    "text": "Endogeneity Recap\n\nFor example looking at income and corruption, the model\n\n\\[Income = \\beta_0 + \\beta_1Corruption + \\varepsilon\\]\n\nTrue \\(\\beta_1\\) is probably \\(0\\). But since \\(Political\\) \\(Stability\\) is in \\(\\varepsilon\\) & \\(Pol-Stability\\) is related to \\(Corruption\\), OLS will mistakenly assign the effect of \\(Pol-Stability\\) to the effect of \\(Corr\\), making it look like there’s a positive effect when there isn’t one\nHere we’re mistakenly finding a positive effect when the truth is \\(0\\), but it could be anything - negative effect when truth is \\(0\\), positive effect when the truth is a bigger/smaller positive effect, etc etc"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#to-the-rescue",
+    "href": "2024/weeks/week04/slides.html#to-the-rescue",
+    "title": "Controls",
+    "section": "To the Rescue",
+    "text": "To the Rescue\n\nOne way we can solve this problem is through the use of control variables\nWhat if \\(Political Stability\\) weren’t in \\(\\varepsilon\\)? Then we’d be fine! OLS would know how to separate out its effect from the \\(Corruption\\) effect. How do we take it out? Just put it in the model directly!\n\n\\[Income = \\beta_0 + \\beta_1Corruption + \\beta_2PoliticalStability + \\varepsilon\\]\n\nNow we have a multivariate regression model. Our estimate \\(\\hat{\\beta}_1\\) will not be biased by \\(Political Stability\\) because we’ve controlled for it\n\n(probably more accurate to say “covariates” or “variables to adjust for” than “control variables” and “adjust for” rather than “control for” but hey what are you gonna do, “control” is standard)"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#to-the-rescue-1",
+    "href": "2024/weeks/week04/slides.html#to-the-rescue-1",
+    "title": "Controls",
+    "section": "To the Rescue",
+    "text": "To the Rescue\n\nSo the task of solving our endogeneity problems in estimating \\(\\beta_1\\) using \\(\\hat{\\beta}_1\\) comes down to us finding all the elements of \\(\\varepsilon\\) that are related to \\(X\\) and adding them to the model\nAs we add them, they leave \\(\\varepsilon\\) and hopefully we end up with a version of \\(\\varepsilon\\) that is no longer related to \\(X\\)\nIf \\(cov(X,\\varepsilon) = 0\\) then we have an unbiased estimate!\n(of course, we have no way of checking if that’s true - it’s based on what we think the data generating process looks like)"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#how",
+    "href": "2024/weeks/week04/slides.html#how",
+    "title": "Controls",
+    "section": "How?",
+    "text": "How?\n\nHow does this actually work?\nControlling for a variable works by removing variation in \\(X\\) and \\(Y\\) that is explained by the control variable\nSo our estimate of \\(\\hat{\\beta}_1\\) is based on just the variation in \\(X\\) and \\(Y\\) that is unrelated to the control variable\nAny accidentally-assigning-the-value-of-PoliticalStability-to-Corruption can’t happen because we’ve removed the effect of \\(Political Stability\\) on \\(Corruption\\) as well as the effect of \\(Political Stability\\) on \\(Income\\)\nWe’re asking at that point, holding \\(Political Stability\\) constant, i.e. comparing two different countries with the same \\(Polities\\) , how is \\(Corruption\\) related to \\(Income\\)?"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#example",
+    "href": "2024/weeks/week04/slides.html#example",
+    "title": "Controls",
+    "section": "Example",
+    "text": "Example\nThe true effect is \\(\\beta_1 = 3\\). Notice \\(Z\\) is binary and is related to \\(X\\) and \\(Y\\) but isn’t in the model!\n\ntib &lt;- tibble(Z = 1*(rnorm(1000) &gt; 0)) %&gt;%\n  mutate(X = Z + rnorm(1000)) %&gt;%\n  mutate(Y = 2 + 3*X + 2*Z + rnorm(1000))\nfeols(Y~X, data = tib) %&gt;%\n  etable()\n\n                                .\nDependent Var.:                 Y\n                                 \nConstant        2.756*** (0.0461)\nX               3.421*** (0.0383)\n_______________ _________________\nS.E. type                     IID\nObservations                1,000\nR2                        0.88897\nAdj. R2                   0.88886\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#example-1",
+    "href": "2024/weeks/week04/slides.html#example-1",
+    "title": "Controls",
+    "section": "Example",
+    "text": "Example\nTo remove what part of \\(X\\) and \\(Y\\) is explained by \\(Z\\), we can get the mean of \\(X\\) and \\(Y\\) by values of \\(Z\\)\n\ntib &lt;- tib %&gt;%\n  group_by(Z) %&gt;% \n  mutate(Y_mean = mean(Y), X_mean = mean(X))\nhead(tib)\n\n# A tibble: 6 × 5\n# Groups:   Z [2]\n      Z       X      Y Y_mean  X_mean\n  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;\n1     1  0.855   5.98    6.91  0.967 \n2     1 -1.59   -0.226   6.91  0.967 \n3     1  0.806   6.08    6.91  0.967 \n4     1 -0.0302  2.94    6.91  0.967 \n5     0 -0.490  -0.997   1.95 -0.0121\n6     0 -0.512   0.383   1.95 -0.0121"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#example-2",
+    "href": "2024/weeks/week04/slides.html#example-2",
+    "title": "Controls",
+    "section": "Example",
+    "text": "Example\nNow, Y_mean and X_mean are the mean of Y and X for the values of Z, i.e. the part of Y and X explained by Z. So subtract those parts out to get residuals Y_res and X_res!\n\ntib &lt;- tib %&gt;%\n  mutate(Y_res = Y - Y_mean, X_res = X - X_mean)\nhead(tib)\n\n# A tibble: 6 × 7\n# Groups:   Z [2]\n      Z       X      Y Y_mean  X_mean  Y_res  X_res\n  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1     1  0.855   5.98    6.91  0.967  -0.928 -0.113\n2     1 -1.59   -0.226   6.91  0.967  -7.14  -2.55 \n3     1  0.806   6.08    6.91  0.967  -0.827 -0.161\n4     1 -0.0302  2.94    6.91  0.967  -3.98  -0.997\n5     0 -0.490  -0.997   1.95 -0.0121 -2.95  -0.478\n6     0 -0.512   0.383   1.95 -0.0121 -1.57  -0.499"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#example-3",
+    "href": "2024/weeks/week04/slides.html#example-3",
+    "title": "Controls",
+    "section": "Example",
+    "text": "Example\nWhat do we get now?\n\nfeols(Y_res ~ X_res, data = tib) %&gt;%\n  etable()\n\n                                .\nDependent Var.:             Y_res\n                                 \nConstant        5.73e-17 (0.0319)\nX_res           3.030*** (0.0319)\n_______________ _________________\nS.E. type                     IID\nObservations                1,000\nR2                        0.90060\nAdj. R2                   0.90050\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#example-4",
+    "href": "2024/weeks/week04/slides.html#example-4",
+    "title": "Controls",
+    "section": "Example",
+    "text": "Example\nCompare this to actually including Z as a control:\n\nfeols(Y ~ X + Z, data = tib) %&gt;%\n  etable()\n\n                                .\nDependent Var.:                 Y\n                                 \nConstant        1.988*** (0.0441)\nX               3.030*** (0.0319)\nZ               1.993*** (0.0712)\n_______________ _________________\nS.E. type                     IID\nObservations                1,000\nR2                        0.93782\nAdj. R2                   0.93769\n---\nSignif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#a-continuous-control",
+    "href": "2024/weeks/week04/slides.html#a-continuous-control",
+    "title": "Controls",
+    "section": "A Continuous Control",
+    "text": "A Continuous Control"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#what-do-we-get",
+    "href": "2024/weeks/week04/slides.html#what-do-we-get",
+    "title": "Controls",
+    "section": "What do we get?",
+    "text": "What do we get?\n\nWe can remove some of the relationship between \\(X\\) and \\(\\varepsilon\\)\nPotentially all of it, making \\(\\hat{\\beta}_1\\) us an unbiased (i.e. correct on average, but sampling variation doesn’t go away!) estimate of \\(\\beta_1\\)\nMaybe we can also get some estimates of \\(\\beta_2\\), \\(\\beta_3\\)… but be careful, they’re subject to the same identification and endogeneity problems!\nOften in econometrics we focus on getting one parameter, \\(\\hat{\\beta}_1\\), exactly right and don’t focus on parameters we haven’t put much effort into identifying"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#concept-checks",
+    "href": "2024/weeks/week04/slides.html#concept-checks",
+    "title": "Controls",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nSelene is a huge bore at parties, but sometimes brings her girlfriend Donna who is super fun. If you regressed \\(PartyFunRating\\) on \\(SeleneWasThere\\) but not \\(DonnaWasThere\\), what would the coefficient on \\(SeleneWasThere\\) look like and why?\nDescribe the steps necessary to estimate the effect of \\(Exports\\) on \\(GrowthRate\\) while controlling for \\(AmountofConflict\\) (a continuous variable). There are three “explain/regress” steps and two “subtract” steps.\nIf we estimate the same \\(\\hat{\\beta}_1\\) with or without \\(Z\\) added as a control, does that mean we have no endogeneity problem? What does it mean exactly?"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#have-we-solved-it",
+    "href": "2024/weeks/week04/slides.html#have-we-solved-it",
+    "title": "Controls",
+    "section": "Have We Solved It?",
+    "text": "Have We Solved It?\n\nIncluding controls for every part of (what used to be) \\(\\varepsilon\\) that is related to \\(X\\) clears up any endogeneity problem we had with \\(X\\)\nSo… when we add a control, does that do it? How do we know?\nInconveniently, the data alone will never tell us if we’ve solved endogeniety\nWe can’t just check \\(X\\) against the remaining \\(\\varepsilon\\) because we never see \\(\\varepsilon\\) - what we have left over after a regression is the real-world residual, not the true-model error"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#drawing-a-diagram",
+    "href": "2024/weeks/week04/slides.html#drawing-a-diagram",
+    "title": "Controls",
+    "section": "Drawing a Diagram",
+    "text": "Drawing a Diagram\n\nEndogeneity is all about the alternate reasons why two variables might be related *other than the causal effect\nWe can represent all the reasons two variables are related with a diagram\nPut down on paper how you think the world works, and where you think the data came from! This is economic modeling but with less math"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#drawing-a-diagram-1",
+    "href": "2024/weeks/week04/slides.html#drawing-a-diagram-1",
+    "title": "Controls",
+    "section": "Drawing a Diagram",
+    "text": "Drawing a Diagram\n\nList out all the variables relevant to the DGP (including the ones we can’t measure or put our finger on!)\nDraw arrows between them reflecting what causes what else\nList all the paths from \\(X\\) to \\(Y\\) - these paths are reasons why \\(X\\) and \\(Y\\) are related!\nControl for at least one variable on each path you want to close (isn’t the effect you want)"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#drawing-a-diagram-2",
+    "href": "2024/weeks/week04/slides.html#drawing-a-diagram-2",
+    "title": "Controls",
+    "section": "Drawing a Diagram",
+    "text": "Drawing a Diagram"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#detailing-paths",
+    "href": "2024/weeks/week04/slides.html#detailing-paths",
+    "title": "Controls",
+    "section": "Detailing Paths",
+    "text": "Detailing Paths\n\nThe goal is to list all the paths that go from the cause of our choice to the outcome variable (no loops)\nThat way we know what we need to control for to close the paths!\nControl for any one variable on the path, and suddenly there’s no variation from that variable any more - the causal chain is broken and the path is closed!\nA path counts no matter which direction the arrows point on it (the arrow direction matters but we’ll get to that next time)\nIf the path isn’t part of what answers our research question, it’s a back door we want to be closed"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#paths",
+    "href": "2024/weeks/week04/slides.html#paths",
+    "title": "Controls",
+    "section": "Paths",
+    "text": "Paths\n\n\\(Preschool \\rightarrow Earnings\\)\n\\(Preschool \\rightarrow Skills \\rightarrow Earnings\\)\n\\(Preschool \\leftarrow Location \\rightarrow Earnings\\)\n\\(Preschool \\leftarrow Background \\rightarrow Earnings\\)\n\\(Preschool \\leftarrow Background \\rightarrow Skills \\rightarrow Earnings\\)\n\\(Preschool \\rightarrow Skills \\leftarrow Background \\rightarrow Earnings\\)"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#closing-paths",
+    "href": "2024/weeks/week04/slides.html#closing-paths",
+    "title": "Controls",
+    "section": "Closing Paths",
+    "text": "Closing Paths\n\nWe want the ways that \\(Preschool\\) causes \\(Earnings\\) - that’s the first two, \\(Preschool \\rightarrow Earnings\\) and \\(Preschool \\rightarrow Skills \\rightarrow Earnings\\)\nThe rest we want to close! They’re back doors\n\\(Location\\) is on #3, so if we control for \\(Location\\), 3 is closed\n\\(Background\\) is on the rest, so if we control for \\(Background\\), the rest are closed\nSo if we estimate the below OLS equation, \\(\\hat{\\beta}_1\\) will be unbiased!\n\n\\[Earnings = \\beta_0 + \\beta_1Preschool + \\beta_2Location + \\beta_3Background+\\varepsilon\\]"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#and-the-bad-news",
+    "href": "2024/weeks/week04/slides.html#and-the-bad-news",
+    "title": "Controls",
+    "section": "And the Bad News…",
+    "text": "And the Bad News…\n\nThis assumes that the model we drew was accurate. Did we leave any important variables or arrows out? Think hard!\nWhat other variables might belong on this graph? Would they be on a path that gives an alternate explanation?\nJust because we say that’s the model doesn’t magically make it the actual model! It needs to be right! Use that economic theory and common sense to think about missing parts of the graph\nAlso, can we control for those things? What would it mean to assign a single number for \\(Background\\) to someone? Or if we’re representing \\(Background\\) with multiple variables - race, gender, parental income, etc., how do we know if we’ve fully covered it?"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#and-the-bad-news-1",
+    "href": "2024/weeks/week04/slides.html#and-the-bad-news-1",
+    "title": "Controls",
+    "section": "And the Bad News…",
+    "text": "And the Bad News…\n\nRegardless, this is the kind of thinking (whether or not you do that thinking with a causal diagram) we have to do to figure out how to identify things by controlling for variables\nThere’s no way to get around having to make these sorts of assumptions if we want to identify a causal effect\nReally! No way at all! Even experiments have assumptions\nThe key is not avoiding assumptions, but making sure they’re reasonable, and verifying those assumptions where you can"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#an-example",
+    "href": "2024/weeks/week04/slides.html#an-example",
+    "title": "Controls",
+    "section": "An Example",
+    "text": "An Example\n\nLet’s back off of those concerns a moment and generate the data ourselves so we know the truth!\nIn the below data generating process, what is the true effect of \\(X\\) on \\(Y\\)?\nLet’s figure out how to draw the causal diagram for this data generating process!\n(note: U1, U2, etc., often stand in as an unobserved common cause for two variables that are correlated but we think neither causes the other)\n\n\ntib2 &lt;- data.frame(U1 = rnorm(1000), A = rnorm(1000), B = rnorm(1000)) %&gt;%\n  mutate(C = U1 + rnorm(1000), D = U1 + rnorm(1000)) %&gt;%\n  mutate(X = A + C + rnorm(1000)) %&gt;%\n  mutate(Y = 4*X + A + B + D + rnorm(1000))\nm1 &lt;- feols(Y~X, data = tib)\ncoef(m1)\n\n(Intercept)           X \n   2.756197    3.420627"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#controlling",
+    "href": "2024/weeks/week04/slides.html#controlling",
+    "title": "Controls",
+    "section": "Controlling",
+    "text": "Controlling\n\nWe achieve all this just by adding the variable to the OLS equation!\nWe can, of course, include more than one control, or controls that aren’t binary\nUse OLS to predict \\(X\\) using all the controls, then take the residual (the part not explained by the controls)\nUse OLS to predict \\(Y\\) using all the controls, then take the residual (the part not explained by the controls)\nNow do OLS of just the \\(Y\\) residuals on just the \\(X\\) residuals"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#causal-diagrams",
+    "href": "2024/weeks/week04/slides.html#causal-diagrams",
+    "title": "Controls",
+    "section": "Causal Diagrams",
+    "text": "Causal Diagrams\n\n“What do I have to control for to solve the endogeneity problem” is an important and difficult question!\nTo answer it we need to think about the data-generating process\nOne way to do that is to draw a causal diagram\nA causal diagram describes the variables responsible for generating data and how they cause each other\nOnce we have written down our diagram, we’ll know what we need to control for\n(hopefully we have data on everything we need to control for! Often we don’t)"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#drawing-a-diagram-3",
+    "href": "2024/weeks/week04/slides.html#drawing-a-diagram-3",
+    "title": "Controls",
+    "section": "Drawing a Diagram",
+    "text": "Drawing a Diagram\n\nWe observe that, in the data, \\(ShortsWearing\\) and \\(IceCreamEating\\) are related. Why?\nMaybe, we theorize, that wearing shorts causes you to eat ice cream ( \\(ShortsWearing \\rightarrow IceCreamEating\\) )\nHowever, there’s another explanation/path: \\(Temperature\\) causes both ( \\(ShortsWearing \\leftarrow Temperature \\rightarrow IceCreamEating\\) )\nWe need to control for temperature to close this path!\nOnce it’s closed, the only path left is \\(ShortsWearing \\rightarrow IceCreamEating\\), so if we do see a relationship still in the data, we know we’ve identified the causal effect"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#preschool-and-adult-earnings",
+    "href": "2024/weeks/week04/slides.html#preschool-and-adult-earnings",
+    "title": "Controls",
+    "section": "Preschool and Adult Earnings",
+    "text": "Preschool and Adult Earnings\nDoes going to preschool improve your earnings as an adult?"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#the-diagram",
+    "href": "2024/weeks/week04/slides.html#the-diagram",
+    "title": "Controls",
+    "section": "The Diagram",
+    "text": "The Diagram\n\nHere is the diagram we can draw from that information. What paths are there from X to Y?"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#concept-checks-1",
+    "href": "2024/weeks/week04/slides.html#concept-checks-1",
+    "title": "Controls",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nWhy did we only need to control for \\(C\\) or \\(D\\) in that last example?\nDraw a graph with five variables on it: \\(X\\), \\(Y\\), \\(A\\), \\(B\\), \\(C\\). Then draw arrows at them completely at random (except to ensure there’s no “loop” where you can follow an arrow path from arrow base to head and end up where you started). Then list every path from \\(X\\) to \\(Y\\) and say what you’d need to control for to identify the effect\nWhat would you need to control for to estimate the effect of “drinking a glass of wine a day” on “lifespan”? Draw a diagram.\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
+  },
+  {
+    "objectID": "2024/weeks/week05/page.html",
+    "href": "2024/weeks/week05/page.html",
+    "title": "🗓️ Week 05 - Binary Variables and Functional Form",
+    "section": "",
+    "text": "In this week, we will focus on how we analyse and interpret binary independent variables."
+  },
+  {
+    "objectID": "2024/weeks/week05/page.html#lecture-slides",
+    "href": "2024/weeks/week05/page.html#lecture-slides",
+    "title": "🗓️ Week 05 - Binary Variables and Functional Form",
+    "section": "👨‍🏫 Lecture Slides",
+    "text": "👨‍🏫 Lecture Slides\nEither click on the slide area below or click here to view it in fullscreen. Use your keypad to navigate the slides.\n\n\n\n\n🎥 Looking for lecture recordings? You can only find those on Moodle."
+  },
+  {
+    "objectID": "2024/weeks/week05/page.html#recommended-reading",
+    "href": "2024/weeks/week05/page.html#recommended-reading",
+    "title": "🗓️ Week 05 - Binary Variables and Functional Form",
+    "section": "📚 Recommended Reading",
+    "text": "📚 Recommended Reading\n\nCheck the end of slides for the list of references cited in the lecture."
+  },
+  {
+    "objectID": "2024/weeks/week05/page.html#communication",
+    "href": "2024/weeks/week05/page.html#communication",
+    "title": "🗓️ Week 05 - Binary Variables and Functional Form",
+    "section": "📟 Communication",
+    "text": "📟 Communication\n\nIf you feel like it, introduce yourself in the #introductions channel on Discord"
+  },
+  {
+    "objectID": "2024/weeks/week06/page.html",
+    "href": "2024/weeks/week06/page.html",
+    "title": "🗓️ Week 06 - Reading Week",
+    "section": "",
+    "text": "This is reading week. Look at moodle for recap lectures and recap seminar questions."
+  },
+  {
+    "objectID": "2024/weeks/week06/page.html#lecture-slides",
+    "href": "2024/weeks/week06/page.html#lecture-slides",
+    "title": "🗓️ Week 06 - Reading Week",
+    "section": "👨‍🏫 Lecture Slides",
+    "text": "👨‍🏫 Lecture Slides\nEither click on the slide area below or click here to view it in fullscreen. Use your keypad to navigate the slides.\n\n\n\n\n🎥 Looking for lecture recordings? You can only find those on Moodle."
+  },
+  {
+    "objectID": "2024/weeks/week06/page.html#recommended-reading",
+    "href": "2024/weeks/week06/page.html#recommended-reading",
+    "title": "🗓️ Week 06 - Reading Week",
+    "section": "📚 Recommended Reading",
+    "text": "📚 Recommended Reading\n\nCheck the end of slides for the list of references cited in the lecture."
+  },
+  {
+    "objectID": "2024/weeks/week06/page.html#communication",
+    "href": "2024/weeks/week06/page.html#communication",
+    "title": "🗓️ Week 06 - Reading Week",
+    "section": "📟 Communication",
+    "text": "📟 Communication\n\nIf you feel like it, introduce yourself in the #introductions channel on Discord"
+  },
+  {
+    "objectID": "2024/weeks/week07/page.html",
+    "href": "2024/weeks/week07/page.html",
+    "title": "🗓️ Week 07 - Revision / Non Linearity",
+    "section": "",
+    "text": "In this week, we revisited slides from Week 5 and focused on Non-linearity and transformations. on how we analyse within variation and include fixed effects."
+  },
+  {
+    "objectID": "2024/weeks/week07/page.html#lecture-slides",
+    "href": "2024/weeks/week07/page.html#lecture-slides",
+    "title": "🗓️ Week 07 - Revision / Non Linearity",
+    "section": "👨‍🏫 Lecture Slides",
+    "text": "👨‍🏫 Lecture Slides\nEither click on the slide area below or click here to view it in fullscreen. Use your keypad to navigate the slides.\n\n\n\n\n🎥 Looking for lecture recordings? You can only find those on Moodle."
+  },
+  {
+    "objectID": "2024/weeks/week07/page.html#recommended-reading",
+    "href": "2024/weeks/week07/page.html#recommended-reading",
+    "title": "🗓️ Week 07 - Revision / Non Linearity",
+    "section": "📚 Recommended Reading",
+    "text": "📚 Recommended Reading\n\nCheck the end of slides for the list of references cited in the lecture."
+  },
+  {
+    "objectID": "2024/weeks/week07/page.html#communication",
+    "href": "2024/weeks/week07/page.html#communication",
+    "title": "🗓️ Week 07 - Revision / Non Linearity",
+    "section": "📟 Communication",
+    "text": "📟 Communication\n\nIf you feel like it, introduce yourself in the #introductions channel on Discord"
   }
 ]

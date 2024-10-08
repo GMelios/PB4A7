@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Dr.&nbsp;George Melios">
-  <meta name="dcterms.date" content="08 October 2024">
+  <meta name="dcterms.date" content="09 October 2024">
   <title>PB4A7 - Quantitative Applications for Behavioural Science - 🗓️ Week 2 Fitting Lines </title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -347,17 +347,12 @@ Dr.&nbsp;<a href="#/">George Melios</a>
     </div>
 </div>
 
-  <p class="date">08 Oct 2024</p>
+  <p class="date">09 Oct 2024</p>
 </section><section id="TOC">
 <nav role="doc-toc"> 
 <h2 id="toc-title">What we will cover today:</h2>
 <ul>
 <li><a href="#/identification-error" id="/toc-identification-error">Identification Error</a></li>
-<li><a href="#/data-generating-process" id="/toc-data-generating-process">Data Generating Process</a></li>
-<li><a href="#/regressions" id="/toc-regressions">Regressions</a></li>
-<li><a href="#/ols-simulator" id="/toc-ols-simulator">OLS Simulator</a></li>
-<li><a href="#/concept-checks-1" id="/toc-concept-checks-1">Concept Checks</a></li>
-<li><a href="#/recap" id="/toc-recap">Recap</a></li>
 </ul>
 </nav>
 </section>
@@ -380,12 +375,8 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <li>For example, if you observe that people tend to wear more shorts on days they eat more ice cream, and you conclude that eating ice cream makes you put on shorts</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="data-generating-process" class="title-slide slide level1">
-<h1>Data Generating Process</h1>
+<section id="data-generating-process" class="slide level2">
+<h2>Data Generating Process</h2>
 <ul>
 <li>To avoid identification error, economists think closely about the <em>data generating process</em></li>
 <li>What is a data generating process?</li>
@@ -454,12 +445,8 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <li>Does getting an MBA make you a better manager?</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="regressions" class="title-slide slide level1">
-<h1>Regressions</h1>
+<section id="regressions" class="slide level2">
+<h2>Regressions</h2>
 <ul>
 <li>In statistics, regression is the practice of <em>line-fitting</em></li>
 <li>We want to <em>use one variable to predict another</em></li>
@@ -672,12 +659,8 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <li>Note “residual” =/= <span class="math inline">\(\varepsilon\)</span> - residuals are what’s actually left over from our prediction with real data, but the <em>error</em> <span class="math inline">\(\varepsilon\)</span> is the <em>true</em> difference between our line and <span class="math inline">\(Y\)</span>.</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="ols-simulator" class="title-slide slide level1">
-<h1>OLS Simulator</h1>
+<section id="ols-simulator" class="slide level2">
+<h2>OLS Simulator</h2>
 <ul>
 <li>Take a look at this OLS simulator and play around with it: <a href="https://econometricsbysimulation.shinyapps.io/OLS-App/">https://econometricsbysimulation.shinyapps.io/OLS-App/</a></li>
 <li>Click “Show Residuals” to turn that on</li>
@@ -687,12 +670,8 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <li>How close does the line come to the data generating process? Intercept and slope are in the second table below the graph under “Estimate”</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="concept-checks-1" class="title-slide slide level1">
-<h1>Concept Checks</h1>
+<section id="concept-checks-1" class="slide level2">
+<h2>Concept Checks</h2>
 <ul>
 <li>Why might we want to minimize squared residuals rather than just residuals?</li>
 <li>What’s the difference between a residual and an error?</li>
@@ -701,16 +680,11 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <p><span class="math display">\[ Height (Inches) = 18 + 2*Age\]</span></p>
 <p>And we have the kids Darryl who is 10 years old and 40 inches tall, and Bijetri who is 9 years old and 37 inches tall, what are each of their: (a) predicted values, (b) residuals, and then what is the sum of their squared residuals?</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="recap" class="title-slide slide level1">
-<h1>Recap</h1>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
 <ul>
-<li>Regression is the practice of fitting a <em>shape</em> to data so as to explain the relationship more generally</li>
-<li>Ordinary least squares fits a <em>straight line</em></li>
-<li>It picks the straight line that minimizes the <em>sum of squared residuals</em></li>
+<li>Regression is fitting a <em>shape</em> to data to explain the relationship more generally</li>
+<li>Ordinary least squares fits a <em>straight line</em> that minimizes the <em>sum of squared residuals</em></li>
 <li>That line has an intercept <span class="math inline">\(\beta_0\)</span> (Our prediction <span class="math inline">\(\hat{Y}\)</span> when <span class="math inline">\(X = 0\)</span>) and a slope <span class="math inline">\(\beta_1\)</span> (how much higher we predict <span class="math inline">\(Y\)</span> will be when we look at an <span class="math inline">\(X\)</span> one unit higher)</li>
 <li>The <em>residual</em> is the difference between our prediction <span class="math inline">\(\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1X\)</span> and the actual number <span class="math inline">\(Y\)</span></li>
 </ul>

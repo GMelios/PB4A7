@@ -359,13 +359,6 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <li><a href="#/a-little-throwback-to-causal-inference" id="/toc-a-little-throwback-to-causal-inference">A little throwback to causal inference</a></li>
 <li><a href="#/introduction-to-counterfactuals" id="/toc-introduction-to-counterfactuals">Introduction to counterfactuals</a></li>
 <li><a href="#/research-designs-and-causality" id="/toc-research-designs-and-causality">Research Designs and Causality</a></li>
-<li><a href="#/data-generating-process" id="/toc-data-generating-process">Data Generating Process</a></li>
-<li><a href="#/causality" id="/toc-causality">Causality</a></li>
-<li><a href="#/endogeneity" id="/toc-endogeneity">Endogeneity</a></li>
-<li><a href="#/random-experiments" id="/toc-random-experiments">Random Experiments</a></li>
-<li><a href="#/random-experiments-1" id="/toc-random-experiments-1">Random Experiments</a></li>
-<li><a href="#/concept-check" id="/toc-concept-check">Concept Check</a></li>
-<li><a href="#/spurious-correlations" id="/toc-spurious-correlations">Spurious Correlations</a></li>
 </ul>
 </nav>
 </section>
@@ -720,11 +713,10 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <section id="experiments-not-always-the-solution" class="slide level2">
 <h2>Experiments not always the solution</h2>
 <ul>
-<li>Time consuming and expensive</li>
+<li>Time consuming and expensive (large samples)</li>
 <li>May have ethical issues</li>
-<li>Require large samples for the assumptions to hold</li>
 <li>Suffer from drop-out and non-compliance</li>
-<li>Estimated parameters in an experiment may different from the parameters in which the intervention will actually take place.</li>
+<li>Estimated parameters in an experiment may different from the parameters in the field.</li>
 <li>Not very easy to observe ‘real’ behaviours or consequential behaviours because of the setting.</li>
 <li>An interesting paper on the <a href="https://www.sciencedirect.com/science/article/pii/S0277953617307359">limits of RCTs</a> from Deaton (Nobel laureate) and Cartwright (2017), if you’re interested!</li>
 <li><strong>What do we do then?</strong></li>
@@ -745,12 +737,8 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 </ul></li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="data-generating-process" class="title-slide slide level1">
-<h1>Data Generating Process</h1>
+<section id="data-generating-process" class="slide level2">
+<h2>Data Generating Process</h2>
 <ul>
 <li>To avoid identification error, economists think closely about the <em>data generating process</em></li>
 <li>What is a data generating process?</li>
@@ -789,12 +777,8 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 </ul>
 
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="img-fluid r-stretch" width="960"></section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="causality" class="title-slide slide level1">
-<h1>Causality</h1>
+<section id="causality" class="slide level2">
+<h2>Causality</h2>
 <ul>
 <li>A data generating process can be described by a series of <em>equations</em> that describe where the data comes from. For example:</li>
 </ul>
@@ -876,12 +860,8 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <li>Do those things also affect the choice to raise the minimum wage? If so we’re in graph a. That downward relationship could be due to a null relationship, or even a positive one (or perhaps a <em>more negative</em> one?)</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="endogeneity" class="title-slide slide level1">
-<h1>Endogeneity</h1>
+<section id="endogeneity" class="slide level2">
+<h2>Endogeneity</h2>
 <ul>
 <li>So “correlation isn’t causation” isn’t quite complete</li>
 <li>It’s more “only certain correlations are causal”</li>
@@ -889,38 +869,26 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <li>So the <em>correlation</em> reflects both the <em>causal effect</em> and also <em>the influence of <span class="math inline">\(\varepsilon\)</span></em></li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="random-experiments" class="title-slide slide level1">
-<h1>Random Experiments</h1>
+<section id="random-experiments" class="slide level2">
+<h2>Random Experiments</h2>
 <ul>
 <li>One way around this problem is to run a random experiment</li>
 <li>If we can randomly assign <span class="math inline">\(X\)</span>, then we know we’re not in graph a, because our graph looks like this!</li>
 </ul>
 
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="img-fluid r-stretch" width="576"></section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="random-experiments-1" class="title-slide slide level1">
-<h1>Random Experiments</h1>
+<section id="random-experiments-1" class="slide level2">
+<h2>Random Experiments</h2>
 <ul>
 <li>For this reason, random experiments are generally considered the “gold standard”</li>
-<li>Although they have their own problems, of course (your experimental sample might not represent the population well, there are plenty of statistical mistakes to make, people may act differently knowing they’re in an experiment, etc. etc.)</li>
+<li>They have problems (i.e.&nbsp;experimental sample might not represent the population, people may act differently knowing they’re in an experiment, etc.)</li>
 <li>But regardless, we’re looking here at questions for which we <em>can’t</em> run an experiment, becuase it’s impossible or infeasible or immoral</li>
 <li>So one way we can think about solving this endogeneity problem with econometrics is to use our <em>observational data</em> in such a way that it behaves <em>as though there were an experiment being run</em></li>
 <li>Plenty of ways to do this we’ll go over in this course!</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="concept-check" class="title-slide slide level1">
-<h1>Concept Check</h1>
+<section id="concept-check" class="slide level2">
+<h2>Concept Check</h2>
 <ul>
 <li>What does it mean to say that <span class="math inline">\(X\)</span> has a causal effect on <span class="math inline">\(Y\)</span>?</li>
 <li>Why might the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in data not be the same as the causal effect?</li>
@@ -928,12 +896,8 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <li>Consider the question of “Does getting an MBA make you a better manager?” What are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> here? What would be in the error term <span class="math inline">\(\varepsilon\)</span>? Are we likely to have an endogeneity problem here?</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="spurious-correlations" class="title-slide slide level1">
-<h1>Spurious Correlations</h1>
+<section id="spurious-correlations" class="slide level2">
+<h2>Spurious Correlations</h2>
 <ul>
 <li>Let’s visit this site all about “spurious” correlations (i.e.&nbsp;correlations that almost certainly do not reveal a true effect of one variable on the other): <a href="https://tylervigen.com/spurious-correlations">https://tylervigen.com/spurious-correlations</a></li>
 <li>Take a look at how easy it is to find variables that are <em>related</em> statistically, even though clearly neither causes the other</li>
