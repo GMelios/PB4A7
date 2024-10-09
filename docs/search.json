@@ -739,7 +739,7 @@
     "href": "2024/weeks/week02/slides.html#identification-error-1",
     "title": "🗓️ Week 2 Fitting Lines ",
     "section": "Identification Error",
-    "text": "Identification Error\n\nAnother reason why we might see that result, i.e. if the same result could give us a different conclusion, like kids who are aggressive play more video games or people notice aggression more when kids play video games, then\nwe have made an identification error* - our result was not identified!*\nIdentification error is when your result in the data doesn’t actually have a clear theory (“why” or “because”)\nFor example, if you observe that people tend to wear more shorts on days they eat more ice cream, and you conclude that eating ice cream makes you put on shorts"
+    "text": "Identification Error\n\nBut the same “result” could give us a different conclusion, like kids who are aggressive play more video games or people notice aggression more when kids play video games, then\nwe have made an identification error - our result was not identified!*\nIdentification error is when your result in the data doesn’t actually have a clear theory (“why” or “because”)\nFor example, if you observe that people tend to wear more shorts on days they eat more ice cream, and you conclude that eating ice cream makes you put on shorts"
   },
   {
     "objectID": "2024/weeks/week02/slides.html#data-generating-process-1",
@@ -2461,7 +2461,7 @@
     "href": "2024/weeks/week02/slides.html#data-generating-process",
     "title": "🗓️ Week 2 Fitting Lines ",
     "section": "Data Generating Process",
-    "text": "Data Generating Process\n\nTo avoid identification error, economists think closely about the data generating process\nWhat is a data generating process?\nThe data generating process is the true set of laws that determine where our data comes from\nFor example, if you hold a rock and drop it, it falls to the floor\nWhat is the data we observe? (Hold the rock & Rock is up) and (Let go & Rock is down)\nWhat is the data generating process? Gravity makes the rock fall down when you drop it"
+    "text": "Data Generating Process\n\nTo avoid this, we think about the data generating process\nWhat is a data generating process?\nThe data generating process is the true set of laws that determine where our data comes from\nFor example, if you hold a rock and drop it, it falls to the floor\nWhat is the data we observe? (Hold the rock & Rock is up) and (Let go & Rock is down)\nWhat is the data generating process? Gravity makes the rock fall down when you drop it"
   },
   {
     "objectID": "2024/weeks/week02/slides.html#regressions",
