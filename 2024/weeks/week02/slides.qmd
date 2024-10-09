@@ -138,14 +138,13 @@ ggplot(tibble(x = c(25,35,25,50,60), y = c(35,22,75,54,80)),
 
 ## Causality
 
-- A data generating process can be described by a series of *equations* that describe where the data comes from. For example:
+- A DGP can be described by a series of *equations* describing where the data comes from:
 
 $$ X = \gamma_0 + \gamma_1\varepsilon + \nu $$
 
 $$ Y = \beta_0 + \beta_1X + \varepsilon $$
 
-- This says " $X$ is caused by $\varepsilon$ and $\nu$, and $Y$ is caused by $X$ and $\varepsilon$"
-- The *truth* is that an increase in $X$ *causally increases $Y$* by $\beta_1$
+- This says " $X$ is caused by $\varepsilon$ and $\nu$, and $Y$ is caused by $X$ and $\varepsilon$" - an increase in $X$ *causally increases $Y$* by $\beta_1$
 - The goal of econometrics is to be able to estimate what $\beta_1$ is accurately
 
 ---
@@ -328,13 +327,11 @@ $$ \hat{Y} = 3 + 4*4 = 19 $$
 ## Ordinary Least Squares
 
 - Regression fits a *shape* to the data
-- Ordinary least squares specifically fits a *straight line* to the data
-- The straight line is described using an $intercept$ and a $slope$
+- OLS specifically fits a *straight line* to the data described using an $intercept$ and a $slope$
 - When we plug an $X$ into the line, we get a prediction for $Y$, which we call $\hat{Y}$
 - When $X = 0$, we predict $\hat{Y} = intercept$
 - When $X$ increases by $1$, our prediction of $Y$ increases by the $slope$
 - If $slope > 0$, $X$ and $Y$ are positively related/correlated
-- If $slope < 0$, $X$ and $Y$ are negatively related/correlated
 
 ---
 

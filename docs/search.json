@@ -774,7 +774,7 @@
     "href": "2024/weeks/week02/slides.html#causality",
     "title": "🗓️ Week 2 Fitting Lines ",
     "section": "Causality",
-    "text": "Causality\n\nA data generating process can be described by a series of equations that describe where the data comes from. For example:\n\n\\[ X = \\gamma_0 + \\gamma_1\\varepsilon + \\nu \\]\n\\[ Y = \\beta_0 + \\beta_1X + \\varepsilon \\]\n\nThis says ” \\(X\\) is caused by \\(\\varepsilon\\) and \\(\\nu\\), and \\(Y\\) is caused by \\(X\\) and \\(\\varepsilon\\)”\nThe truth is that an increase in \\(X\\) causally increases \\(Y\\) by \\(\\beta_1\\)\nThe goal of econometrics is to be able to estimate what \\(\\beta_1\\) is accurately"
+    "text": "Causality\n\nA DGP can be described by a series of equations describing where the data comes from:\n\n\\[ X = \\gamma_0 + \\gamma_1\\varepsilon + \\nu \\]\n\\[ Y = \\beta_0 + \\beta_1X + \\varepsilon \\]\n\nThis says ” \\(X\\) is caused by \\(\\varepsilon\\) and \\(\\nu\\), and \\(Y\\) is caused by \\(X\\) and \\(\\varepsilon\\)” - an increase in \\(X\\) causally increases \\(Y\\) by \\(\\beta_1\\)\nThe goal of econometrics is to be able to estimate what \\(\\beta_1\\) is accurately"
   },
   {
     "objectID": "2024/weeks/week02/slides.html#causality-1",
@@ -858,7 +858,7 @@
     "href": "2024/weeks/week02/slides.html#ordinary-least-squares",
     "title": "🗓️ Week 2 Fitting Lines ",
     "section": "Ordinary Least Squares",
-    "text": "Ordinary Least Squares\n\nRegression fits a shape to the data\nOrdinary least squares specifically fits a straight line to the data\nThe straight line is described using an \\(intercept\\) and a \\(slope\\)\nWhen we plug an \\(X\\) into the line, we get a prediction for \\(Y\\), which we call \\(\\hat{Y}\\)\nWhen \\(X = 0\\), we predict \\(\\hat{Y} = intercept\\)\nWhen \\(X\\) increases by \\(1\\), our prediction of \\(Y\\) increases by the \\(slope\\)\nIf \\(slope &gt; 0\\), \\(X\\) and \\(Y\\) are positively related/correlated\nIf \\(slope &lt; 0\\), \\(X\\) and \\(Y\\) are negatively related/correlated"
+    "text": "Ordinary Least Squares\n\nRegression fits a shape to the data\nOLS specifically fits a straight line to the data described using an \\(intercept\\) and a \\(slope\\)\nWhen we plug an \\(X\\) into the line, we get a prediction for \\(Y\\), which we call \\(\\hat{Y}\\)\nWhen \\(X = 0\\), we predict \\(\\hat{Y} = intercept\\)\nWhen \\(X\\) increases by \\(1\\), our prediction of \\(Y\\) increases by the \\(slope\\)\nIf \\(slope &gt; 0\\), \\(X\\) and \\(Y\\) are positively related/correlated"
   },
   {
     "objectID": "2024/weeks/week02/slides.html#concept-checks",

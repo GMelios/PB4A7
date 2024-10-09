@@ -417,13 +417,12 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <section id="causality" class="slide level2">
 <h2>Causality</h2>
 <ul>
-<li>A data generating process can be described by a series of <em>equations</em> that describe where the data comes from. For example:</li>
+<li>A DGP can be described by a series of <em>equations</em> describing where the data comes from:</li>
 </ul>
 <p><span class="math display">\[ X = \gamma_0 + \gamma_1\varepsilon + \nu \]</span></p>
 <p><span class="math display">\[ Y = \beta_0 + \beta_1X + \varepsilon \]</span></p>
 <ul>
-<li>This says ” <span class="math inline">\(X\)</span> is caused by <span class="math inline">\(\varepsilon\)</span> and <span class="math inline">\(\nu\)</span>, and <span class="math inline">\(Y\)</span> is caused by <span class="math inline">\(X\)</span> and <span class="math inline">\(\varepsilon\)</span>”</li>
-<li>The <em>truth</em> is that an increase in <span class="math inline">\(X\)</span> <em>causally increases <span class="math inline">\(Y\)</span></em> by <span class="math inline">\(\beta_1\)</span></li>
+<li>This says ” <span class="math inline">\(X\)</span> is caused by <span class="math inline">\(\varepsilon\)</span> and <span class="math inline">\(\nu\)</span>, and <span class="math inline">\(Y\)</span> is caused by <span class="math inline">\(X\)</span> and <span class="math inline">\(\varepsilon\)</span>” - an increase in <span class="math inline">\(X\)</span> <em>causally increases <span class="math inline">\(Y\)</span></em> by <span class="math inline">\(\beta_1\)</span></li>
 <li>The goal of econometrics is to be able to estimate what <span class="math inline">\(\beta_1\)</span> is accurately</li>
 </ul>
 </section>
@@ -542,13 +541,11 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <h2>Ordinary Least Squares</h2>
 <ul>
 <li>Regression fits a <em>shape</em> to the data</li>
-<li>Ordinary least squares specifically fits a <em>straight line</em> to the data</li>
-<li>The straight line is described using an <span class="math inline">\(intercept\)</span> and a <span class="math inline">\(slope\)</span></li>
+<li>OLS specifically fits a <em>straight line</em> to the data described using an <span class="math inline">\(intercept\)</span> and a <span class="math inline">\(slope\)</span></li>
 <li>When we plug an <span class="math inline">\(X\)</span> into the line, we get a prediction for <span class="math inline">\(Y\)</span>, which we call <span class="math inline">\(\hat{Y}\)</span></li>
 <li>When <span class="math inline">\(X = 0\)</span>, we predict <span class="math inline">\(\hat{Y} = intercept\)</span></li>
 <li>When <span class="math inline">\(X\)</span> increases by <span class="math inline">\(1\)</span>, our prediction of <span class="math inline">\(Y\)</span> increases by the <span class="math inline">\(slope\)</span></li>
 <li>If <span class="math inline">\(slope &gt; 0\)</span>, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are positively related/correlated</li>
-<li>If <span class="math inline">\(slope &lt; 0\)</span>, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are negatively related/correlated</li>
 </ul>
 </section>
 <section id="concept-checks" class="slide level2">
