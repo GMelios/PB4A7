@@ -78,7 +78,7 @@ $$Y = \beta_0 + \beta_1X+\varepsilon$$
 
 - Where $\varepsilon$ is *everything that determines $Y$ other than $X$*
 - If $X$ is related to some of those things, we have endogeneity
-- Estimating the above model by OLS, it will mistake the effect of those *other* things for the effect of $X$, and our estimate of $\hat{\beta}_1$ won't represent the true $\beta_1$ no matter how many observations we have
+- Estimating this with OLS, will mistake the effect of those *other* things for the effect of $X$, and our $\hat{\beta}_1$ won't represent the true $\beta_1$ no matter how many observations we have
 
 ---
 
