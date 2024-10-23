@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Dr.&nbsp;George Melios">
-  <meta name="dcterms.date" content="22 October 2024">
+  <meta name="dcterms.date" content="23 October 2024">
   <title>PB4A7 - Quantitative Applications for Behavioural Science - Controls</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -415,13 +415,11 @@ Dr.&nbsp;<a href="#/">George Melios</a>
     </div>
 </div>
 
-  <p class="date">22 Oct 2024</p>
+  <p class="date">23 Oct 2024</p>
 </section><section id="TOC">
 <nav role="doc-toc"> 
 <h2 id="toc-title">What we will cover today:</h2>
 <ul>
-<li><a href="#/recap" id="/toc-recap">Recap</a></li>
-<li><a href="#/graphically" id="/toc-graphically">Graphically</a></li>
 <li><a href="#/the-paths" id="/toc-the-paths">The Paths</a></li>
 <li><a href="#/the-adjusted-analysis" id="/toc-the-adjusted-analysis">The Adjusted Analysis</a></li>
 </ul>
@@ -436,12 +434,8 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <li>At least as a starter (we’ll revisit this topic many times)</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section>
-<section>
-<section id="recap" class="title-slide slide level1">
-<h1>Recap</h1>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
 <ul>
 <li>We believe that our true model looks like this:</li>
 </ul>
@@ -459,7 +453,7 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 </ul>
 <p><span class="math display">\[Income = \beta_0 + \beta_1Corruption + \varepsilon\]</span></p>
 <ul>
-<li><p>True <span class="math inline">\(\beta_1\)</span> is probably <span class="math inline">\(0\)</span>. But since <span class="math inline">\(Political\)</span> <span class="math inline">\(Stability\)</span> is in <span class="math inline">\(\varepsilon\)</span> &amp; <span class="math inline">\(Pol-Stability\)</span> is related to <span class="math inline">\(Corruption\)</span>, OLS will mistakenly assign the effect of <span class="math inline">\(Pol-Stability\)</span> to the effect of <span class="math inline">\(Corr\)</span>, making it look like there’s a positive effect when there isn’t one</p></li>
+<li><p>True <span class="math inline">\(\beta_1\)</span> is probably <span class="math inline">\(0\)</span>. But since <span class="math inline">\(Political\)</span> <span class="math inline">\(Stability\)</span> is in <span class="math inline">\(\varepsilon\)</span> &amp; it’s related to <span class="math inline">\(Corruption\)</span>, OLS will mistakenly assign the effect of <span class="math inline">\(Pol-Stability\)</span> to the effect of <span class="math inline">\(Corr\)</span>, making it look like there’s a positive effect when there isn’t one</p></li>
 <li><p>Here we’re mistakenly finding a positive effect when the truth is <span class="math inline">\(0\)</span>, but it could be anything - negative effect when truth is <span class="math inline">\(0\)</span>, positive effect when the truth is a bigger/smaller positive effect, etc etc</p></li>
 </ul>
 </section>
@@ -467,7 +461,8 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <h2>To the Rescue</h2>
 <ul>
 <li>One way we can solve this problem is through the use of <em>control variables</em></li>
-<li>What if <span class="math inline">\(Political Stability\)</span> <em>weren’t</em> in <span class="math inline">\(\varepsilon\)</span>? Then we’d be fine! OLS would know how to separate out its effect from the <span class="math inline">\(Corruption\)</span> effect. How do we take it out? Just put it in the model directly!</li>
+<li>What if <span class="math inline">\(Political Stability\)</span> <em>weren’t</em> in <span class="math inline">\(\varepsilon\)</span>?</li>
+<li>OLS would know how to separate out its effect from the <span class="math inline">\(Corruption\)</span> effect. How? Just put it in the model directly!</li>
 </ul>
 <p><span class="math display">\[Income = \beta_0 + \beta_1Corruption + \beta_2PoliticalStability + \varepsilon\]</span></p>
 <ul>
@@ -484,10 +479,9 @@ Dr.&nbsp;<a href="#/">George Melios</a>
 <li>(of course, we have no way of checking if that’s true - it’s based on what we think the data generating process looks like)</li>
 </ul>
 </section>
-<section id="how" class="slide level2">
-<h2>How?</h2>
+<section id="how-does-this-actually-work" class="slide level2">
+<h2>How does this actually work?</h2>
 <ul>
-<li>How does this actually work?</li>
 <li>Controlling for a variable works by <em>removing variation in <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> that is explained by the control variable</em></li>
 <li>So our estimate of <span class="math inline">\(\hat{\beta}_1\)</span> is based on <em>just the variation in <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> that is unrelated to the control variable</em></li>
 <li>Any accidentally-assigning-the-value-of-PoliticalStability-to-Corruption can’t happen because we’ve removed the effect of <span class="math inline">\(Political Stability\)</span> on <span class="math inline">\(Corruption\)</span> as well as the effect of <span class="math inline">\(Political Stability\)</span> on <span class="math inline">\(Income\)</span></li>
@@ -607,12 +601,8 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="graphically" class="title-slide slide level1">
-<h1>Graphically</h1>
+<section id="graphically" class="slide level2">
+<h2>Graphically</h2>
 
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.gif" class="img-fluid r-stretch"></section>
 <section id="controlling" class="slide level2">
@@ -784,7 +774,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="img-fluid r-stretch" width="768"></section>
 <section class="slide level2">
 
-</section></section>
+</section>
 <section>
 <section id="the-paths" class="title-slide slide level1">
 <h1>The Paths</h1>

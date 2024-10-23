@@ -3,8 +3,8 @@ title: "Controls"
 subtitle: "Telling endogeneity we've had ENOUGH"
 author: Dr. [George Melios](#)
 institute: '[London School of Economics and Political Science](#)'
-date: 22 October 2024
-date-meta: 22 October 2024
+date: 23 October 2024
+date-meta: 23 October 2024
 date-format: "DD MMM YYYY"
 toc: true
 toc-depth: 1
@@ -37,8 +37,6 @@ library(fixest)
 library(scales)
 library(Cairo)
 library(magick)
-remotes::install_github('hadley/emo')
-library(emo)
 theme_metro <- function(x) {
   theme_classic() + 
   theme(panel.background = element_rect(color = '#FAFAFA',fill='#FAFAFA'),
@@ -70,7 +68,7 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
-# Recap
+## Recap
 
 - We believe that our true model looks like this:
 
@@ -88,7 +86,7 @@ $$Y = \beta_0 + \beta_1X+\varepsilon$$
 
 $$Income = \beta_0 + \beta_1Corruption + \varepsilon$$
 
-- True $\beta_1$ is probably $0$. But since $Political$ $Stability$ is in $\varepsilon$ & $Pol-Stability$ is related to $Corruption$, OLS will mistakenly assign the effect of $Pol-Stability$ to the effect of $Corr$, making it look like there's a positive effect when there isn't one
+- True $\beta_1$ is probably $0$. But since $Political$ $Stability$ is in $\varepsilon$ & it's related to $Corruption$, OLS will mistakenly assign the effect of $Pol-Stability$ to the effect of $Corr$, making it look like there's a positive effect when there isn't one
 
 - Here we're mistakenly finding a positive effect when the truth is $0$, but it could be anything - negative effect when truth is $0$, positive effect when the truth is a bigger/smaller positive effect, etc etc
 
@@ -97,7 +95,8 @@ $$Income = \beta_0 + \beta_1Corruption + \varepsilon$$
 ## To the Rescue
 
 - One way we can solve this problem is through the use of *control variables* 
-- What if $Political Stability$ *weren't* in $\varepsilon$? Then we'd be fine! OLS would know how to separate out its effect from the $Corruption$ effect. How do we take it out? Just put it in the model directly!
+- What if $Political Stability$ *weren't* in $\varepsilon$? 
+- OLS would know how to separate out its effect from the $Corruption$ effect. How? Just put it in the model directly!
 
 $$Income = \beta_0 + \beta_1Corruption + \beta_2PoliticalStability + \varepsilon$$
 
@@ -116,9 +115,8 @@ $$Income = \beta_0 + \beta_1Corruption + \beta_2PoliticalStability + \varepsilon
 
 ---
 
-## How?
+## How does this actually work?
 
-- How does this actually work?
 - Controlling for a variable works by *removing variation in $X$ and $Y$ that is explained by the control variable*
 - So our estimate of $\hat{\beta}_1$ is based on *just the variation in $X$ and $Y$ that is unrelated to the control variable*
 - Any accidentally-assigning-the-value-of-PoliticalStability-to-Corruption can't happen because we've removed the effect of $Political Stability$ on $Corruption$ as well as the effect of $Political Stability$ on $Income$
@@ -193,7 +191,7 @@ feols(Y ~ X + Z, data = tib) %>%
 
 ---
 
-# Graphically
+## Graphically
 
 ```{r, echo=FALSE, fig.width=5, fig.height=4.5}
 df <- data.frame(Z = as.integer((1:200>100))) %>%

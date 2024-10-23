@@ -2650,14 +2650,14 @@
     "href": "2024/weeks/week04/slides.html#endogeneity-recap",
     "title": "Controls",
     "section": "Endogeneity Recap",
-    "text": "Endogeneity Recap\n\nFor example looking at income and corruption, the model\n\n\\[Income = \\beta_0 + \\beta_1Corruption + \\varepsilon\\]\n\nTrue \\(\\beta_1\\) is probably \\(0\\). But since \\(Political\\) \\(Stability\\) is in \\(\\varepsilon\\) & \\(Pol-Stability\\) is related to \\(Corruption\\), OLS will mistakenly assign the effect of \\(Pol-Stability\\) to the effect of \\(Corr\\), making it look like there’s a positive effect when there isn’t one\nHere we’re mistakenly finding a positive effect when the truth is \\(0\\), but it could be anything - negative effect when truth is \\(0\\), positive effect when the truth is a bigger/smaller positive effect, etc etc"
+    "text": "Endogeneity Recap\n\nFor example looking at income and corruption, the model\n\n\\[Income = \\beta_0 + \\beta_1Corruption + \\varepsilon\\]\n\nTrue \\(\\beta_1\\) is probably \\(0\\). But since \\(Political\\) \\(Stability\\) is in \\(\\varepsilon\\) & it’s related to \\(Corruption\\), OLS will mistakenly assign the effect of \\(Pol-Stability\\) to the effect of \\(Corr\\), making it look like there’s a positive effect when there isn’t one\nHere we’re mistakenly finding a positive effect when the truth is \\(0\\), but it could be anything - negative effect when truth is \\(0\\), positive effect when the truth is a bigger/smaller positive effect, etc etc"
   },
   {
     "objectID": "2024/weeks/week04/slides.html#to-the-rescue",
     "href": "2024/weeks/week04/slides.html#to-the-rescue",
     "title": "Controls",
     "section": "To the Rescue",
-    "text": "To the Rescue\n\nOne way we can solve this problem is through the use of control variables\nWhat if \\(Political Stability\\) weren’t in \\(\\varepsilon\\)? Then we’d be fine! OLS would know how to separate out its effect from the \\(Corruption\\) effect. How do we take it out? Just put it in the model directly!\n\n\\[Income = \\beta_0 + \\beta_1Corruption + \\beta_2PoliticalStability + \\varepsilon\\]\n\nNow we have a multivariate regression model. Our estimate \\(\\hat{\\beta}_1\\) will not be biased by \\(Political Stability\\) because we’ve controlled for it\n\n(probably more accurate to say “covariates” or “variables to adjust for” than “control variables” and “adjust for” rather than “control for” but hey what are you gonna do, “control” is standard)"
+    "text": "To the Rescue\n\nOne way we can solve this problem is through the use of control variables\nWhat if \\(Political Stability\\) weren’t in \\(\\varepsilon\\)?\nOLS would know how to separate out its effect from the \\(Corruption\\) effect. How? Just put it in the model directly!\n\n\\[Income = \\beta_0 + \\beta_1Corruption + \\beta_2PoliticalStability + \\varepsilon\\]\n\nNow we have a multivariate regression model. Our estimate \\(\\hat{\\beta}_1\\) will not be biased by \\(Political Stability\\) because we’ve controlled for it\n\n(probably more accurate to say “covariates” or “variables to adjust for” than “control variables” and “adjust for” rather than “control for” but hey what are you gonna do, “control” is standard)"
   },
   {
     "objectID": "2024/weeks/week04/slides.html#to-the-rescue-1",
@@ -2931,5 +2931,26 @@
     "title": "Announcements",
     "section": "",
     "text": "📢 Description\n\n\n\n\n\nJoin our Discord Channel for faster communication !!!\n\n\n\n\nRequirements\nDownload and install STATA or R. Throughout the class, we will rely on STATA for seminars but codes will be provided for R as well."
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#recap",
+    "href": "2024/weeks/week04/slides.html#recap",
+    "title": "Controls",
+    "section": "Recap",
+    "text": "Recap\n\nWe believe that our true model looks like this:\n\n\\[Y = \\beta_0 + \\beta_1X+\\varepsilon\\]\n\nWhere \\(\\varepsilon\\) is everything that determines \\(Y\\) other than \\(X\\)\nIf \\(X\\) is related to some of those things, we have endogeneity\nEstimating this with OLS, will mistake the effect of those other things for the effect of \\(X\\), and our \\(\\hat{\\beta}_1\\) won’t represent the true \\(\\beta_1\\) no matter how many observations we have"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#how-does-this-actually-work",
+    "href": "2024/weeks/week04/slides.html#how-does-this-actually-work",
+    "title": "Controls",
+    "section": "How does this actually work?",
+    "text": "How does this actually work?\n\nControlling for a variable works by removing variation in \\(X\\) and \\(Y\\) that is explained by the control variable\nSo our estimate of \\(\\hat{\\beta}_1\\) is based on just the variation in \\(X\\) and \\(Y\\) that is unrelated to the control variable\nAny accidentally-assigning-the-value-of-PoliticalStability-to-Corruption can’t happen because we’ve removed the effect of \\(Political Stability\\) on \\(Corruption\\) as well as the effect of \\(Political Stability\\) on \\(Income\\)\nWe’re asking at that point, holding \\(Political Stability\\) constant, i.e. comparing two different countries with the same \\(Polities\\) , how is \\(Corruption\\) related to \\(Income\\)?"
+  },
+  {
+    "objectID": "2024/weeks/week04/slides.html#graphically",
+    "href": "2024/weeks/week04/slides.html#graphically",
+    "title": "Controls",
+    "section": "Graphically",
+    "text": "Graphically"
   }
 ]
