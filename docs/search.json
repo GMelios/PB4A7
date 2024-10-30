@@ -1761,14 +1761,14 @@
     "href": "2024/weeks/week05/slides.html#omitted-variable-bias",
     "title": "🗓️ Week 5 Functional Forms",
     "section": "Omitted Variable Bias",
-    "text": "Omitted Variable Bias\n\nWe can intuitively think about whether omitted variable bias is likely to make our estimates too high or too low\nThe sign of the bias will be the sign of the relationship between the omitted variable and \\(X\\), times the sign of the relationship between the omitted variable bias and \\(Y\\)\nInterestInSubject is positively related to both StudyTime and ClassGrade, and \\(+\\times+ = +\\), so our estimates are positively biased / too high\nMore precisely we have that the mean of the \\(\\hat{\\beta}_1\\) sampling distribution is \\[\\beta_1 + corr(X,\\varepsilon)\\frac{\\sigma_\\varepsilon}{\\sigma_X}\\]"
+    "text": "Omitted Variable Bias\n\nWe can intuitively think about whether omitted variable bias is likely to make our estimates too high or too low\nThe sign of the bias will be the sign of the relationship between the omitted variable and \\(X\\), times the sign of the relationship between the omitted variable bias and \\(Y\\)\nInterestInSubject is positively related to both StudyTime and ClassGrade, and \\(+\\times+ = +\\), so our estimates are positively biased / too high"
   },
   {
     "objectID": "2024/weeks/week05/slides.html#thinking-through-this-bias",
     "href": "2024/weeks/week05/slides.html#thinking-through-this-bias",
     "title": "🗓️ Week 5 Functional Forms",
     "section": "Thinking Through this Bias",
-    "text": "Thinking Through this Bias\n\nIf \\(Z\\) hangs around \\(X\\), but \\(Y\\) doesn’t know about it, then the coefficient on \\(X\\) will get all the credit for \\(Z\\)\nThis is a good way to keep that “direction of bias” problem in mind\nAnd you do want to keep it in mind! This is important for understanding general correlations you see in the wild, too\nAnd helps keep in line some things - for example, if \\(Z\\) is unrelated to \\(X\\), it won’t bias you!!"
+    "text": "Thinking Through this Bias\n\nThis is a good way to keep that “direction of bias” problem in mind\nAnd you do want to keep it in mind! This is important for understanding general correlations you see in the wild, too\nAnd helps keep in line some things - for example, if \\(Z\\) is unrelated to \\(X\\), it won’t bias you!!"
   },
   {
     "objectID": "2024/weeks/week05/slides.html#thinking-through-this-bias-1",
@@ -1803,7 +1803,7 @@
     "href": "2024/weeks/week05/slides.html#correlated-errors",
     "title": "🗓️ Week 5 Functional Forms",
     "section": "Correlated Errors",
-    "text": "Correlated Errors\n\nIf the error terms are correlated with each other, then our standard errors will also be wrong\nHow could this happen? For example, maybe you’ve surveyed a bunch of people in different towns - the error terms within a town might be clustered\nOr maybe you have time series data. If a term in the error term is “sticky” or has “momentum” it will likely be a similar error term a few time periods in a row, beign correlated across time, or autocorrelated\nAgain, this doesn’t bias \\(\\hat{\\beta}_1\\) but it can affect standard errors!"
+    "text": "Correlated Errors\n\nIf the error terms are correlated with each other, then our standard errors will also be wrong\nHow could this happen? For example, maybe you’ve surveyed a bunch of people in different towns - the error terms within a town might be clustered\nAgain, this doesn’t bias \\(\\hat{\\beta}_1\\) but it can affect standard errors!"
   },
   {
     "objectID": "2024/weeks/week05/slides.html#the-right-hand-side-1",
@@ -1852,7 +1852,7 @@
     "href": "2024/weeks/week05/slides.html#comparison-of-means-4",
     "title": "🗓️ Week 5 Functional Forms",
     "section": "Comparison of Means",
-    "text": "Comparison of Means\nNotice:\n\nThe intercept gives the mean for the non-married group\nThe coefficient on marriedTRUE gives the married minus non-married difference\ni.e. the coefficient on a binary variable in a regression gives the difference in means\nIf we’d defined it the other way, with “not married” as the independent variable, the intercept would be the mean for the married group (i.e. “not married = 0”), and the coefficient would be the exact same but times \\(-1\\) (same difference, just opposite direction!)"
+    "text": "Comparison of Means\nNotice:\n\nThe intercept gives the mean for the non-married group\nThe coefficient on marriedTRUE gives the married minus non-married difference\ni.e. the coefficient on a binary variable in a regression gives the difference in means"
   },
   {
     "objectID": "2024/weeks/week05/slides.html#comparison-of-means-5",
@@ -1880,14 +1880,14 @@
     "href": "2024/weeks/week05/slides.html#multicollinearity-1",
     "title": "🗓️ Week 5 Functional Forms",
     "section": "Multicollinearity",
-    "text": "Multicollinearity\n\nMean of married is \\(9.47\\) and of non-married is \\(9.26\\). \\[ \\log(Earnings) = 0 + 9.47Married + 9.26NonMarried \\] \\[ \\log(Earnings) = 3 + 6.47Married + 6.26NonMarried \\]\nThese (and infinitely many other options) all give the exact same predictions! OLS can’t pick between them. There’s no single best way to minimize squared residuals\nSo we pick one with convenient properties, setting one of the categories to have a coefficient of 0 (dropping it) and making the coefficient on the other the difference relative to the one we left out"
+    "text": "Multicollinearity\n\nMean of married is \\(9.47\\) and of non-married is \\(9.26\\). \\[ \\log(Earnings) = 0 + 9.47Married + 9.26NonMarried \\] \\[ \\log(Earnings) = 3 + 6.47Married + 6.26NonMarried \\]\nThese all give the exact same predictions! OLS can’t pick between them. There’s no single best way to minimize squared residuals\nSo we pick one with convenient properties, setting one of the categories to have a coefficient of 0 (dropping it) and making the coefficient on the other the difference relative to the one we left out"
   },
   {
     "objectID": "2024/weeks/week05/slides.html#more-than-two-categories-1",
     "href": "2024/weeks/week05/slides.html#more-than-two-categories-1",
     "title": "🗓️ Week 5 Functional Forms",
     "section": "More than Two Categories",
-    "text": "More than Two Categories\n\nThat interpretation - dropping one and making the other relative to that, conveniently extends to multi-category variables\nWhy stop at binary categorical variables? There are plenty of categorical variables with more than two values\nWhat is your education level? What is your religious denomination? What continent are you on?\nWe can put these in a regression by turning each value into its own binary variable\n(and then dropping one so the coefficients on the others give you the difference with the omitted one)"
+    "text": "More than Two Categories\n\nThat interpretation - dropping one and making the other relative to that, conveniently extends to multi-category variables\nWhy stop at binary categorical variables? There are plenty of categorical variables with more than two values\nWe can put these in a regression by turning each value into its own binary variable\n(and then dropping one so the coefficients on the others give you the difference with the omitted one)"
   },
   {
     "objectID": "2024/weeks/week05/slides.html#concept-checks",
@@ -2020,7 +2020,7 @@
     "href": "2024/weeks/week05/slides.html#concept-checks-1",
     "title": "🗓️ Week 5 Functional Forms",
     "section": "Concept Checks",
-    "text": "Concept Checks\n\nWhich of the following variables would you likely want to log before using them? Income, height, wealth, company size, home square footage\nIn each of the following estimated OLS lines, interpret the coefficient by filling in “A [blank] change in X is associated with a [blank] change in Y”:\n\n\\[ Y = 1 + 2\\log(X) \\] \\[ \\log(Y) = 3 + 2\\log(X) \\]\n\\[ \\log(Y) = 4 + 3X \\]"
+    "text": "Concept Checks\n\nWhich of the following variables would you likely want to log before using them? Income, height, wealth\nFor these, interpret the coefficient by filling in “A [blank] change in X is associated with a [blank] change in Y”:\n\n\\[ Y = 1 + 2\\log(X) \\] \\[ \\log(Y) = 3 + 2\\log(X) \\]\n\\[ \\log(Y) = 4 + 3X \\]"
   },
   {
     "objectID": "2024/weeks/week05/slides.html#interactions",
@@ -2952,5 +2952,12 @@
     "title": "Controls",
     "section": "Graphically",
     "text": "Graphically"
+  },
+  {
+    "objectID": "2024/weeks/week05/slides.html#omitted-variable-bias-1",
+    "href": "2024/weeks/week05/slides.html#omitted-variable-bias-1",
+    "title": "🗓️ Week 5 Functional Forms",
+    "section": "Omitted Variable Bias",
+    "text": "Omitted Variable Bias\n\nMore precisely we have that the mean of the \\(\\hat{\\beta}_1\\) sampling distribution is\n\n\\[\\beta_1 + corr(X,\\varepsilon)\\frac{\\sigma_\\varepsilon}{\\sigma_X}\\]\n\nIf \\(Z\\) hangs around \\(X\\), but \\(Y\\) doesn’t know about it, then the coefficient on \\(X\\) will get all the credit for \\(Z\\)"
   }
 ]
