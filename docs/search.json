@@ -2389,42 +2389,42 @@
   {
     "objectID": "2024/weeks/week07/slides.html#interactions",
     "href": "2024/weeks/week07/slides.html#interactions",
-    "title": "🗓️ Week 5 Functional Forms",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
     "section": "Interactions",
-    "text": "Interactions\n\nFor both polynomials and logarithms, the effect of a one-unit change in \\(X\\) differs depending on its current value (for logarithms, a 1-unit change in \\(X\\) is different percentage changes in \\(X\\) depending on current value)\nBut why stop there? Maybe the effect of \\(X\\) differs depending on the current value of other variables!\nEnter interaction terms!\n\n\\[ Y = \\beta_0 + \\beta_1X + \\beta_2Z + \\beta_3X\\times Z + \\varepsilon \\] - Interaction terms are a little tough but also extremely important."
+    "text": "Interactions\n\nFor both polynomials and logarithms, the effect of a one-unit change in \\(X\\) differs depending on its current value (for logarithms, a 1-unit change in \\(X\\) is different percentage changes in \\(X\\) depending on current value)\nBut why stop there? Maybe the effect of \\(X\\) differs depending on the current value of other variables! - Enter interaction terms!\n\n\\[ Y = \\beta_0 + \\beta_1X + \\beta_2Z + \\beta_3X\\times Z + \\varepsilon \\]\n\nInteraction terms are a little tough but also extremely important."
   },
   {
     "objectID": "2024/weeks/week07/slides.html#interactions-1",
     "href": "2024/weeks/week07/slides.html#interactions-1",
-    "title": "🗓️ Week 5 Functional Forms",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
     "section": "Interactions",
     "text": "Interactions\nExpect to come back to these slides, as you’re almost certainly going to use interaction terms in both our assessment and the dissertation"
   },
   {
     "objectID": "2024/weeks/week07/slides.html#interactions-2",
     "href": "2024/weeks/week07/slides.html#interactions-2",
-    "title": "🗓️ Week 5 Functional Forms",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
     "section": "Interactions",
     "text": "Interactions\n\nChange in the value of a control can shift a regression line up and down\nUsing the model \\(Y = \\beta_0 + \\beta_1X + \\beta_2Z\\), estimated as \\(Y = .01 + 1.2X + .95Z\\):"
   },
   {
     "objectID": "2024/weeks/week07/slides.html#interactions-3",
     "href": "2024/weeks/week07/slides.html#interactions-3",
-    "title": "🗓️ Week 5 Functional Forms",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
     "section": "Interactions",
     "text": "Interactions\n\nBut an interaction can both shift the line up and down AND change its slope\nUsing the model \\(Y = \\beta_0 + \\beta_1X + \\beta_2Z + \\beta_3X\\times Z\\), estimated as \\(Y = .035 + 1.14X + .94Z + 1.02X\\times Z\\):"
   },
   {
     "objectID": "2024/weeks/week07/slides.html#interactions-4",
     "href": "2024/weeks/week07/slides.html#interactions-4",
-    "title": "🗓️ Week 5 Functional Forms",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
     "section": "Interactions",
     "text": "Interactions\n\nHow can we interpret an interaction?\nThe idea is that the interaction shows how the effect of one variable changes as the value of the other changes\nThe derivative helps!\n\n\\[ Y = \\beta_0 + \\beta_1X + \\beta_2Z + \\beta_3X\\times Z \\] \\[ \\partial Y/\\partial X = \\beta_1 + \\beta_3 Z \\]\n\nThe effect of \\(X\\) is \\(\\beta_1\\) when \\(Z = 0\\), or \\(\\beta_1 + \\beta_3\\) when \\(Z = 1\\), or \\(\\beta_1 + 3\\beta_3\\) if \\(Z = 3\\)!"
   },
   {
     "objectID": "2024/weeks/week07/slides.html#interactions-5",
     "href": "2024/weeks/week07/slides.html#interactions-5",
-    "title": "🗓️ Week 5 Functional Forms",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
     "section": "Interactions",
     "text": "Interactions\n\nOften we are doing interactions with binary variables to see how an effect differs across groups\nNow, instead of the intercept giving the baseline and the binary coefficient giving the difference, the coefficient on \\(X\\) is the baseline effect of \\(X\\) and the interaction is the difference in the effect of \\(X\\)\nThe interaction coefficient becomes “the difference in the effect of \\(X\\) between the \\(Z\\) =”No” and \\(Z\\) = “Yes” groups”\n(What if it’s continuous? Mathematically the same but the thinking changes - the interaction term is the difference in the effect of \\(X\\) you get when increasing \\(Z\\) by one unit)"
   },
@@ -2438,16 +2438,16 @@
   {
     "objectID": "2024/weeks/week07/slides.html#notes-on-interactions",
     "href": "2024/weeks/week07/slides.html#notes-on-interactions",
-    "title": "🗓️ Week 5 Functional Forms",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
     "section": "Notes on Interactions",
     "text": "Notes on Interactions\n\nLike with polynomials, the coefficients on their own now have little meaning and must be evaluated alongside each other. \\(\\beta_1\\) by itself is just “the effect of \\(X\\) when \\(Z = 0\\)”, not “the effect of \\(X\\)”\nYes, you do almost always want to include both variables in un-interacted form and interacted form. Otherwise the interpretation gets very thorny"
   },
   {
     "objectID": "2024/weeks/week07/slides.html#notes-on-interactions-1",
     "href": "2024/weeks/week07/slides.html#notes-on-interactions-1",
-    "title": "🗓️ Week 5 Functional Forms",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
     "section": "Notes on Interactions",
-    "text": "Notes on Interactions\n\nInteraction effects are poorly powered. You need a lot of data to be able to tell whether an effect is different in two groups. If \\(N\\) observations is adequate power to see if the effect itself is different from zero, you need a sample of roughly \\(16\\times N\\) to see if the difference in effects is nonzero. Sixteen times!!\nIt’s tempting to try interacting your effect with everything to see if it’s bigger/smaller/nonzero in some groups, but because it’s poorly powered, this is a bad idea! You’ll get a lot of false positives\n\n\n\n\nPB4A7- Quantitative Applications for Behavioural Science"
+    "text": "Notes on Interactions\n\nInteraction effects are poorly powered. You need a lot of data to be able to tell whether an effect is different in two groups. If \\(N\\) observations is adequate power to see if the effect itself is different from zero, you need a sample of roughly \\(16\\times N\\) to see if the difference in effects is nonzero. Sixteen times!!\nIt’s tempting to try interacting your effect with everything to see if it’s bigger/smaller/nonzero in some groups, but because it’s poorly powered, this is a bad idea! You’ll get a lot of false positives"
   },
   {
     "objectID": "2024/weeks/week04/slides.html",
@@ -2959,5 +2959,117 @@
     "title": "🗓️ Week 5 Functional Forms",
     "section": "Omitted Variable Bias",
     "text": "Omitted Variable Bias\n\nMore precisely we have that the mean of the \\(\\hat{\\beta}_1\\) sampling distribution is\n\n\\[\\beta_1 + corr(X,\\varepsilon)\\frac{\\sigma_\\varepsilon}{\\sigma_X}\\]\n\nIf \\(Z\\) hangs around \\(X\\), but \\(Y\\) doesn’t know about it, then the coefficient on \\(X\\) will get all the credit for \\(Z\\)"
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#non-continuous-dependent-variables",
+    "href": "2024/weeks/week07/slides.html#non-continuous-dependent-variables",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "Non-Continuous Dependent Variables",
+    "text": "Non-Continuous Dependent Variables\nWhen might dependent variables not be continuous and have infinite range?\n\nYears working at current job (can’t be negative)\nAre you self-employed? (Binary)\nNumber of children (must be a round number, can’t be negative)\nWhich brand of soda did you buy? (categorical)\nDid you recover from your disease? (binary)\nHow satisfied are you with your purchase on a 1-5 scale? (must be a round number from 1 to 5, and the difference between 1 and 2 isn’t necessarily the same as the difference between 2 and 3)"
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#binary-dependent-variables",
+    "href": "2024/weeks/week07/slides.html#binary-dependent-variables",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "Binary Dependent Variables",
+    "text": "Binary Dependent Variables\n\nIn many cases, such as variables that must be round numbers, or can’t be negative, even though there are ways of properly handling these issues, people will usually ignore the problem and just use OLS, as long as the data is continuous-ish (i.e. doesn’t have a LOT of observations right at 0 next to the impossible negative values, or has lots of different values so the round number smooth out)\nHowever, the problems of using OLS are a bit worse for binary data, and so they’re the most common case in which we do something special to account for it\nBinary dependent variables are also really common! We’re often interested in whether a certain outcome happened or didn’t (if we want to know if a drug was effective, we are likely asking if you are cured or not!)\n\nSo, how can we deal with having a binary dependent variable, and why do they give OLS such problems?"
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#the-linear-probability-model",
+    "href": "2024/weeks/week07/slides.html#the-linear-probability-model",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "The Linear Probability Model",
+    "text": "The Linear Probability Model\n\nFirst off, let’s ignore the completely unexplained warnings I’ve just given you and do it with OLS anyway, and see what happens\nRunning OLS with a binary dependent variable is called the “linear probability model” or LPM\n\n\\[ D = \\beta_0 + \\beta_1X + \\varepsilon \\]\nThroughout these slides, let’s use \\(D\\) to refer to a binary variable"
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#the-linear-probability-model-1",
+    "href": "2024/weeks/week07/slides.html#the-linear-probability-model-1",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "The Linear Probability Model",
+    "text": "The Linear Probability Model\n\nIn terms of how we do it, the interpretation is the exact same as regular OLS, so you can bring in all your intuition\nThe only difference is that our interpretation of the dependent variable is now in probability terms\nIf \\(\\hat{\\beta}_1 = .03\\), that means that a one-unit increase in \\(X\\) is associated with a three percentage point increase in the probability that \\(D = 1\\)\n(percentage points! Not percentage - an increase from .1 to .13, say, not .1 to .103)"
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#the-linear-probability-model-2",
+    "href": "2024/weeks/week07/slides.html#the-linear-probability-model-2",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "The Linear Probability Model",
+    "text": "The Linear Probability Model\nSo what’s the problem?\nThe linear probability model can lead to…\n\nTerrible predictions\nIncorrect slopes that don’t acknowledge the boundaries of the data"
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#terrible-predictions",
+    "href": "2024/weeks/week07/slides.html#terrible-predictions",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "Terrible Predictions",
+    "text": "Terrible Predictions\n\nOLS fits a straight line. So if you increase or decrease \\(X\\) enough, eventually you’ll predict that the probability of \\(D = 1\\) is bigger than 1, or lower than 0. Impossible!\nWe can address part of this by just not trying to predict outside the range of the data, but if \\(X\\) has a lot of variation in it, we might get those impossible predictions even for values in our data. And what do we do with that?\n(Also, because errors tend to be small for certain ranges of \\(X\\) and large for others, we have to use heteroskedasticity-robust standard errors)"
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#terrible-predictins",
+    "href": "2024/weeks/week07/slides.html#terrible-predictins",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "Terrible Predictins",
+    "text": "Terrible Predictins"
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#incorrect-slopes",
+    "href": "2024/weeks/week07/slides.html#incorrect-slopes",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "Incorrect Slopes",
+    "text": "Incorrect Slopes\n\nAlso, OLS requires that the slopes be constant\n(Not necessarily if you use a polynomial or logarithm, but the following critique still applies)\nThis is not what we want for binary data!\nAs the prediction gets really close to 0 or 1, the slope should flatten out to nothing\nIf we predict there’s a .50 chance of \\(D = 1\\), a one-unit increase in \\(X\\) with \\(\\hat{\\beta}_1 = .03\\) would increase that to .53\nIf we predict there’s a .99 chance of \\(D = 1\\), a one-unit increase in \\(X\\) with \\(\\hat{\\beta}_1 = .03\\) would increase that to 1.02…\nUh oh! The slope should be flatter near the edges. We need the slope to vary along the range of \\(X\\)"
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#incorrect-slopes-1",
+    "href": "2024/weeks/week07/slides.html#incorrect-slopes-1",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "Incorrect Slopes",
+    "text": "Incorrect Slopes\n\nWe can see how much the OLS slopes are overstating changes in \\(D\\) as \\(X\\) changes near the edges by comparing an OLS fit to just regular ol’ local means, with no shape imposed at all\nWe’re not forcing the red line to flatten out - it’s doing that naturally as the mean can’t possibly go any lower! OLS barrels on through though"
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#linear-probability-model",
+    "href": "2024/weeks/week07/slides.html#linear-probability-model",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "Linear Probability Model",
+    "text": "Linear Probability Model\nSo what can we make of the LPM?\n\nBad if we want to make predictions\nBad at estimating slope if we’re looking near the edges of 0 and 1\n(which means it’s especially bad if the average of \\(D\\) is near 0 or 1)\n\nWhen might we use it anyway?\n\nIt behaves better in small samples than methods estimated by maximum likelihood (which many other methods are)\nIf we only care about slopes far away from the boundaries\nIf alternate methods (like we’re about to go into) put too many other statistical demands on the data (OLS is very “easy” from a computational standpoint)\nIf we’re using lots of fixed effects (OLS deals with these far more easily than nonlinear methods)\nIf our right-hand side is just binary variables (if X has limited range it might not predict out of 0-1!)"
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#generalized-linear-models",
+    "href": "2024/weeks/week07/slides.html#generalized-linear-models",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "Generalized Linear Models",
+    "text": "Generalized Linear Models\n\nSo LPM has problems. What can we do instead?\nLet’s introduce the concept of the Generalized Linear Model\n\nHere’s an OLS equation:\n\\[ Y = \\beta_0 + \\beta_1X + \\varepsilon \\]\nHere’s a GLM equation:\n\\[ E(Y | X) = F(\\beta_0 + \\beta_1X) \\]\nWhere \\(F()\\) is some function."
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#generalized-linear-models-1",
+    "href": "2024/weeks/week07/slides.html#generalized-linear-models-1",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "Generalized Linear Models",
+    "text": "Generalized Linear Models\n\\[ E(D | X) = F(\\beta_0 + \\beta_1X) \\]\n\nWe can call the \\(\\beta_0 + \\beta_1X\\) part, which is the same as in OLS, the index function. It’s a linear function of our variable \\(X\\) (plus whatever other controls we have in there), same as before\nBut to get our prediction of what \\(Y\\) will be conditional on what \\(X\\) is ( \\(D|X\\) ), we do one additional step of running it through a function \\(F()\\) first. We call this function a link function since it links the index function to the outcome\nIf \\(F(z) = z\\), then we’re basically back to OLS\nBut if \\(F()\\) is nonlinear, then we can account for all sorts of nonlinear dependent variables!\n\nSo in other words, our prediction of \\(D\\) is still based on the linear index, but we run it through some nonlinear function first to get our nonlinear output!"
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#generalized-linear-models-2",
+    "href": "2024/weeks/week07/slides.html#generalized-linear-models-2",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "Generalized Linear Models",
+    "text": "Generalized Linear Models\nWe can also think of this in terms of the latent variable interpretation\n\\[ D^* = \\beta_0 + \\beta_1X \\]\nWhere \\(D^*\\) is an unseen “latent” variable that can take any value, just like a regular OLS dependent variable (and roughly the same in concept as our index function)\nAnd we convert that latent variable to a proabability using some function\n\\[ E(D | X) = F(D^*) \\]\nand perhaps saying something like “if we estimate \\(Y^*\\) is above the number \\(c\\), then we predict \\(D = 1\\)”"
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#probit-and-logit",
+    "href": "2024/weeks/week07/slides.html#probit-and-logit",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "Probit and Logit",
+    "text": "Probit and Logit\n\nLet’s go back to our index-and-function interpretation. What function should we use?\n(many many different options depending on your dependent variable - poisson for count data, log link for nonnegative skewed values, multinomial logit for categorical data…)\nFor binary dependent variables the two most common link functions are the probit and logistic links. We often call a regression with a logistic link a “logit regression”\n\n\\[ Probit(index) = \\Phi(index) \\]\nwhere \\(\\Phi()\\) is the standard normal cumulative distribution function (i.e. the probability that a random standard normal value is less than or equal to \\(index\\) )\n\\[ Logistic(index) = \\frac{e^{index}}{1+e^{index}} \\]\nFor most purposes it doesn’t matter whether you use probit or logit, but logit is getting much more popular recently (due to its common use in data science - it’s computationally easier) so we’ll focus on that, and just know that pretty much all of this is the same with probit"
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#logit",
+    "href": "2024/weeks/week07/slides.html#logit",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "Logit",
+    "text": "Logit\n\nNotice that we can’t possibly predict a value outside of 0 or 1, no matter how wild \\(X\\) and our index get\nAs \\(index\\) goes to \\(-\\infty\\),\n\n\\[ Logistic(index) \\rightarrow  \\frac{0}{1+0} = 0 \\]\n\nAnd as \\(index\\) goes to \\(\\infty\\),\n\n\\[ Logistic(index) \\rightarrow  \\frac{\\infty}{1+\\infty } = 1 \\]"
+  },
+  {
+    "objectID": "2024/weeks/week07/slides.html#logit-1",
+    "href": "2024/weeks/week07/slides.html#logit-1",
+    "title": "🗓️ Week 7 Interactions & beyond ols ",
+    "section": "Logit",
+    "text": "Logit\n\nAlso notice that, like the local means did, its slope flattens out near the edges"
   }
 ]
