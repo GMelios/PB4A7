@@ -277,7 +277,7 @@
     "href": "2024/weeks/week09/slides.html#check-in",
     "title": "🗓️ Week 9 Regression Discontinuity Designs",
     "section": "Check-in",
-    "text": "Check-in\n\nWe’re thinking through ways that we can identify the effect of interest without having to control for everything\nOne way is by focusing on within variation - if all the endogeneity can be controlled for or only varies between-individuals, we can just focus on within variation to identify it\nPro: control for a bunch of stuff\nCon: washes out a lot of variation! Result can be noisier if there’s not much within-variation to work with\nAlso, this requires no endogenous variation over time\nThat might be a tricky assumption! Often there are plenty of back doors that shift over time"
+    "text": "Check-in\n\nWe’re thinking through ways that we can identify the effect of interest without having to control for everything\nOne way is by focusing on within variation - if all the endogeneity can be controlled for or only varies between-individuals, we can just focus on within variation to identify it\nCon: washes out a lot of variation! Result can be noisier if there’s not much within-variation to work with\nAlso, this requires no endogenous variation over time\nThat might be a tricky assumption! Often there are plenty of back doors that shift over time"
   },
   {
     "objectID": "2024/weeks/week09/slides.html#regression-discontinuity-1",

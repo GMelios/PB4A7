@@ -451,7 +451,6 @@ body {
 <ul>
 <li>We’re thinking through ways that we can identify the effect of interest without having to control for everything</li>
 <li>One way is by focusing on <em>within variation</em> - if all the endogeneity can be controlled for or only varies between-individuals, we can just focus on within variation to identify it</li>
-<li>Pro: control for a bunch of stuff</li>
 <li>Con: washes out a lot of variation! Result can be noisier if there’s not much within-variation to work with</li>
 <li>Also, this requires no endogenous variation over time</li>
 <li>That might be a tricky assumption! Often there are plenty of back doors that shift over time</li>
@@ -465,7 +464,6 @@ body {
 <h1>Regression Discontinuity</h1>
 <ul>
 <li>Today we are going to talk about Regression discontinuity design (RDD)</li>
-<li>RDD is currently the darling of the econometric world for estimating causal effects without running an experiment</li>
 <li>It doesn’t apply everywhere, but when it does, it’s very easy to buy the identification assumptions</li>
 <li>Not that it doesn’t have its own issues, of course, but it’s pretty good!</li>
 </ul>
@@ -493,7 +491,7 @@ body {
 <section class="slide level2">
 
 
-<img data-src="slides_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="regression-discontinuity-3" class="slide level2">
 <h2>Regression Discontinuity</h2>
 <ul>
@@ -504,7 +502,7 @@ body {
 <section class="slide level2">
 
 
-<img data-src="slides_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="regression-discontinuity-4" class="slide level2">
 <h2>Regression Discontinuity</h2>
 <ul>
@@ -538,7 +536,7 @@ body {
 <section id="regression-discontinuity-7" class="slide level2">
 <h2>Regression Discontinuity</h2>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-4-1.gif" class="img-fluid r-stretch"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.gif" class="img-fluid r-stretch"></section>
 <section id="concept-checks" class="slide level2">
 <h2>Concept Checks</h2>
 <ul>
@@ -566,7 +564,7 @@ body {
 <section class="slide level2">
 
 
-<img data-src="slides_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="regression-in-rdd" class="slide level2">
 <h2>Regression in RDD</h2>
 <ul>
@@ -651,7 +649,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="graphically" class="slide level2">
 <h2>Graphically</h2>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-8-1.gif" class="img-fluid r-stretch"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-8-1.gif" class="img-fluid r-stretch"></section>
 <section class="slide level2">
 
 </section></section>
@@ -791,7 +789,7 @@ Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>The first one looks pretty good. We have one that looks not-so-good on the right</li>
 </ul>
 
-<img data-src="slides_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="looking-for-lumping-5" class="slide level2">
 <h2>Looking for Lumping</h2>
 <ul>
@@ -890,7 +888,7 @@ Unique Obs.                     501          499
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">rdplot</span>(df<span class="sc">$</span>Y, df<span class="sc">$</span>X, <span class="at">c =</span> .<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="slides_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid r-stretch" width="768"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-15-1.png" class="img-fluid r-stretch" width="768"></section>
 <section id="thats-it" class="slide level2">
 <h2>That’s it!</h2>
 <ul>
@@ -1115,6 +1113,44 @@ Unique Obs.                     501          499
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

@@ -82,7 +82,6 @@ body {
 
 - We're thinking through ways that we can identify the effect of interest without having to control for everything
 - One way is by focusing on *within variation* - if all the endogeneity can be controlled for or only varies between-individuals, we can just focus on within variation to identify it
-- Pro: control for a bunch of stuff
 - Con: washes out a lot of variation! Result can be noisier if there's not much within-variation to work with
 - Also, this requires no endogenous variation over time
 - That might be a tricky assumption! Often there are plenty of back doors that shift over time
@@ -92,7 +91,6 @@ body {
 # Regression Discontinuity
 
 - Today we are going to talk about Regression discontinuity design (RDD)
-- RDD is currently the darling of the econometric world for estimating causal effects without running an experiment
 - It doesn't apply everywhere, but when it does, it's very easy to buy the identification assumptions
 - Not that it doesn't have its own issues, of course, but it's pretty good!
 
