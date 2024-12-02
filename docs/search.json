@@ -3071,5 +3071,243 @@
     "title": "🗓️ Week 7 Interactions & beyond ols ",
     "section": "Logit",
     "text": "Logit\n\nAlso notice that, like the local means did, its slope flattens out near the edges"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#isolating-front-doors",
+    "href": "2024/weeks/week10/slides.html#isolating-front-doors",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Isolating Front Doors",
+    "text": "Isolating Front Doors\nThe idea is:\n\nTreatment varies for all sorts of reasons\nMany of those reasons are endogenous. If you get treatment because you’re really rich, that wealth is likely going to be related to whatever outcome\nSome reasons are exogenous. If you get treatment because it was accidentally given to you at random, that’s unrelated to outcome"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#experiments",
+    "href": "2024/weeks/week10/slides.html#experiments",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Experiments",
+    "text": "Experiments\n\nIf this sounds strange or implausible to you, we have an existing example ready to go\nRandomized experiments are conceptually very similar to the use of instruments\nMany endogenous reasons why people might get treatment. But the experiment’s randomization is an exogenous reason"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#experiments-1",
+    "href": "2024/weeks/week10/slides.html#experiments-1",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Experiments",
+    "text": "Experiments"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#intuitively",
+    "href": "2024/weeks/week10/slides.html#intuitively",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Intuitively",
+    "text": "Intuitively\n\nThis is sort of like the opposite of controlling for \\(Z\\) \nWe look for what part of \\(X1\\) is explained by \\(Z\\)\nBut instead of removing that variation by controlling for \\(Z\\)…\nWe keep that variation, and remove all other variation in \\(X1\\)"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#concept-checks",
+    "href": "2024/weeks/week10/slides.html#concept-checks",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nWhy is it important to partition the sources of variation in treatment into exogenous and endogenous? Why not do that with the outcome instead?\nWhat does it mean to say that we treat an instrument like the opposite of a control variable, and how do we do that?\nIn the animation on the previous slide, why does it draw a straight line between the two points and measure its slope? What does that give us?"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#relevance-and-validity",
+    "href": "2024/weeks/week10/slides.html#relevance-and-validity",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Relevance and Validity",
+    "text": "Relevance and Validity\nFor this to work, we need two things to hold:\n\nRelevance: the instrument must be a strong predictor of the treatment. It can’t be trivial or unimportant (or else what variation are you really isolating? You’ve got nothing to go on!)\nValidity: the instrument must actually be exogenous! (Or at least exogenous after adding controls). The endogeniety problem doesn’t go away with IV, it’s just shifted from the treatment variable to the instrument\n\nNow, let’s keep these assumptions in mind as we move, and think about how we can actually carry this out"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#two-stage-least-squares-1",
+    "href": "2024/weeks/week10/slides.html#two-stage-least-squares-1",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Two Stage Least Squares",
+    "text": "Two Stage Least Squares\n\nIn general we don’t actually carry out this process ourselves because it will get the standard errors wrong (they need to be adjusted for the fact that \\(\\hat{X}_1\\) is estimated)\nBut this shows what we’re doing - we’re isolating just the variation in treatment that is explained by the instrument\n\\(\\hat{X}_1\\) contains only variation driven by \\(Z\\)\nSo if \\(Z\\) is exogenous after controlling for \\(X_2\\), then so is \\(\\hat{X}_1\\)\nAnd \\(\\hat{\\beta}_1\\) will be identified"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#r",
+    "href": "2024/weeks/week10/slides.html#r",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "R",
+    "text": "R\nWe can do this in R by hand (although as mentioned, the SEs will be wrong)\n\nfirst_stage &lt;- feols(X1 ~ Z + X2, data = df)\ndf &lt;- df %&gt;%\n  mutate(predict_X1 = predict(first_stage))\n\nsecond_stage &lt;- feols(Y ~ predict_X1 + X2, data = df)"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#r-1",
+    "href": "2024/weeks/week10/slides.html#r-1",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "R",
+    "text": "R\nThere are a bunch of ways to do it properly in R. The classic is ivreg in the AER package, but other functions are more fully-featured, including robust SEs, clustering, and fixed effects if you want them. felm in lfe, tsls in sem, a number of things in ivpack\nWe’ll be using good ol’ feols from fixest\n\niv_regression &lt;- feols(Y ~ X2 | X1 ~ Z, data = df, se = 'hetero')"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#r-2",
+    "href": "2024/weeks/week10/slides.html#r-2",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "R",
+    "text": "R\nIf we actually want to look at that first stage, we can extract that\n\niv_regression$iv_first_stage"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#concept-checks-1",
+    "href": "2024/weeks/week10/slides.html#concept-checks-1",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nWhy do you think that doing 2SLS by hand would make the standard errors be wrong?\nIntuitively, why would using Z-predicted values of X in predicting Y give us the causal effect if Z is a valid instrument?\nWhy do we include the control variables in both the first and second stages?"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#the-local-average-treatment-effect-1",
+    "href": "2024/weeks/week10/slides.html#the-local-average-treatment-effect-1",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "The Local Average Treatment Effect",
+    "text": "The Local Average Treatment Effect\n\nSo?\nThis does mean that the IV estimate won’t be representative of everyone’s effect\nOr even of the people who actually were treated\nIt might be less informative about what would happen if we treated more people than if we did an actual experiment\nBut we might have to live with that to be able to use the cleaner identification"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#monotonicity",
+    "href": "2024/weeks/week10/slides.html#monotonicity",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Monotonicity",
+    "text": "Monotonicity\n\nAlso, think about that - we weight people by how strongly they’re affected by the instrument\nWhat if someone is affected by the instrument in an opposite direction to everyone else? This would be a violation of monotonicity\nThen, they would get a negative weight and our estimate doesn’t make much sense any more!\nSo we need to assume that everyone is either unaffected by the instrument, or affected in the exact same direction as everyone else"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#small-sample-bias",
+    "href": "2024/weeks/week10/slides.html#small-sample-bias",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Small-sample Bias",
+    "text": "Small-sample Bias\n\nIV is actually a biased estimator!\nThe mean of its sampling distribution is not the population parameter!\nOr rather, it would be the population parameter at infinite sample size, but we don’t have that\nIn small samples, the bias of IV is\n\n\\[\\frac{corr(Z,\\varepsilon)}{corr(Z,X_1)}\\frac{\\sigma_\\varepsilon}{\\sigma_{X_1}}\\]"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#weak-instruments",
+    "href": "2024/weeks/week10/slides.html#weak-instruments",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Weak Instruments",
+    "text": "Weak Instruments\n\nThis means we probably shouldn’t be using IV in small samples\nThis also means that it’s really important that \\(corr(Z,X_1)\\) isn’t small!\nIf \\(Z\\) has only a trivial effect on \\(X_1\\), then it’s not relevant - even if it’s truly exogenous, it doesn’t matter because there’s no variation in \\(X_1\\) we can isolate with it\nAnd our small-sample bias will be big! (imagine the term in the previous slide if \\(corr(Z,X_1) = .00001\\) !)"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#weak-instruments-1",
+    "href": "2024/weeks/week10/slides.html#weak-instruments-1",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Weak Instruments",
+    "text": "Weak Instruments\n\nThere are some rules of thumb for how strong an instrument must be to be counted as “not weak”\nA t-statistic above 3, or an F statistic from a joint test of the instruments that is 10 or above\nThese rules of thumb aren’t great - selecting a model on the basis of significance naturally biases your results. But people do use them a lot so you should be aware\nWhat you really want is to know the population effect of \\(Z\\) on \\(X1\\) - you want the F-statistic from that to be 10+. Of course we don’t actually know that."
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#weak-instruments-2",
+    "href": "2024/weeks/week10/slides.html#weak-instruments-2",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Weak Instruments",
+    "text": "Weak Instruments\n\nWhatever we feel about the rules-of-thumb, they’re quite common\nSo much so that you get it by default when looking at feols() IV output\n\n\niv &lt;- feols(Y ~ X2 | X1 ~ Z, data = df, se = 'hetero')\niv\n\nTSLS estimation - Dep. Var.: Y\n                  Endo.    : X1\n                  Instr.   : Z\nSecond stage: Dep. Var.: Y\nObservations: 200\nStandard-errors: Heteroskedasticity-robust \n             Estimate Std. Error   t value  Pr(&gt;|t|)    \n(Intercept)  3.697702   0.166064 22.266665 &lt; 2.2e-16 ***\nfit_X1       0.553733   0.392039  1.412446   0.15940    \nX2          -0.022595   0.152040 -0.148612   0.88201    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\nRMSE: 1.94425   Adj. R2: -0.019456\nF-test (1st stage), X1: stat = 346.4    , p &lt; 2.2e-16 , on 1 and 197 DoF.\n            Wu-Hausman: stat =   3.61357, p = 0.058777, on 1 and 196 DoF.\n\n\n\n346.43 is way above 10! We’re probably fine in this particular regression"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#instruments-and-caution",
+    "href": "2024/weeks/week10/slides.html#instruments-and-caution",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Instruments and Caution",
+    "text": "Instruments and Caution\n\nGood IVs are really hard to find\nClaiming the IV is exogenous (even after adding controls) is the same difficult problem when we’re doing it for the IV as when we’re doing it for the treatment\nWe’ve just shifted the claim to a variable it’s more likely to be true for\nAnd this is social science, where everything is related to everything else. So why isn’t your instrument part of that?"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#instruments-and-caution-1",
+    "href": "2024/weeks/week10/slides.html#instruments-and-caution-1",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Instruments and Caution",
+    "text": "Instruments and Caution\n\nSo rainfall isn’t seen as a great instrument any more\nIn fact, lots of clever instruments that used to be thought of as good aren’t acceptable now due to similar problems - parental education as an instrument for your own, distance-you-live-from-a-college as an instrument on going-to-college, quarter of birth on education…\nNo wonder we’re so skeptical of cool-looking instruments now!"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#instruments-and-caution-2",
+    "href": "2024/weeks/week10/slides.html#instruments-and-caution-2",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Instruments and Caution",
+    "text": "Instruments and Caution\n\nAcceptable instruments these days fall into one of a few categories:\n\n\nActual literal randomization (like in a randomized experiment with imperfect compliance - see the Experiments module. Or similarly, fuzzy regression discontinuity - see the Regression Discontinuity module)\nVariables that are truly from outside the system and unrelated to anything social-sciency, like mistakes or computer glitches (for example, job interview scores for teachers were added incorrectly, as an instrument for progressing through the interview - Goldhaber, Grout, & Huntington-Klein 2017)"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#instruments-and-caution-3",
+    "href": "2024/weeks/week10/slides.html#instruments-and-caution-3",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Instruments and Caution",
+    "text": "Instruments and Caution\n\nVariables you’d be really surprised to find out are relevant but just happen to be - and when you look into it there’s a good reason it’s relevant\n\n\nIf you want to do IV, learn a lot a lot a lot of context so you can know really well how the IV fits into the data-generating process. You should be an expert on the topic you’re using IV in. Otherwise, how can you know it’s valid?"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#concept-checks-2",
+    "href": "2024/weeks/week10/slides.html#concept-checks-2",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Concept Checks",
+    "text": "Concept Checks\n\nGive an example where a local average treatment effect might give a very different answer from the average treatment effect\nWhy will a violation of monotonicity make our estimate meaningless? Hint: think about the local average treatment effect\nWhy would it be a problem for validity if the same instrument can be used for multiple different treatments?\nWhy would we be suspicious of any instrument that “makes sense” as a determinant of treatment?"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#other-things-about-iv",
+    "href": "2024/weeks/week10/slides.html#other-things-about-iv",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Other Things about IV",
+    "text": "Other Things about IV\n\nOk, enough of the scare tactics! Just be very aware of these problems\nWhat other neat things can we do with IV?\n\nWell,\n\nWe can use multiple instruments, not just one\n(We could have multiple endogenous variables too, but we won’t cover that right now)\nWe can use IV to solve measurement issues rather than endogeneity issues\nWe can use IV to break simultaneous causality"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#overidentification-tests",
+    "href": "2024/weeks/week10/slides.html#overidentification-tests",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Overidentification Tests",
+    "text": "Overidentification Tests\n\n“Overidentification” just means we have more identifying conditions (validity assumptions) than we actually need. We only need one instrument, but we have two! (or more)\nSo we can compare what we get using each instrument individually\nIf we assume that at least one of them is valid, and they both produce similar results, then that’s evidence that both are valid\nLike using one clock to set the time on another clock\nIf they’re dissimilar, then one of them is likely invalid, but we don’t know which one - we just know they’re different\n(also maybe they’re just producing different local average treatment effects, but let’s not use that copout!)"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#veridentification-tests",
+    "href": "2024/weeks/week10/slides.html#veridentification-tests",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "veridentification Tests",
+    "text": "veridentification Tests\n\nWe can do this using fitstat() in fixest\n\n\n# Create data where Z1 is valid and Z2 is invalid\ndf &lt;- tibble(Z1 = rnorm(1000), Z2 = rnorm(1000)) %&gt;%\n  mutate(X = Z1 + Z2 + rnorm(1000)) %&gt;%\n  # True effect is 1\n  mutate(Y = X + Z2 + rnorm(1000))\n\niv &lt;- feols(Y~ 1 | X ~ Z1 + Z2, data = df, se = 'hetero')\nfitstat(iv, 'sargan')\n\nSargan: stat = 267.8, p &lt; 2.2e-16, on 1 DoF.\n\n\n\nThat’s a small p-value! We can reject that the results are similar for each IV, telling us that one is endogenous (although without seeing the actual data generating process we couldn’t guess if it were \\(Z1\\) or \\(Z2\\) )"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#overidentification-tests-1",
+    "href": "2024/weeks/week10/slides.html#overidentification-tests-1",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Overidentification Tests",
+    "text": "Overidentification Tests\n\nAnd how different are they? What did the test see that it was comparing? (Notice the first model gives an accurate coefficient of 1)\n\n\niv1 &lt;- feols(Y~ 1 | X ~ Z1, data = df)\niv2 &lt;- feols(Y~ 1 | X ~ Z2, data = df)\n\nexport_summs(iv1, iv2, statistics = c(N = 'nobs'))\n\n\n\n\nModel 1Model 2\n\n(Intercept)-0.01    0.00    \n\n(0.04)   (0.05)   \n\nfit_X1.08 ***1.92 ***\n\n(0.04)   (0.05)   \n\nN1000       1000       \n\n *** p &lt; 0.001;  ** p &lt; 0.01;  * p &lt; 0.05."
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#isolating-front-doors-1",
+    "href": "2024/weeks/week10/slides.html#isolating-front-doors-1",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Isolating Front Doors",
+    "text": "Isolating Front Doors\n\nThose exogenous reasons for treatment we can call instruments and we can perform instrumental variables analysis (IV)\nIf we use just the part of treatment driven by the instruments, then that part of treatment is exogenous and we can ignore all the back doors! We’ve identified a causal effect"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#experiments-2",
+    "href": "2024/weeks/week10/slides.html#experiments-2",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Experiments",
+    "text": "Experiments\n\nThe only difference between a randomized experiment and an instrument is that in randomized experiments, we control and impose the randomization\nIn the case of instruments we must find that exogenous variation in treatment in the world\nie what about a natural disaster. An earthquake? Extreme rain?"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#the-good-and-the-bad",
+    "href": "2024/weeks/week10/slides.html#the-good-and-the-bad",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "The Good and the Bad",
+    "text": "The Good and the Bad\nWhat is good and bad about this whole process?\nThe Good:\n\nCausal identification! & Fairly easy to do\nIntuitive - just like a randomized experiment, but in the wild\n\nThe Bad (we’ll go into these in detail)\n\nMonotonicity\nSmall-sample bias\nInstruments can’t be weak\nGood and believable instruments are really hard to find"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#the-local-average-treatment-effect",
+    "href": "2024/weeks/week10/slides.html#the-local-average-treatment-effect",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "The Local Average Treatment Effect",
+    "text": "The Local Average Treatment Effect\n\nIV only allows variation in the treatment that is driven by the instrument\nThis also means that we can only see the effect among people for whom the instrument drives their treatment\nIf a treatment improves your outcome by 2, but my outcome by only 1, and the instrument has a big effect on whether you get treatment, but only a little effect on me, then our IV estimate will be a lot closer to 2 than to 1\nThis is a “local average treatment effect” - our estimate is local to people who are affected by the instrument (and even more local to those affected more heavily than others)"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#monotonicity-1",
+    "href": "2024/weeks/week10/slides.html#monotonicity-1",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Monotonicity",
+    "text": "Monotonicity\n\nWhen might this not be true? For example, say we’re using rainfall as an instrument for agricultural productivity\nRain might help in dry areas, but make things worse in already-too-wet areas. The instrument would help productivity some places and hurt it in others"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#small-sample-bias-1",
+    "href": "2024/weeks/week10/slides.html#small-sample-bias-1",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Small-sample bias",
+    "text": "Small-sample bias\n\nIf \\(Z\\) is valid, then in infinite samples \\(corr(Z,\\varepsilon)=0\\) and this goes away. But in a non-infinite sample, it will be nonzero by chance, inducing some bias. The smaller the sample, the more likely we are to get a large value by random chance\nThe bias is smaller the stronger the relationship between \\(Z\\) and \\(X_1\\), the smaller the sum of squared errors, and the bigger the variation in \\(X_1\\)"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#instruments-and-caution---rainfall-example",
+    "href": "2024/weeks/week10/slides.html#instruments-and-caution---rainfall-example",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Instruments and Caution - Rainfall Example",
+    "text": "Instruments and Caution - Rainfall Example\n\nFor a long time, developmental economists would use rainfall as an instrument for agricultural productivity\nControlling for location, variation the exact amount of rainfall from year to year is basically random, right?\nMaking it a good instrument so we can see the effect of agricultural productivity on other stuff\nExcept that rainfall also affects all other sorts of stuff (like what kind of transportation people take)\nAlso the monotonicity thing we talked about\nAnd my rainfall is correlated with my neighbor’s rainfall\nAlso, wait a minute… other people use rainfall as an instrument for warfare! If it’s relevant for warfare, doesn’t that make it invalid for agriculture (and vice versa)?"
+  },
+  {
+    "objectID": "2024/weeks/week10/slides.html#instruments-and-caution---rainfall",
+    "href": "2024/weeks/week10/slides.html#instruments-and-caution---rainfall",
+    "title": "🗓️ Week 10 Instrumental Variables",
+    "section": "Instruments and Caution - Rainfall",
+    "text": "Instruments and Caution - Rainfall\n\nFor a long time, developmental economists would use rainfall as an instrument for agricultural productivity\nControlling for location, variation the exact amount of rainfall from year to year is basically random, right?\nMaking it a good instrument so we can see the effect of agricultural productivity on other stuff\nExcept that rainfall also affects all other sorts of stuff (like what kind of transportation people take)\nAlso the monotonicity thing we talked about\nAnd my rainfall is correlated with my neighbor’s rainfall\nAlso, wait a minute… other people use rainfall as an instrument for warfare!"
   }
 ]
