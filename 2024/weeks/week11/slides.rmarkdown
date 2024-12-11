@@ -22,8 +22,6 @@ format:
     footer: 'PB4A7- Quantitative Applications for Behavioural Science'
 ---
 
-
-
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE) 
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, fig.width = 8, fig.height = 6)
@@ -64,6 +62,7 @@ theme_metro_regtitle <- function(x) {
 }
 ```
 
+
 ## Check-in
 
 - We're thinking through ways that we can identify the effect of interest without having to control for everything
@@ -99,6 +98,7 @@ theme_metro_regtitle <- function(x) {
 - We have some data on the people who were affected both before the policy went into effect and after
 - However, we can't just compare before and after, because we have a back door path - Time! Things change over Time for reasons unrelated to Treatment
 
+
 ```{r, dev = 'CairoPNG', fig.height=4}
 dag <- dagify(Treatment ~ Time,
               Outcome ~ Treatment + Time,
@@ -111,6 +111,7 @@ ggdag_classic(dag,node_size=10) +
   expand_limits(x=c(.5,3.5))
 
 ```
+
 
 ---
 
@@ -128,6 +129,7 @@ ggdag_classic(dag,node_size=10) +
 - Now the diagram looks like this
 - There's more to control for (we have to control for Group differences too - isolate within variation), but this ALLOWS us to control for Time
 
+
 ```{r, dev = 'CairoPNG'}
 dag <- dagify(Treatment ~ Time + Group,
               Outcome ~ Treatment + Time + Group,
@@ -140,6 +142,7 @@ ggdag_classic(dag,node_size=10) +
   expand_limits(x=c(.5,3.5))
 
 ```
+
 
 
 ---
@@ -169,6 +172,7 @@ ggdag_classic(dag,node_size=10) +
 
 ## Example
 
+
 ```{r}
 df <- data.frame(Person = c('Adelaide','Adelaide','Bella','Bella'),
                  Time = factor(c('Before','After','Before','After'), levels = c('Before','After')),
@@ -184,9 +188,11 @@ ggplot(df, aes(x = Time, y = Height, group = Person, label = Person)) +
   geom_segment(aes(x = 2, y = 51, xend = 2, yend = 54), color = 'blue', size = 1.5)
 ```
 
+
 ---
 
 ## Example
+
 
 ```{r}
 df <- data.frame(Person = c('Adelaide','Adelaide','Bella','Bella'),
@@ -206,6 +212,7 @@ ggplot(df, aes(x = Time, y = Height, group = Person, label = Person)) +
   geom_segment(aes(x = 1.9, y = 51, xend = 1.9, yend = 52), color = 'red', size = 1.5) + 
   geom_segment(aes(x = 1.9, y = 52, xend = 1.9, yend = 54), color = 'purple', size = 1.5)  
 ```
+
 
 ---
 
@@ -247,6 +254,7 @@ What *changes* are included in each value?
 $$Y_{it} = \beta_0 + \beta_1After_t + \beta_2Treated_i + \beta_3After_tTreated_i + \varepsilon_{it}$$
 where $After_t$ is a binary variable for being in the post-treatment period, and $Treated_t$ is a binary variable for being in the treated group
 
+
 ```{r}
 data.frame(Person = c('Adelaide','Adelaide','Bella','Bella'),
                  Time = factor(c('Before','After','Before','After'), levels = c('Before','After')),
@@ -254,6 +262,7 @@ data.frame(Person = c('Adelaide','Adelaide','Bella','Bella'),
   mutate(After = Time == 'After', 
          Treated = Person == 'Adelaide')
 ```
+
 
 ---
 
@@ -271,6 +280,7 @@ $$Y_{it} = \beta_0 + \beta_1After_t + \beta_2Treated_i + \beta_3After_tTreated_i
 ---
 
 ## Graphically
+
 
 ```{r, dev='png', echo=FALSE, fig.width=8, fig.height=7}
 df <- data.frame(Control = c(rep("Control",150),rep("Treatment",150)),
@@ -357,6 +367,7 @@ p <- ggplot(dffull,aes(y=Y,x=xaxisTime,color=as.factor(Control)))+geom_point()+
 animate(p,nframes=150)
 ```
 
+
 ---
 
 ## Design vs. Regression
@@ -374,6 +385,7 @@ animate(p,nframes=150)
 - The Earned Income Tax Credit was increased in 1993. This may increase chances single mothers (treated) return to work, but likely not affect single non-moms (control)
 - Does this program help moms get back to work?
 
+
 ```{r, echo = TRUE}
 df <- read.csv('http://nickchk.com/eitc.csv') %>%
   mutate(after = year >= 1994,
@@ -383,6 +395,7 @@ df %>%
   summarize(proportion_working = mean(work))
 ```
 
+
 ---
 
 ## Example
@@ -390,6 +403,7 @@ df %>%
 - We can do it by just comparing the points, like we did with Adelaide and Bella
 - This will give us the DID estimate: The EITC increase increases the probability of working by 4.7 percentage points
 - But not standard errors, or the ability to include controls easily
+
 
 ```{r, echo = TRUE}
 means <- df %>% 
@@ -399,13 +413,16 @@ means <- df %>%
 (means[4] - means[2]) - (means[3] - means[1])
 ```
 
+
 ---
 
 ## Let's try OLS!
+
 ```{r, echo = TRUE}
 did_reg <- feols(work ~ after*treated, data = df)
 etable(did_reg, digits = 3)
 ```
+
 
 ---
 
@@ -439,6 +456,7 @@ etable(did_reg, digits = 3)
 
 - Let's make some quick example data to show this off, with the first treated period being period 7 and the treated groups being 1 and 9, and a true effect of 3
 
+
 ```{r}
 set.seed(10600)
 ```
@@ -451,15 +469,18 @@ did_data <- tibble(group = sort(rep(1:10, 10)),
 did_data
 ```
 
+
 ---
 
 ## More!!
+
 
 ```{r, echo = TRUE}
 # Put group first so the clustering is on group
 many_periods_did <- feols(Outcome ~ CurrentlyTreated | group + time, data = did_data)
 etable(many_periods_did)
 ```
+
 
 
 ---
@@ -496,6 +517,7 @@ etable(many_periods_did)
 - Let's see how that EITC example looks in the leadup to 1994
 - They look like the gap between them is pretty constant before 1994! They move up and down but the *gap* stays the same. That's good.
 
+
 ```{r, echo = FALSE, dev = 'CairoPNG'}
 df %>%
   mutate(tlabel = factor(treated, labels = c('Untreated','Treated'))) %>%
@@ -513,6 +535,7 @@ df %>%
 ```
 
 
+
 ---
 
 ## Prior Trends
@@ -520,6 +543,7 @@ df %>%
 - Formally, prior trends being the same tells us nothing about parallel trends
 - But it can be suggestive. Going back to the height pill example, what if instead of comparing Adelaide and Bella, child twins, we compared Adelaide to *me*? 
 - Seeing the gap closing *anyway* in previous years would be a pretty good clue that it's not just the pill
+
 
 ```{r}
 df <- data.frame(Person = c('Adelaide','Adelaide','Adelaide','Me','Me','Me'),
@@ -533,6 +557,7 @@ ggplot(df, aes(x = Time, y = Height, group = Person, label = Person)) +
   annotate(geom = 'text', x = 1.5, y = 60, hjust = .5, label = 'The gap was already\nclosing before\nany Treatment...') +
   annotate(geom = 'text', x = 2.5, y = 60, hjust = .5, label = 'telling us that\nnot all of this change\n is just Treatment')
 ```
+
 
 ---
 
