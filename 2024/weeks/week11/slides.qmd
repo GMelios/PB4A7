@@ -64,7 +64,7 @@ theme_metro_regtitle <- function(x) {
 }
 ```
 
-# Check-in
+## Check-in
 
 - We're thinking through ways that we can identify the effect of interest without having to control for everything
 - One way is by focusing on *within variation* - if all the endogeneity can be controlled for or only varies between-individuals, we can just focus on within variation to identify it
@@ -84,7 +84,7 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
-# Difference-in-Differences
+## Difference-in-Differences
 
 - Because the requirements to use it are so low, DID is used a *lot*
 - Any time a policy is enacted but isn't enacted everywhere at once? DID!
@@ -94,7 +94,7 @@ theme_metro_regtitle <- function(x) {
 
 ---
 
-# Difference-in-Differences
+## Difference-in-Differences
 
 - The question DID tries to answer is "what was the effect of (some policy) on the people who were affected by it?"
 - We have some data on the people who were affected both before the policy went into effect and after
@@ -115,7 +115,7 @@ ggdag_classic(dag,node_size=10) +
 
 ---
 
-# Difference-in-Differences
+## Difference-in-Differences
 
 - Why not just control for Time? We can certainly measure that and we've controlled for it before!
 - But we can't! It would wash out all the variation!
@@ -123,7 +123,7 @@ ggdag_classic(dag,node_size=10) +
 
 ---
 
-# Difference-in-Differences
+## Difference-in-Differences
 
 - The solution is to bring in a *control group* who is Untreated in both Before and After periods
 - Now the diagram looks like this
@@ -145,7 +145,7 @@ ggdag_classic(dag,node_size=10) +
 
 ---
 
-# Difference-in-Difference
+## Difference-in-Difference
 
 - We control for Group by isolating within variation (comparing After to Before)
 - Then we control for Time by comparing those two sources of Within variation
@@ -156,7 +156,7 @@ ggdag_classic(dag,node_size=10) +
 
 ---
 
-# Example
+## Example
 
 - Let's say we have a pill that's supposed to make you taller
 - Give it to a kid Adelaide who is 48 inches tall
@@ -168,7 +168,7 @@ ggdag_classic(dag,node_size=10) +
 
 ---
 
-# Example
+## Example
 
 ```{r}
 df <- data.frame(Person = c('Adelaide','Adelaide','Bella','Bella'),
@@ -187,7 +187,7 @@ ggplot(df, aes(x = Time, y = Height, group = Person, label = Person)) +
 
 ---
 
-# Example
+## Example
 
 ```{r}
 df <- data.frame(Person = c('Adelaide','Adelaide','Bella','Bella'),
@@ -210,7 +210,7 @@ ggplot(df, aes(x = Time, y = Height, group = Person, label = Person)) +
 
 ---
 
-# Difference-in-Differences
+## Difference-in-Differences
 
 What *changes* are included in each value?
 
@@ -224,7 +224,7 @@ What *changes* are included in each value?
 
 ---
 
-# Concept Checks
+## Concept Checks
 
 - Why do we need a control group? What does this let us do?
 - What do we need to assume is true about our control group?
@@ -232,7 +232,7 @@ What *changes* are included in each value?
 
 ---
 
-# Difference-in-Difference
+## Difference-in-Difference
 
 - Of course, this only uses four data points
 - Usually these four points would be four means from lots of observations, not just two people in two time periods
@@ -241,7 +241,7 @@ What *changes* are included in each value?
 
 ---
 
-# Difference-in-Differences
+## Difference-in-Differences
 
 - We can use what we know about binary variables and interaction terms to get our DID
 
@@ -258,7 +258,7 @@ data.frame(Person = c('Adelaide','Adelaide','Bella','Bella'),
 
 ---
 
-# Difference-in-Differences
+## Difference-in-Differences
 
 - How can we interpret this using what we know?
 
@@ -271,7 +271,7 @@ $$Y_{it} = \beta_0 + \beta_1After_t + \beta_2Treated_i + \beta_3After_tTreated_i
 
 ---
 
-# Graphically
+## Graphically
 
 ```{r, dev='png', echo=FALSE, fig.width=8, fig.height=7}
 df <- data.frame(Control = c(rep("Control",150),rep("Treatment",150)),
@@ -360,7 +360,7 @@ animate(p,nframes=150)
 
 ---
 
-# Design vs. Regression
+## Design vs. Regression
 
 - Like with fixed effects, there is a distinction between *regression model* and *research design*
 - We have a model with an interaction term
@@ -370,7 +370,7 @@ animate(p,nframes=150)
 
 ---
 
-# Example
+## Example
 
 - The Earned Income Tax Credit was increased in 1993. This may increase chances single mothers (treated) return to work, but likely not affect single non-moms (control)
 - Does this program help moms get back to work?
@@ -386,7 +386,7 @@ df %>%
 
 ---
 
-# Example
+## Example
 
 - We can do it by just comparing the points, like we did with Adelaide and Bella
 - This will give us the DID estimate: The EITC increase increases the probability of working by 4.7 percentage points
@@ -402,7 +402,7 @@ means <- df %>%
 
 ---
 
-# Let's try OLS!
+## Let's try OLS!
 ```{r, echo = TRUE}
 did_reg <- feols(work ~ after*treated, data = df)
 etable(did_reg, digits = 3)
@@ -410,14 +410,14 @@ etable(did_reg, digits = 3)
 
 ---
 
-# Concept Checks
+## Concept Checks
 
 - There are four coefficients on the previous slide. Interpret them carefully in a sentence each.
 - Why can the $After \times TreatedGroup$ interaction stand in for $Treated$ ?
 
 ---
 
-# More!!
+## More!!
 
 - You can recognize $After_t$ and $Treated_i$ as *fixed effects*
 - $Treated_i$ is a fixed effect for group - we only need one coefficient for it since there are only two groups
@@ -427,7 +427,7 @@ etable(did_reg, digits = 3)
 
 ---
 
-# More!!
+## More!!
 
 - We can extend this to having more than two groups, some of which get treated and some of which don't
 - And more than two time periods! Multiple before and/or multiple after
@@ -436,7 +436,7 @@ etable(did_reg, digits = 3)
 
 ---
 
-# More!!
+## More!!
 
 - Let's make some quick example data to show this off, with the first treated period being period 7 and the treated groups being 1 and 9, and a true effect of 3
 
@@ -454,7 +454,7 @@ did_data
 
 ---
 
-# More!!
+## More!!
 
 ```{r, echo = TRUE}
 # Put group first so the clustering is on group
@@ -465,7 +465,7 @@ etable(many_periods_did)
 
 ---
 
-# Downers and Assumptions
+## Downers and Assumptions
 
 - So... does this all work?
 - That example got pretty close to the truth of 3 but who knows in other cases!
@@ -473,7 +473,7 @@ etable(many_periods_did)
 
 ---
 
-# Does it Work?
+## Does it Work?
 
 - This gives us a causal effect as long as *the only reason the gap changed* was the treatment
 - If Adelaide would have grown six inches *anyway*, then the gap would have grown by 2, pill or not. The pill did nothing in that case! But we don't know that and mistakenly say it helped her grow by 2
@@ -483,7 +483,7 @@ etable(many_periods_did)
 
 ---
 
-# Parallel Trends
+## Parallel Trends
 
 - This assumption - that nothing else changes at the same time, is the poorly-named "parallel trends"
 - Again, this assumes that, *if the Treatment hadn't happened to anyone*, the gap between the two would have stayed the same
@@ -492,7 +492,7 @@ etable(many_periods_did)
 
 ---
 
-# Prior Trends
+## Prior Trends
 
 - Let's see how that EITC example looks in the leadup to 1994
 - They look like the gap between them is pretty constant before 1994! They move up and down but the *gap* stays the same. That's good.
@@ -516,7 +516,7 @@ df %>%
 
 ---
 
-# Prior Trends
+## Prior Trends
 
 - Formally, prior trends being the same tells us nothing about parallel trends
 - But it can be suggestive. Going back to the height pill example, what if instead of comparing Adelaide and Bella, child twins, we compared Adelaide to *me*? 
@@ -537,7 +537,7 @@ ggplot(df, aes(x = Time, y = Height, group = Person, label = Person)) +
 
 ---
 
-# Parallel Trends
+## Parallel Trends
 
 - Just because *prior trends* are equal doesn't mean that *parallel trends* holds. 
 - *Parallel trends* is about what the before-after change *would have been* - we can't see that!
@@ -548,14 +548,14 @@ ggplot(df, aes(x = Time, y = Height, group = Person, label = Person)) +
 
 ---
 
-# Concept Checks
+## Concept Checks
 
 - Go back to the Seattle minimum wage effect example from the first Concept Check slide. Clearly state what the parallel trends assumption means in this context.
 - It's possible (although perhaps unlikely) that parallel trends can hold even if it looks like the treatment and control groups were trending apart before treatment went into effect. How is this possible?
 
 ---
 
-# And a Warning!
+## And a Warning!
 
 - One other note about DID is that its popularity is relatively recent, as things go, so we're still learning a lot about it!
 - Most relevant has to do with *staggered rollout DID*
